@@ -8,15 +8,15 @@ import org.apache.commons.lang3.ArrayUtils;
 
 /**
  * Given the result subgraph nodes and true subgraph nodes, we calculate the
- * precision, recall and f-measure.
+ * precion, recall and fmeasure.
  * 
  * Please see more details of precision and recall:
  * {@link https://en.wikipedia.org/wiki/Precision_and_recall}
  * 
- * Please see more details of f-measure:
+ * Please see more details of fmeasure:
  * {@link https://en.wikipedia.org/wiki/F1_score}
  * 
- * @author baojian bzhou6@albany.edu
+ * @author baojian
  *
  */
 public class PreRec {

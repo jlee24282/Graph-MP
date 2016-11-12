@@ -27,13 +27,13 @@ public class EMSStat implements Function {
 	private final FuncType funcID;
 
 	public EMSStat(double[] b, double[] c) {
-		funcID = FuncType.EMSStat;
+		funcID = FuncType.EMS;
 		if (!checkInput(b, c)) {
 			System.out.println(funcID + " input parameter is invalid.");
 		}
 		this.b = b;
 		this.c = c;
-		this.n = b.length;
+		this.n = b.length; //node size
 	}
 
 	private boolean checkInput(double[] b, double c[]) {
@@ -67,12 +67,12 @@ public class EMSStat implements Function {
 		for (int i = 0; i < gradient.length; i++) {
 			gradient[i] = c[i] * (Math.sqrt(sigmaX) / sigmaX) - (0.5D) * (sigmaCX / Math.pow(sigmaX, 1.5D));
 		}
+		System.out.println("gradient:" + Arrays.toString(gradient));
 		return gradient;
 	}
 
 	@Override
 	public double getFuncValue(double[] x) {
-
 		double funcValue = 0.0D;
 		if (x == null || c == null || x.length != c.length) {
 			new IllegalArgumentException("Error : Invalid parameters ...");
@@ -92,6 +92,47 @@ public class EMSStat implements Function {
 		}
 
 		return funcValue;
+	}
+
+	public double[] getArgMaxFx(ArrayList<Integer> S) {
+		double[] result = new double[this.b.length];
+		Double[] vectorRatioCB = new Double[S.size()];
+		for (int i = 0; i < vectorRatioCB.length; i++) {
+			vectorRatioCB[i] = c[S.get(i)] / b[S.get(i)];
+		}
+		ArrayIndexSort arrayIndexSort = new ArrayIndexSort(vectorRatioCB);
+		System.out.print("print this");
+		
+		System.out.println("arrayIndexSort "+arrayIndexSort);
+		
+		Integer[] indexes = arrayIndexSort.getIndices();
+		Arrays.sort(indexes, arrayIndexSort);
+		System.out.println("indexes "+Arrays.toString(indexes));
+
+		ArrayList<Integer> sortedS = new ArrayList<Integer>(); // v_1,v_2,...,v_m
+		for (int index : indexes) {
+			sortedS.add(S.get(index));
+		}
+		double maxF = -Double.MAX_VALUE;
+		double[] argMaxX = null;
+		for (int k = 1; k <= sortedS.size(); k++) {
+			List<Integer> Rk = sortedS.subList(0, k);
+			double[] x = new double[n];
+			for (int i = 0; i < n; i++) {
+				x[i] = 0.0D;
+			}
+			for (int index : Rk) {
+				x[index] = 1.0D;
+			}
+			double fk = getFuncValue(x);
+			if (fk > maxF) {
+				maxF = fk;
+				argMaxX = x;
+			}
+		}
+		System.out.println("print this");
+		result = argMaxX;
+		return result;
 	}
 
 	@Override
@@ -130,26 +171,12 @@ public class EMSStat implements Function {
 		for (int i = 0; i < n; i++) {
 			grad[i] = new BigDecimal(gradient[i]);
 		}
+		System.out.println("gradient:" + grad);
 		return grad;
 	}
 
 	@Override
 	public double[] getArgMinFx(ArrayList<Integer> S) {
-		/**
-		 * as our objective function is f(S), we do min_{S} -f(S), this is
-		 * equivalent to maximize f(S)
-		 */
-		return getArgMaxFx(S);
-	}
-
-	/**
-	 * This is a heuristic method. It maximizes objective function f(S).
-	 * 
-	 * @param S
-	 *            the constraint set S
-	 * @return the maximizer of objective function
-	 */
-	public double[] getArgMaxFx(ArrayList<Integer> S) {
 		double[] result = new double[this.b.length];
 		Double[] vectorRatioCB = new Double[S.size()];
 		for (int i = 0; i < vectorRatioCB.length; i++) {
@@ -157,6 +184,8 @@ public class EMSStat implements Function {
 		}
 		ArrayIndexSort arrayIndexSort = new ArrayIndexSort(vectorRatioCB);
 		Integer[] indexes = arrayIndexSort.getIndices();
+		//System.out.println("S: "+S);
+		//System.out.println("indexes "+Arrays.toString(vectorRatioCB));
 		Arrays.sort(indexes, arrayIndexSort);
 		ArrayList<Integer> sortedS = new ArrayList<Integer>(); // v_1,v_2,...,v_m
 		for (int index : indexes) {
@@ -174,11 +203,14 @@ public class EMSStat implements Function {
 				x[index] = 1.0D;
 			}
 			double fk = getFuncValue(x);
+			//System.out.println("fk list: " + fk);
 			if (fk > maxF) {
 				maxF = fk;
 				argMaxX = x;
 			}
 		}
+
+		System.out.println("X result: "+ Arrays.toString(argMaxX));
 		result = argMaxX;
 		return result;
 	}

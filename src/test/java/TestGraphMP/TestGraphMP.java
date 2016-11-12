@@ -1,5 +1,4 @@
 package TestGraphMP;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -37,14 +36,18 @@ public class TestGraphMP {
 		EMSStat func = new EMSStat(apdm.data.base, apdm.data.counts);
 		/** step2: optimization */
 		int[] candidateS = new int[] { 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 };
+		//size of subgraph
 		double optimalVal = -Double.MAX_VALUE;
+		
 		PreRec bestPreRec = new PreRec();
 		GraphMP bestGraphMP = null;
+		
 		for (int s : candidateS) {
-			double B = s - 1 + 0.0D;
+			double B = s - 1 + 0.0D;// why -1?
 			int t = 5;
 			GraphMP graphMP = new GraphMP(edges, edgeCosts, apdm.data.base, s, 1, B, t, true/** maximumCC */
 			, null, func, null);
+			
 			double[] yx = graphMP.x;
 			if (func.getFuncValue(yx) > optimalVal) {
 				optimalVal = func.getFuncValue(yx);
@@ -89,6 +92,7 @@ public class TestGraphMP {
 			double[] yx = graphMP.x;
 			if (func.getFuncValue(yx) > optimalVal) {
 				optimalVal = func.getFuncValue(yx);
+
 				bestPreRec = new PreRec(graphMP.resultNodes_supportX, apdm.data.trueSubGraphNodes);
 				bestGraphMP = graphMP;
 				if (verboseLevel == 0) {
@@ -111,18 +115,18 @@ public class TestGraphMP {
 		for (File file : new File("data/GridDataEMS").listFiles()) {
 			testGraphMP.testEMSStatOnGrid(file.getAbsolutePath());
 		}
-		for (File file : new File("data/GridDataEBP").listFiles()) {
-			testGraphMP.testEBPStatOnGrid(file.getAbsolutePath());
-		}
+		//for (File file : new File("data/GridDataEBP").listFiles()) {
+			//testGraphMP.testEBPStatOnGrid(file.getAbsolutePath());
+		//}
 	}
 
 	public static void main(String args[]) {
 		/** just for debugging single test, your code goes here */
-		new TestGraphMP().testEBPStatOnGrid("data/GridDataEBP/APDM-GridData-100_noise_0.0_trueSubSize_30_0.txt");
-		new TestGraphMP().testEBPStatOnGrid("data/GridDataEBP/APDM-GridData-100_noise_0.0_trueSubSize_30_1.txt");
-		new TestGraphMP().testEBPStatOnGrid("data/GridDataEBP/APDM-GridData-100_noise_0.0_trueSubSize_30_2.txt");
-		new TestGraphMP().testEBPStatOnGrid("data/GridDataEBP/APDM-GridData-100_noise_0.0_trueSubSize_30_3.txt");
-		new TestGraphMP().testEBPStatOnGrid("data/GridDataEBP/APDM-GridData-100_noise_0.0_trueSubSize_30_4.txt");
+		new TestGraphMP().testEMSStatOnGrid("data/GridDataEBP/APDM-GridData-100_noise_0.0_trueSubSize_10_0.txt");
+		//new TestGraphMP().testEBPStatOnGrid("data/GridDataEBP/APDM-GridData-100_noise_0.0_trueSubSize_30_1.txt");
+		//new TestGraphMP().testEBPStatOnGrid("data/GridDataEBP/APDM-GridData-100_noise_0.0_trueSubSize_30_2.txt");
+		//new TestGraphMP().testEBPStatOnGrid("data/GridDataEBP/APDM-GridData-100_noise_0.0_trueSubSize_30_3.txt");
+		//new TestGraphMP().testEBPStatOnGrid("data/GridDataEBP/APDM-GridData-100_noise_0.0_trueSubSize_30_4.txt");
 	}
 
 }

@@ -4,74 +4,78 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * FastPCST algorithm based on the following paper
+ * fast-PCST Algorithm. We would like to say thank you to Dr. Ludwig Schmidt. He
+ * provided his c++ code to us (https://github.com/ludwigschmidt/pcst-fast).
+ * This algorithm has been published in the following paper:
  * 
- * Hegde, Chinmay, Piotr Indyk, and Ludwig Schmidt. "A fast, adaptive variant of
- * the goemans-williamson scheme for the prize-collecting steiner tree problem."
- * Workshop of the 11th DIMACS Implementation Challenge. URL https://people.
- * csail. mit. edu/ludwigs/papers/dimacs14_fastpcst. pdf. 2014.
+ * title : A Fast, Adaptive Variant of the Goemans-Williamson Scheme for the
+ * Prize-Collecting Steiner Tree Problem
  * 
- * There is a C++ version https://github.com/ludwigschmidt/pcst-fast.git
+ * url: http://people.csail.mit.edu/ludwigs/papers/dimacs14_fastpcst.pdf
  * 
- * I appreciate Ludwig Schmidt provided me the c++ code and helped me a lot when
- * I implemented this java version.
+ * Please cite his paper and our paper, when you use this java-version code.
  * 
- * This java version has been tested on all of the DIMACS data. The
- * corresponding dataset can be found in https://github.com/ls-cwi/heinz.git
- * 
- *
  * @author baojian bzhou6@albany.edu
+ *
  */
 public class FastPCST {
 
-	/** defined parameters for fast pcst */
-
-	/** public heap_buffer (maybe do not need this) */
-	private ArrayList<PairingHeap.Node> pairingHeapBuffer = new ArrayList<PairingHeap.Node>();
-	/** edge parts information */
-	private ArrayList<EdgePart> edgeParts = new ArrayList<EdgePart>();
-	private ArrayList<EdgeInfo> edgeInfo = new ArrayList<EdgeInfo>();
-	/** cluster information */
+	// defined parameters for fast pcst
+	private ArrayList<PairingHeap.Node> pairing_heap_buffer = new ArrayList<PairingHeap.Node>(); // public
+																									// heap_buffer
+																									// (maybe
+																									// do
+																									// not
+																									// need
+																									// this)
+	private ArrayList<EdgePart> edge_parts = new ArrayList<EdgePart>(); // edge
+																		// parts
+																		// information
+	private ArrayList<EdgeInfo> edge_info = new ArrayList<EdgeInfo>();
 	private ArrayList<Cluster> clusters = new ArrayList<Cluster>();
-	private ArrayList<InactiveMergeEvent> inactiveMergeEvents = new ArrayList<InactiveMergeEvent>();
-	private PriorityQueue clustersDeactivation = new PriorityQueue();
-	private PriorityQueue clustersNextEdgeEvent = new PriorityQueue();
-	private double currentTime;
+	private ArrayList<InactiveMergeEvent> inactive_merge_events = new ArrayList<InactiveMergeEvent>();
+	private PriorityQueue clusters_deactivation = new PriorityQueue();
+	private PriorityQueue clusters_next_edge_event = new PriorityQueue();
+	private double current_time;
 	private double eps;
+	private ArrayList<Boolean> node_good = new ArrayList<Boolean>(); // marks
+																		// whether
+																		// a
+																		// node
+																		// survives
+																		// simple
+																		// pruning
+	private ArrayList<Boolean> node_deleted = new ArrayList<Boolean>();
+	private ArrayList<Integer> phase2_result = new ArrayList<Integer>();
+	private ArrayList<Pair<Integer, Double>> path_compression_visited = new ArrayList<Pair<Integer, Double>>();
+	private ArrayList<Integer> cluster_queue = new ArrayList<Integer>();
+	private ArrayList<ArrayList<Pair<Integer, Double>>> phase3_neighbors = new ArrayList<ArrayList<Pair<Integer, Double>>>();
 
-	/** marks whether a node survives simple pruning */
-	private ArrayList<Boolean> nodeGood = new ArrayList<Boolean>();
-	private ArrayList<Boolean> nodeDeleted = new ArrayList<Boolean>();
-	private ArrayList<Integer> phase2Result = new ArrayList<Integer>();
-	private ArrayList<Pair<Integer, Double>> pathCompressionVisited = new ArrayList<Pair<Integer, Double>>();
-	private ArrayList<Integer> clusterQueue = new ArrayList<Integer>();
-	private ArrayList<ArrayList<Pair<Integer, Double>>> phase3Neighbors = new ArrayList<ArrayList<Pair<Integer, Double>>>();
-
-	/** variables for strong pruning */
-	private ArrayList<Integer> finalComponentLabel = new ArrayList<Integer>();
-	private ArrayList<ArrayList<Integer>> finalComponents = new ArrayList<ArrayList<Integer>>();
-	private int rootComponentIndex;
-	private ArrayList<Pair<Integer, Double>> strongPruningParent = new ArrayList<Pair<Integer, Double>>();
-	private ArrayList<Double> strongPruningPayoff = new ArrayList<Double>();
+	// for strong pruning
+	private ArrayList<Integer> final_component_label = new ArrayList<Integer>();
+	private ArrayList<ArrayList<Integer>> final_components = new ArrayList<ArrayList<Integer>>();
+	private int root_component_index;
+	private ArrayList<Pair<Integer, Double>> strong_pruning_parent = new ArrayList<Pair<Integer, Double>>();
+	private ArrayList<Double> strong_pruning_payoff = new ArrayList<Double>();
 	private ArrayList<Pair<Boolean, Integer>> stack = new ArrayList<Pair<Boolean, Integer>>();
 	private ArrayList<Integer> stack2 = new ArrayList<Integer>();
 
-	/** used in the input of constructor */
+	// used in the input of constructor
 	public static final int kNoRoot = -1;
 	private ArrayList<Integer[]> edges;
 	private ArrayList<Double> costs;
 	private ArrayList<Double> prizes;
 	private int root;
-	private int targetNumActiveClusters;
+	private int target_num_active_clusters;
 	private PruningMethod pruning;
 	private int verbosity_level;
 
-	/** results of algorithm */
+	// results of algorithm
 	public FastPCST.Statistics stats = new FastPCST.Statistics();
-	public ArrayList<Integer> resultNodes;
-	public ArrayList<Integer> resultEdges;
+	public ArrayList<Integer> result_nodes;
+	public ArrayList<Integer> result_edges;
 
-	/** reference parameters */
+	// reference parameters
 	private double next_edge_time = 0.0d;
 	private int next_edge_cluster_index = 0;
 	private int next_edge_part_index = -1;
@@ -89,15 +93,16 @@ public class FastPCST {
 	private EdgePart other_edge_part;
 	private ArrayList<Integer> phase1_result;
 
-	/** reference parameters */
+	// reference parameters
 	private ArrayList<Integer> build_phase1_node_set_second_P;
 	private ArrayList<Integer> build_phase1_node_set_first_P;
 	private ArrayList<Integer> build_phase2_node_set_first_P;
 	private ArrayList<Integer> build_phase3_node_set_first_P;
 
-	public FastPCST(ArrayList<Integer[]> edges, ArrayList<Double> prizes, ArrayList<Double> costs, int root,
-			int target_num_active_clusters, int verbostiy_level) {
-		this(edges, prizes, costs, root, target_num_active_clusters, PruningMethod.kStrongPruning, -1);
+	public FastPCST(ArrayList<Integer[]> edges, ArrayList<Double> prizes, ArrayList<Double> costs,
+			int target_num_active_clusters) {
+		this(edges, prizes, costs, FastPCST.kNoRoot, target_num_active_clusters, FastPCST.PruningMethod.kStrongPruning,
+				-1);
 	}
 
 	/**
@@ -116,7 +121,7 @@ public class FastPCST {
 		this.prizes = prizes;
 		this.costs = costs;
 		this.root = root;
-		this.targetNumActiveClusters = target_num_active_clusters;
+		this.target_num_active_clusters = target_num_active_clusters;
 		this.pruning = pruningMethod;
 		this.verbosity_level = verbostiy_level;
 
@@ -125,21 +130,21 @@ public class FastPCST {
 			System.exit(0);
 		}
 
-		edgeParts = new ArrayList<EdgePart>();
-		edgeParts = resize(edgeParts, 2 * this.edges.size(), new EdgePart());
-		nodeDeleted = new ArrayList<Boolean>();
-		nodeDeleted = resize(nodeDeleted, prizes.size(), false);
-		edgeInfo = new ArrayList<EdgeInfo>();
-		edgeInfo = resize(edgeInfo, this.edges.size(), new EdgeInfo());
+		edge_parts = new ArrayList<EdgePart>();
+		edge_parts = Utils.resize(edge_parts, 2 * this.edges.size(), new EdgePart());
+		node_deleted = new ArrayList<Boolean>();
+		node_deleted = Utils.resize(node_deleted, prizes.size(), false);
+		edge_info = new ArrayList<EdgeInfo>();
+		edge_info = Utils.resize(edge_info, this.edges.size(), new EdgeInfo());
 
-		for (int ii = 0; ii < edgeInfo.size(); ++ii) {
-			edgeInfo.get(ii).inactiveMergeEvent = -1;
+		for (int ii = 0; ii < edge_info.size(); ++ii) {
+			edge_info.get(ii).inactiveMergeEvent = -1;
 		}
-		currentTime = 0.0;
+		current_time = 0.0;
 		eps = 1e-10; // set to min input value / 2.0?
 		// initialize clusters clusters_deactivation
 		for (int ii = 0; ii < this.prizes.size(); ++ii) {
-			Cluster cluster = new Cluster(pairingHeapBuffer);
+			Cluster cluster = new Cluster(pairing_heap_buffer);
 			clusters.add(cluster);
 			clusters.get(ii).active = (ii != root);
 			clusters.get(ii).active_start_time = 0.0;
@@ -159,7 +164,7 @@ public class FastPCST {
 			clusters.get(ii).child_cluster_2 = -1;
 			clusters.get(ii).necessary = false;
 			if (clusters.get(ii).active) {
-				clustersDeactivation.insert(prizes.get(ii), ii);
+				clusters_deactivation.insert(prizes.get(ii), ii);
 			}
 		}
 		// split edge into two parts
@@ -167,8 +172,8 @@ public class FastPCST {
 			int uu = this.edges.get(ii)[0];
 			int vv = this.edges.get(ii)[1];
 			double cost = costs.get(ii);
-			EdgePart uu_part = edgeParts.get(2 * ii);
-			EdgePart vv_part = edgeParts.get(2 * ii + 1);
+			EdgePart uu_part = edge_parts.get(2 * ii);
+			EdgePart vv_part = edge_parts.get(2 * ii + 1);
 			Cluster uu_cluster = clusters.get(uu);
 			Cluster vv_cluster = clusters.get(vv);
 			uu_part.deleted = false;
@@ -191,8 +196,8 @@ public class FastPCST {
 			vv_part.heapNode = vv_cluster.edge_parts.insert(vv_part.nextEventVal, (2 * ii + 1));
 			clusters.set(uu, uu_cluster);
 			clusters.set(vv, vv_cluster);
-			edgeParts.set(2 * ii, uu_part);
-			edgeParts.set(2 * ii + 1, vv_part);
+			edge_parts.set(2 * ii, uu_part);
+			edge_parts.set(2 * ii + 1, vv_part);
 		}
 
 		// initialize clusters_next_edge_event
@@ -202,9 +207,9 @@ public class FastPCST {
 					double val = 0.0;
 					int edge_part = -1;
 					clusters.get(ii).edge_parts.get_min(val, edge_part);
-					val = clusters.get(ii).edge_parts.get_min_firstP;
-					edge_part = clusters.get(ii).edge_parts.get_min_secondP;
-					clustersNextEdgeEvent.insert(val, ii);
+					val = clusters.get(ii).edge_parts.getMinFirstP;
+					edge_part = clusters.get(ii).edge_parts.getMinSecondP;
+					clusters_next_edge_event.insert(val, ii);
 				}
 			}
 		}
@@ -255,7 +260,7 @@ public class FastPCST {
 	}
 
 	public void get_next_edge_event(Double next_time, Integer next_cluster_index, Integer next_edge_part_index) {
-		if (clustersNextEdgeEvent.is_empty()) {
+		if (clusters_next_edge_event.isEmpty()) {
 			next_time = Double.POSITIVE_INFINITY;
 			next_cluster_index = -1;
 			next_edge_part_index = -1;
@@ -263,53 +268,53 @@ public class FastPCST {
 			this.next_edge_cluster_index = next_cluster_index;
 			this.next_edge_part_index = next_edge_part_index;
 		}
-		clustersNextEdgeEvent.get_min(next_time, next_cluster_index);
-		next_time = clustersNextEdgeEvent.get_min_firstP;
-		next_cluster_index = clustersNextEdgeEvent.get_min_secondP;
+		clusters_next_edge_event.getMin(next_time, next_cluster_index);
+		next_time = clusters_next_edge_event.getMinFirstP;
+		next_cluster_index = clusters_next_edge_event.getMinSecondP;
 		clusters.get(next_cluster_index).edge_parts.get_min(next_time, next_edge_part_index);
-		next_time = clusters.get(next_cluster_index).edge_parts.get_min_firstP;
-		next_edge_part_index = clusters.get(next_cluster_index).edge_parts.get_min_secondP;
+		next_time = clusters.get(next_cluster_index).edge_parts.getMinFirstP;
+		next_edge_part_index = clusters.get(next_cluster_index).edge_parts.getMinSecondP;
 		this.next_edge_time = next_time;
 		this.next_edge_cluster_index = next_cluster_index;
 		this.next_edge_part_index = next_edge_part_index;
 	}
 
 	public void remove_next_edge_event(int next_cluster_index) {
-		clustersNextEdgeEvent.delete_element(next_cluster_index);
+		clusters_next_edge_event.deleteElement(next_cluster_index);
 		double tmp_value = 0d;
 		int tmp_edge_part = 1;
-		clusters.get(next_cluster_index).edge_parts.delete_min(tmp_value, tmp_edge_part);
-		tmp_value = clusters.get(next_cluster_index).edge_parts.delete_min_firstP;
-		tmp_edge_part = clusters.get(next_cluster_index).edge_parts.delete_min_secondP;
+		clusters.get(next_cluster_index).edge_parts.deleteMin(tmp_value, tmp_edge_part);
+		tmp_value = clusters.get(next_cluster_index).edge_parts.deleteMinFirstP;
+		tmp_edge_part = clusters.get(next_cluster_index).edge_parts.deleteMinSecondP;
 		if (!clusters.get(next_cluster_index).edge_parts.is_empty()) {
 			clusters.get(next_cluster_index).edge_parts.get_min(tmp_value, tmp_edge_part);
-			tmp_value = clusters.get(next_cluster_index).edge_parts.get_min_firstP;
-			tmp_edge_part = clusters.get(next_cluster_index).edge_parts.get_min_secondP;
-			clustersNextEdgeEvent.insert(tmp_value, next_cluster_index);
+			tmp_value = clusters.get(next_cluster_index).edge_parts.getMinFirstP;
+			tmp_edge_part = clusters.get(next_cluster_index).edge_parts.getMinSecondP;
+			clusters_next_edge_event.insert(tmp_value, next_cluster_index);
 		}
 	}
 
 	public void get_next_cluster_event(Double next_cluster_time, Integer next_cluster_index) {
-		if (clustersDeactivation.is_empty()) {
+		if (clusters_deactivation.isEmpty()) {
 			next_cluster_time = Double.POSITIVE_INFINITY;
 			next_cluster_index = -1;
 			this.next_cluster_time = next_cluster_time;
 			this.next_cluster_index = next_cluster_index;
 			return;
 		}
-		clustersDeactivation.get_min(next_cluster_time, next_cluster_index);
-		next_cluster_time = clustersDeactivation.get_min_firstP;
-		next_cluster_index = clustersDeactivation.get_min_secondP;
-		this.next_cluster_time = clustersDeactivation.get_min_firstP;
-		this.next_cluster_index = clustersDeactivation.get_min_secondP;
+		clusters_deactivation.getMin(next_cluster_time, next_cluster_index);
+		next_cluster_time = clusters_deactivation.getMinFirstP;
+		next_cluster_index = clusters_deactivation.getMinSecondP;
+		this.next_cluster_time = clusters_deactivation.getMinFirstP;
+		this.next_cluster_index = clusters_deactivation.getMinSecondP;
 	}
 
 	public void remove_next_cluster_event() {
 		Double tmp_value = 0d;
 		Integer tmp_cluster = 1;
-		clustersDeactivation.delete_min(tmp_value, tmp_cluster);
-		tmp_value = clustersDeactivation.delete_min_firstP;
-		tmp_cluster = clustersDeactivation.delete_min_secondP;
+		clusters_deactivation.deleteMin(tmp_value, tmp_cluster);
+		tmp_value = clusters_deactivation.deleteMinFirstP;
+		tmp_cluster = clusters_deactivation.deleteMinSecondP;
 	}
 
 	public void get_sum_on_edge_part(int edge_part_index, double total_sum, Double finished_moat_sum,
@@ -320,9 +325,9 @@ public class FastPCST {
 		}
 		total_sum = 0.0;
 		cur_cluster_index = endpoint;
-		pathCompressionVisited = new ArrayList<Pair<Integer, Double>>();
+		path_compression_visited = new ArrayList<Pair<Integer, Double>>();
 		while (clusters.get(cur_cluster_index).merged_into != -1) {
-			pathCompressionVisited.add(new Pair<Integer, Double>(cur_cluster_index, total_sum));
+			path_compression_visited.add(new Pair<Integer, Double>(cur_cluster_index, total_sum));
 			if (clusters.get(cur_cluster_index).skip_up >= 0) {
 				total_sum += clusters.get(cur_cluster_index).skip_up_sum;
 				cur_cluster_index = clusters.get(cur_cluster_index).skip_up;
@@ -331,15 +336,15 @@ public class FastPCST {
 				cur_cluster_index = clusters.get(cur_cluster_index).merged_into;
 			}
 		}
-		for (int ii = 0; ii < pathCompressionVisited.size(); ++ii) {
-			int visited_cluster_index = pathCompressionVisited.get(ii).getFirst();
-			double visited_sum = pathCompressionVisited.get(ii).getSecond();
+		for (int ii = 0; ii < path_compression_visited.size(); ++ii) {
+			int visited_cluster_index = path_compression_visited.get(ii).getFirst();
+			double visited_sum = path_compression_visited.get(ii).getSecond();
 			clusters.get(visited_cluster_index).skip_up = cur_cluster_index;
 			clusters.get(visited_cluster_index).skip_up_sum = total_sum - visited_sum;
 		}
 		if (clusters.get(cur_cluster_index).active) {
 			finished_moat_sum = total_sum;
-			total_sum += currentTime - clusters.get(cur_cluster_index).active_start_time;
+			total_sum += current_time - clusters.get(cur_cluster_index).active_start_time;
 		} else {
 			total_sum += clusters.get(cur_cluster_index).moat;
 			finished_moat_sum = total_sum;
@@ -356,17 +361,17 @@ public class FastPCST {
 	}
 
 	public void mark_nodes_as_good(int start_cluster_index) {
-		clusterQueue = new ArrayList<Integer>();
+		cluster_queue = new ArrayList<Integer>();
 		int queue_index = 0;
-		clusterQueue.add(start_cluster_index);
-		while (queue_index < (int) clusterQueue.size()) {
-			int cur_cluster_index = clusterQueue.get(queue_index);
+		cluster_queue.add(start_cluster_index);
+		while (queue_index < (int) cluster_queue.size()) {
+			int cur_cluster_index = cluster_queue.get(queue_index);
 			queue_index += 1;
 			if (clusters.get(cur_cluster_index).merged_along >= 0) {
-				clusterQueue.add(clusters.get(cur_cluster_index).child_cluster_1);
-				clusterQueue.add(clusters.get(cur_cluster_index).child_cluster_2);
+				cluster_queue.add(clusters.get(cur_cluster_index).child_cluster_1);
+				cluster_queue.add(clusters.get(cur_cluster_index).child_cluster_2);
 			} else {
-				nodeGood.set(cur_cluster_index, true);
+				node_good.set(cur_cluster_index, true);
 			}
 		}
 	}
@@ -384,32 +389,32 @@ public class FastPCST {
 	}
 
 	public void mark_nodes_as_deleted(int start_node_index, int parent_node_index) {
-		nodeDeleted.set(start_node_index, true);
-		clusterQueue = new ArrayList<Integer>();
+		node_deleted.set(start_node_index, true);
+		cluster_queue = new ArrayList<Integer>();
 		int queue_index = 0;
-		clusterQueue.add(start_node_index);
-		while (queue_index < clusterQueue.size()) {
-			int cur_node_index = clusterQueue.get(queue_index);
+		cluster_queue.add(start_node_index);
+		while (queue_index < cluster_queue.size()) {
+			int cur_node_index = cluster_queue.get(queue_index);
 			queue_index += 1;
-			for (int ii = 0; ii < phase3Neighbors.get(cur_node_index).size(); ++ii) {
-				int next_node_index = phase3Neighbors.get(cur_node_index).get(ii).getFirst();
+			for (int ii = 0; ii < phase3_neighbors.get(cur_node_index).size(); ++ii) {
+				int next_node_index = phase3_neighbors.get(cur_node_index).get(ii).getFirst();
 				if (next_node_index == parent_node_index) {
 					continue;
 				}
-				if (nodeDeleted.get(next_node_index)) {
+				if (node_deleted.get(next_node_index)) {
 					continue; // should never happen
 				}
-				nodeDeleted.set(next_node_index, true);
-				clusterQueue.add(next_node_index);
+				node_deleted.set(next_node_index, true);
+				cluster_queue.add(next_node_index);
 			}
 		}
 	}
 
-	public boolean run() {
+	public boolean run(ArrayList<Integer> result_nodes, ArrayList<Integer> result_edges) {
 
-		ArrayList<Integer> result_nodes = new ArrayList<Integer>();
-		ArrayList<Integer> result_edges = new ArrayList<Integer>();
-		if (root >= 0 && targetNumActiveClusters > 0) {
+		result_nodes = new ArrayList<Integer>();
+		result_edges = new ArrayList<Integer>();
+		if (root >= 0 && target_num_active_clusters > 0) {
 			System.out.println("Error: target_num_active_clusters must be 0 in the rooted case.\n");
 			System.exit(0);
 			return false;
@@ -420,7 +425,7 @@ public class FastPCST {
 			num_active_clusters -= 1;
 		}
 		// growth phase
-		while (num_active_clusters > targetNumActiveClusters) {
+		while (num_active_clusters > target_num_active_clusters) {
 			if (verbosity_level >= 2) {
 				System.out.print("-----------------------------------------\n");
 			}
@@ -441,9 +446,9 @@ public class FastPCST {
 							next_cluster_time);
 				}
 				stats.total_num_edge_events += 1;
-				currentTime = next_edge_time;
+				current_time = next_edge_time;
 				remove_next_edge_event(next_edge_cluster_index);
-				if (edgeParts.get(next_edge_part_index).deleted) {
+				if (edge_parts.get(next_edge_part_index).deleted) {
 					stats.num_deleted_edge_events += 1;
 					if (verbosity_level >= 2) {
 						System.out.format("Edge part %d already deleted, nothing to do\n", next_edge_part_index);
@@ -479,12 +484,12 @@ public class FastPCST {
 				double remainder = current_edge_cost - sum_current_edge_part - sum_other_edge_part;
 				current_cluster = clusters.get(current_cluster_index);
 				other_cluster = clusters.get(other_cluster_index);
-				next_edge_part = edgeParts.get(next_edge_part_index);
-				other_edge_part = edgeParts.get(other_edge_part_index);
+				next_edge_part = edge_parts.get(next_edge_part_index);
+				other_edge_part = edge_parts.get(other_edge_part_index);
 				if (verbosity_level >= 2) {
 					System.out.format(
 							"Edge event at time %6f, current edge part %d (cluster %d), other edge part %d (cluster %d)\n",
-							currentTime, next_edge_part_index, current_cluster_index, other_edge_part_index,
+							current_time, next_edge_part_index, current_cluster_index, other_edge_part_index,
 							other_cluster_index);
 					System.out.format("Sum current part %6f, other part %6f, total length %6f, remainder %6f\n",
 							sum_current_edge_part, sum_other_edge_part, current_edge_cost, remainder);
@@ -498,16 +503,16 @@ public class FastPCST {
 					if (verbosity_level >= 2) {
 						System.out.println("Clusters already merged, ignoring edge\n");
 					}
-					edgeParts.get(other_edge_part_index).deleted = true;
+					edge_parts.get(other_edge_part_index).deleted = true;
 					continue;
 				}
 				// merge two clusters
 				if (remainder < eps * current_edge_cost) {
 					stats.total_num_merge_events += 1;
 					phase1_result.add(next_edge_part_index / 2);
-					edgeParts.get(other_edge_part_index).deleted = true;
+					edge_parts.get(other_edge_part_index).deleted = true;
 					int new_cluster_index = clusters.size();
-					clusters.add(new Cluster(pairingHeapBuffer));
+					clusters.add(new Cluster(pairing_heap_buffer));
 					Cluster new_cluster = clusters.get(new_cluster_index);
 					current_cluster = clusters.get(current_cluster_index);
 					other_cluster = clusters.get(other_cluster_index);
@@ -529,32 +534,33 @@ public class FastPCST {
 					new_cluster.skip_up_sum = 0.0;
 					new_cluster.merged_into = -1;
 					current_cluster.active = false;
-					current_cluster.active_end_time = currentTime + remainder;
+					current_cluster.active_end_time = current_time + remainder;
 					current_cluster.merged_into = new_cluster_index;
 					current_cluster.moat = current_cluster.active_end_time - current_cluster.active_start_time;
-					clustersDeactivation.delete_element(current_cluster_index);
+					clusters_deactivation.deleteElement(current_cluster_index);
 					num_active_clusters -= 1;
 					if (!current_cluster.edge_parts.is_empty()) {
-						clustersNextEdgeEvent.delete_element(current_cluster_index);
+						clusters_next_edge_event.deleteElement(current_cluster_index);
 					}
 					// merge with active or inactive cluster
 					if (other_cluster.active) {
 						stats.num_active_active_merge_events += 1;
 						other_cluster.active = false;
-						other_cluster.active_end_time = currentTime + remainder;
+						other_cluster.active_end_time = current_time + remainder;
 						other_cluster.moat = other_cluster.active_end_time - other_cluster.active_start_time;
-						clustersDeactivation.delete_element(other_cluster_index);
+						clusters_deactivation.deleteElement(other_cluster_index);
 						if (!other_cluster.edge_parts.is_empty()) {
-							clustersNextEdgeEvent.delete_element(other_cluster_index);
+							clusters_next_edge_event.deleteElement(other_cluster_index);
 						}
 						num_active_clusters -= 1;
 					} else {
 						stats.num_active_inactive_merge_events += 1;
 						if (!other_cluster.contains_root) {
-							double edge_event_update_time = currentTime + remainder - other_cluster.active_end_time;
-							other_cluster.edge_parts.add_to_heap(edge_event_update_time);
-							inactiveMergeEvents.add(new InactiveMergeEvent());
-							InactiveMergeEvent merge_event = inactiveMergeEvents.get(inactiveMergeEvents.size() - 1);
+							double edge_event_update_time = current_time + remainder - other_cluster.active_end_time;
+							other_cluster.edge_parts.addToHeap(edge_event_update_time);
+							inactive_merge_events.add(new InactiveMergeEvent());
+							InactiveMergeEvent merge_event = inactive_merge_events
+									.get(inactive_merge_events.size() - 1);
 							merge_event.active_cluster_index = current_cluster_index;
 							merge_event.inactive_cluster_index = other_cluster_index;
 							int active_node_part = edges.get(next_edge_part_index / 2)[0];
@@ -566,7 +572,8 @@ public class FastPCST {
 							}
 							merge_event.active_cluster_node = active_node_part;
 							merge_event.inactive_cluster_node = inactive_node_part;
-							edgeInfo.get(next_edge_part_index / 2).inactiveMergeEvent = inactiveMergeEvents.size() - 1;
+							edge_info.get(next_edge_part_index / 2).inactiveMergeEvent = inactive_merge_events.size()
+									- 1;
 						}
 					}
 					other_cluster.merged_into = new_cluster_index;
@@ -576,17 +583,17 @@ public class FastPCST {
 					new_cluster.subcluster_moat_sum += other_cluster.moat;
 					if (new_cluster.active) {// new_cluster is inactive if new
 												// cluster contains root
-						new_cluster.active_start_time = currentTime + remainder;
-						double becoming_inactive_time = currentTime + remainder + new_cluster.prize_sum
+						new_cluster.active_start_time = current_time + remainder;
+						double becoming_inactive_time = current_time + remainder + new_cluster.prize_sum
 								- new_cluster.subcluster_moat_sum;
-						clustersDeactivation.insert(becoming_inactive_time, new_cluster_index);
+						clusters_deactivation.insert(becoming_inactive_time, new_cluster_index);
 						if (!new_cluster.edge_parts.is_empty()) {
 							double tmp_val = 0.0d;
 							int tmp_index = -1;
 							new_cluster.edge_parts.get_min(tmp_val, tmp_index);
-							tmp_val = new_cluster.edge_parts.get_min_firstP;
-							tmp_index = new_cluster.edge_parts.get_min_secondP;
-							clustersNextEdgeEvent.insert(tmp_val, new_cluster_index);
+							tmp_val = new_cluster.edge_parts.getMinFirstP;
+							tmp_index = new_cluster.edge_parts.getMinSecondP;
+							clusters_next_edge_event.insert(tmp_val, new_cluster_index);
 						}
 						num_active_clusters += 1;
 					}
@@ -595,26 +602,26 @@ public class FastPCST {
 				} else if (other_cluster.active) {
 					stats.total_num_edge_growth_events += 1;
 					stats.num_active_active_edge_growth_events += 1;
-					double next_event_time = currentTime + remainder / 2.0;
+					double next_event_time = current_time + remainder / 2.0;
 					next_edge_part.nextEventVal = sum_current_edge_part + remainder / 2.0;
 					if (!current_cluster.edge_parts.is_empty()) {
-						clustersNextEdgeEvent.delete_element(current_cluster_index);
+						clusters_next_edge_event.deleteElement(current_cluster_index);
 					}
 					next_edge_part.heapNode = current_cluster.edge_parts.insert(next_event_time, next_edge_part_index);
 					double tmp_val = -1.0;
 					int tmp_index = -1;
 					current_cluster.edge_parts.get_min(tmp_val, tmp_index);
-					tmp_val = current_cluster.edge_parts.get_min_firstP;
-					tmp_index = current_cluster.edge_parts.get_min_secondP;
-					clustersNextEdgeEvent.insert(tmp_val, current_cluster_index);
-					clustersNextEdgeEvent.delete_element(other_cluster_index);
-					other_cluster.edge_parts.decrease_key(other_edge_part.heapNode,
+					tmp_val = current_cluster.edge_parts.getMinFirstP;
+					tmp_index = current_cluster.edge_parts.getMinSecondP;
+					clusters_next_edge_event.insert(tmp_val, current_cluster_index);
+					clusters_next_edge_event.deleteElement(other_cluster_index);
+					other_cluster.edge_parts.decreaseKey(other_edge_part.heapNode,
 							other_cluster.active_start_time + other_edge_part.nextEventVal - other_finished_moat_sum,
 							next_event_time);
 					other_cluster.edge_parts.get_min(tmp_val, tmp_index);
-					tmp_val = other_cluster.edge_parts.get_min_firstP;
-					tmp_index = other_cluster.edge_parts.get_min_secondP;
-					clustersNextEdgeEvent.insert(tmp_val, other_cluster_index);
+					tmp_val = other_cluster.edge_parts.getMinFirstP;
+					tmp_index = other_cluster.edge_parts.getMinSecondP;
+					clusters_next_edge_event.insert(tmp_val, other_cluster_index);
 					other_edge_part.nextEventVal = sum_other_edge_part + remainder / 2.0;
 					if (verbosity_level >= 2) {
 						System.out.format("Added new event at time %6f\n", next_event_time);
@@ -623,19 +630,19 @@ public class FastPCST {
 				} else {
 					stats.total_num_edge_growth_events += 1;
 					stats.num_active_inactive_edge_growth_events += 1;
-					double next_event_time = currentTime + remainder;
+					double next_event_time = current_time + remainder;
 					next_edge_part.nextEventVal = current_edge_cost - other_finished_moat_sum;
 					if (!current_cluster.edge_parts.is_empty()) {
-						clustersNextEdgeEvent.delete_element(current_cluster_index);
+						clusters_next_edge_event.deleteElement(current_cluster_index);
 					}
 					next_edge_part.heapNode = current_cluster.edge_parts.insert(next_event_time, next_edge_part_index);
 					double tmp_val = -1.0;
 					int tmp_index = -1;
 					current_cluster.edge_parts.get_min(tmp_val, tmp_index);
-					tmp_val = current_cluster.edge_parts.get_min_firstP;
-					tmp_index = current_cluster.edge_parts.get_min_secondP;
-					clustersNextEdgeEvent.insert(tmp_val, current_cluster_index);
-					other_cluster.edge_parts.decrease_key(other_edge_part.heapNode,
+					tmp_val = current_cluster.edge_parts.getMinFirstP;
+					tmp_index = current_cluster.edge_parts.getMinSecondP;
+					clusters_next_edge_event.insert(tmp_val, current_cluster_index);
+					other_cluster.edge_parts.decreaseKey(other_edge_part.heapNode,
 							other_cluster.active_end_time + other_edge_part.nextEventVal - other_finished_moat_sum,
 							other_cluster.active_end_time);
 					other_edge_part.nextEventVal = other_finished_moat_sum;
@@ -647,30 +654,30 @@ public class FastPCST {
 				// cluster is tight
 			} else {
 				stats.num_cluster_events += 1;
-				currentTime = next_cluster_time;
+				current_time = next_cluster_time;
 				remove_next_cluster_event();
 				Cluster cur_cluster = clusters.get(next_cluster_index);
 				cur_cluster.active = false;
-				cur_cluster.active_end_time = currentTime;
+				cur_cluster.active_end_time = current_time;
 				cur_cluster.moat = cur_cluster.active_end_time - cur_cluster.active_start_time;
 				if (!cur_cluster.edge_parts.is_empty()) {
-					clustersNextEdgeEvent.delete_element(next_cluster_index);
+					clusters_next_edge_event.deleteElement(next_cluster_index);
 				}
 				num_active_clusters -= 1;
 				if (verbosity_level >= 2) {
 					System.out.format("Cluster deactivation: cluster %d at time %6f (moat size %6f)\n",
-							next_cluster_index, currentTime, cur_cluster.moat);
+							next_cluster_index, current_time, cur_cluster.moat);
 				}
 			}
 		} // while(num_active_clusters > target_num_active_clusters)
 
 		if (verbosity_level >= 1) {
-			System.out.format("Finished GW clustering: final event time %6f, number of edge events %d\n", currentTime,
+			System.out.format("Finished GW clustering: final event time %6f, number of edge events %d\n", current_time,
 					stats.total_num_edge_events);
 		}
-		nodeGood = new ArrayList<Boolean>();
+		node_good = new ArrayList<Boolean>();
 		for (int i = 0; i < prizes.size(); i++) {
-			nodeGood.add(false);
+			node_good.add(false);
 		}
 		if (root >= 0) {
 			System.out.println("has not checked");
@@ -689,6 +696,7 @@ public class FastPCST {
 				}
 			}
 		}
+
 		// if there is no pruning needed, just return the phase 1's result
 		if (pruning == PruningMethod.kNoPruning) {
 			build_phase1_node_set(phase1_result, result_nodes);
@@ -704,48 +712,48 @@ public class FastPCST {
 		for (int ii = 0; ii < phase1_result.size(); ++ii) {
 			int endPoint0 = edges.get(phase1_result.get(ii))[0];
 			int endPoint1 = edges.get(phase1_result.get(ii))[1];
-			if (nodeGood.get(endPoint0) && nodeGood.get(endPoint1)) {
-				phase2Result.add(phase1_result.get(ii));
+			if (node_good.get(endPoint0) && node_good.get(endPoint1)) {
+				phase2_result.add(phase1_result.get(ii));
 			}
 		}
 		if (pruning == PruningMethod.kSimplePruning) {
 			build_phase2_node_set(result_nodes);
 			result_nodes = this.build_phase2_node_set_first_P;
-			result_edges = phase2Result;
+			result_edges = phase2_result;
 			return true;
 		}
 		ArrayList<Integer> phase3_result = new ArrayList<Integer>();
-		phase3Neighbors = resize(phase3Neighbors, prizes.size(), new ArrayList<Pair<Integer, Double>>());
-		for (int ii = 0; ii < phase2Result.size(); ++ii) {
-			int cur_edge_index = phase2Result.get(ii);
+		phase3_neighbors = Utils.resize(phase3_neighbors, prizes.size(), new ArrayList<Pair<Integer, Double>>());
+		for (int ii = 0; ii < phase2_result.size(); ++ii) {
+			int cur_edge_index = phase2_result.get(ii);
 			int uu = edges.get(cur_edge_index)[0];
 			int vv = edges.get(cur_edge_index)[1];
 			double cur_cost = costs.get(cur_edge_index);
-			phase3Neighbors.get(uu).add(new Pair<Integer, Double>(vv, cur_cost));
-			phase3Neighbors.get(vv).add(new Pair<Integer, Double>(uu, cur_cost));
+			phase3_neighbors.get(uu).add(new Pair<Integer, Double>(vv, cur_cost));
+			phase3_neighbors.get(vv).add(new Pair<Integer, Double>(uu, cur_cost));
 		}
 
 		// GW pruning (this is not strong pruning)
 		if (pruning == PruningMethod.kGWPruning) {
 			if (verbosity_level >= 2) {
 				System.out.format("Starting GW pruning, phase 2 result:\n");
-				for (int ii = 0; ii < phase2Result.size(); ++ii) {
-					System.out.format("%d ", phase2Result.get(ii));
+				for (int ii = 0; ii < phase2_result.size(); ++ii) {
+					System.out.format("%d ", phase2_result.get(ii));
 				}
 				System.out.println("\n");
 			}
-			for (int ii = phase2Result.size() - 1; ii >= 0; --ii) {
-				int cur_edge_index = phase2Result.get(ii);
+			for (int ii = phase2_result.size() - 1; ii >= 0; --ii) {
+				int cur_edge_index = phase2_result.get(ii);
 				int uu = edges.get(cur_edge_index)[0];
 				int vv = edges.get(cur_edge_index)[1];
-				if (nodeDeleted.get(uu) && nodeDeleted.get(vv)) {
+				if (node_deleted.get(uu) && node_deleted.get(vv)) {
 					if (verbosity_level >= 2) {
 						System.out.format("Not keeping edge %d (%d, %d) because both endpoints already deleted\n",
 								cur_edge_index, uu, vv);
 					}
 					continue;
 				}
-				if (edgeInfo.get(cur_edge_index).inactiveMergeEvent < 0) {
+				if (edge_info.get(cur_edge_index).inactiveMergeEvent < 0) {
 					mark_clusters_as_necessary(uu);
 					mark_clusters_as_necessary(vv);
 					phase3_result.add(cur_edge_index);
@@ -754,8 +762,8 @@ public class FastPCST {
 								cur_edge_index, uu, vv);
 					}
 				} else {
-					InactiveMergeEvent cur_merge_event = inactiveMergeEvents
-							.get(edgeInfo.get(cur_edge_index).inactiveMergeEvent);
+					InactiveMergeEvent cur_merge_event = inactive_merge_events
+							.get(edge_info.get(cur_edge_index).inactiveMergeEvent);
 					int active_side_node = cur_merge_event.active_cluster_node;
 					int inactive_side_node = cur_merge_event.inactive_cluster_node;
 					int inactive_cluster_index = cur_merge_event.inactive_cluster_index;
@@ -786,31 +794,32 @@ public class FastPCST {
 		} else if (pruning == PruningMethod.kStrongPruning) {
 			if (verbosity_level >= 2) {
 				System.out.format("Starting Strong pruning, phase 2 result:\n");
-				for (int ii = 0; ii < phase2Result.size(); ++ii) {
-					System.out.format("%d ", phase2Result.get(ii));
+				for (int ii = 0; ii < phase2_result.size(); ++ii) {
+					System.out.format("%d ", phase2_result.get(ii));
 				}
 				System.out.println("\n");
 			}
-			finalComponentLabel = resize(finalComponentLabel, prizes.size(), -1);
-			rootComponentIndex = -1;
-			strongPruningParent = resize(strongPruningParent, prizes.size(), new Pair<Integer, Double>(-1, -1.0d));
-			strongPruningPayoff = resize(strongPruningPayoff, prizes.size(), -1.0);
-			for (int ii = 0; ii < phase2Result.size(); ++ii) {
-				int cur_node_index = edges.get(phase2Result.get(ii))[0];
-				if (finalComponentLabel.get(cur_node_index) == -1) {
-					finalComponents.add(new ArrayList<Integer>());
-					label_final_component(cur_node_index, finalComponents.size() - 1);
+			final_component_label = Utils.resize(final_component_label, prizes.size(), -1);
+			root_component_index = -1;
+			strong_pruning_parent = Utils.resize(strong_pruning_parent, prizes.size(),
+					new Pair<Integer, Double>(-1, -1.0d));
+			strong_pruning_payoff = Utils.resize(strong_pruning_payoff, prizes.size(), -1.0);
+			for (int ii = 0; ii < phase2_result.size(); ++ii) {
+				int cur_node_index = edges.get(phase2_result.get(ii))[0];
+				if (final_component_label.get(cur_node_index) == -1) {
+					final_components.add(new ArrayList<Integer>());
+					label_final_component(cur_node_index, final_components.size() - 1);
 				}
 			}
 			if (verbosity_level >= 3) {
-				System.out.format("number of final_components : %d\n", finalComponents.size());
+				System.out.format("number of final_components : %d\n", final_components.size());
 			}
-			for (int ii = 0; ii < (int) finalComponents.size(); ++ii) {
+			for (int ii = 0; ii < (int) final_components.size(); ++ii) {
 				if (verbosity_level >= 2) {
 					System.out.format("Strong pruning on final component %d (size %d):\n", ii,
-							finalComponents.get(ii).size());
+							final_components.get(ii).size());
 				}
-				if (ii == rootComponentIndex) {
+				if (ii == root_component_index) {
 					if (verbosity_level >= 2) {
 						System.out.format("Component contains root, pruning starting at %d\n", root);
 					}
@@ -828,11 +837,11 @@ public class FastPCST {
 				}
 			}
 
-			for (int ii = 0; ii < phase2Result.size(); ++ii) {
-				int cur_edge_index = phase2Result.get(ii);
+			for (int ii = 0; ii < phase2_result.size(); ++ii) {
+				int cur_edge_index = phase2_result.get(ii);
 				int uu = edges.get(cur_edge_index)[0];
 				int vv = edges.get(cur_edge_index)[1];
-				if (nodeDeleted.get(uu) || nodeDeleted.get(vv)) {
+				if (node_deleted.get(uu) || node_deleted.get(vv)) {
 					if (verbosity_level >= 2) {
 						System.out.println("Not keeping edge " + cur_edge_index + " (" + uu + ", " + vv
 								+ ") because at least one endpoint already deleted\n");
@@ -844,8 +853,8 @@ public class FastPCST {
 			build_phase3_node_set(result_nodes);
 			result_nodes = this.build_phase3_node_set_first_P;
 			result_edges = phase3_result;
-			this.resultEdges = result_edges;
-			this.resultNodes = result_nodes;
+			this.result_edges = result_edges;
+			this.result_nodes = result_nodes;
 			return true;
 		}
 		System.out.println("Error: unknown pruning scheme.\n");
@@ -853,22 +862,22 @@ public class FastPCST {
 	}// run
 
 	public void label_final_component(int start_node_index, int new_component_index) {
-		clusterQueue.clear();
-		clusterQueue.add(start_node_index);
-		finalComponentLabel.set(start_node_index, new_component_index);
+		cluster_queue.clear();
+		cluster_queue.add(start_node_index);
+		final_component_label.set(start_node_index, new_component_index);
 		int queue_next = 0;
-		while (queue_next < clusterQueue.size()) {
-			int cur_node_index = clusterQueue.get(queue_next);
+		while (queue_next < cluster_queue.size()) {
+			int cur_node_index = cluster_queue.get(queue_next);
 			queue_next += 1;
-			finalComponents.get(new_component_index).add(cur_node_index);
+			final_components.get(new_component_index).add(cur_node_index);
 			if (cur_node_index == root) {
-				rootComponentIndex = new_component_index;
+				root_component_index = new_component_index;
 			}
-			for (int ii = 0; ii < phase3Neighbors.get(cur_node_index).size(); ++ii) {
-				int next_node_index = phase3Neighbors.get(cur_node_index).get(ii).getFirst();
-				if (finalComponentLabel.get(next_node_index) == -1) {
-					clusterQueue.add(next_node_index);
-					finalComponentLabel.set(next_node_index, new_component_index);
+			for (int ii = 0; ii < phase3_neighbors.get(cur_node_index).size(); ++ii) {
+				int next_node_index = phase3_neighbors.get(cur_node_index).get(ii).getFirst();
+				if (final_component_label.get(next_node_index) == -1) {
+					cluster_queue.add(next_node_index);
+					final_component_label.set(next_node_index, new_component_index);
 				}
 			}
 		}
@@ -877,9 +886,9 @@ public class FastPCST {
 	public void strong_pruning_from(int start_node_index, boolean mark_as_deleted) {
 		stack.clear();
 		stack.add(new Pair<Boolean, Integer>(true, start_node_index));
-		strongPruningParent.set(start_node_index, new Pair<Integer, Double>(-1, 0.0));
+		strong_pruning_parent.set(start_node_index, new Pair<Integer, Double>(-1, 0.0));
 		if (verbosity_level >= 3) {
-			System.out.format("phase3_neighbors size : %d\n", phase3Neighbors.size());
+			System.out.format("phase3_neighbors size : %d\n", phase3_neighbors.size());
 		}
 		if (verbosity_level >= 3) {
 			System.out.format("stack size is : %d\n", stack.size());
@@ -891,35 +900,36 @@ public class FastPCST {
 			stack.remove(lastElementIndex);
 			if (begin) {
 				stack.add(new Pair<Boolean, Integer>(false, cur_node_index));
-				for (int ii = 0; ii < phase3Neighbors.get(cur_node_index).size(); ++ii) {
-					int next_node_index = phase3Neighbors.get(cur_node_index).get(ii).getFirst();
-					double next_cost = phase3Neighbors.get(cur_node_index).get(ii).getSecond();
-					if (next_node_index == strongPruningParent.get(cur_node_index).getFirst()) {
+				for (int ii = 0; ii < phase3_neighbors.get(cur_node_index).size(); ++ii) {
+					int next_node_index = phase3_neighbors.get(cur_node_index).get(ii).getFirst();
+					double next_cost = phase3_neighbors.get(cur_node_index).get(ii).getSecond();
+					if (next_node_index == strong_pruning_parent.get(cur_node_index).getFirst()) {
 						continue;
 					}
-					strongPruningParent.set(next_node_index, new Pair<Integer, Double>(cur_node_index, next_cost));
+					strong_pruning_parent.set(next_node_index, new Pair<Integer, Double>(cur_node_index, next_cost));
 					stack.add(new Pair<Boolean, Integer>(true, next_node_index));
 				}
 			} else {
-				strongPruningPayoff.set(cur_node_index, prizes.get(cur_node_index));
-				for (int ii = 0; ii < phase3Neighbors.get(cur_node_index).size(); ++ii) {
-					int next_node_index = phase3Neighbors.get(cur_node_index).get(ii).getFirst();
-					double next_cost = phase3Neighbors.get(cur_node_index).get(ii).getSecond();
-					if (next_node_index == strongPruningParent.get(cur_node_index).getFirst().intValue()) {
+				strong_pruning_payoff.set(cur_node_index, prizes.get(cur_node_index));
+				for (int ii = 0; ii < phase3_neighbors.get(cur_node_index).size(); ++ii) {
+					int next_node_index = phase3_neighbors.get(cur_node_index).get(ii).getFirst();
+					double next_cost = phase3_neighbors.get(cur_node_index).get(ii).getSecond();
+					if (next_node_index == strong_pruning_parent.get(cur_node_index).getFirst().intValue()) {
 						continue;
 					}
-					double next_payoff = strongPruningPayoff.get(next_node_index) - next_cost;
+					double next_payoff = strong_pruning_payoff.get(next_node_index) - next_cost;
 					if (next_payoff <= 0.0) {
 						if (mark_as_deleted) {
 							if (verbosity_level >= 2) {
-								String mes = "Subtree starting at %d has a nonpositive contribution of %6f, pruning (good side: %d)\n";
-								System.out.format(mes, next_node_index, next_payoff, cur_node_index);
+								System.out.format(
+										"Subtree starting at %d has a nonpositive contribution of %6f, pruning (good side: %d)\n",
+										next_node_index, next_payoff, cur_node_index);
 							}
 							mark_nodes_as_deleted(next_node_index, cur_node_index);
 						}
 					} else {
-						double currentValue = strongPruningPayoff.get(cur_node_index);
-						strongPruningPayoff.set(cur_node_index, currentValue + next_payoff);
+						double currentValue = strong_pruning_payoff.get(cur_node_index);
+						strong_pruning_payoff.set(cur_node_index, currentValue + next_payoff);
 					}
 				}
 			}
@@ -927,34 +937,34 @@ public class FastPCST {
 	}
 
 	public int find_best_component_root(int component_index) {
-		int cur_best_root_index = finalComponents.get(component_index).get(0);
+		int cur_best_root_index = final_components.get(component_index).get(0);
 		strong_pruning_from(cur_best_root_index, false);
-		double cur_best_value = strongPruningPayoff.get(cur_best_root_index);
+		double cur_best_value = strong_pruning_payoff.get(cur_best_root_index);
 		stack2.clear();
-		for (int ii = 0; ii < phase3Neighbors.get(cur_best_root_index).size(); ++ii) {
-			stack2.add(phase3Neighbors.get(cur_best_root_index).get(ii).getFirst());
+		for (int ii = 0; ii < phase3_neighbors.get(cur_best_root_index).size(); ++ii) {
+			stack2.add(phase3_neighbors.get(cur_best_root_index).get(ii).getFirst());
 		}
 		while (!stack2.isEmpty()) {
 			int cur_node_index = stack2.get(stack2.size() - 1);
 			stack2.remove(stack2.size() - 1);
-			int cur_parent_index = strongPruningParent.get(cur_node_index).getFirst();
-			double parent_edge_cost = strongPruningParent.get(cur_node_index).getSecond();
-			double parent_val_without_cur_node = strongPruningPayoff.get(cur_parent_index);
-			double cur_node_net_payoff = strongPruningPayoff.get(cur_node_index) - parent_edge_cost;
+			int cur_parent_index = strong_pruning_parent.get(cur_node_index).getFirst();
+			double parent_edge_cost = strong_pruning_parent.get(cur_node_index).getSecond();
+			double parent_val_without_cur_node = strong_pruning_payoff.get(cur_parent_index);
+			double cur_node_net_payoff = strong_pruning_payoff.get(cur_node_index) - parent_edge_cost;
 			if (cur_node_net_payoff > 0.0) {
 				parent_val_without_cur_node -= cur_node_net_payoff;
 			}
 			if (parent_val_without_cur_node > parent_edge_cost) {
-				double currentPayOff = strongPruningPayoff.get(cur_node_index);
-				strongPruningPayoff.set(cur_node_index,
+				double currentPayOff = strong_pruning_payoff.get(cur_node_index);
+				strong_pruning_payoff.set(cur_node_index,
 						currentPayOff + (parent_val_without_cur_node - parent_edge_cost));
 			}
-			if (strongPruningPayoff.get(cur_node_index) > cur_best_value) {
+			if (strong_pruning_payoff.get(cur_node_index) > cur_best_value) {
 				cur_best_root_index = cur_node_index;
-				cur_best_value = strongPruningPayoff.get(cur_node_index);
+				cur_best_value = strong_pruning_payoff.get(cur_node_index);
 			}
-			for (int ii = 0; ii < phase3Neighbors.get(cur_node_index).size(); ++ii) {
-				int next_node_index = phase3Neighbors.get(cur_node_index).get(ii).getFirst();
+			for (int ii = 0; ii < phase3_neighbors.get(cur_node_index).size(); ++ii) {
+				int next_node_index = phase3_neighbors.get(cur_node_index).get(ii).getFirst();
 				if (next_node_index != cur_parent_index) {
 					stack2.add(next_node_index);
 				}
@@ -966,7 +976,7 @@ public class FastPCST {
 	public void build_phase3_node_set(ArrayList<Integer> node_set) {
 		node_set.clear();
 		for (int ii = 0; ii < (int) prizes.size(); ++ii) {
-			if (!nodeDeleted.get(ii) && nodeGood.get(ii)) {
+			if (!node_deleted.get(ii) && node_good.get(ii)) {
 				node_set.add(ii);
 			}
 		}
@@ -976,7 +986,7 @@ public class FastPCST {
 	public void build_phase2_node_set(ArrayList<Integer> node_set) {
 		node_set.clear();
 		for (int ii = 0; ii < (int) prizes.size(); ++ii) {
-			if (nodeGood.get(ii)) {
+			if (node_good.get(ii)) {
 				node_set.add(ii);
 			}
 		}
@@ -1003,7 +1013,7 @@ public class FastPCST {
 			}
 		}
 		for (int ii = 0; ii < prizes.size(); ++ii) {
-			if (nodeGood.get(ii) && (!included.get(ii))) {
+			if (node_good.get(ii) && (!included.get(ii))) {
 				node_set.add(ii);
 			}
 		}
@@ -1015,7 +1025,6 @@ public class FastPCST {
 		s = stats;
 	}
 
-	/** PruningMethod */
 	public enum PruningMethod {
 		kNoPruning(0), kSimplePruning(1), kGWPruning(2), kStrongPruning(3), kUnknownPruning(4);
 
@@ -1045,226 +1054,7 @@ public class FastPCST {
 		public static PruningMethod forValue(int value) {
 			return getMappings().get(value);
 		}
-	}
-
-	private ArrayList<EdgeInfo> resize(ArrayList<EdgeInfo> arr, int size, EdgeInfo val) {
-
-		if (arr == null || arr.equals(null)) {
-			arr = new ArrayList<EdgeInfo>();
-		}
-
-		if (size < 0) {
-			new IllegalArgumentException("size should be larger than 0");
-			System.exit(0);
-			return null;
-		} else if (size == 0) {
-			return new ArrayList<EdgeInfo>();
-		}
-
-		int newSize = size - arr.size();
-		if (newSize < 0) {
-			for (int i = 0; i < Math.abs(newSize); i++) {
-				arr.remove(arr.size() - 1);
-			}
-			return arr;
-		} else if (newSize == 0) {
-			return arr;
-		} else if (newSize > 0) {
-			for (int i = 0; i < newSize; i++) {
-				arr.add(new EdgeInfo());
-			}
-			return arr;
-		}
-		return arr;
-	}
-
-	private ArrayList<Integer> resize(ArrayList<Integer> arr, int size, Integer val) {
-
-		if (arr == null || arr.equals(null)) {
-			arr = new ArrayList<Integer>();
-		}
-
-		if (size < 0) {
-			new IllegalArgumentException("size should be larger than 0");
-			System.exit(0);
-			return null;
-		} else if (size == 0) {
-			return new ArrayList<Integer>();
-		}
-
-		int newSize = size - arr.size();
-		if (newSize < 0) {
-			for (int i = 0; i < Math.abs(newSize); i++) {
-				arr.remove(arr.size() - 1);
-			}
-			return arr;
-		} else if (newSize == 0) {
-			return arr;
-		} else if (newSize > 0) {
-			for (int i = 0; i < newSize; i++) {
-				arr.add(val);
-			}
-			return arr;
-		}
-		return arr;
-	}
-
-	private ArrayList<Boolean> resize(ArrayList<Boolean> arr, int size, Boolean val) {
-
-		if (arr == null || arr.equals(null)) {
-			arr = new ArrayList<Boolean>();
-		}
-
-		if (size < 0) {
-			new IllegalArgumentException("size should be larger than 0");
-			System.exit(0);
-			return null;
-		} else if (size == 0) {
-			return new ArrayList<Boolean>();
-		}
-
-		int newSize = size - arr.size();
-		if (newSize < 0) {
-			for (int i = 0; i < Math.abs(newSize); i++) {
-				arr.remove(arr.size() - 1);
-			}
-			return arr;
-		} else if (newSize == 0) {
-			return arr;
-		} else if (newSize > 0) {
-			for (int i = 0; i < newSize; i++) {
-				arr.add(val);
-			}
-			return arr;
-		}
-		return arr;
-	}
-
-	private ArrayList<Pair<Integer, Double>> resize(ArrayList<Pair<Integer, Double>> arr, int size,
-			Pair<Integer, Double> pair) {
-
-		if (arr == null || arr.equals(null)) {
-			arr = new ArrayList<Pair<Integer, Double>>();
-		}
-
-		if (size < 0) {
-			new IllegalArgumentException("size should be larger than 0");
-			System.exit(0);
-			return null;
-		} else if (size == 0) {
-			return new ArrayList<Pair<Integer, Double>>();
-		}
-
-		int newSize = size - arr.size();
-		if (newSize < 0) {
-			for (int i = 0; i < Math.abs(newSize); i++) {
-				arr.remove(arr.size() - 1);
-			}
-			return arr;
-		} else if (newSize == 0) {
-			return arr;
-		} else if (newSize > 0) {
-			for (int i = 0; i < newSize; i++) {
-				arr.add(pair);
-			}
-			return arr;
-		}
-		return arr;
-	}
-
-	private ArrayList<ArrayList<Pair<Integer, Double>>> resize(ArrayList<ArrayList<Pair<Integer, Double>>> arr,
-			int size, ArrayList<Pair<Integer, Double>> pair) {
-
-		if (arr == null || arr.equals(null)) {
-			arr = new ArrayList<ArrayList<Pair<Integer, Double>>>();
-		}
-
-		if (size < 0) {
-			new IllegalArgumentException("size should be larger than 0");
-			System.exit(0);
-			return null;
-		} else if (size == 0) {
-			return new ArrayList<ArrayList<Pair<Integer, Double>>>();
-		}
-
-		int newSize = size - arr.size();
-		if (newSize < 0) {
-			for (int i = 0; i < Math.abs(newSize); i++) {
-				arr.remove(arr.size() - 1);
-			}
-			return arr;
-		} else if (newSize == 0) {
-			return arr;
-		} else if (newSize > 0) {
-			for (int i = 0; i < newSize; i++) {
-				arr.add(new ArrayList<Pair<Integer, Double>>());
-			}
-			return arr;
-		}
-		return arr;
-	}
-
-	private ArrayList<Double> resize(ArrayList<Double> arr, int size, Double val) {
-
-		if (arr == null || arr.equals(null)) {
-			arr = new ArrayList<Double>();
-		}
-
-		if (size < 0) {
-			new IllegalArgumentException("size should be larger than 0");
-			System.exit(0);
-			return null;
-		} else if (size == 0) {
-			return new ArrayList<Double>();
-		}
-
-		int newSize = size - arr.size();
-		if (newSize < 0) {
-			for (int i = 0; i < Math.abs(newSize); i++) {
-				arr.remove(arr.size() - 1);
-			}
-			return arr;
-		} else if (newSize == 0) {
-			return arr;
-		} else if (newSize > 0) {
-			for (int i = 0; i < newSize; i++) {
-				arr.add(val);
-			}
-			return arr;
-		}
-		return arr;
-	}
-
-	private ArrayList<EdgePart> resize(ArrayList<EdgePart> arr, int size, EdgePart val) {
-
-		if (arr == null || arr.equals(null)) {
-			arr = new ArrayList<EdgePart>();
-		}
-
-		if (size < 0) {
-			new IllegalArgumentException("size should be larger than 0");
-			System.exit(0);
-			return null;
-		} else if (size == 0) {
-			return new ArrayList<EdgePart>();
-		}
-
-		int newSize = size - arr.size();
-		if (newSize < 0) {
-			for (int i = 0; i < Math.abs(newSize); i++) {
-				arr.remove(arr.size() - 1);
-			}
-			return arr;
-		} else if (newSize == 0) {
-			return arr;
-		} else if (newSize > 0) {
-			for (int i = 0; i < newSize; i++) {
-				arr.add(new EdgePart());
-			}
-			return arr;
-		}
-		return arr;
-	}
+	}// PruningMethod
 
 	public class Statistics {
 		public long total_num_edge_events;

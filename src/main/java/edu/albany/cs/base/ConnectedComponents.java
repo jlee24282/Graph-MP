@@ -447,7 +447,9 @@ public class ConnectedComponents {
 	}
 
 	public static void main(String args[]) {
-		APDMInputFormat apdm = new APDMInputFormat("simuDataSet/GridDataSet/Grid-Data-100/APDM-GridData-100-0.txt");
+	//	APDMInputFormat apdm = new APDMInputFormat("data/SimulationData/Protest/APDM-GridData-100-precen_0.1-noise_0-numCC_1_0.txt");
+		APDMInputFormat apdm = new APDMInputFormat("data/Story_telling/APDM-min_edge_6.txt");
+		//APDMInputFormat apdm = new APDMInputFormat("simuDataSet/GridDataSet/Grid-Data-100/APDM-GridData-100-0.txt");
 		// APDMInputFormat apdm = new
 		// APDMInputFormat("realDataSet/Disease/Chile_2_year/2013-10-18.txt") ;
 		ConnectedComponents c = new ConnectedComponents(apdm.data.graphAdjList);
@@ -468,5 +470,6 @@ public class ConnectedComponents {
 		for (ArrayList<Integer> com : c.components) {
 			System.out.println(com.toString());
 		}
+		System.out.println("fin");
 	}
 }

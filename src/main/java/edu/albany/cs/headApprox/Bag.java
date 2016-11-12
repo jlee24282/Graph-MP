@@ -19,8 +19,14 @@ package edu.albany.cs.headApprox;
  * % java Bag < tobe.txt
  * size of bag = 14
  * is
+ * -
+ * -
+ * -
  * that
+ * -
+ * -
  * be
+ * -
  * to
  * not
  * or

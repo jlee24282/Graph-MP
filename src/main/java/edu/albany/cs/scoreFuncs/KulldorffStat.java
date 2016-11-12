@@ -1,5 +1,4 @@
 package edu.albany.cs.scoreFuncs;
-
 import edu.albany.cs.base.ArrayIndexSort;
 import org.apache.commons.math3.linear.ArrayRealVector;
 import org.apache.commons.math3.stat.StatUtils;
@@ -183,6 +182,41 @@ public class KulldorffStat implements Function {
 		}
 	}
 
+	/** To do maximization */
+	public double[] getArgMaxFx(ArrayList<Integer> S) {
+
+		double[] result = new double[n];
+		Double[] vectorRatioCB = new Double[S.size()];
+		for (int i = 0; i < S.size(); i++) {
+			vectorRatioCB[i] = c[S.get(i)] / b[S.get(i)];
+		}
+		ArrayIndexSort arrayIndexComparator = new ArrayIndexSort(vectorRatioCB);
+		Integer[] indexes = arrayIndexComparator.getIndices();
+		Arrays.sort(indexes, arrayIndexComparator);
+		ArrayList<Integer> sortedS = new ArrayList<Integer>(); // v_1,v_2,...,v_m
+		for (int index : indexes) {
+			sortedS.add(S.get(index));
+		}
+		double maxF = -Double.MAX_VALUE;
+		double[] argMaxX = null;
+		for (int k = 1; k <= sortedS.size(); k++) {
+			List<Integer> Rk = sortedS.subList(0, k);
+			double[] x = new double[n];
+			for (int i = 0; i < n; i++) {
+				x[i] = 0.0D;
+			}
+			for (int index : Rk) {
+				x[index] = 1.0D;
+			}
+			double fk = getFuncValue(x);
+			if (fk > maxF) {
+				maxF = fk;
+				argMaxX = x;
+			}
+		}
+		result = argMaxX;
+		return result;
+	}
 
 	@Override
 	public FuncType getFuncID() {
@@ -225,54 +259,8 @@ public class KulldorffStat implements Function {
 
 	@Override
 	public double[] getArgMinFx(ArrayList<Integer> S) {
-		/**
-		 * as our objective function is f(S), we do min_{S} -f(S), this is
-		 * equivalent to maximize f(S)
-		 */
-		return getArgMaxFx(S);
-	}
-	
-
-	/**
-	 * This is a heuristic method. It maximizes objective function f(S).
-	 * 
-	 * @param S
-	 *            the constraint set S
-	 * @return the maximizer of objective function
-	 */
-	public double[] getArgMaxFx(ArrayList<Integer> S) {
-
-		double[] result = new double[n];
-		Double[] vectorRatioCB = new Double[S.size()];
-		for (int i = 0; i < S.size(); i++) {
-			vectorRatioCB[i] = c[S.get(i)] / b[S.get(i)];
-		}
-		ArrayIndexSort arrayIndexComparator = new ArrayIndexSort(vectorRatioCB);
-		Integer[] indexes = arrayIndexComparator.getIndices();
-		Arrays.sort(indexes, arrayIndexComparator);
-		ArrayList<Integer> sortedS = new ArrayList<Integer>(); // v_1,v_2,...,v_m
-		for (int index : indexes) {
-			sortedS.add(S.get(index));
-		}
-		double maxF = -Double.MAX_VALUE;
-		double[] argMaxX = null;
-		for (int k = 1; k <= sortedS.size(); k++) {
-			List<Integer> Rk = sortedS.subList(0, k);
-			double[] x = new double[n];
-			for (int i = 0; i < n; i++) {
-				x[i] = 0.0D;
-			}
-			for (int index : Rk) {
-				x[index] = 1.0D;
-			}
-			double fk = getFuncValue(x);
-			if (fk > maxF) {
-				maxF = fk;
-				argMaxX = x;
-			}
-		}
-		result = argMaxX;
-		return result;
+		/** TODO Make sure to implement this method when you use it. */
+		return null;
 	}
 
 }

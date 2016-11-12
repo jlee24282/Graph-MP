@@ -1,14 +1,13 @@
 package edu.albany.cs.base;
 
 import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.math3.distribution.NormalDistribution;
+import org.apache.commons.math3.stat.StatUtils;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 
 /**
@@ -28,6 +27,7 @@ public class APDMInputFormat {
 			+ "#APDM Input Graph, this input graph includes 3 sections:\n" + "#section1 : general information\n"
 			+ "#section2 : nodes\n" + "#section3 : edges\n" + "#section4 : trueSubGraph (Optional)\n" + "#\n"
 			+ "#if nodes haven't information set weight to null\n" + Utils.commentLine + "\n";
+
 	public InputData data;
 
 	/**
@@ -40,8 +40,8 @@ public class APDMInputFormat {
 
 		/** read inputFile */
 		readAPDMFile(APDMFile);
+
 		/** initialize true subgraph nodes */
-		data.trueSubGraphNodes = null;
 		if (data.trueSubGraphEdges != null) {
 			int[] trueSubGraphNodes = null;
 			for (int[] edge : data.trueSubGraphEdges.keySet()) {
@@ -53,7 +53,10 @@ public class APDMInputFormat {
 				}
 			}
 			data.trueSubGraphNodes = trueSubGraphNodes;
+		} else {
+			data.trueSubGraphNodes = null;
 		}
+
 		/** initialize adjacency information */
 		ArrayList<ArrayList<Integer>> graphAdjList = new ArrayList<>();
 		ArrayList<ArrayList<Double>> graphWeightedAdjList = new ArrayList<>();
@@ -63,6 +66,7 @@ public class APDMInputFormat {
 			graphAdjList.add(new ArrayList<>());
 			graphWeightedAdjList.add(new ArrayList<>());
 		}
+
 		for (int[] edge : data.edges.keySet()) {
 			if (!graphAdjList.get(edge[0]).contains(edge[1])) {
 				graphAdjList.get(edge[0]).add(edge[1]);
@@ -81,12 +85,18 @@ public class APDMInputFormat {
 		data.graphAdjList = graphAdjList;
 		data.graphWeightedAdj = graphWeightedAdj;
 		data.graphWeightedAdjList = graphWeightedAdjList;
+
 		/** other parameters. */
 		data.V = new int[data.numNodes];
 		for (int i = 0; i < data.V.length; i++) {
 			data.V[i] = i;
 		}
+		data.identityb = new double[data.numNodes];
+		Arrays.fill(data.identityb, 1.0D);
+		data.smallb = new double[data.numNodes];
+		Arrays.fill(data.smallb, 0.01D);
 		data.cc = new ConnectedComponents(data.graphAdjList);
+
 	}
 
 	public APDMInputFormat(String apdmFileName) {
@@ -175,6 +185,145 @@ public class APDMInputFormat {
 		}
 	}
 
+	public static void generateAPDMFile_bot(String usedAlgorithm, String dataSource, ArrayList<Edge> edges, 
+			double[] userWeight,
+			double[] counts, HashMap<int[], Double> trueSubGraphEdges, String fileName) {
+		DecimalFormat decimalFormat = new DecimalFormat("0.000000");
+		try {
+			FileWriter fw;
+			fw = new FileWriter(fileName, false);
+			fw.write(APDMInputFormat.inputHeader);
+			
+			// general information
+			fw.write("SECTION1 (General Information)\n");
+			if (userWeight == null) {
+				fw.write("numNodes = " + 0 + "\n");
+			} else {
+				fw.write("numNodes = " + userWeight.length + "\n");
+			}
+			if (edges == null) {
+				fw.write("numEdges = " + 0 + "\n");
+			} else {
+				fw.write("numEdges = " + edges.size() + "\n");
+			}
+			fw.write("usedAlgorithm = " + usedAlgorithm + "\n");
+			fw.write("dataSource = " + dataSource + "\n");
+			fw.write("END\n" + Utils.commentLine + "\n");
+
+			// nodes information
+			fw.write("SECTION2 (Nodes Information)\n");
+			fw.write("NodeID Weight \n");
+			if (userWeight == null) {
+				fw.write("null\n");
+			} else {
+				if (counts == null ) {
+					for (int i = 0; i < userWeight.length; i++) {
+						fw.write(
+								i + " " 
+						+ decimalFormat.format(userWeight[i]) + "\n");
+					}
+				} else {
+					for (int i = 0; i < userWeight.length; i++) {
+						fw.write(
+								i + " " 
+						+ decimalFormat.format(userWeight[i]) + "\n");
+					}
+				}
+
+			}
+			fw.write("END\n" + Utils.commentLine + "\n");
+
+			// edges information
+			fw.write("SECTION3 (Edges Information)\n");
+			fw.write("EndPoint0 EndPoint1 Weight\n");
+			if (edges != null) {
+				for (Edge e : edges) {
+					fw.write(e.i + " " + e.j + " " + decimalFormat.format(e.cost) + "\n");
+				}
+			}
+			fw.write("END\n" + Utils.commentLine + "\n");
+			// edges information
+			fw.write("SECTION4 (TrueSubGraph Information)\n");
+			fw.write("EndPoint0 EndPoint1 Weight\n");
+			if (trueSubGraphEdges != null) {
+				for (int[] e : trueSubGraphEdges.keySet()) {
+					fw.write(e[0] + " " + e[1] + " " + trueSubGraphEdges.get(e) + "\n");
+				}
+			}
+			fw.write("END\n" + Utils.commentLine + "\n");
+			fw.close();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+	}
+
+	public static void generateAPDMFile(String usedAlgorithm, String dataSource, ArrayList<Edge> edges, double[] PValue,
+			double[] counts, HashMap<int[], Double> trueSubGraphEdges, String fileName) {
+		DecimalFormat decimalFormat = new DecimalFormat("0.000000");
+		try {
+			FileWriter fw;
+			fw = new FileWriter(fileName, false);
+			fw.write(APDMInputFormat.inputHeader);
+			// general information
+			fw.write("SECTION1 (General Information)\n");
+			if (PValue == null) {
+				fw.write("numNodes = " + 0 + "\n");
+			} else {
+				fw.write("numNodes = " + PValue.length + "\n");
+			}
+			if (edges == null) {
+				fw.write("numEdges = " + 0 + "\n");
+			} else {
+				fw.write("numEdges = " + edges.size() + "\n");
+			}
+			fw.write("usedAlgorithm = " + usedAlgorithm + "\n");
+			fw.write("dataSource = " + dataSource + "\n");
+			fw.write("END\n" + Utils.commentLine + "\n");
+
+			// nodes information
+			fw.write("SECTION2 (Nodes Information)\n");
+			fw.write("NodeID counts \n");
+			if (PValue == null) {
+				fw.write("null\n");
+			} else {
+				if (counts == null ) {
+					for (int i = 0; i < PValue.length; i++) {
+						fw.write(i + " " + decimalFormat.format(PValue[i]) + "\n");
+					}
+				} else {
+					for (int i = 0; i < PValue.length; i++) {
+						fw.write(i + " " + decimalFormat.format(PValue[i]) 
+								+ "\n");
+					}
+				}
+
+			}
+			fw.write("END\n" + Utils.commentLine + "\n");
+
+			// edges information
+			fw.write("SECTION3 (Edges Information)\n");
+			fw.write("EndPoint0 EndPoint1 Weight\n");
+			if (edges != null) {
+				for (Edge e : edges) {
+					fw.write(e.i + " " + e.j + " " + decimalFormat.format(e.cost) + "\n");
+				}
+			}
+			fw.write("END\n" + Utils.commentLine + "\n");
+			// edges information
+			fw.write("SECTION4 (TrueSubGraph Information)\n");
+			fw.write("EndPoint0 EndPoint1 Weight\n");
+			if (trueSubGraphEdges != null) {
+				for (int[] e : trueSubGraphEdges.keySet()) {
+					fw.write(e[0] + " " + e[1] + " " + trueSubGraphEdges.get(e) + "\n");
+				}
+			}
+			fw.write("END\n" + Utils.commentLine + "\n");
+			fw.close();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+	}
+
 	/**
 	 * According to the APDM input format, we generate APDM input file
 	 *
@@ -213,7 +362,7 @@ public class APDMInputFormat {
 			fw.write("dataSource = " + dataSource + "\n");
 			fw.write("END\n" + Utils.commentLine + "\n");
 
-			/** section2 is nodes information */
+			// nodes information
 			fw.write("SECTION2 (Nodes Information)\n");
 			fw.write("NodeID Base Counts\n");
 			if (PValue == null) {
@@ -239,7 +388,7 @@ public class APDMInputFormat {
 
 			}
 			fw.write("END\n" + Utils.commentLine + "\n");
-			/** section3 is edges information */
+			// edges information
 			fw.write("SECTION3 (Edges Information)\n");
 			fw.write("EndPoint0 EndPoint1 Weight\n");
 			if (edges != null) {
@@ -248,7 +397,7 @@ public class APDMInputFormat {
 				}
 			}
 			fw.write("END\n" + Utils.commentLine + "\n");
-			/** section4 is true subgraph information */
+			// edges information
 			fw.write("SECTION4 (TrueSubGraph Information)\n");
 			fw.write("EndPoint0 EndPoint1 Weight\n");
 			if (trueSubGraphEdges != null) {
@@ -279,7 +428,7 @@ public class APDMInputFormat {
 				if (sCurrentLine.startsWith("#")) {
 					continue;
 				}
-				/** general information of this graph. */
+				// general Information
 				if (sCurrentLine.startsWith("SECTION1")) {
 					while (!(sCurrentLine = br.readLine()).equals("END")) {
 						if (sCurrentLine.startsWith("numNodes")) {
@@ -304,10 +453,16 @@ public class APDMInputFormat {
 					}
 				}
 
-				/** nodes information */
+				// nodes information
 				if (sCurrentLine.startsWith("SECTION2")) {
 					data.nodes = new HashMap<Integer, Double>();
+					data.PValue = new double[data.numNodes];
 					data.counts = new double[data.numNodes];
+					data.averCounts = new double[data.numNodes];
+					data.speed = new double[data.numNodes];
+					data.meanSpeed = new double[data.numNodes];
+					data.std = new double[data.numNodes];
+					data.mean = new double[data.numNodes];
 					data.base = new double[data.numNodes];
 					int count = 0;
 					while (!(sCurrentLine = br.readLine()).equals("END")) {
@@ -316,14 +471,35 @@ public class APDMInputFormat {
 						}
 						String[] str = sCurrentLine.split(" ");
 						data.nodes.put(Integer.parseInt(str[0]), Double.parseDouble(str[1]));
-						if (data.dataSource.equals("GridData")) {
+						data.PValue[count] = Double.parseDouble(str[1]);
+						if (data.dataSource.equals("CivilUnrest") || data.dataSource.equals("citHepPh")) {
+							data.counts[count] = Double.parseDouble(str[2]);
+							if (data.dataSource.equals("citHepPh")) {
+								data.averCounts[count] = Double.parseDouble(str[3]);
+							}
+						} else if (data.dataSource.equals("Transportation")) {
+							data.speed[count] = Double.parseDouble(str[2]);
+							data.meanSpeed[count] = Double.parseDouble(str[3]);
+							data.std[count] = Double.parseDouble(str[4]);
+						} else if (data.dataSource.equals("Haze") || data.dataSource.equals("CrimeOfChicago")) {
+							data.counts[count] = Double.parseDouble(str[2]);
+							data.averCounts[count] = Double.parseDouble(str[3]);
+						} else if (data.dataSource.equals("WaterDataSet") || data.dataSource.equals("WaterData")) {
+							data.counts[count] = Double.parseDouble(str[2]);
+						} else if (data.dataSource.equals("DiseaseOutBreakSimu")) {
+							data.counts[count] = Double.parseDouble(str[1]);
+							data.mean[count] = Double.parseDouble(str[2]);
+							data.std[count] = Double.parseDouble(str[3]);
+						} else if (data.dataSource.equals("NewYorkCityTaxi")) {
+							data.counts[count] = Double.parseDouble(str[1]);
+						} else if (data.dataSource.equals("GridData")) {
 							data.base[count] = Double.parseDouble(str[1]);
 							data.counts[count] = Double.parseDouble(str[2]);
 						}
 						count++;
 					}
 				}
-				/** edges information */
+				// edges information
 				if (sCurrentLine.startsWith("SECTION3")) {
 					data.edges = new HashMap<int[], Double>();
 					data.newEdges = new ArrayList<Edge>();
@@ -347,7 +523,7 @@ public class APDMInputFormat {
 					}
 					data.identityEdgeCosts = identityEdgeCosts;
 				}
-				/** true subgraph edges information */
+				// trueSubGraphEdges information
 				if (sCurrentLine.startsWith("SECTION4")) {
 					data.trueSubGraphEdges = new HashMap<int[], Double>();
 					while (!(sCurrentLine = br.readLine()).equals("END")) {
@@ -373,37 +549,63 @@ public class APDMInputFormat {
 		return true;
 	}
 
-	public class InputData {
-
-		public String dataSource;
-		public String usedAlgorithm;
-
-		public ArrayList<ArrayList<Integer>> graphAdjList;
-		public int[][] graphAdj;
-		public ArrayList<ArrayList<Double>> graphWeightedAdjList;
-		public double[][] graphWeightedAdj;
-		public boolean connective;
-		public ConnectedComponents cc;
-
-		public int numNodes;
-		public int numEdges;
-		public HashMap<Integer, Double> nodes;
-		public int[] V;
-		public double[] base;
-		public double[] counts;
-
-		public HashMap<int[], Double> edges;
-		public ArrayList<Integer[]> intEdges;
-		public ArrayList<Double> edgeCosts;
-		public ArrayList<Double> identityEdgeCosts;
-		public ArrayList<Edge> newEdges;
-
-		public int[] trueSubGraphNodes;
-		public HashMap<int[], Double> trueSubGraphEdges = null;
+	// test
+	public static void main(String args[]) throws IOException {
+		processCrimeOfChicago();
 	}
 
-	public static void main(String args[]) throws IOException {
-		/** your test code goes here. */
+	public static void processCrimeOfChicago() throws IOException {
+
+		for (File file : new File("./data/CrimeOfChicago/graph").listFiles()) {
+			APDMInputFormat apdm = new APDMInputFormat(file);
+			double[] c = apdm.data.counts;
+			System.out.println(StatUtils.sum(c));
+			double mu = StatUtils.mean(c);
+			double sigma = Math.sqrt(StatUtils.variance(c));
+			System.out.println(mu + " " + sigma);
+			double[] PValue = new double[c.length];
+			NormalDistribution normal = new NormalDistribution(mu, sigma);
+			for (int i = 0; i < c.length; i++) {
+				PValue[i] = 1 - normal.cumulativeProbability(c[i]);
+				if (PValue[i] <= 0.0D) {
+					PValue[i] = 0.0001D;
+				}
+			}
+			APDMInputFormat.generateAPDMFile("NULL", apdm.data.dataSource, apdm.data.newEdges, PValue, apdm.data.counts,
+					apdm.data.averCounts, new HashMap<int[], Double>(), "./tmp/" + file.getName());
+		}
+	}
+
+	public static void processCitHepPh(String fileName, String year) throws IOException {
+		int[] nodes = Utils.getIntFromFile("./data/citHepPh/maximum_CC_nodes.txt");
+		ArrayList<Integer> nodesID = new ArrayList<Integer>();
+		for (int i : nodes) {
+			nodesID.add(i);
+		}
+		HashMap<Integer, Double> pvalue = new HashMap<Integer, Double>();
+		HashMap<Integer, Integer> citCnts = new HashMap<Integer, Integer>();
+		pvalue = Utils.getPValueFromFile("./data/citHepPh/" + fileName);
+		citCnts = Utils.getCitCntsFromFile("./data/citHepPh/" + fileName);
+		double[] PValue = new double[nodesID.size()];
+		double[] counts = new double[nodesID.size()];
+		double[] average = new double[nodesID.size()];
+		for (int i = 0; i < average.length; i++) {
+			average[i] = 2.391845;
+		}
+		for (int i = 0; i < PValue.length; i++) {
+			PValue[i] = pvalue.get(nodesID.get(i));
+			counts[i] = citCnts.get(nodesID.get(i));
+		}
+		ArrayList<Integer[]> edges = Utils.getGraphEdgeFromFile("data/citHepPh/edges.txt", " ");
+		ArrayList<Edge> Edges = new ArrayList<Edge>();
+		int count = 0;
+		for (Integer[] edge : edges) {
+			Edges.add(new Edge(nodesID.indexOf(edge[0]), nodesID.indexOf(edge[1]), count++, 1.0D));
+		}
+		// APDMInputFormat.generateAPDMFile("NULL", "citHepPh", Edges, PValue,
+		// "./realDataSet/citHepPh/APDM-Graph-CitHepPh-2002-11895.txt") ;
+		APDMInputFormat.generateAPDMFile("NULL", "citHepPh", Edges, PValue, counts, average,
+				new HashMap<int[], Double>(), "./data/citHepPh/APDM-Graph-CitHepPh-" + year + "-11895.txt");
 	}
 
 }

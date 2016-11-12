@@ -157,27 +157,6 @@ public class Utils {
 		}
 		return ArrayUtils.subarray(result, 0, count);
 	}
-	
-	/**
-	 * union two sets s1 and s2
-	 *
-	 * @param s1
-	 *            set s1
-	 * @param s2
-	 *            set s2
-	 * @return the union of two sets
-	 */
-	public static ArrayList<Integer> unionSets(ArrayList<Integer> s1, ArrayList<Integer> s2) {
-		if (s2 == null) {
-			return s1;
-		}
-		for (Integer i : s2) {
-			if (!s1.contains(i)) {
-				s1.add(i);
-			}
-		}
-		return s1;
-	}
 
 	/**
 	 * return the intersection of a and b

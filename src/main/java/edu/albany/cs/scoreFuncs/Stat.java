@@ -1,5 +1,4 @@
 package edu.albany.cs.scoreFuncs;
-
 import java.util.Arrays;
 
 public final class Stat {

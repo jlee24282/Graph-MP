@@ -1,5 +1,4 @@
 package edu.albany.cs.scoreFuncs;
-
 /**
  * Types of different score functions.
  *
@@ -7,7 +6,7 @@ package edu.albany.cs.scoreFuncs;
  */
 public enum FuncType {
 
-	KulldorffStat, EBPStat, EMSStat, Unknown;
+	KulldorffStat, EBP, EMS, ProtestScanStat, RegularizedScore, Unknown;
 
 	public static FuncType defaultFuncType() {
 		return FuncType.Unknown;

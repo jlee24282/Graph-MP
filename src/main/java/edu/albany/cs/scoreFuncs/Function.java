@@ -3,7 +3,6 @@ package edu.albany.cs.scoreFuncs;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
-
 /**
  * Inferface of a general function, this kind of functions is differential.
  * @author Baojian bzhou@albany.edu
@@ -53,4 +52,5 @@ public interface Function {
      * @return the function ID
      */
     public FuncType getFuncID();
+
 }
