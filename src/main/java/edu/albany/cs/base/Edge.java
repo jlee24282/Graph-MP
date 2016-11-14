@@ -36,7 +36,7 @@ public class Edge {
      * @param i    : end point i
      * @param j    : end point j
      * @param ID   : edge ID , we do not need to use it now.
-     * @param cost :edge's cost
+     * @param cost : edge's cost
      */
     public Edge(int i, int j, int ID, double cost, Integer[] pair) {
         this.i = i;

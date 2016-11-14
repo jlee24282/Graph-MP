@@ -27,13 +27,25 @@ public class GenerateRandomData {
 
 	}
 
-	private void randomNode(double[] pValue) {
+	private int randomNode(int nodeId, double[] pValue) {
         Random R 			= new Random();
 
-    }
+		double p = R.nextDouble();
+		double cumulativeProbability = 0.0;
+		int item = -1;
+
+		for (int i = 0; i< pValue.length; i++) {
+			cumulativeProbability += pValue[i];
+			if (p <= cumulativeProbability && i != nodeId) {
+				item = i;
+			}
+		}
+
+		return item;
+	}
 
 	public void generate_data_random(String outputFilePath) {
-		int min_edge 		= 10; 	//minimum edge from one node
+		int min_edge 		= 5; 	//minimum edge from one node
 		int numTrueNodes 	= 30;
 		double alpha		= 0.05;
 		Random R 			= new Random();
@@ -75,40 +87,31 @@ public class GenerateRandomData {
 		
 		
 		/** step3: Generate Edges */
-		for (int i = 0; i< n; i++){
-            //ArrayList<Edge> subEdges = new ArrayList<Edge>();
+		for (int node1 = 0; node1< n; node1++){
+			for(int j = 0; j< min_edge; j++){
 
-            int rnd = R.nextInt(n);
-            Edge e = new Edge(-1, -1, 0, 1.0);
-            Edge reE = e;
+				int node2 = randomNode(node1, pValue);
 
-            //get next edge
-            while (rnd == prevRnd || e.equals(reE) || i == rnd) {
-                if (pValue[i] <= 0.05) {
-                    rnd = R.nextInt(numTrueNodes);
-                    rnd = trueNodes[rnd];
-                    e = new Edge(i, rnd, 0, 1.0);
-                    reE = new Edge(rnd, i, 0, 1.0);
+				Edge e = new Edge(node1, node2, 0, 1.0);
 
-                    if (rnd == i)
-                        e = reE;
-                } else {
-                    rnd = R.nextInt(n);
-                    e = new Edge(i, rnd, 0, 1.0);
-                    reE = new Edge(rnd, i, 0, 1.0);
-                }
-            }
+				Edge reE = new Edge(node2, node1, 0, 1.0);
 
-            // edgeCount[i] ++;
-            if (!edges.contains(e)) {
-                edges.add(e);
-            }
-            if (!edges.contains(reE)) {
-                edges.add(reE);
-            }
 
-            prevRnd = rnd;
 
+				if (edges.contains(e))
+					System.out.println("TEst1111.");
+
+				if (!edges.contains(e)) {
+					edges.add(e);
+
+					Edge e2 = new Edge(node2, node1, 0, 1.0);
+					if (reE.equals(e2))
+						System.out.println("TEst.");
+				}
+				if (!edges.contains(reE)) {
+					edges.add(reE);
+				}
+			}
 		}
 
 		Collections.sort(edges, new Comparator<Edge>() {
@@ -155,7 +158,8 @@ public class GenerateRandomData {
 	}
 	
 	public static void main(String args[]) {
-		new GenerateRandomData(50 /*Node size*/,
+		new GenerateRandomData(
+				50 /*Node size*/,
 				30/*True node size*/,
 				0.2/*p1*/,
 				0.4/*p1*/,
