@@ -18,7 +18,6 @@ public class GenerateRandomData {
 		this.p1 = p1;
 		this.p2 = p2;
 		this.c = c;
-        double[] pValue 		= new double[n];
 	}
 
 	//generate graph for the p1, p2 and c
@@ -34,9 +33,14 @@ public class GenerateRandomData {
 		double cumulativeProbability = 0.0;
 		int item = -1;
 
+		System.out.println("Test");
+		System.out.println(p);
+
 		for (int i = 0; i< pValue.length; i++) {
 			cumulativeProbability += pValue[i];
 			if (p <= cumulativeProbability && i != nodeId) {
+				System.out.println("Test2");
+				System.out.print(i);
 				item = i;
 			}
 		}
@@ -87,29 +91,22 @@ public class GenerateRandomData {
 		
 		
 		/** step3: Generate Edges */
+		List<String> doneEdges = new ArrayList<String>();
 		for (int node1 = 0; node1< n; node1++){
 			for(int j = 0; j< min_edge; j++){
 
 				int node2 = randomNode(node1, pValue);
 
-				Edge e = new Edge(node1, node2, 0, 1.0);
+				String e = node1+","+node2;
+				String reE = node1+","+node2;
 
-				Edge reE = new Edge(node2, node1, 0, 1.0);
-
-
-
-				if (edges.contains(e))
-					System.out.println("TEst1111.");
-
-				if (!edges.contains(e)) {
-					edges.add(e);
-
-					Edge e2 = new Edge(node2, node1, 0, 1.0);
-					if (reE.equals(e2))
-						System.out.println("TEst.");
+				if (!doneEdges.contains(e)) {
+					edges.add(new Edge(node1, node2, 0, 1.0));
+					doneEdges.add(e);
 				}
-				if (!edges.contains(reE)) {
-					edges.add(reE);
+				if (!doneEdges.contains(reE)) {
+					edges.add(new Edge(node2, node1, 0, 1.0));
+					doneEdges.add(reE);
 				}
 			}
 		}
