@@ -1,6 +1,7 @@
 package edu.albany.cs.base;
 
 import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.math3.stat.StatUtils;
 
 import java.util.*;
 
@@ -29,6 +30,7 @@ public class GenerateRandomData {
 	private int randomNode(int nodeId, double[] pValue) {
         Random R 			= new Random();
 
+		double sumPvalues = StatUtils.sum(pValue);
 		double p = R.nextDouble();
 		double cumulativeProbability = 0.0;
 		int item = -1;
@@ -37,11 +39,12 @@ public class GenerateRandomData {
 		System.out.println(p);
 
 		for (int i = 0; i< pValue.length; i++) {
-			cumulativeProbability += pValue[i];
+			cumulativeProbability += (pValue[i]/sumPvalues);
 			if (p <= cumulativeProbability && i != nodeId) {
 				System.out.println("Test2");
 				System.out.print(i);
 				item = i;
+				break;
 			}
 		}
 
