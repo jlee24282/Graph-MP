@@ -93,7 +93,7 @@ public class DensityCheck extends Application {
         series2.setName("Recall");
 
         XYChart.Series series3 = new XYChart.Series();
-        series3.setName("fMeasure");
+        series3.setName("fMeasure");z
 
         series1.getData().add(new XYChart.Data(0.1, 23));
         series1.getData().add(new XYChart.Data(0.2, 14));
