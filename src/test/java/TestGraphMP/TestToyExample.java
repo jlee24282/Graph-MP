@@ -1,18 +1,12 @@
 package TestGraphMP;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
-import org.apache.commons.math3.stat.StatUtils;
-
 import edu.albany.cs.base.APDMInputFormat;
 import edu.albany.cs.base.PreRec;
-import edu.albany.cs.base.Utils;
 import edu.albany.cs.graphMP.GraphMP;
-import edu.albany.cs.scoreFuncs.EBPStat;
-import edu.albany.cs.scoreFuncs.ToyFunc;
-
 import edu.albany.cs.scoreFuncs.G_toy;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 
 public class TestToyExample {

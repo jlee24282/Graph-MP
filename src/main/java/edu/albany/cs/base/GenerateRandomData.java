@@ -35,14 +35,9 @@ public class GenerateRandomData {
 		double cumulativeProbability = 0.0;
 		int item = -1;
 
-		System.out.println("Test");
-		System.out.println(p);
-
 		for (int i = 0; i< pValue.length; i++) {
 			cumulativeProbability += (pValue[i]/sumPvalues);
 			if (p <= cumulativeProbability && i != nodeId) {
-				System.out.println("Test2");
-				System.out.print(i);
 				item = i;
 				break;
 			}
@@ -55,6 +50,7 @@ public class GenerateRandomData {
 		int min_edge 		= 5; 	//minimum edge from one node
 		int numTrueNodes 	= 30;
 		double alpha		= 0.05;
+		int edge_size = n*4;
 		Random R 			= new Random();
 		int prevRnd = 0;
 		outputFilePath  	= outputFilePath+min_edge+"_TrueNode_"+ numTrueNodes+ ".txt";
@@ -94,6 +90,7 @@ public class GenerateRandomData {
 		
 		
 		/** step3: Generate Edges */
+
 		List<String> doneEdges = new ArrayList<String>();
 		for (int node1 = 0; node1< n; node1++){
 			for(int j = 0; j< min_edge; j++){
@@ -113,7 +110,29 @@ public class GenerateRandomData {
 				}
 			}
 		}
+/*
+		List<String> doneEdges = new ArrayList<String>();
+		for (int i = 0; i < edge_size; i++){
 
+
+			int node1 = randomNode(-1, pValue);
+			int node2 = randomNode(node1, pValue);
+
+			String e = node1+","+node2;
+			String reE = node1+","+node2;
+
+			if (!doneEdges.contains(e)) {
+				edges.add(new Edge(node1, node2, 0, 1.0));
+				doneEdges.add(e);
+			}
+			if (!doneEdges.contains(reE)) {
+				edges.add(new Edge(node2, node1, 0, 1.0));
+				doneEdges.add(reE);
+				i++;
+			}
+
+		}
+*/
 		Collections.sort(edges, new Comparator<Edge>() {
 		    @Override
 		    public int compare(Edge e2, Edge e1)
@@ -161,8 +180,8 @@ public class GenerateRandomData {
 		new GenerateRandomData(
 				50 /*Node size*/,
 				30/*True node size*/,
-				0.2/*p1*/,
-				0.4/*p1*/,
+				0.1/*p1*/,
+				0.9/*p2*/,
 				0.5/*c*/).generate_data_random("data/BotData/APDM-min_edge_");
 	}
 }
