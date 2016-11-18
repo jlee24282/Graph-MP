@@ -53,7 +53,7 @@ public class GenerateRandomData {
 		int edge_size = n*4;
 		Random R 			= new Random();
 		int prevRnd = 0;
-		outputFilePath  	= outputFilePath+min_edge+"_TrueNode_"+ numTrueNodes+ ".txt";
+		outputFilePath  	= outputFilePath+"-"+p1+"_"+p2+"_c"+c+"_TrueNode"+ numTrueNodes+ ".txt";
 		System.out.println("New File Path: " + outputFilePath);
 		
 		/** step0: data file */
@@ -180,8 +180,8 @@ public class GenerateRandomData {
 		new GenerateRandomData(
 				50 /*Node size*/,
 				30/*True node size*/,
-				0.1/*p1*/,
-				0.9/*p2*/,
-				0.5/*c*/).generate_data_random("data/BotData/APDM-min_edge_");
+				0.2/*p1*/,
+				0.4/*p2*/,
+				0.5/*c*/).generate_data_random("data/BotData/APDM");
 	}
 }

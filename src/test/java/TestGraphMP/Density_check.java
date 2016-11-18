@@ -59,11 +59,10 @@ public class Density_check {
         System.out.println("result subgraph is: " + Arrays.toString(bestGraphMP.resultNodes_Tail));
         System.out.println("true subgraph is: " + Arrays.toString(apdm.data.trueSubGraphNodes));
         System.out.println("------------------------------ test ends --------------------------------\n");
-
     }
 
     public static void main(String args[]) {
-        new Cd_detection_test().test_cd_detection("data/BotData/APDM-min_edge_5_TrueNode_30.txt");
+        new Cd_detection_test().test_cd_detection("data/BotData/APDM-0.1_0.9_c0.5_TrueNode30.txt");
         //new Cd_detection_test().test_cd_detection("data/DensedData/APDM-GridData-100_noise_0.0_trueSubSize_30_4");
         //new TestToyExample().testToyExample("data/SimulationData/Protest/APDM-GridData-100-precen_0.1-noise_0-numCC_1_0.txt");
         //new TestToyExample().testToyExample("data/GridDataEBP/APDM-GridData-100_noise_0.0_trueSubSize_30_0.txt");
