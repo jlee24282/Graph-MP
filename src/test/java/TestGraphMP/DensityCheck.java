@@ -93,7 +93,6 @@ public class DensityCheck extends Application {
         stage.setTitle("p1=0.2, p2=0.4");
         final NumberAxis xAxis = new NumberAxis();
         final NumberAxis yAxis = new NumberAxis();
-        xAxis.setLabel("c");
         final LineChart<Number,Number> lineChart = new LineChart<Number,Number>(xAxis,yAxis);
         lineChart.setAnimated(false);
         lineChart.setTitle("p1: 0.2, p2: 0.4");
@@ -106,28 +105,53 @@ public class DensityCheck extends Application {
 
         XYChart.Series series3 = new XYChart.Series();
         series3.setName("fMeasure");
+        //----------------------------------------------
 
+        String testVariable ="p1";
+        densityCheckGraph(this,testVariable);
+        xAxis.setLabel(testVariable);
 
-        System.out.println(ArrayUtils.toString(pre));
-
-        for(int i = 0; i<xSize; i++){
+        for(int i = 0; i<xSize; i++)
             series1.getData().add(new XYChart.Data((i+1)/10.0, this.pre[i]));
-        }
-
-        for(int i = 0; i<xSize; i++){
+        for(int i = 0; i<xSize; i++)
             series2.getData().add(new XYChart.Data((i+1)/10.0, this.recall[i]));
-        }
-
-        for(int i = 0; i<xSize; i++){
+        for(int i = 0; i<xSize; i++)
             series3.getData().add(new XYChart.Data((i+1)/10.0, this.fmeasure[i]));
-        }
 
         Scene scene  = new Scene(lineChart,800,600);
         lineChart.getData().addAll(series1, series2, series3);
 
         stage.setScene(scene);
-        stage.show();
-        saveAsPng(lineChart, "chart1.png");
+       // stage.show();
+        saveAsPng(lineChart, "test-"+testVariable+ ".png");
+
+        //----------------------------------------------
+         testVariable ="p2";
+
+        densityCheckGraph(this,testVariable);
+        xAxis.setLabel(testVariable);
+        lineChart.getData().removeAll(series1, series2, series3);
+        series1 = new XYChart.Series();
+        series2 = new XYChart.Series();
+        series3 = new XYChart.Series();
+
+        for(int i = 0; i<xSize; i++)
+            series1.getData().add(new XYChart.Data((i+1)/10.0, this.pre[i]));
+        for(int i = 0; i<xSize; i++)
+            series2.getData().add(new XYChart.Data((i+1)/10.0, this.recall[i]));
+        for(int i = 0; i<xSize; i++)
+            series3.getData().add(new XYChart.Data((i+1)/10.0, this.fmeasure[i]));
+
+         //scene  = new Scene(lineChart,800,600);
+        System.out.println("TEst");
+        lineChart.getData().addAll(series1, series2, series3);
+        System.out.println("TEst");
+
+        stage.setScene(scene);
+        System.out.println("TEst");
+        //stage.show();
+        saveAsPng(lineChart, "test-"+testVariable+ ".png");
+
     }
 
     public void saveAsPng(LineChart lineChart, String path) {
@@ -140,7 +164,7 @@ public class DensityCheck extends Application {
         }
     }
 
-    public void densityCheckGraph(DensityCheck dc, String args[], String variable){
+    public void densityCheckGraph(DensityCheck dc, String variable){
         int nodeSize = 50;
         int trueNodeSize = 30;
         double p1 = 0.2;
@@ -156,7 +180,7 @@ public class DensityCheck extends Application {
              *************************/
             for(int i = 0; i< xSize; i++){
                 c = (i+1)/10.0;
-                new GenerateRandomData( nodeSize, trueNodeSize, p1, p2, c).generate_data_random("data/BotData/APDM");
+                //new GenerateRandomData( nodeSize, trueNodeSize, p1, p2, c).generate_data_random("data/BotData/APDM");
                 bestPreRec = dc.testDensityCheck("c", "data/BotData/APDM-" + p1 + "_" + p2 + "_c" + c + "_TrueNode30.txt");
                 this.fmeasure[i] = bestPreRec.fmeasure;
                 this.pre[i] = bestPreRec.pre;
@@ -171,7 +195,7 @@ public class DensityCheck extends Application {
             c = 0.5;
             for(int i = 0; i< xSize; i++){
                 p1 = (i+1)/10.0;
-                new GenerateRandomData( nodeSize, trueNodeSize, p1, p2, c).generate_data_random("data/BotData/APDM");
+                //new GenerateRandomData( nodeSize, trueNodeSize, p1, p2, c).generate_data_random("data/BotData/APDM");
                 bestPreRec = dc.testDensityCheck("p1", "data/BotData/APDM-" + p1 + "_" + p2 + "_c" + c + "_TrueNode30.txt");
                 this.fmeasure[i] = bestPreRec.fmeasure;
                 this.pre[i] = bestPreRec.pre;
@@ -187,26 +211,17 @@ public class DensityCheck extends Application {
             c = 0.5;
             for(int i = 0; i< xSize; i++){
                 p2 = (i+1)/10.0;
-                new GenerateRandomData( nodeSize, trueNodeSize, p1, p2, c).generate_data_random("data/BotData/APDM");
+                //new GenerateRandomData( nodeSize, trueNodeSize, p1, p2, c).generate_data_random("data/BotData/APDM");
                 bestPreRec = dc.testDensityCheck("p2", "data/BotData/APDM-" + p1 + "_" + p2 + "_c" + c + "_TrueNode30.txt");
                 this.fmeasure[i] = bestPreRec.fmeasure;
                 this.pre[i] = bestPreRec.pre;
                 this.recall[i] = bestPreRec.rec;
+                System.out.println(this.fmeasure[i]+""+ this.pre[i]+""+ this.recall[i]);
             }
         }
     }
 
     public static void main(String args[]) {
-        DensityCheck dc = new DensityCheck();
-        dc.densityCheckGraph(dc, args, "p1");
         launch(args);
-
-        /*
-        dc.densityCheckGraph(args, "p2");
-        launch(args);
-
-        dc.densityCheckGraph(args, "c");
-        launch(args);
-        */
     }
 }
