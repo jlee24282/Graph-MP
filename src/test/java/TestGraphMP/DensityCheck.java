@@ -122,7 +122,7 @@ public class DensityCheck extends Application {
         lineChart.getData().addAll(series1, series2, series3);
 
         stage.setScene(scene);
-       // stage.show();
+       //stage.show();
         saveAsPng(lineChart, "test-"+testVariable+ ".png");
 
         //----------------------------------------------
@@ -143,12 +143,8 @@ public class DensityCheck extends Application {
             series3.getData().add(new XYChart.Data((i+1)/10.0, this.fmeasure[i]));
 
          //scene  = new Scene(lineChart,800,600);
-        System.out.println("TEst");
         lineChart.getData().addAll(series1, series2, series3);
-        System.out.println("TEst");
-
         stage.setScene(scene);
-        System.out.println("TEst");
         //stage.show();
         saveAsPng(lineChart, "test-"+testVariable+ ".png");
 
@@ -195,7 +191,7 @@ public class DensityCheck extends Application {
             c = 0.5;
             for(int i = 0; i< xSize; i++){
                 p1 = (i+1)/10.0;
-                //new GenerateRandomData( nodeSize, trueNodeSize, p1, p2, c).generate_data_random("data/BotData/APDM");
+                new GenerateRandomData( nodeSize, trueNodeSize, p1, p2, c).generate_data_random("data/BotData/APDM");
                 bestPreRec = dc.testDensityCheck("p1", "data/BotData/APDM-" + p1 + "_" + p2 + "_c" + c + "_TrueNode30.txt");
                 this.fmeasure[i] = bestPreRec.fmeasure;
                 this.pre[i] = bestPreRec.pre;
@@ -211,7 +207,7 @@ public class DensityCheck extends Application {
             c = 0.5;
             for(int i = 0; i< xSize; i++){
                 p2 = (i+1)/10.0;
-                //new GenerateRandomData( nodeSize, trueNodeSize, p1, p2, c).generate_data_random("data/BotData/APDM");
+                new GenerateRandomData( nodeSize, trueNodeSize, p1, p2, c).generate_data_random("data/BotData/APDM");
                 bestPreRec = dc.testDensityCheck("p2", "data/BotData/APDM-" + p1 + "_" + p2 + "_c" + c + "_TrueNode30.txt");
                 this.fmeasure[i] = bestPreRec.fmeasure;
                 this.pre[i] = bestPreRec.pre;
@@ -222,6 +218,33 @@ public class DensityCheck extends Application {
     }
 
     public static void main(String args[]) {
+        /*
+        int nodeSize = 50;
+        int trueNodeSize = 30;
+        double p1 = 0.2;
+        double p2 = 0.4;
+        double c = 0.5;
+        int xSize = 10;
+
+
+        for(int i = 0; i< xSize; i++){
+            c = (i+1)/10.0;
+            new GenerateRandomData( nodeSize, trueNodeSize, p1, p2, c).generate_data_random("data/BotData/APDM");
+        }
+
+        p2 = 0.4;    c = 0.5;
+        for(int i = 0; i< xSize; i++){
+            p1 = (i+1)/10.0;
+            new GenerateRandomData( nodeSize, trueNodeSize, p1, p2, c).generate_data_random("data/BotData/APDM");
+        }
+
+        p1 = 0.2;   c = 0.5;
+        for(int i = 0; i< xSize; i++){
+            p2 = (i+1)/10.0;
+            new GenerateRandomData( nodeSize, trueNodeSize, p1, p2, c).generate_data_random("data/BotData/APDM");
+        }
+        */
+
         launch(args);
     }
 }

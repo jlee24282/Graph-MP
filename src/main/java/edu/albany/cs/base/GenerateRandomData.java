@@ -3,6 +3,7 @@ package edu.albany.cs.base;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.math3.stat.StatUtils;
 
+import java.io.File;
 import java.util.*;
 
 
@@ -21,11 +22,6 @@ public class GenerateRandomData {
 		this.c = c;
 	}
 
-	//generate graph for the p1, p2 and c
-	//precision/ recall/ fmeasure
-	private void generateGraph(){
-
-	}
 
 	private int randomNode(int nodeId, double[] pValue) {
         Random R 			= new Random();
@@ -54,6 +50,11 @@ public class GenerateRandomData {
 		Random R 			= new Random();
 		int prevRnd = 0;
 		outputFilePath  	= outputFilePath+"-"+p1+"_"+p2+"_c"+c+"_TrueNode"+ numTrueNodes+ ".txt";
+		File f = new File(outputFilePath);
+		if(f.exists()) {
+			System.out.println("Dup FIle");
+			return;
+		}
 		System.out.println("New File Path: " + outputFilePath);
 		
 		/** step0: data file */
