@@ -5,33 +5,41 @@ import edu.albany.cs.base.GenerateRandomData;
 import edu.albany.cs.base.PreRec;
 import edu.albany.cs.graphMP.GraphMP;
 import edu.albany.cs.scoreFuncs.Cd_detection;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-
-import edu.albany.cs.base.GenerateRandomData;
 import javafx.application.Application;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.Scene;
 import javafx.scene.SnapshotParameters;
-import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.image.WritableImage;
 import javafx.stage.Stage;
+import org.apache.commons.lang3.ArrayUtils;
 
 import javax.imageio.ImageIO;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 
 public class DensityCheck extends Application {
 
     private int verboseLevel = 1;
+    private int xSize = 10;
+    private double[] pre ;
+    private double[] recall;
+    private double[] fmeasure;
 
-    public void test_cd_detection(String variable, String inputFilePath) {
-        System.out.println("\n------------------------------" + variable + " test starts ------------------------------");
+    public DensityCheck() {
+        pre  = new double[xSize];
+        recall = new double[xSize];
+        fmeasure = new double[xSize];
+    }
+
+    public PreRec testDensityCheck(String variable, String inputFilePath) {
+        if(verboseLevel == 0)
+            System.out.println("\n------------------------------" + variable + " test starts ------------------------------");
         System.out.println("testing file path: " + inputFilePath);
         /** step0: data file */
         APDMInputFormat apdm = new APDMInputFormat(inputFilePath);
@@ -70,11 +78,15 @@ public class DensityCheck extends Application {
                 }
             }
         }
-        System.out.println("precision : " + bestPreRec.pre + " ; recall : " + bestPreRec.rec);
-        //System.out.println("Sparsity : " + sparsity );
-        System.out.println("result subgraph is: " + Arrays.toString(bestGraphMP.resultNodes_Tail));
-        System.out.println("true subgraph is: " + Arrays.toString(apdm.data.trueSubGraphNodes));
-        System.out.println("------------------------------ test ends --------------------------------\n");
+        if(verboseLevel == 0) {
+            System.out.println("precision : " + bestPreRec.pre + " ; recall : " + bestPreRec.rec);
+            //System.out.println("Sparsity : " + sparsity );
+            System.out.println("result subgraph is: " + Arrays.toString(bestGraphMP.resultNodes_Tail));
+            System.out.println("true subgraph is: " + Arrays.toString(apdm.data.trueSubGraphNodes));
+            System.out.println("------------------------------ test ends --------------------------------\n");
+        }
+
+        return bestPreRec;
     }
 
     @Override public void start(Stage stage) {
@@ -93,37 +105,22 @@ public class DensityCheck extends Application {
         series2.setName("Recall");
 
         XYChart.Series series3 = new XYChart.Series();
-        series3.setName("fMeasure");z
+        series3.setName("fMeasure");
 
-        series1.getData().add(new XYChart.Data(0.1, 23));
-        series1.getData().add(new XYChart.Data(0.2, 14));
-        series1.getData().add(new XYChart.Data(0.3, 15));
-        series1.getData().add(new XYChart.Data(0.4, 24));
-        series1.getData().add(new XYChart.Data(0.5, 34));
-        series1.getData().add(new XYChart.Data(0.6, 36));
-        series1.getData().add(new XYChart.Data(0.7, 22));
-        series1.getData().add(new XYChart.Data(0.8, 45));
-        series1.getData().add(new XYChart.Data(0.9, 43));
 
-        series2.getData().add(new XYChart.Data(0.1, 33));
-        series2.getData().add(new XYChart.Data(0.2, 34));
-        series2.getData().add(new XYChart.Data(0.3, 25));
-        series2.getData().add(new XYChart.Data(0.4, 44));
-        series2.getData().add(new XYChart.Data(0.5, 39));
-        series2.getData().add(new XYChart.Data(0.6, 16));
-        series2.getData().add(new XYChart.Data(0.7, 55));
-        series2.getData().add(new XYChart.Data(0.8, 54));
-        series2.getData().add(new XYChart.Data(0.9, 48));
+        System.out.println(ArrayUtils.toString(pre));
 
-        series3.getData().add(new XYChart.Data(0.1, 44));
-        series3.getData().add(new XYChart.Data(0.2, 35));
-        series3.getData().add(new XYChart.Data(0.3, 36));
-        series3.getData().add(new XYChart.Data(0.4, 33));
-        series3.getData().add(new XYChart.Data(0.5, 31));
-        series3.getData().add(new XYChart.Data(0.6,  26));
-        series3.getData().add(new XYChart.Data(0.7, 22));
-        series3.getData().add(new XYChart.Data(0.8, 25));
-        series3.getData().add(new XYChart.Data(0.9, 43));
+        for(int i = 0; i<xSize; i++){
+            series1.getData().add(new XYChart.Data((i+1)/10.0, this.pre[i]));
+        }
+
+        for(int i = 0; i<xSize; i++){
+            series2.getData().add(new XYChart.Data((i+1)/10.0, this.recall[i]));
+        }
+
+        for(int i = 0; i<xSize; i++){
+            series3.getData().add(new XYChart.Data((i+1)/10.0, this.fmeasure[i]));
+        }
 
         Scene scene  = new Scene(lineChart,800,600);
         lineChart.getData().addAll(series1, series2, series3);
@@ -143,49 +140,73 @@ public class DensityCheck extends Application {
         }
     }
 
-    public static void densityCheckGraph(String args[]){
+    public void densityCheckGraph(DensityCheck dc, String args[], String variable){
         int nodeSize = 50;
         int trueNodeSize = 30;
         double p1 = 0.2;
         double p2 = 0.4;
         double c = 0.5;
 
-        /*************************
-         * Test c
-         *************************/
-        for(int i = 1; i< 10; i++){
-            c = i/10.0;
-            //new GenerateRandomData( nodeSize, trueNodeSize, p1, p2, c).generate_data_random("data/BotData/APDM");
-            new DensityCheck().test_cd_detection("c", "data/BotData/APDM-" + p1 + "_" + p2 + "_c" + c + "_TrueNode30.txt");
-        }
-        launch(args);
+        PreRec bestPreRec = new PreRec();
 
-        /*************************
-         * Test p1
-         *************************/
-        p2 = 0.4;
-        c = 0.5;
-        for(int i = 1; i< 10; i++){
-            p1 = i/10.0;
-            //new GenerateRandomData( nodeSize, trueNodeSize, p1, p2, c).generate_data_random("data/BotData/APDM");
-            new DensityCheck().test_cd_detection("p1", "data/BotData/APDM-" + p1 + "_" + p2 + "_c" + c + "_TrueNode30.txt");
-        }
-        //launch(args);
+        if(variable.equals("c")){
 
-        /*************************
-         * Test p2
-         *************************/
-        p1 = 0.2;
-        c = 0.5;
-        for(int i = 1; i< 10; i++){
-            p2 = i/10.0;
-           // new GenerateRandomData( nodeSize, trueNodeSize, p1, p2, c).generate_data_random("data/BotData/APDM");
-            new DensityCheck().test_cd_detection("p2", "data/BotData/APDM-" + p1 + "_" + p2 + "_c" + c + "_TrueNode30.txt");
+            /*************************
+             * Test c
+             *************************/
+            for(int i = 0; i< xSize; i++){
+                c = (i+1)/10.0;
+                new GenerateRandomData( nodeSize, trueNodeSize, p1, p2, c).generate_data_random("data/BotData/APDM");
+                bestPreRec = dc.testDensityCheck("c", "data/BotData/APDM-" + p1 + "_" + p2 + "_c" + c + "_TrueNode30.txt");
+                this.fmeasure[i] = bestPreRec.fmeasure;
+                this.pre[i] = bestPreRec.pre;
+                this.recall[i] = bestPreRec.rec;
+            }
         }
-        //launch(args);
+        else if(variable.equals("p1")){
+            /*************************
+             * Test p1
+             *************************/
+            p2 = 0.4;
+            c = 0.5;
+            for(int i = 0; i< xSize; i++){
+                p1 = (i+1)/10.0;
+                new GenerateRandomData( nodeSize, trueNodeSize, p1, p2, c).generate_data_random("data/BotData/APDM");
+                bestPreRec = dc.testDensityCheck("p1", "data/BotData/APDM-" + p1 + "_" + p2 + "_c" + c + "_TrueNode30.txt");
+                this.fmeasure[i] = bestPreRec.fmeasure;
+                this.pre[i] = bestPreRec.pre;
+                this.recall[i] = bestPreRec.rec;
+                System.out.println(this.fmeasure[i]+""+ this.pre[i]+""+ this.recall[i]);
+            }
+        }
+        else if(variable.equals("p2")){
+            /*************************
+             * Test p2
+             *************************/
+            p1 = 0.2;
+            c = 0.5;
+            for(int i = 0; i< xSize; i++){
+                p2 = (i+1)/10.0;
+                new GenerateRandomData( nodeSize, trueNodeSize, p1, p2, c).generate_data_random("data/BotData/APDM");
+                bestPreRec = dc.testDensityCheck("p2", "data/BotData/APDM-" + p1 + "_" + p2 + "_c" + c + "_TrueNode30.txt");
+                this.fmeasure[i] = bestPreRec.fmeasure;
+                this.pre[i] = bestPreRec.pre;
+                this.recall[i] = bestPreRec.rec;
+            }
+        }
     }
 
     public static void main(String args[]) {
-        densityCheckGraph(args);
+        DensityCheck dc = new DensityCheck();
+        dc.densityCheckGraph(dc, args, "p1");
+        launch(args);
+
+        /*
+        dc.densityCheckGraph(args, "p2");
+        launch(args);
+
+        dc.densityCheckGraph(args, "c");
+        launch(args);
+        */
     }
 }
