@@ -1,15 +1,16 @@
 package edu.albany.cs.base;
 
 import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.math3.random.RandomDataGenerator;
 import org.apache.commons.math3.stat.StatUtils;
-
 import java.io.File;
+import java.io.IOException;
 import java.util.*;
-
 
 public class GenerateRandomData {
 	int n;
 	int numTrueNodes;
+    int maxEdgeSize;
 	double p1;	//percentage for the normal nodes
 	double p2;	//percentage for the abnormal nodes
 	double c;	//constant for the nodes weight
@@ -20,8 +21,27 @@ public class GenerateRandomData {
 		this.p1 = p1;
 		this.p2 = p2;
 		this.c = c;
+        int meSize = 300;
+        maxEdgeSize = meSize-(numTrueNodes-1)*2-2;
 	}
 
+	private int randomNode(double[] pValue) {
+		Random R 			= new Random();
+
+		double sumPvalues = StatUtils.sum(pValue);
+		double p = R.nextDouble();
+		double cumulativeProbability = 0.0;
+		int item = -1;
+
+		for (int i = 0; i< n; i++) {
+			cumulativeProbability += (pValue[i]/sumPvalues);
+			if (p <= cumulativeProbability ) {
+				item = i;
+				break;
+			}
+		}
+		return item;
+	}
 
 	private int randomNode(int nodeId, double[] pValue) {
         Random R 			= new Random();
@@ -42,8 +62,66 @@ public class GenerateRandomData {
 		return item;
 	}
 
+	private ArrayList<Edge> generateEdges(int[] trueNodes, double[] pValue ){
+
+		List<String> doneEdges  = new ArrayList<String>();
+		ArrayList<Edge> edges 	= new ArrayList<Edge>();
+
+        //add trueNodes
+        int node2;
+        for (int node1 = 0; node1<n-1; node1++){
+            node2 = node1+1;
+            String e = node1+","+node2;
+            String reE = node1+","+node2;
+
+            edges.add(new Edge(node1, node2, 0, 1.0));
+            edges.add(new Edge(node2, node1, 0, 1.0));
+            doneEdges.add(e);
+            doneEdges.add(reE);
+        }
+
+		//add all nodes
+		for (int node1 = 0; node1<trueNodes.length-1; node1++){
+            node2 = trueNodes[node1+1];
+            String e = node1+","+node2;
+            String reE = node1+","+node2;
+
+
+            if (!doneEdges.contains(e)) {
+                edges.add(new Edge(node1, node2, 0, 1.0));
+                doneEdges.add(e);
+            }
+            if (!doneEdges.contains(reE)) {
+                edges.add(new Edge(node2, node1, 0, 1.0));
+                doneEdges.add(reE);
+            }
+        }
+
+        int start = trueNodes[numTrueNodes-1];
+        int node1 = start;
+        //add random edges
+		for (int i = 0; i< maxEdgeSize; ){
+            node2 = randomNode(node1, pValue);
+
+            String e = node1+","+node2;
+            String reE = node1+","+node2;
+
+            if (!doneEdges.contains(e)) {
+                edges.add(new Edge(node1, node2, 0, 1.0));
+                doneEdges.add(e);
+                i++;
+            }
+            if (!doneEdges.contains(reE)) {
+                edges.add(new Edge(node2, node1, 0, 1.0));
+                doneEdges.add(reE);
+                i++;
+            }
+            node1 = node2;
+		}
+		return edges;
+	}
+
 	public void generate_data_random(String outputFilePath) {
-		int min_edge 		= 5; 	//minimum edge from one node
 		int numTrueNodes 	= 30;
 		double alpha		= 0.05;
 		int edge_size = n*4;
@@ -91,49 +169,8 @@ public class GenerateRandomData {
 		
 		
 		/** step3: Generate Edges */
+		edges = generateEdges(trueNodes, pValue);
 
-		List<String> doneEdges = new ArrayList<String>();
-		for (int node1 = 0; node1< n; node1++){
-			for(int j = 0; j< min_edge; j++){
-
-				int node2 = randomNode(node1, pValue);
-
-				String e = node1+","+node2;
-				String reE = node1+","+node2;
-
-				if (!doneEdges.contains(e)) {
-					edges.add(new Edge(node1, node2, 0, 1.0));
-					doneEdges.add(e);
-				}
-				if (!doneEdges.contains(reE)) {
-					edges.add(new Edge(node2, node1, 0, 1.0));
-					doneEdges.add(reE);
-				}
-			}
-		}
-/*
-		List<String> doneEdges = new ArrayList<String>();
-		for (int i = 0; i < edge_size; i++){
-
-
-			int node1 = randomNode(-1, pValue);
-			int node2 = randomNode(node1, pValue);
-
-			String e = node1+","+node2;
-			String reE = node1+","+node2;
-
-			if (!doneEdges.contains(e)) {
-				edges.add(new Edge(node1, node2, 0, 1.0));
-				doneEdges.add(e);
-			}
-			if (!doneEdges.contains(reE)) {
-				edges.add(new Edge(node2, node1, 0, 1.0));
-				doneEdges.add(reE);
-				i++;
-			}
-
-		}
-*/
 		Collections.sort(edges, new Comparator<Edge>() {
 		    @Override
 		    public int compare(Edge e2, Edge e1)
@@ -179,7 +216,7 @@ public class GenerateRandomData {
 	
 	public static void main(String args[]) {
 		new GenerateRandomData(
-				50 /*Node size*/,
+				100 /*Node size*/,
 				30/*True node size*/,
 				0.2/*p1*/,
 				0.4/*p2*/,

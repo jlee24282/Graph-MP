@@ -26,7 +26,7 @@ import java.util.Arrays;
 public class DensityCheck extends Application {
 
     private int verboseLevel = 1;
-    private int xSize = 10;
+    private int xSize = 6;
     private double[] pre ;
     private double[] recall;
     private double[] fmeasure;
@@ -122,10 +122,11 @@ public class DensityCheck extends Application {
         lineChart.getData().addAll(series1, series2, series3);
 
         stage.setScene(scene);
-       //stage.show();
+       stage.show();
         saveAsPng(lineChart, "test-"+testVariable+ ".png");
 
         //----------------------------------------------
+
          testVariable ="p2";
 
         densityCheckGraph(this,testVariable);
@@ -161,7 +162,7 @@ public class DensityCheck extends Application {
     }
 
     public void densityCheckGraph(DensityCheck dc, String variable){
-        int nodeSize = 50;
+        int nodeSize = 100;
         int trueNodeSize = 30;
         double p1 = 0.2;
         double p2 = 0.4;
