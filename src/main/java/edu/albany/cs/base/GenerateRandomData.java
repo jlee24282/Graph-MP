@@ -21,20 +21,26 @@ public class GenerateRandomData {
 		this.p1 = p1;
 		this.p2 = p2;
 		this.c = c;
-        int meSize = 300;
-        maxEdgeSize = meSize-(numTrueNodes-1)*2-2;
+        maxEdgeSize = 600;
 	}
 
-	private int randomNode(double[] pValue) {
+	private int randomNode(int nodeId,double[] pValue) {
 		Random R 			= new Random();
-
-		double sumPvalues = StatUtils.sum(pValue);
 		double p = R.nextDouble();
 		double cumulativeProbability = 0.0;
 		int item = -1;
+		double[] boostP = new double[n];
+		//Boost
+		for(int i = 0; i<n; i++){
+			if(pValue[i] > 0.5)
+				boostP[i] = pValue[i]*10000.0;
+			else
+				boostP[i] = pValue[i]/10000.0;
+		}
+		double sumPvalues = StatUtils.sum(boostP);
 
 		for (int i = 0; i< n; i++) {
-			cumulativeProbability += (pValue[i]/sumPvalues);
+			cumulativeProbability += (boostP[i]/sumPvalues);
 			if (p <= cumulativeProbability ) {
 				item = i;
 				break;
@@ -43,29 +49,11 @@ public class GenerateRandomData {
 		return item;
 	}
 
-	private int randomNode(int nodeId, double[] pValue) {
-        Random R 			= new Random();
-
-		double sumPvalues = StatUtils.sum(pValue);
-		double p = R.nextDouble();
-		double cumulativeProbability = 0.0;
-		int item = -1;
-
-		for (int i = 0; i< pValue.length; i++) {
-			cumulativeProbability += (pValue[i]/sumPvalues);
-			if (p <= cumulativeProbability && i != nodeId) {
-				item = i;
-				break;
-			}
-		}
-
-		return item;
-	}
-
 	private ArrayList<Edge> generateEdges(int[] trueNodes, double[] pValue ){
 
 		List<String> doneEdges  = new ArrayList<String>();
 		ArrayList<Edge> edges 	= new ArrayList<Edge>();
+        int edgeCount = 0;
 
         //add trueNodes
         int node2;
@@ -74,8 +62,8 @@ public class GenerateRandomData {
             String e = node1+","+node2;
             String reE = node1+","+node2;
 
-            edges.add(new Edge(node1, node2, 0, 1.0));
-            edges.add(new Edge(node2, node1, 0, 1.0));
+            edges.add(new Edge(node1, node2, 0, 1.0)); edgeCount++;
+            edges.add(new Edge(node2, node1, 0, 1.0)); edgeCount++;
             doneEdges.add(e);
             doneEdges.add(reE);
         }
@@ -86,21 +74,20 @@ public class GenerateRandomData {
             String e = node1+","+node2;
             String reE = node1+","+node2;
 
-
             if (!doneEdges.contains(e)) {
                 edges.add(new Edge(node1, node2, 0, 1.0));
-                doneEdges.add(e);
+                doneEdges.add(e); edgeCount++;
             }
             if (!doneEdges.contains(reE)) {
                 edges.add(new Edge(node2, node1, 0, 1.0));
-                doneEdges.add(reE);
+                doneEdges.add(reE); edgeCount++;
             }
         }
 
-        int start = trueNodes[numTrueNodes-1];
+        int start = trueNodes[0];
         int node1 = start;
         //add random edges
-		for (int i = 0; i< maxEdgeSize; ){
+		while (edgeCount< maxEdgeSize ){
             node2 = randomNode(node1, pValue);
 
             String e = node1+","+node2;
@@ -109,30 +96,33 @@ public class GenerateRandomData {
             if (!doneEdges.contains(e)) {
                 edges.add(new Edge(node1, node2, 0, 1.0));
                 doneEdges.add(e);
-                i++;
+                edgeCount++;
             }
             if (!doneEdges.contains(reE)) {
                 edges.add(new Edge(node2, node1, 0, 1.0));
                 doneEdges.add(reE);
-                i++;
+                edgeCount++;
             }
             node1 = node2;
 		}
+        Collections.sort(edges, new Comparator<Edge>() {
+            @Override
+            public int compare(Edge e2, Edge e1)
+            {
+                return  e2.i.compareTo(e1.i);
+            }
+        });
 		return edges;
 	}
 
 	public void generate_data_random(String outputFilePath) {
-		int numTrueNodes 	= 30;
-		double alpha		= 0.05;
-		int edge_size = n*4;
 		Random R 			= new Random();
-		int prevRnd = 0;
 		outputFilePath  	= outputFilePath+"-"+p1+"_"+p2+"_c"+c+"_TrueNode"+ numTrueNodes+ ".txt";
 		File f = new File(outputFilePath);
-		if(f.exists()) {
+		/*if(f.exists()) {
 			System.out.println("Dup FIle");
 			return;
-		}
+		}*/
 		System.out.println("New File Path: " + outputFilePath);
 		
 		/** step0: data file */
@@ -152,7 +142,6 @@ public class GenerateRandomData {
 			else
 				pValue[i] = p1;
 		}
-
 	    
 		/** step2: Generate Nodes with weight*/
 		for (int i = 0; i < n; i++){
@@ -171,14 +160,6 @@ public class GenerateRandomData {
 		/** step3: Generate Edges */
 		edges = generateEdges(trueNodes, pValue);
 
-		Collections.sort(edges, new Comparator<Edge>() {
-		    @Override
-		    public int compare(Edge e2, Edge e1)
-		    {
-		        return  e2.i.compareTo(e1.i);
-		    }
-		});
-		
 		/** step3: Generate File */
 		APDMInputFormat.generateAPDMFile_bot("Test", "RandomData", edges, userWeight,
 				counts,  trueSubGraphEdges,  outputFilePath);

@@ -26,7 +26,7 @@ import java.util.Arrays;
 public class DensityCheck extends Application {
 
     private int verboseLevel = 1;
-    private int xSize = 6;
+    private int xSize = 10;
     private double[] pre ;
     private double[] recall;
     private double[] fmeasure;
@@ -122,7 +122,6 @@ public class DensityCheck extends Application {
         lineChart.getData().addAll(series1, series2, series3);
 
         stage.setScene(scene);
-       stage.show();
         saveAsPng(lineChart, "test-"+testVariable+ ".png");
 
         //----------------------------------------------
@@ -132,9 +131,14 @@ public class DensityCheck extends Application {
         densityCheckGraph(this,testVariable);
         xAxis.setLabel(testVariable);
         lineChart.getData().removeAll(series1, series2, series3);
-        series1 = new XYChart.Series();
-        series2 = new XYChart.Series();
+         series1 = new XYChart.Series();
+        series1.setName("Precision");
+
+         series2 = new XYChart.Series();
+        series2.setName("Recall");
+
         series3 = new XYChart.Series();
+        series3.setName("fMeasure");
 
         for(int i = 0; i<xSize; i++)
             series1.getData().add(new XYChart.Data((i+1)/10.0, this.pre[i]));
@@ -146,8 +150,8 @@ public class DensityCheck extends Application {
          //scene  = new Scene(lineChart,800,600);
         lineChart.getData().addAll(series1, series2, series3);
         stage.setScene(scene);
-        //stage.show();
         saveAsPng(lineChart, "test-"+testVariable+ ".png");
+        System.out.println("------------------------------ Fin --------------------------------\n");
 
     }
 
@@ -219,33 +223,6 @@ public class DensityCheck extends Application {
     }
 
     public static void main(String args[]) {
-        /*
-        int nodeSize = 50;
-        int trueNodeSize = 30;
-        double p1 = 0.2;
-        double p2 = 0.4;
-        double c = 0.5;
-        int xSize = 10;
-
-
-        for(int i = 0; i< xSize; i++){
-            c = (i+1)/10.0;
-            new GenerateRandomData( nodeSize, trueNodeSize, p1, p2, c).generate_data_random("data/BotData/APDM");
-        }
-
-        p2 = 0.4;    c = 0.5;
-        for(int i = 0; i< xSize; i++){
-            p1 = (i+1)/10.0;
-            new GenerateRandomData( nodeSize, trueNodeSize, p1, p2, c).generate_data_random("data/BotData/APDM");
-        }
-
-        p1 = 0.2;   c = 0.5;
-        for(int i = 0; i< xSize; i++){
-            p2 = (i+1)/10.0;
-            new GenerateRandomData( nodeSize, trueNodeSize, p1, p2, c).generate_data_random("data/BotData/APDM");
-        }
-        */
-
         launch(args);
     }
 }
