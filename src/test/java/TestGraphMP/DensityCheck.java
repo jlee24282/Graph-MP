@@ -14,7 +14,6 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.image.WritableImage;
 import javafx.stage.Stage;
-import org.apache.commons.lang3.ArrayUtils;
 
 import javax.imageio.ImageIO;
 import java.io.File;
@@ -122,6 +121,7 @@ public class DensityCheck extends Application {
         lineChart.getData().addAll(series1, series2, series3);
 
         stage.setScene(scene);
+        //stage.show();
         saveAsPng(lineChart, "test-"+testVariable+ ".png");
 
         //----------------------------------------------
