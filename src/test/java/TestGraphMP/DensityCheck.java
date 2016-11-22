@@ -48,7 +48,7 @@ public class DensityCheck extends Application {
         /** step1: score function */
         //graphWeightedAdjList
         //System.out.println(apdm.data.graphWeightedAdjList);
-        Cd_detection func = new Cd_detection(apdm.data.graphWeightedAdjList);
+        Cd_detection func = new Cd_detection(apdm.data.graphAdjList);
 
 //		System.out.print(apdm.data.graphAdjList.get(0));
 //		Utils.stop();
@@ -201,7 +201,7 @@ public class DensityCheck extends Application {
                 this.fmeasure[i] = bestPreRec.fmeasure;
                 this.pre[i] = bestPreRec.pre;
                 this.recall[i] = bestPreRec.rec;
-                System.out.println(this.fmeasure[i]+""+ this.pre[i]+""+ this.recall[i]);
+                System.out.println(this.fmeasure[i]+" "+ this.pre[i]+" "+ this.recall[i]);
             }
         }
         else if(variable.equals("p2")){
@@ -217,7 +217,7 @@ public class DensityCheck extends Application {
                 this.fmeasure[i] = bestPreRec.fmeasure;
                 this.pre[i] = bestPreRec.pre;
                 this.recall[i] = bestPreRec.rec;
-                System.out.println(this.fmeasure[i]+""+ this.pre[i]+""+ this.recall[i]);
+                System.out.println(this.fmeasure[i]+" "+ this.pre[i]+" "+ this.recall[i]);
             }
         }
     }

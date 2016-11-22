@@ -19,8 +19,26 @@ public class Cd_detection implements Function {
 	EigenDecomposition ed;
 	/** vector size */
 	private final int n;
-
+/*
 	public Cd_detection(ArrayList<ArrayList<Double>> adj_list) {
+		this.funcID = FuncType.Unknown;
+		this.n = adj_list.size();
+		A = new double[n][n];
+		AT = new double[n][n];
+
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < n; j++) {
+				if (adj_list.get(i).contains(j)) {
+					A[i][j] = 1.0;
+					AT[j][i] = 1.0;
+				} else {
+					A[i][j] = 0.0D;
+					AT[j][i] = 0.0D;
+				}
+			}
+		}
+	}*/
+	public Cd_detection(ArrayList<ArrayList<Integer>> adj_list) {
 		this.funcID = FuncType.Unknown;
 		this.n = adj_list.size();
 		A = new double[n][n];

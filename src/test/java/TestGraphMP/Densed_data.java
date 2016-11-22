@@ -1,18 +1,18 @@
 package TestGraphMP;
 
-import java.util.ArrayList;
-import java.util.Random;
-import java.util.Collections;
-import java.util.Comparator;
-
 import edu.albany.cs.base.APDMInputFormat;
 import edu.albany.cs.base.Edge;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Random;
 
 
 public class Densed_data {
 
 	public void generate_data(String inputFilePath) {
-		int max_edge = 50;
+		int max_edge = 1000;
 		
 		System.out.println("testing file path: " + inputFilePath);
 		/** step0: data file */
@@ -62,7 +62,7 @@ public class Densed_data {
 	}
 
 	public static void main(String args[]) {
-		//new Densed_data().generate_data("data/GridData/APDM-GridData-100_noise_0.0_trueSubSize_30_4.txt");
-		new Densed_data().generate_data("data/BotData/APDM-min_edge_7_TrueNode_10.txt");
+		new Densed_data().generate_data("data/GridData/APDM-GridData-100_noise_0.0_trueSubSize_30_4.txt");
+		//new Densed_data().generate_data("data/BotData/APDM-min_edge_7_TrueNode_10.txt");
 	}
 }

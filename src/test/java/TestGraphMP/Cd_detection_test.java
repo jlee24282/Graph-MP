@@ -25,7 +25,7 @@ public class Cd_detection_test {
 		/** step1: score function */
 		//graphWeightedAdjList
 		//System.out.println(apdm.data.graphWeightedAdjList);
-		Cd_detection func = new Cd_detection(apdm.data.graphWeightedAdjList);
+		Cd_detection func = new Cd_detection(apdm.data.graphAdjList);
 	
 //		System.out.print(apdm.data.graphAdjList.get(0));
 //		Utils.stop();
@@ -63,8 +63,8 @@ public class Cd_detection_test {
 	}
 
 	public static void main(String args[]) {
-		new Cd_detection_test().test_cd_detection("data/BotData/APDM-min_edge_5_TrueNode_30.txt");
-		//new Cd_detection_test().test_cd_detection("data/DensedData/APDM-GridData-100_noise_0.0_trueSubSize_30_4");
+		//new Cd_detection_test().test_cd_detection("data/BotData/APDM-min_edge_5_TrueNode_30.txt");
+		new Cd_detection_test().test_cd_detection("data/DensedData/APDM-GridData-100_noise_0.0_trueSubSize_30_4");
 		//new TestToyExample().testToyExample("data/SimulationData/Protest/APDM-GridData-100-precen_0.1-noise_0-numCC_1_0.txt");
 		//new TestToyExample().testToyExample("data/GridDataEBP/APDM-GridData-100_noise_0.0_trueSubSize_30_0.txt");
 	}

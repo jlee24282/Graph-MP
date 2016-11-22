@@ -20,7 +20,7 @@ public class GenerateRandomData {
 		this.p1 = p1;
 		this.p2 = p2;
 		this.c = c;
-        maxEdgeSize = 600;
+        maxEdgeSize = 400;
 	}
 
 	private int randomNode(int nodeId,double[] pValue) {
@@ -32,17 +32,19 @@ public class GenerateRandomData {
 		//Boost
 		for(int i = 0; i<n; i++){
 			if(pValue[i] > 0.5)
-				boostP[i] = pValue[i]*10000.0;
+				boostP[i] = pValue[i]*1.0;
 			else
-				boostP[i] = pValue[i]/10000.0;
+				boostP[i] = pValue[i]/1.0;
 		}
 		double sumPvalues = StatUtils.sum(boostP);
 
-		for (int i = 0; i< n; i++) {
-			cumulativeProbability += (boostP[i]/sumPvalues);
-			if (p <= cumulativeProbability ) {
-				item = i;
-				break;
+		while(item == -1) {
+			for (int i = 0; i < n; i++) {
+				cumulativeProbability += (boostP[i] / sumPvalues);
+				if (p <= cumulativeProbability && i != nodeId) {
+					item = i;
+					break;
+				}
 			}
 		}
 		return item;
