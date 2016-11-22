@@ -175,7 +175,6 @@ public class DensityCheck extends Application {
         PreRec bestPreRec = new PreRec();
 
         if(variable.equals("c")){
-
             /*************************
              * Test c
              *************************/
