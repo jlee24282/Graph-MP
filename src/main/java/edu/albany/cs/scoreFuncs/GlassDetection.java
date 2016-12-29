@@ -13,28 +13,22 @@ import java.util.Random;
 public class GlassDetection implements Function {
 
     private final FuncType funcID;
-    private double[][] A;
-    private double[][] AT;
+    private double[] PValues;
+    private double[][] c;
 
     EigenDecomposition ed;
     /** vector size */
     private final int n;
-    public GlassDetection(ArrayList<ArrayList<Integer>> adj_list) {
-        this.funcID = FuncType.Unknown;
-        this.n = adj_list.size();
-        A = new double[n][n];
-        AT = new double[n][n];
+    public GlassDetection(double[] pValue) {
+        this.PValues = pValue;
+        funcID = FuncType.Unknown;
 
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                if (adj_list.get(i).contains(j)) {
-                    A[i][j] = 1.0;
-                    AT[j][i] = 1.0;
-                } else {
-                    A[i][j] = 0.0D;
-                    AT[j][i] = 0.0D;
-                }
-            }
+        n = PValues.length;
+        c = new double[n][n];
+        //Filling up C
+        for(int k = 0; k < n; k++){
+            Arrays.fill(c[k],0.0D);
+            c[k][k] = PValues[k];
         }
     }
 
@@ -45,34 +39,7 @@ public class GlassDetection implements Function {
      */
     @Override
     public double[] getGradient(double[] x) {
-        double[] gradient = new double[n];
-
-
-        double XtAX = 0.0;
-        for (int i = 0; i < n; i++) {
-            XtAX += new ArrayRealVector(x).dotProduct(new ArrayRealVector(AT[i])) * x[i];
-        }
-
-        double XtA = 0.0;
-        for (int i = 0; i < n; i++) {
-            XtA += new ArrayRealVector(x).dotProduct(new ArrayRealVector(AT[i]));
-        }
-
-        double AX = 0.0;
-        for (int i = 0; i < n; i++) {
-            AX += new ArrayRealVector(x).dotProduct(new ArrayRealVector(A[i]));
-        }
-
-
-        for (int i = 0; i < n; i++) {
-            gradient[i] = (((new ArrayRealVector(x).dotProduct(new ArrayRealVector(A[i]))
-                    + new ArrayRealVector(x).dotProduct(new ArrayRealVector(AT[i]))) / StatUtils.sum(x))
-                    - (XtAX / (StatUtils.sum(x) * StatUtils.sum(x))));
-//			gradient[i] = (( AX + XtA ) * StatUtils.sum(x) / StatUtils.sum(x))
-//					- (XtAX * n / (StatUtils.sum(x) * StatUtils.sum(x)));
-        }
-        // System.out.println(Arrays.toString(gradient));
-        return gradient;
+        return null;
     }
 
     /**
@@ -83,30 +50,7 @@ public class GlassDetection implements Function {
     @Override
 
     public double getFuncValue(double[] x) {
-        double func_value = 0.0;
-        double numerator = 0.0;
-        double denominator = StatUtils.sum(x);
-
-        for (int i = 0; i < n; i++) {
-            numerator += (new ArrayRealVector(x).dotProduct(new ArrayRealVector(AT[i]))) * x[i];
-        }
-
-        if (denominator == 0)
-            func_value = 0.0;
-        else
-            func_value = numerator / denominator;
-
-//		if (x == null || weight == null || x.length != weight.length) {
-//			new IllegalArgumentException("Error : Invalid parameters ...");
-//			System.exit(0);
-//		}
-
-        if (!Double.isFinite(func_value)) {
-            System.out.println(funcID + " Error : elevated mean scan stat is not a real value, f is " + func_value);
-            System.exit(0);
-        }
-        // System.out.print(func_value + " ");
-        return func_value;
+        return null;
     }
 
     @Override
