@@ -1,9 +1,7 @@
 
 package edu.albany.cs.scoreFuncs;
 
-import org.apache.commons.math3.linear.ArrayRealVector;
 import org.apache.commons.math3.linear.EigenDecomposition;
-import org.apache.commons.math3.stat.StatUtils;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -50,7 +48,7 @@ public class GlassDetection implements Function {
     @Override
 
     public double getFuncValue(double[] x) {
-        return null;
+        return 0.0;
     }
 
     @Override

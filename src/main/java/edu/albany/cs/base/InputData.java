@@ -49,7 +49,10 @@ public class InputData {
     // identity base
     public double[] identityb;
     public double[] smallb;
-    
+
+    // for pixel data
+    public double[][] greyValues;
+
     //for bot detection
     public double[] user;
     public double[] tweets;
