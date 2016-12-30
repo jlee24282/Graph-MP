@@ -67,5 +67,6 @@ public class Cd_detection_test {
 		new Cd_detection_test().test_cd_detection("data/DensedData/APDM-GridData-100_noise_0.0_trueSubSize_30_4");
 		//new TestToyExample().testToyExample("data/SimulationData/Protest/APDM-GridData-100-precen_0.1-noise_0-numCC_1_0.txt");
 		//new TestToyExample().testToyExample("data/GridDataEBP/APDM-GridData-100_noise_0.0_trueSubSize_30_0.txt");
+		//new Cd_detection_test().test_cd_detection("data/GridDataEBP/APDM-GridData-100_noise_0.0_trueSubSize_30_0.txt");
 	}
 }

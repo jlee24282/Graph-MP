@@ -23,7 +23,7 @@ public class TestToyExample {
 		ArrayList<Double> edgeCosts = apdm.data.identityEdgeCosts;
 		/** step1: score function */
 
-		G_toy func = new G_toy(apdm.data.PValue);
+		G_toy func = new G_toy(apdm.data.userWeights);
 //		System.out.print(StatUtils.sum(apdm.data.PValue));
 //		Utils.stop();
 		/** step2: optimization */
@@ -55,8 +55,9 @@ public class TestToyExample {
 	}
 
 	public static void main(String args[]) {
-		new TestToyExample().testToyExample("data/GridData/APDM-GridData-100_noise_0.0_trueSubSize_30_4.txt");
+		//new TestToyExample().testToyExample("data/GridData/APDM-GridData-100_noise_0.0_trueSubSize_30_4.txt");
 		//new TestToyExample().testToyExample("data/SimulationData/Protest/APDM-GridData-100-precen_0.1-noise_0-numCC_1_0.txt");
 		//new TestToyExample().testToyExample("data/GridDataEBP/APDM-GridData-100_noise_0.0_trueSubSize_30_0.txt");
+		new TestToyExample().testToyExample("data/PixelData/APDM-10X11_C40.0_trueSubSize_30.txt");
 	}
 }

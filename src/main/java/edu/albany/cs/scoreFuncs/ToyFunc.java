@@ -1,16 +1,15 @@
 
 package edu.albany.cs.scoreFuncs;
+import org.apache.commons.math3.linear.Array2DRowRealMatrix;
+import org.apache.commons.math3.linear.ArrayRealVector;
+import org.apache.commons.math3.linear.EigenDecomposition;
+import org.apache.commons.math3.linear.RealMatrix;
+import org.apache.commons.math3.stat.StatUtils;
+
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Random;
-
-import org.apache.commons.math3.stat.StatUtils;
-import org.apache.commons.math3.linear.*;
-
-
-import edu.albany.cs.base.ArrayIndexSort;
 
 public class ToyFunc implements Function {
 
@@ -244,7 +243,10 @@ public class ToyFunc implements Function {
 			BigDecimal oldFuncValue = new BigDecimal(func.getFuncValue(dx));
 
 			for (int i = 0; i < x.length; i++) {
+				//Gradient descend
 				x[i] = x[i].subtract(gamma.multiply(gradient[i]));
+				//Gradient ascend
+				//x[i] = x[i].add(gamma.multiply(gradient[i]));
 			}
 			dx = new double[x.length];
 			for (int i = 0; i < x.length; i++) {

@@ -3,7 +3,7 @@ package TestGraphMP;
 import edu.albany.cs.base.APDMInputFormat;
 import edu.albany.cs.base.PreRec;
 import edu.albany.cs.graphMP.GraphMP;
-import edu.albany.cs.scoreFuncs.GlassDetection;
+import edu.albany.cs.scoreFuncs.ToyFunc;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -23,8 +23,9 @@ public class GlassDetectionTest {
         ArrayList<Double> edgeCosts = apdm.data.identityEdgeCosts;
         /** step1: score function */
 
-        GlassDetection func = new GlassDetection(apdm.data.PValue);
-//		System.out.print(StatUtils.sum(apdm.data.PValue));
+        //GlassDetection func = new GlassDetection(apdm.data.PValue);
+        ToyFunc func = new ToyFunc(apdm.data.PValue);
+
 //		Utils.stop();
         /** step2: optimization */
         int[] candidateS = new int[] { 3, 4, 5,6,7,8,9,10,11,12, 13, 14, 15, 16};
@@ -55,8 +56,8 @@ public class GlassDetectionTest {
     }
 
     public static void main(String args[]) {
-        new TestToyExample().testToyExample("data/GridData/APDM-GridData-100_noise_0.0_trueSubSize_30_4.txt");
+        new GlassDetectionTest().testToyExample("data/PixelData/APDM-10X11_C40.0_trueSubSize_30.txt");
         //new TestToyExample().testToyExample("data/SimulationData/Protest/APDM-GridData-100-precen_0.1-noise_0-numCC_1_0.txt");
-        //new TestToyExample().testToyExample("data/GridDataEBP/APDM-GridData-100_noise_0.0_trueSubSize_30_0.txt");
+        //new GlassDetectionTest().testToyExample("data/GridDataEBP/APDM-GridData-100_noise_0.0_trueSubSize_30_0.txt");
     }
 }

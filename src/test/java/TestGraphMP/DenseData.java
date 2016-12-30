@@ -9,7 +9,7 @@ import java.util.Comparator;
 import java.util.Random;
 
 
-public class Densed_data {
+public class DenseData {
 
 	public void generate_data(String inputFilePath) {
 		int max_edge = 1000;
@@ -62,7 +62,7 @@ public class Densed_data {
 	}
 
 	public static void main(String args[]) {
-		new Densed_data().generate_data("data/GridData/APDM-GridData-100_noise_0.0_trueSubSize_30_4.txt");
-		//new Densed_data().generate_data("data/BotData/APDM-min_edge_7_TrueNode_10.txt");
+		new DenseData().generate_data("data/GridData/APDM-GridData-100_noise_0.0_trueSubSize_30_4.txt");
+		//new DenseData().generate_data("data/BotData/APDM-min_edge_7_TrueNode_10.txt");
 	}
 }

@@ -188,6 +188,7 @@ public class Cd_detection implements Function {
 			BigDecimal oldFuncValue = new BigDecimal(func.getFuncValue(dx));
 
 			for (int i = 0; i < x.length; i++) {
+				//gradient ascend
 				x[i] = x[i].add(gamma.multiply(gradient[i]));
 			}
 			dx = new double[x.length];

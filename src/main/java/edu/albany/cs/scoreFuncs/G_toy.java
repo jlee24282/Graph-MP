@@ -1,12 +1,12 @@
 package edu.albany.cs.scoreFuncs;
 
+import org.apache.commons.math3.linear.ArrayRealVector;
+import org.apache.commons.math3.stat.StatUtils;
+
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
-
-import org.apache.commons.math3.linear.ArrayRealVector;
-import org.apache.commons.math3.stat.StatUtils;
 
 public class G_toy implements Function{
 	
@@ -14,6 +14,7 @@ public class G_toy implements Function{
 	private int n;
 	private final FuncType funcID;
 	private double[][] c;
+
 	public G_toy(double[] pValue){
 		this.PValues = pValue;
 		funcID = FuncType.Unknown;
