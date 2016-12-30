@@ -42,25 +42,24 @@ public class GenerateMNSingleGraph {
 
         int current = 0;
         for (int i = 0; i < M*N; i++){
-            for(int j = 0; j< M*N; j++) {
-                if(i != j) {
-                    if (j - 1 >= 0 && !(j % N == 0)) {
-                        System.out.println("j-1" + current + " " + " ");
-                        graph[i][j - 1] = weight;
+
+                    if (i - 1 >= 0 && !(i % N == 0)) {
+                        graph[i][i - 1] = weight;
+                        graph[i-1][i] = weight;
                     }
-                    if (j + 1 < M * N && !(j % N == N - 1)) {
-                        System.out.println("j+1" + current+ " " + " ");
-                        graph[i][j + 1] = weight;
+                    if (i + 1 < M * N && !(i % N == N - 1)) {
+                        graph[i][i + 1] = weight;
+                        graph[i+1][i] = weight;
                     }
-                    if (j - N >= 0 && !(j % N == 0)) {
-                        System.out.println("j-N" + current+ " " + " ");
-                        graph[i][j - N] = weight;
+                    if (i - N >= 0 && !(i % N == 0)) {
+                        graph[i][i - N] = weight;
+                        graph[i-N][i] = weight;
                     }
-                    if (j + N < M * N && !(j % N == N - 1)) {
-                        System.out.println("j+N" + current+ " " + " ");
-                        graph[i][j + N] = weight;
+                    if (i + N < M * N && !(i % N == N - 1)) {
+                        graph[i][i + N] = weight;
+                        graph[i+N][i] = weight;
                     }
-                }
+
                 current++;
                 /*
                 if (i != j) {
@@ -126,7 +125,7 @@ public class GenerateMNSingleGraph {
 
                     }
                 }*/
-            }
+
         }
 
         return graph;
