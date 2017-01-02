@@ -11,23 +11,18 @@ import java.util.Random;
 public class GlassDetection implements Function {
 
     private final FuncType funcID;
-    private double[] PValues;
+    private double[][] greyValue;
     private double[][] c;
 
     EigenDecomposition ed;
     /** vector size */
     private final int n;
-    public GlassDetection(double[] pValue) {
-        this.PValues = pValue;
+    public GlassDetection(double[][] greyValue) {
+        this.greyValue = greyValue;
         funcID = FuncType.Unknown;
 
-        n = PValues.length;
+        n = greyValue.length;
         c = new double[n][n];
-        //Filling up C
-        for(int k = 0; k < n; k++){
-            Arrays.fill(c[k],0.0D);
-            c[k][k] = PValues[k];
-        }
     }
 
     /**
@@ -37,6 +32,8 @@ public class GlassDetection implements Function {
      */
     @Override
     public double[] getGradient(double[] x) {
+
+
         return null;
     }
 
@@ -48,6 +45,7 @@ public class GlassDetection implements Function {
     @Override
 
     public double getFuncValue(double[] x) {
+
         return 0.0;
     }
 
@@ -109,7 +107,7 @@ public class GlassDetection implements Function {
     private BigDecimal[] argMaxFx(Function func) {
         BigDecimal[] x = new BigDecimal[n];
 
-        BigDecimal gamma = new BigDecimal("0.001");
+        BigDecimal gamma = new BigDecimal("0.0001");
         BigDecimal err = new BigDecimal(1e-10D); //
         int maximumItersNum = 500;
 

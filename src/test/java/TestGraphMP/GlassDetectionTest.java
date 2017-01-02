@@ -3,7 +3,7 @@ package TestGraphMP;
 import edu.albany.cs.base.APDMInputFormat;
 import edu.albany.cs.base.PreRec;
 import edu.albany.cs.graphMP.GraphMP;
-import edu.albany.cs.scoreFuncs.ToyFunc;
+import edu.albany.cs.scoreFuncs.GlassDetection;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -23,8 +23,8 @@ public class GlassDetectionTest {
         ArrayList<Double> edgeCosts = apdm.data.identityEdgeCosts;
         /** step1: score function */
 
-        //GlassDetection func = new GlassDetection(apdm.data.PValue);
-        ToyFunc func = new ToyFunc(apdm.data.PValue);
+        GlassDetection func = new GlassDetection(apdm.data.greyValues);
+        //ToyFunc func = new ToyFunc(apdm.data.PValue);
 
 //		Utils.stop();
         /** step2: optimization */
