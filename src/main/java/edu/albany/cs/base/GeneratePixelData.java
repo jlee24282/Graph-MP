@@ -117,6 +117,8 @@ public class GeneratePixelData {
 
         for( int i = 0; i<graphSize; i++){
             count[i] = 0.0;
+            for(int j = 0; j<12; j++)
+                weight[i][j] = 0.0;
         }
 
         HashSet<Integer> nodes = new HashSet<Integer>();

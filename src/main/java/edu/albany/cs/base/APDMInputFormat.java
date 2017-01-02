@@ -290,11 +290,19 @@ public class APDMInputFormat {
 				fw.write("null\n");
 			} else {
 				for (int i = 0; i < greyValue.length; i++) {
-					fw.write(i);
-					for(int j = 0; j< greyValue[i].length; j++){
-						fw.write(" " + decimalFormat.format(greyValue[i][j]));
-					}
-					fw.write("\n");
+					fw.write(i + " " +decimalFormat.format(greyValue[i][0])
+							+ " " +decimalFormat.format(greyValue[i][1])
+							+ " " +decimalFormat.format(greyValue[i][2])
+							+ " " +decimalFormat.format(greyValue[i][3])
+							+ " " +decimalFormat.format(greyValue[i][4])
+							+ " " +decimalFormat.format(greyValue[i][5])
+							+ " " +decimalFormat.format(greyValue[i][6])
+							+ " " +decimalFormat.format(greyValue[i][7])
+							+ " " +decimalFormat.format(greyValue[i][8])
+							+ " " +decimalFormat.format(greyValue[i][9])
+							+ " " +decimalFormat.format(greyValue[i][10])
+							+ " " +decimalFormat.format(greyValue[i][11])
+					+ "\n");
 				}
 
 			}
