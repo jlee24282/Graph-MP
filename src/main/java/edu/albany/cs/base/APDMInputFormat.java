@@ -541,7 +541,9 @@ public class APDMInputFormat {
 					data.std = new double[data.numNodes];
 					data.mean = new double[data.numNodes];
 					data.base = new double[data.numNodes];
+					data.greyValues = new double[data.numNodes][12];
 					int count = 0;
+					System.out.println(data.dataSource);
 					while (!(sCurrentLine = br.readLine()).equals("END")) {
 						if (sCurrentLine.startsWith("NodeID")) {
 							continue;
@@ -572,6 +574,9 @@ public class APDMInputFormat {
 						} else if (data.dataSource.equals("GridData")) {
 							data.base[count] = Double.parseDouble(str[1]);
 							data.counts[count] = Double.parseDouble(str[2]);
+						} else if(data.dataSource.equals("PixelData")){
+							for(int i = 0; i< 12; i++)
+								data.greyValues[count][i] = Double.parseDouble(str[1]);
 						}
 						count++;
 					}

@@ -151,7 +151,7 @@ public class GeneratePixelData {
         }
 
 
-        APDMInputFormat.generateAPDMFilePixel("Test", "RandomData", edges, weight,
+        APDMInputFormat.generateAPDMFilePixel("Test", "PixelData", edges, weight,
                 count,  trueSubGraphEdges,  outPutFileName);
     }
 
