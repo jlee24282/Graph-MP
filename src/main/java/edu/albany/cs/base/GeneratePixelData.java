@@ -130,12 +130,20 @@ public class GeneratePixelData {
 
         NormalDistribution normAbnormalNodes = new NormalDistribution(meanAbNorm, stdAbNorm);
         NormalDistribution normNormalNodes = new NormalDistribution(meanNorm, stdNorm);
+
         for (int j = 0; j < graphSize; j++) {
+            //abnormal picture -> weight[j][0]
             if (nodes.contains(j)) {
                 weight[j][0] = (int) normAbnormalNodes.sample();
             } else {
                 weight[j][0] = (int) normNormalNodes.sample();
             }
+            //normal pictures
+            for(int k = 1; k < 12; k++){
+                weight[j][k] = (int) normNormalNodes.sample();
+            }
+
+            //should be between 0 and 255
             if(weight[j][0] < 0)
                 weight[j][0] = 0;
             else if(weight[j][0] >255)
