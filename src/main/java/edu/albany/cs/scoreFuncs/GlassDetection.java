@@ -15,7 +15,7 @@ public class GlassDetection implements Function {
     private double[][] c;
     private double mean;
     private double std;
-    private
+    pp
 
     EigenDecomposition ed;
 
