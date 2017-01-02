@@ -13,8 +13,11 @@ public class GlassDetection implements Function {
     private final FuncType funcID;
     private double[][] greyValue;
     private double[][] c;
+    private double mean;
+    private double std;
 
     EigenDecomposition ed;
+
     /** vector size */
     private final int n;
     public GlassDetection(double[][] greyValue) {
