@@ -85,7 +85,7 @@ public class ToyFunc implements Function {
 			double[] gradient = new double[n];
 			
 			for (int i = 0; i < n; i++)
-				gradient[i] =  -(2 * weight[i] * weight[i] * x[i] - weight[i] / 2.0 );
+				gradient[i] =  (2 * weight[i] * weight[i] * x[i] - weight[i] / 2.0 );
 			return gradient;
 		}
 		/**
@@ -122,7 +122,7 @@ public class ToyFunc implements Function {
 			System.out.println(funcID + " Error : elevated mean scan stat is not a real value, f is " + func_value);
 			System.exit(0);
 		}
-		return -func_value;
+		return func_value;
 	}
 	
 	
@@ -222,7 +222,7 @@ public class ToyFunc implements Function {
 	private BigDecimal[] argMinFx(Function func) {
 		BigDecimal[] x = new BigDecimal[n];
 		
-		BigDecimal gamma = new BigDecimal("0.001");
+		BigDecimal gamma = new BigDecimal("0.0001");
 		BigDecimal err = new BigDecimal(1e-6D); //
 		int maximumItersNum = 100;
 	

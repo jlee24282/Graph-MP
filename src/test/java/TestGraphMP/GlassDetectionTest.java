@@ -28,8 +28,8 @@ public class GlassDetectionTest {
 
 //		Utils.stop();
         /** step2: optimization */
-        int[] candidateS = new int[] { 3, 4, 5,6,7,8,9,10,11,12, 13, 14, 15, 16};
-        double optimalVal = Double.MAX_VALUE;
+        int[] candidateS = new int[] { 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
+        double optimalVal = - Double.MAX_VALUE;
         PreRec bestPreRec = new PreRec();
         GraphMP bestGraphMP = null;
         for (int s : candidateS) {
@@ -40,8 +40,8 @@ public class GlassDetectionTest {
             bestPreRec = new PreRec(graphMP.resultNodes_supportX, apdm.data.trueSubGraphNodes);
             //System.out.println(bestPreRec.toString()+" "+func.getFuncValue(graphMP.x));
             double[] yx = graphMP.x;
-            if (func.getFuncValue(yx) < optimalVal) {
-                optimalVal = - func.getFuncValue(yx);
+            if (func.getFuncValue(yx) > optimalVal) {
+                optimalVal =  func.getFuncValue(yx);
 
                 bestGraphMP = graphMP;
                 if (verboseLevel == 0) {
@@ -57,6 +57,7 @@ public class GlassDetectionTest {
 
     public static void main(String args[]) {
         new GlassDetectionTest().testToyExample("data/PixelData/APDM-10X11_C40.0_trueSubSize_30.txt");
+        //new GlassDetectionTest().testToyExample("data/GridData/APDM-GridData-100_noise_0.0_trueSubSize_30_4.txt");
         //new TestToyExample().testToyExample("data/SimulationData/Protest/APDM-GridData-100-precen_0.1-noise_0-numCC_1_0.txt");
         //new GlassDetectionTest().testToyExample("data/GridDataEBP/APDM-GridData-100_noise_0.0_trueSubSize_30_0.txt");
     }

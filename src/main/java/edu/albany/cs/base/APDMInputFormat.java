@@ -257,6 +257,75 @@ public class APDMInputFormat {
 		}
 	}
 
+
+	public static void generateAPDMFilePixel(String usedAlgorithm, String dataSource, ArrayList<Edge> edges,
+											double[][] greyValue,
+											double[] counts, HashMap<int[], Double> trueSubGraphEdges, String fileName) {
+		DecimalFormat decimalFormat = new DecimalFormat("0.00");
+		try {
+			FileWriter fw;
+			fw = new FileWriter(fileName, false);
+			fw.write(APDMInputFormat.inputHeader);
+
+			// general information
+			fw.write("SECTION1 (General Information)\n");
+			if (greyValue == null) {
+				fw.write("numNodes = " + 0 + "\n");
+			} else {
+				fw.write("numNodes = " + greyValue.length + "\n");
+			}
+			if (edges == null) {
+				fw.write("numEdges = " + 0 + "\n");
+			} else {
+				fw.write("numEdges = " + edges.size() + "\n");
+			}
+			fw.write("usedAlgorithm = " + usedAlgorithm + "\n");
+			fw.write("dataSource = " + dataSource + "\n");
+			fw.write("END\n" + Utils.commentLine + "\n");
+
+			// nodes information
+			fw.write("SECTION2 (Nodes Information)\n");
+			fw.write("NodeID GVal1 GVal2 GVal3 GVal4 GVal5 GVal6 GVal7 GVal8 GVal9 GVal10 GVal11 GVal12 \n");
+			if (greyValue == null) {
+				fw.write("null\n");
+			} else {
+				for (int i = 0; i < greyValue.length; i++) {
+					fw.write(i);
+					for(int j = 0; j< greyValue[i].length; j++){
+						fw.write(" " + decimalFormat.format(greyValue[i][j]));
+					}
+					fw.write("\n");
+				}
+
+			}
+			fw.write("END\n" + Utils.commentLine + "\n");
+
+			// edges information
+			fw.write("SECTION3 (Edges Information)\n");
+			fw.write("EndPoint0 EndPoint1 Weight\n");
+			if (edges != null) {
+				for (Edge e : edges) {
+					fw.write(e.i + " " + e.j + " " + decimalFormat.format(e.cost) + "\n");
+				}
+			}
+			fw.write("END\n" + Utils.commentLine + "\n");
+			// edges information
+			fw.write("SECTION4 (TrueSubGraph Information)\n");
+			fw.write("EndPoint0 EndPoint1 Weight\n");
+			if (trueSubGraphEdges != null) {
+				for (int[] e : trueSubGraphEdges.keySet()) {
+					fw.write(e[0] + " " + e[1] + " " + trueSubGraphEdges.get(e) + "\n");
+				}
+			}
+			fw.write("END\n" + Utils.commentLine + "\n");
+			fw.close();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+	}
+
+
+
 	public static void generateAPDMFile(String usedAlgorithm, String dataSource, ArrayList<Edge> edges, double[] PValue,
 			double[] counts, HashMap<int[], Double> trueSubGraphEdges, String fileName) {
 		DecimalFormat decimalFormat = new DecimalFormat("0.000000");

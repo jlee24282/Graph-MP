@@ -1,235 +1,238 @@
 package edu.albany.cs.base;
 
 import org.apache.commons.lang3.ArrayUtils;
-import org.apache.commons.math3.stat.StatUtils;
+import org.apache.commons.math3.distribution.NormalDistribution;
+import org.apache.commons.math3.random.RandomDataGenerator;
 
-import java.io.File;
+import java.io.IOException;
 import java.util.*;
 
 public class GeneratePixelData {
-    int n;
-    int numTrueNodes;
-    int maxEdgeSize;
-    double p1;	//percentage for the normal nodes
-    double p2;	//percentage for the abnormal nodes
-    double c;	//constant for the nodes weight
 
-    public GeneratePixelData(int n, int numTrueNodes, double p1, double p2, double c){
-        this.n = n;
-        this.numTrueNodes = numTrueNodes;
-        this.p1 = p1;
-        this.p2 = p2;
-        this.c = c;
-        maxEdgeSize = 400;
+    private double c;
+    private double meanAbNorm;
+    private double meanNorm;
+    private double stdNorm;
+    private double stdAbNorm;
+    private int N;
+    private int M;
+    private int numOfTrueNodes;
+    int graphSize;
+
+    public GeneratePixelData(String[] args) {
+        M = 10;
+        N = 11;
+        c = 100;
+        numOfTrueNodes = 30;
+        graphSize = M*N;
     }
 
-    private int randomNode(int nodeId,double[] pValue) {
-        Random R 			= new Random();
-        double p = R.nextDouble();
-        double cumulativeProbability = 0.0;
-        int item = -1;
-        double[] boostP = new double[n];
-        //Boost
-        for(int i = 0; i<n; i++){
-            if(pValue[i] > 0.5)
-                boostP[i] = pValue[i]*1.0;
-            else
-                boostP[i] = pValue[i]/1.0;
-        }
-        double sumPvalues = StatUtils.sum(boostP);
+    public void generateGridDataWithNoise(int numTrueNodes, int NumOfNodes, double noiseLevel,
+                                          String outPutFileName, boolean flag) throws IOException {
 
-        while(item == -1) {
-            for (int i = 0; i < n; i++) {
-                cumulativeProbability += (boostP[i] / sumPvalues);
-                if (p <= cumulativeProbability && i != nodeId) {
-                    item = i;
+        GenerateMNSingleGraph g = new GenerateMNSingleGraph(M, N);
+        ArrayList<Edge> treEdges = randomWalk(g.adj, numTrueNodes);
+        double[] weight = new double[g.numOfNodes];
+        int[] trueNodes = null;
+        Arrays.fill(weight, 1.0);
+        Random rand = new Random();
+        for (Edge e : treEdges) {
+            weight[e.i] = rand.nextInt(256) + this.c;
+            weight[e.j] = rand.nextInt(256) + this.c;
+
+            if(weight[e.i] < 0)
+                weight[e.i] = 0;
+            else if(weight[e.i] >255)
+                weight[e.i] = 255;
+            if(weight[e.j] < 0)
+                weight[e.j] = 0;
+            else if(weight[e.j] >255)
+                weight[e.j] = 255;
+
+            if (!ArrayUtils.contains(trueNodes, e.i)) {
+                trueNodes = ArrayUtils.add(trueNodes, e.i);
+            }
+            if (!ArrayUtils.contains(trueNodes, e.j)) {
+                trueNodes = ArrayUtils.add(trueNodes, e.j);
+            }
+        }
+
+        int noiseLevelInTrueNodes = (int) (((noiseLevel + 0.0) / 100) * (trueNodes.length));
+        int[] alreadyDone = null;
+        for (int k = 0; k < noiseLevelInTrueNodes; k++) {
+            while (true) {
+                int valueToFind = new Random().nextInt(trueNodes.length);
+                if (!ArrayUtils.contains(alreadyDone, valueToFind)) {
+                    weight[trueNodes[valueToFind]] = 255.0;
+                    alreadyDone = ArrayUtils.add(alreadyDone, valueToFind);
                     break;
                 }
             }
         }
-        return item;
-    }
 
-    private ArrayList<Edge> generateEdges(int[] trueNodes, double[] pValue ){
+        int[] normalNodes = ArrayUtils
+                .removeElements(new RandomDataGenerator().nextPermutation(weight.length, weight.length), trueNodes);
 
-        List<String> doneEdges  = new ArrayList<String>();
-        ArrayList<Edge> edges 	= new ArrayList<Edge>();
-        int edgeCount = 0;
-
-        //ready
-        ArrayList<String> remainingNodes 	= new ArrayList<String>();
-        for(int i = 0; i<n; i++){ remainingNodes.add(Integer.toString(i));}
-
-        //add trueNodes
-        int node1 = 0;
-        int node2 = 0;
-        for (int i = 0; i<numTrueNodes-1; i++){
-            node1 = trueNodes[i];
-            node2 = trueNodes[i+1];
-            String e = node1+","+node2;
-            String reE = node1+","+node2;
-
-            edges.add(new Edge(node1, node2, 0, 1.0)); edgeCount++;
-            edges.add(new Edge(node2, node1, 0, 1.0)); edgeCount++;
-            doneEdges.add(e);
-            doneEdges.add(reE);
-            remainingNodes.remove(Integer.toString(node1));
-        }remainingNodes.remove(Integer.toString(node2));
-
-
-        node1 = trueNodes[0];
-        //add random edges
-
-        while(remainingNodes.size() < (maxEdgeSize - edgeCount)){
-            node2 = randomNode(node1, pValue);
-
-            String e = node1+","+node2;
-            String reE = node1+","+node2;
-
-            if (!doneEdges.contains(e)) {
-                edges.add(new Edge(node1, node2, 0, 1.0));
-                doneEdges.add(e);
-                edgeCount++;
-                if(remainingNodes.contains(Integer.toString(node1)))
-                    remainingNodes.remove(Integer.toString(node1));
-                if(remainingNodes.contains(Integer.toString(node2)))
-                    remainingNodes.remove(Integer.toString(node2));
-            }
-            if (!doneEdges.contains(reE)) {
-                edges.add(new Edge(node2, node1, 0, 1.0));
-                doneEdges.add(reE);
-                edgeCount++;
-            }
-            node1 = node2;
-
+        for (int norm : normalNodes) {
+            weight[norm] = rand.nextInt(256);
         }
 
-        //add rest of nodes
-        while (1<=remainingNodes.size()){
-            //node1 = Integer.parseInt(remainingNodes.get(0));
-            node2 = Integer.parseInt(remainingNodes.get(0));
-            String e = node1+","+node2;
-            String reE = node1+","+node2;
-
-
-            if (!doneEdges.contains(e)) {
-                edges.add(new Edge(node1, node2, 0, 1.0));
-                doneEdges.add(e); edgeCount++;
-                if(remainingNodes.contains(Integer.toString(node1))) {
-                    remainingNodes.remove(Integer.toString(node1));
-                }
-                if(remainingNodes.contains(Integer.toString(node2))) {
-                    remainingNodes.remove(Integer.toString(node2));
+        int noiseLevelInNormalNodes = (int) (((noiseLevel + 0.0) / 100) * (weight.length - trueNodes.length + 0.0));
+        alreadyDone = null;
+        for (int j = 0; j < noiseLevelInNormalNodes; j++) {
+            while (true) {
+                int valueToFind = new Random().nextInt(normalNodes.length);
+                if (!ArrayUtils.contains(alreadyDone, valueToFind)) {
+                    weight[normalNodes[valueToFind]] = 255;
+                    alreadyDone = ArrayUtils.add(alreadyDone, valueToFind);
+                    break;
                 }
             }
-            if (!doneEdges.contains(reE)) {
-                edges.add(new Edge(node2, node1, 0, 1.0));
-                doneEdges.add(reE); edgeCount++;
-            }
-            node1 = node2;
         }
 
-
-        Collections.sort(edges, new Comparator<Edge>() {
-            @Override
-            public int compare(Edge e2, Edge e1)
-            {
-                return  e2.i.compareTo(e1.i);
-            }
-        });
-        return edges;
+        genData(g.edges, treEdges, outPutFileName);
     }
 
-    public void generate_data_random(String outputFilePath) {
-        Random R 			= new Random();
-        outputFilePath  	= outputFilePath+"-"+p1+"_"+p2+"_c"+c+"_TrueNode"+ numTrueNodes+ ".txt";
-        File f = new File(outputFilePath);
-		/*if(f.exists()) {
-			System.out.println("Dup FIle");
-			return;
-		}*/
-        System.out.println("New File Path: " + outputFilePath);
-
-        /** step0: data file */
-        double[] pValue 		= new double[n];
-        double[] counts 		= new double[n];
-        double[] userWeight 	= new double[n];
-        ArrayList<Edge> edges 			= new ArrayList<Edge>();
-        HashMap<Integer, Double> nodes 	= new HashMap<Integer, Double>() ;
-
-        int[] trueNodes 							= genRandTrueNodes(numTrueNodes, n);
-        HashMap<int[], Double> trueSubGraphEdges 	= genRandTrueEdges(trueNodes);
-
-        /** step1: set pValue*/
-        for (int i = 0; i < n; i++){
-            if(ArrayUtils.contains(trueNodes, i))
-                pValue[i] = p2;
-            else
-                pValue[i] = p1;
-        }
-
-        /** step2: Generate Nodes with weight*/
-        for (int i = 0; i < n; i++){
-            nodes.put(i, (double) i);
-            //grey value 0-255
-            double rnd = R.nextInt(256);
-            // if abnormal
-            if(pValue[i] == p2) {
-                userWeight[i] = rnd + c;
-                if(userWeight[i] < 0)
-                    userWeight[i] = 0;
-                else if(userWeight[i] >255)
-                    userWeight[i] = 255;
-            }
-            else
-                userWeight[i] = rnd;
-        }
-
-
-        /** step3: Generate Edges */
-        edges = generateEdges(trueNodes, pValue);
-
-        /** step3: Generate File */
-        APDMInputFormat.generateAPDMFile_bot("Test", "RandomData", edges, userWeight,
-                counts,  trueSubGraphEdges,  outputFilePath);
-
-        System.out.println("------------------------------ File generated --------------------------------\n");
-    }
-
-    private int[] genRandTrueNodes(int t_size, int n_size){
-        ArrayList<Integer> t_nodes = new ArrayList<Integer>();
-        Random R 		= new Random();
-        int rnd 		= 0;
-        while(t_nodes.size() <= t_size){
-            rnd = R.nextInt(n_size);
-            if(!t_nodes.contains(rnd)){
-                t_nodes.add(rnd);
-            }
-        }
-
-        int[] tNodes 	= ArrayUtils.toPrimitive(t_nodes.toArray(new Integer[0]));
-        System.out.println("TrueNode: " + ArrayUtils.toString(tNodes));
-        return tNodes;
-    }
-
-    private HashMap<int[], Double> genRandTrueEdges(int[] trueNodes){
+    private HashMap<int[], Double> aList2HMap(ArrayList<Edge>  trueNodes){
         HashMap<int[], Double> tEdge = new HashMap<int[], Double>();
 
-        int i = 0;
-
-        while(tEdge.size() < trueNodes.length-1){
-            int[] key = new int[]{trueNodes[i], trueNodes[i+1]};i++;
+        for(int i = 0; i< trueNodes.size(); i++){
+            int[] key = new int[]{trueNodes.get(i).i, trueNodes.get(i).j};
             tEdge.put(key, 1.0);
         }
+
         return tEdge;
     }
 
-    public static void main(String args[]) {
-        new GeneratePixelData(
-                100 /*Node size*/,
-                30/*True node size*/,
-                0.2/*p1*/,
-                0.4/*p2*/,
-                50/*c*/).generate_data_random("data/PixelData/APDM");
+    public void genData(ArrayList<Edge> edges, ArrayList<Edge> treEdges, String outPutFileName){
+        double[][] weight = new double[graphSize][12];
+        double[] count = new double[graphSize];
+        meanNorm = 120;
+        meanAbNorm = meanNorm - this.c;
+        stdNorm = 1;
+        stdAbNorm = 1;
+
+
+        HashMap<int[], Double> trueSubGraphEdges 	= aList2HMap(treEdges);
+
+        for( int i = 0; i<graphSize; i++){
+            count[i] = 0.0;
+        }
+
+        HashSet<Integer> nodes = new HashSet<Integer>();
+        for (Edge edge : treEdges) {
+            nodes.add(edge.i);
+            nodes.add(edge.j);
+        }
+
+
+        NormalDistribution normAbnormalNodes = new NormalDistribution(meanAbNorm, stdAbNorm);
+        NormalDistribution normNormalNodes = new NormalDistribution(meanNorm, stdNorm);
+        for (int j = 0; j < graphSize; j++) {
+            if (nodes.contains(j)) {
+                weight[j][0] = (int) normAbnormalNodes.sample();
+            } else {
+                weight[j][0] = (int) normNormalNodes.sample();
+            }
+            if(weight[j][0] < 0)
+                weight[j][0] = 0;
+            else if(weight[j][0] >255)
+                weight[j][0] = 255;
+        }
+
+
+        APDMInputFormat.generateAPDMFilePixel("Test", "RandomData", edges, weight,
+                count,  trueSubGraphEdges,  outPutFileName);
+    }
+
+    /**
+     * get number of nodes using the random walk algorithm
+     *
+     * @param arr
+     *            the graph adjacency list
+     * @param numTrueNodes
+     *            the number of true nodes in the random walk algorithm
+     * @return the edges generated by the random walk algorithm
+     */
+    private ArrayList<Edge> randomWalk(ArrayList<ArrayList<Integer>> arr, int numTrueNodes) {
+
+        ArrayList<Edge> trueSubGraph = new ArrayList<Edge>();
+        Random random = new Random();
+        int start = random.nextInt(arr.size());
+        HashSet<Integer> h = new HashSet<Integer>();
+        h.add(start);
+        int count = 0;
+        while (h.size() < numTrueNodes) {
+            int next = arr.get(start).get(random.nextInt(arr.get(start).size()));
+            if (h.contains(next)) {
+                continue;
+            }
+            h.add(next);
+            trueSubGraph.add(new Edge(start, next, count++, 1.00000));
+            start = next;
+        }
+        ArrayList<Edge> reducedTreEdges = new ArrayList<Edge>();
+        for (Edge edge : trueSubGraph) {
+            if (!checkExist(reducedTreEdges, edge)) {
+                reducedTreEdges.add(edge);
+            }
+        }
+        return reducedTreEdges;
+    }
+
+    /**
+     * check the edge exists in the trueSubGraph
+     *
+     * @param trueSubGraph
+     * @param edge
+     * @return true if this edge contains in trueSubGraph else will return false
+     */
+    private boolean checkExist(ArrayList<Edge> trueSubGraph, Edge edge) {
+        if (trueSubGraph.isEmpty()) {
+            return false;
+        }
+        for (Edge ed : trueSubGraph) {
+            if ((ed.i == edge.i && ed.j == edge.j) || (ed.i == edge.j && ed.j == edge.i)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void generateSingleCase() throws IOException {
+        double noiseLevel = 0.0D;
+
+        String outputFileName = "data/PixelData/APDM-" +M+"X"+N+ "_C" + this.c + "_trueSubSize_"
+                + numOfTrueNodes + ".txt";
+        generateGridDataWithNoise(numOfTrueNodes, graphSize, noiseLevel, outputFileName, false);
+        testTrueSubGraph(outputFileName);
+    }
+
+    public void testTrueSubGraph(String fileName) {
+        APDMInputFormat apdm = new APDMInputFormat(fileName);
+        System.out.println(apdm.data.trueSubGraphNodes.length);
+        ConnectedComponents cc = apdm.data.cc;
+        System.out.println(cc.computeCCSubGraph(apdm.data.trueSubGraphNodes));
+    }
+
+    public static void main(String args[]) throws IOException {
+        int verbose = 1;
+        if (verbose > 1) {
+            APDMInputFormat apdm = new APDMInputFormat(
+                    "data/PixelData/APDM-10X11_C40.0_trueSubSize_30.txt");
+            System.out.println("apdm.data.connective: " + apdm.data.connective);
+            for (int ab : apdm.data.trueSubGraphNodes) {
+                System.out.println(ab + " " + apdm.data.PValue[ab]);
+            }
+            System.out.println("----------------------------");
+            for (int ab : apdm.data.V) {
+                if (!ArrayUtils.contains(apdm.data.trueSubGraphNodes, ab)) {
+                    System.out.println(ab + " " + apdm.data.PValue[ab]);
+                }
+            }
+            Utils.stop();
+        }
+        new GeneratePixelData(args).generateSingleCase();
+        System.out.println("DONE");
     }
 }
