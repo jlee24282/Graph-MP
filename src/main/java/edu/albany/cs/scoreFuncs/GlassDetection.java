@@ -2,6 +2,7 @@
 package edu.albany.cs.scoreFuncs;
 
 import org.apache.commons.math3.linear.EigenDecomposition;
+import org.apache.commons.math3.stat.descriptive.rank.Median;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -13,9 +14,8 @@ public class GlassDetection implements Function {
     private final FuncType funcID;
     private double[][] greyValue;
     private double[][] c;
-    private double mean;
-    private double std;
-    pp
+    private double mean;    //median
+    private double std;     //MAD
 
     EigenDecomposition ed;
 
@@ -27,7 +27,9 @@ public class GlassDetection implements Function {
 
         n = greyValue.length;
         c = new double[n][n];
+
     }
+
 
     /**
      * @param x
@@ -180,6 +182,24 @@ public class GlassDetection implements Function {
             x[i] = 1.0D;
         }
         return getFuncValue(x);
+    }
+
+
+    private double getMedian(double[] values){
+        Median median = new Median();
+        double medianValue = median.evaluate(values);
+        return medianValue;
+    }
+
+    private double getMAD(double[] values){
+        Median median = new Median();
+        double medianValue = median.evaluate(values);
+        double std = 0.0;
+
+        for (int i=0; i<values.length;i++) {
+            std = std + Math.pow(values[i] - mean, 2);
+        }
+        return std;
     }
 
     /**
