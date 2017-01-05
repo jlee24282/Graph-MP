@@ -1,9 +1,13 @@
 
 package edu.albany.cs.scoreFuncs;
 
+import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.math3.distribution.NormalDistribution;
+import org.apache.commons.math3.linear.ArrayRealVector;
 import org.apache.commons.math3.linear.EigenDecomposition;
+import org.apache.commons.math3.stat.StatUtils;
 import org.apache.commons.math3.stat.descriptive.rank.Median;
+import org.apache.commons.math3.util.MathUtils;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -47,6 +51,13 @@ public class GlassDetection implements Function {
         double[] gradient = new double[n];
         double B = 0, C = 0;
 
+        C = new ArrayRealVector(divide(means, pow(stds))).dotProduct(new ArrayRealVector(x));
+        B = StatUtils.sum(divide(pow(means),pow(stds)));
+
+        for(int i = 0; i< n; i++){
+            gradient[i] = (C/B - 1) * means[i] / (Math.pow(stds[i], 2));
+        }
+
         return gradient;
     }
 
@@ -61,19 +72,8 @@ public class GlassDetection implements Function {
         double llrScore;
         double B = 0, C = 0;
 
-        for(int i = 0; i< n ; i++){
-            mean   = getMean(this.greyValues[i]); //median
-            std    = getStd(this.greyValues[i]);     //MAD
-
-            B += Math.pow(mean, 2)/std;
-
-            if(x[i] == 1.0){
-                C += mean/std;
-                NormalDistribution ndNodes = new NormalDistribution(means[i], stds[i]);
-                NormalDistribution ndNodes2 = new NormalDistribution(mean, std);
-            }
-        }
-
+        C = new ArrayRealVector(divide(means, pow(stds))).dotProduct(new ArrayRealVector(x));
+        B = StatUtils.sum(divide(pow(means),pow(stds)));
 
         llrScore = Math.pow((C-B),2)/2*B;
         return llrScore;
@@ -290,10 +290,25 @@ public class GlassDetection implements Function {
         return result;
     }
 
+    public double[] divide(double[] a, double[] b) {
+        double[] result = new double[n];
+        for (int i = 0; i < n; i++) {
+            result[i] = a[i] / b[i];
+        }
+        return result;
+    }
+
     public double[] multiply(double[] a, double b) {
         double[] result = new double[n];
         for (int i = 0; i < n; i++) {
             result[i] = a[i] * b;
+        }
+        return result;
+    }
+    public double[] pow(double[] a) {
+        double[] result = new double[n];
+        for (int i = 0; i < n; i++) {
+            result[i] = Math.pow(a[i],2) ;
         }
         return result;
     }
