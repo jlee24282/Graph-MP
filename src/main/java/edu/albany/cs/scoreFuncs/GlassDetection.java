@@ -1,6 +1,7 @@
 
 package edu.albany.cs.scoreFuncs;
 
+import org.apache.commons.math3.distribution.NormalDistribution;
 import org.apache.commons.math3.linear.EigenDecomposition;
 import org.apache.commons.math3.stat.descriptive.rank.Median;
 
@@ -17,6 +18,8 @@ public class GlassDetection implements Function {
     private final int n;    //size of node
     private double mean;    //median
     private double std;     //MAD
+    private double[] means; //median for each i
+    private double[] stds;  //MAD for each i
 
 
     /** vector size */
@@ -27,6 +30,10 @@ public class GlassDetection implements Function {
         n = greyValue.length;
         c = new double[n][n];
 
+        for(int i = 0; i< n; i++){
+            means[i]    = getMedian(greyValues[i]); //median
+            stds[i]     = getMAD(greyValues[i]);     //MAD
+        }
     }
 
 
@@ -55,9 +62,15 @@ public class GlassDetection implements Function {
         double B = 0, C = 0;
 
         for(int i = 0; i< n ; i++){
+            mean   = getMean(this.greyValues[i]); //median
+            std    = getStd(this.greyValues[i]);     //MAD
+
+            B += Math.pow(mean, 2)/std;
+
             if(x[i] == 1.0){
-                this.mean   = getMedian(this.greyValues[i]); //median
-                this.std    = getMAD(this.greyValues[i]);     //MAD
+                C += mean/std;
+                NormalDistribution ndNodes = new NormalDistribution(means[i], stds[i]);
+                NormalDistribution ndNodes2 = new NormalDistribution(mean, std);
             }
         }
 
@@ -195,6 +208,26 @@ public class GlassDetection implements Function {
         return getFuncValue(x);
     }
 
+    private double getMean(double[] values){
+        double mean = 0.0;
+        double sum = 0.0;
+
+        for (int i = 0; i < n; i ++){
+            sum += values[i];
+        }
+        mean = sum/n;
+        return mean;
+    }
+
+    private double getStd(double[] values){
+        double mean = getMean(values);
+        double std = 0.0;
+
+        for (int i=0; i<values.length;i++) {
+            std = std + Math.pow(values[i] - mean, 2);
+        }
+        return std;
+    }
 
     private double getMedian(double[] values){
         Median median = new Median();
