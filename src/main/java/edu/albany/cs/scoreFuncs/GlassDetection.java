@@ -12,17 +12,16 @@ import java.util.Random;
 public class GlassDetection implements Function {
 
     private final FuncType funcID;
-    private double[][] greyValue;
+    private double[][] greyValues;
     private double[][] c;
+    private final int n;    //size of node
     private double mean;    //median
     private double std;     //MAD
 
-    EigenDecomposition ed;
 
     /** vector size */
-    private final int n;
     public GlassDetection(double[][] greyValue) {
-        this.greyValue = greyValue;
+        this.greyValues = greyValue;
         funcID = FuncType.Unknown;
 
         n = greyValue.length;
@@ -38,9 +37,10 @@ public class GlassDetection implements Function {
      */
     @Override
     public double[] getGradient(double[] x) {
+        double[] gradient = new double[n];
+        double B = 0, C = 0;
 
-
-        return null;
+        return gradient;
     }
 
     /**
@@ -51,8 +51,19 @@ public class GlassDetection implements Function {
     @Override
 
     public double getFuncValue(double[] x) {
+        double llrScore;
+        double B = 0, C = 0;
 
-        return 0.0;
+        for(int i = 0; i< n ; i++){
+            if(x[i] == 1.0){
+                this.mean   = getMedian(this.greyValues[i]); //median
+                this.std    = getMAD(this.greyValues[i]);     //MAD
+            }
+        }
+
+
+        llrScore = Math.pow((C-B),2)/2*B;
+        return llrScore;
     }
 
     @Override
