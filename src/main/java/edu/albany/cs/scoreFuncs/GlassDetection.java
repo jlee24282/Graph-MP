@@ -20,10 +20,12 @@ public class GlassDetection implements Function {
     private double[][] greyValues;
     private double[][] c;
     private final int n;    //size of node
-    private double mean;    //median
-    private double std;     //MAD
+    private double mean;
+    private double std;     //standard deviation
     private double[] means; //median for each i
     private double[] stds;  //MAD for each i
+    private double[] medians; //median for each i
+    private double[] MADs;  //MAD for each i
 
 
     /** vector size */
@@ -33,12 +35,16 @@ public class GlassDetection implements Function {
         funcID                  = FuncType.Unknown;
         means                   = new double[n];
         stds                    = new double[n];
+        medians                 = new double[n];
+        MADs                    = new double[n];
 
         c = new double[n][n];
 
         for(int i = 0; i< n; i++){
-            means[i]    = getMedian(greyValues[i]); //median
-            stds[i]     = getMAD(greyValues[i]);     //MAD
+            medians[i]  = getMedian(greyValues[i]); //median
+            MADs[i]     = getMAD(greyValues[i]);     //MAD
+            means[i]    = getMean(greyValues[i]);
+            stds[i]     = getStd(greyValues[i]);
         }
     }
 
@@ -57,7 +63,7 @@ public class GlassDetection implements Function {
         B = StatUtils.sum(divide(pow(means),pow(stds)));
 
         for(int i = 0; i< n; i++){
-            gradient[i] = (C/B - 1) * means[i] / (Math.pow(stds[i], 2));
+            gradient[i] = -((C/B - 1) * means[i] / (Math.pow(stds[i], 2)));
         }
 
         return gradient;
@@ -79,8 +85,8 @@ public class GlassDetection implements Function {
 
         llrScore = Math.pow((C-B),2)/2*B;
 
-        System.out.println(llrScore);
-        return llrScore;
+        //System.out.println(llrScore);
+        return -llrScore;
     }
 
     @Override
@@ -216,7 +222,7 @@ public class GlassDetection implements Function {
         double mean = 0.0;
         double sum = 0.0;
 
-        for (int i = 0; i < n; i ++){
+        for (int i = 0; i < values.length; i ++){
             sum += values[i];
         }
         mean = sum/n;
