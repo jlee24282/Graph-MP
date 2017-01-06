@@ -42,7 +42,6 @@ public class GlassDetectionTest {
             double[] yx = graphMP.x;
             if (func.getFuncValue(yx) > optimalVal) {
                 optimalVal =  func.getFuncValue(yx);
-
                 bestGraphMP = graphMP;
                 if (verboseLevel == 0) {
                     System.out.println("current best [pre,rec]: " + "[" + bestPreRec.pre + "," + bestPreRec.rec + "]");

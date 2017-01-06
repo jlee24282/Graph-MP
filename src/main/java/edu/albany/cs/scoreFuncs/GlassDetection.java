@@ -28,10 +28,12 @@ public class GlassDetection implements Function {
 
     /** vector size */
     public GlassDetection(double[][] greyValue) {
-        this.greyValues = greyValue;
-        funcID = FuncType.Unknown;
+        this.greyValues        = greyValue;
+        n                        = greyValue.length;
+        funcID                  = FuncType.Unknown;
+        means                   = new double[n];
+        stds                    = new double[n];
 
-        n = greyValue.length;
         c = new double[n][n];
 
         for(int i = 0; i< n; i++){
@@ -70,12 +72,14 @@ public class GlassDetection implements Function {
 
     public double getFuncValue(double[] x) {
         double llrScore;
-        double B = 0, C = 0;
+        double B = 0.0, C = 0.0, q = 0.0;
 
         C = new ArrayRealVector(divide(means, pow(stds))).dotProduct(new ArrayRealVector(x));
         B = StatUtils.sum(divide(pow(means),pow(stds)));
 
         llrScore = Math.pow((C-B),2)/2*B;
+
+        System.out.println(llrScore);
         return llrScore;
     }
 
