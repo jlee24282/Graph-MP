@@ -77,14 +77,18 @@ public class GlassDetection implements Function {
     @Override
 
     public double getFuncValue(double[] x) {
-        double llrScore;
+        double llrScore, llrScore1, llrScore2;
         double B = 0.0, C = 0.0, q = 0.0;
 
         C = new ArrayRealVector(divide(means, pow(stds))).dotProduct(new ArrayRealVector(x));
         B = StatUtils.sum(divide(pow(means),pow(stds)));
+        llrScore1 = Math.pow((C-B),2)/2*B;
 
-        llrScore = Math.pow((C-B),2)/2*B;
+        C = new ArrayRealVector(divide(means, pow(stds))).dotProduct(new ArrayRealVector(x));
+        B = StatUtils.sum(divide(pow(means),pow(stds)));
+        llrScore2 = Math.pow((C-B),2)/2*B;
 
+        llrScore = Math.abs(llrScore1 - llrScore2);
         //System.out.println(llrScore);
         return -llrScore;
     }
