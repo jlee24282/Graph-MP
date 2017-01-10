@@ -45,6 +45,7 @@ public class GlassDetectionTest {
                 System.out.println(func.getQ());
                 bestGraphMP = graphMP;
                 if (verboseLevel == 0) {
+                    System.out.println("result subgraph is: " + Arrays.toString(bestGraphMP.resultNodes_Tail));
                     System.out.println("current best [pre,rec]: " + "[" + bestPreRec.pre + "," + bestPreRec.rec + "]");
                 }
             }
@@ -56,7 +57,7 @@ public class GlassDetectionTest {
     }
 
     public static void main(String args[]) {
-        new GlassDetectionTest().testToyExample("data/PixelData/APDM-10X11_C100.0_trueSubSize_30.txt");
+        new GlassDetectionTest().testToyExample("data/PixelData/APDM-10X11_C50.0_trueSubSize_30.txt");
         //new GlassDetectionTest().testToyExample("data/GridData/APDM-GridData-100_noise_0.0_trueSubSize_30_4.txt");
         //new TestToyExample().testToyExample("data/SimulationData/Protest/APDM-GridData-100-precen_0.1-noise_0-numCC_1_0.txt");
         //new GlassDetectionTest().testToyExample("data/GridDataEBP/APDM-GridData-100_noise_0.0_trueSubSize_30_0.txt");

@@ -2,6 +2,7 @@ package edu.albany.cs.base;
 
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.math3.distribution.NormalDistribution;
+
 import org.apache.commons.math3.random.RandomDataGenerator;
 
 import java.io.IOException;
@@ -127,8 +128,8 @@ public class GeneratePixelData {
             nodes.add(edge.j);
         }
 
-        NormalDistribution normAbnormalNodes = new NormalDistribution(100, stdAbNorm);
-        NormalDistribution normNormalNodes = new NormalDistribution(5, stdNorm);
+        NormalDistribution normAbnormalNodes = new NormalDistribution(10, stdAbNorm);
+        NormalDistribution normNormalNodes = new NormalDistribution(200, stdNorm);
 
         for (int j = 0; j < graphSize; j++) {
             //abnormal picture -> weight[j][0]

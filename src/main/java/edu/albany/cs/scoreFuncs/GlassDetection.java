@@ -65,7 +65,6 @@ public class GlassDetection implements Function {
             gradient[i] = -((C/B - 1) * means[i] / (Math.pow(stds[i], 2)));
         }
 
-
         return gradient;
     }
 
@@ -149,7 +148,7 @@ public class GlassDetection implements Function {
     private BigDecimal[] argMaxFx(Function func) {
         BigDecimal[] x = new BigDecimal[n];
 
-        BigDecimal gamma = new BigDecimal("0.0001");
+        BigDecimal gamma = new BigDecimal("0.00001");
         BigDecimal err = new BigDecimal(1e-10D); //
         int maximumItersNum = 500;
 
@@ -239,6 +238,8 @@ public class GlassDetection implements Function {
         for (int i=0; i<values.length;i++) {
             std = std + Math.pow(values[i] - mean, 2);
         }
+        std = std/values.length;
+        std = Math.sqrt(std);
         return std;
     }
 
