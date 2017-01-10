@@ -23,6 +23,7 @@ public class GlassDetection implements Function {
     private double[] stds;  //MAD for each i
     private double[] medians; //median for each i
     private double[] MADs;  //MAD for each i
+    private int pictureIndex;
 
 
     /** vector size */
@@ -43,8 +44,39 @@ public class GlassDetection implements Function {
             means[i]    = getMean(greyValues[i]);
             stds[i]     = getStd(greyValues[i]);
         }
+        this.pictureIndex = decidePicture();
     }
 
+    private int decidePicture(){
+        int index = -1;
+
+
+
+        return index;
+    }
+
+    /** vector size */
+    public GlassDetection(double[][] greyValue, int index) {
+        this.greyValues         = greyValue;
+        this.pictureIndex       = index;
+        n                       = greyValue.length;
+        funcID                  = FuncType.Unknown;
+        means                   = new double[n];
+        stds                    = new double[n];
+        medians                 = new double[n];
+        MADs                    = new double[n];
+        c = new double[n][n];
+
+        for(int i = 0; i< n; i++){
+            medians[i]  = getMedian(greyValues[i]); //median
+            MADs[i]     = getMAD(greyValues[i]);     //MAD
+            means[i]    = getMean(greyValues[i]);
+            stds[i]     = getStd(greyValues[i]);
+        }
+    }
+    public int getPictureIndex(){
+        return this.pictureIndex;
+    }
 
     /**
      * @param x

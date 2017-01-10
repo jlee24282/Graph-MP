@@ -21,10 +21,12 @@ public class GlassDetectionTest {
 
         ArrayList<Integer[]> edges = apdm.data.intEdges;
         ArrayList<Double> edgeCosts = apdm.data.identityEdgeCosts;
+
         /** step1: score function */
 
-        GlassDetection func = new GlassDetection(apdm.data.greyValues);
-        //ToyFunc func = new ToyFunc(apdm.data.PValue);
+        GlassDetection getPicture = new GlassDetection(apdm.data.greyValues);
+
+        GlassDetection func = new GlassDetection(apdm.data.greyValues, getPicture.getPictureIndex());
 
 //		Utils.stop();
         /** step2: optimization */
