@@ -1,13 +1,9 @@
 
 package edu.albany.cs.scoreFuncs;
 
-import org.apache.commons.lang3.ArrayUtils;
-import org.apache.commons.math3.distribution.NormalDistribution;
 import org.apache.commons.math3.linear.ArrayRealVector;
-import org.apache.commons.math3.linear.EigenDecomposition;
 import org.apache.commons.math3.stat.StatUtils;
 import org.apache.commons.math3.stat.descriptive.rank.Median;
-import org.apache.commons.math3.util.MathUtils;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -22,6 +18,7 @@ public class GlassDetection implements Function {
     private final int n;    //size of node
     private double mean;
     private double std;     //standard deviation
+    private double q;
     private double[] means; //median for each i
     private double[] stds;  //MAD for each i
     private double[] medians; //median for each i
@@ -57,6 +54,8 @@ public class GlassDetection implements Function {
     @Override
     public double[] getGradient(double[] x) {
         double[] gradient = new double[n];
+        double[] g1 = new double[n];
+        double[] g2 = new double[n];
         double B = 0, C = 0;
 
         C = new ArrayRealVector(divide(means, pow(stds))).dotProduct(new ArrayRealVector(x));
@@ -65,6 +64,7 @@ public class GlassDetection implements Function {
         for(int i = 0; i< n; i++){
             gradient[i] = -((C/B - 1) * means[i] / (Math.pow(stds[i], 2)));
         }
+
 
         return gradient;
     }
@@ -82,15 +82,13 @@ public class GlassDetection implements Function {
 
         C = new ArrayRealVector(divide(means, pow(stds))).dotProduct(new ArrayRealVector(x));
         B = StatUtils.sum(divide(pow(means),pow(stds)));
-        llrScore1 = Math.pow((C-B),2)/2*B;
+        llrScore = Math.pow((C-B),2)/2*B;
 
-        C = new ArrayRealVector(divide(means, pow(stds))).dotProduct(new ArrayRealVector(x));
-        B = StatUtils.sum(divide(pow(means),pow(stds)));
-        llrScore2 = Math.pow((C-B),2)/2*B;
-
-        llrScore = Math.abs(llrScore1 - llrScore2);
-        //System.out.println(llrScore);
+        this.q = C/B;
         return -llrScore;
+    }
+    public double getQ(){
+        return this.q;
     }
 
     @Override
@@ -173,6 +171,7 @@ public class GlassDetection implements Function {
 
             for (int i = 0; i < x.length; i++) {
                 x[i] = x[i].add(gamma.multiply(gradient[i]));
+                //x[i] = x[i].subtract(gamma.multiply(gradient[i]));
             }
             dx = new double[x.length];
             for (int i = 0; i < x.length; i++) {

@@ -22,7 +22,7 @@ public class GeneratePixelData {
     public GeneratePixelData(String[] args) {
         M = 10;
         N = 11;
-        c = 100;
+        c = 50;
         numOfTrueNodes = 30;
         graphSize = M*N;
     }
@@ -107,7 +107,7 @@ public class GeneratePixelData {
     public void genData(ArrayList<Edge> edges, ArrayList<Edge> treEdges, String outPutFileName){
         double[][] weight = new double[graphSize][12];
         double[] count = new double[graphSize];
-        meanNorm = 120;
+        meanNorm = 70;
         meanAbNorm = meanNorm - this.c;
         stdNorm = 1;
         stdAbNorm = 1;
@@ -127,9 +127,8 @@ public class GeneratePixelData {
             nodes.add(edge.j);
         }
 
-
-        NormalDistribution normAbnormalNodes = new NormalDistribution(meanAbNorm, stdAbNorm);
-        NormalDistribution normNormalNodes = new NormalDistribution(meanNorm, stdNorm);
+        NormalDistribution normAbnormalNodes = new NormalDistribution(100, stdAbNorm);
+        NormalDistribution normNormalNodes = new NormalDistribution(5, stdNorm);
 
         for (int j = 0; j < graphSize; j++) {
             //abnormal picture -> weight[j][0]
