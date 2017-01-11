@@ -44,7 +44,8 @@ public class GlassDetection implements Function {
             means[i]    = getMean(greyValues[i]);
             stds[i]     = getStd(greyValues[i]);
         }
-        this.pictureIndex = decidePicture();
+        //this.pictureIndex = decidePicture();
+        this.pictureIndex = 0;
     }
 
     private int decidePicture(){
@@ -94,7 +95,8 @@ public class GlassDetection implements Function {
         B = StatUtils.sum(divide(pow(means),pow(stds)));
 
         for(int i = 0; i< n; i++){
-            gradient[i] = -((C/B - 1) * means[i] / (Math.pow(stds[i], 2)));
+            //gradient[i] = -((C/B - 1) * means[i] / (Math.pow(stds[i], 2)));
+            gradient[i] = -(((C-B)/B-1)*(means[i]/(stds[i]* stds[i])));
         }
 
         return gradient;
@@ -111,9 +113,12 @@ public class GlassDetection implements Function {
         double llrScore, llrScore1, llrScore2;
         double B = 0.0, C = 0.0, q = 0.0;
 
+        mean    = getMean(greyValues[pictureIndex]);
+        std    = getStd(greyValues[pictureIndex]);
+
         C = new ArrayRealVector(divide(means, pow(stds))).dotProduct(new ArrayRealVector(x));
         B = StatUtils.sum(divide(pow(means),pow(stds)));
-        llrScore = Math.pow((C-B),2)/2*B;
+        llrScore = Math.pow((C-B),2)/(2*B);
 
         this.q = C/B;
         return -llrScore;
@@ -180,7 +185,7 @@ public class GlassDetection implements Function {
     private BigDecimal[] argMaxFx(Function func) {
         BigDecimal[] x = new BigDecimal[n];
 
-        BigDecimal gamma = new BigDecimal("0.00001");
+        BigDecimal gamma = new BigDecimal("0.0001");
         BigDecimal err = new BigDecimal(1e-10D); //
         int maximumItersNum = 500;
 
@@ -194,15 +199,16 @@ public class GlassDetection implements Function {
         while (true) {
 
             BigDecimal[] gradient = func.getGradientBigDecimal(x);
-            double[] dx = new double[x.length];
+            double[] dx = new
+                    double[x.length];
             for (int i = 0; i < x.length; i++) {
                 dx[i] = x[i].doubleValue();
             }
             BigDecimal oldFuncValue = new BigDecimal(func.getFuncValue(dx));
 
             for (int i = 0; i < x.length; i++) {
-                x[i] = x[i].add(gamma.multiply(gradient[i]));
-                //x[i] = x[i].subtract(gamma.multiply(gradient[i]));
+                //x[i] = x[i].add(gamma.multiply(gradient[i]));
+                x[i] = x[i].subtract(gamma.multiply(gradient[i]));
             }
             dx = new double[x.length];
             for (int i = 0; i < x.length; i++) {

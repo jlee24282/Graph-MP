@@ -11,7 +11,7 @@ import java.util.Arrays;
 
 public class GlassDetectionTest {
 
-    private int verboseLevel = 0;
+    private int verboseLevel = 10;
 
     public void testToyExample(String inputFilePath) {
         System.out.println("\n------------------------------ test starts ------------------------------");
@@ -44,7 +44,7 @@ public class GlassDetectionTest {
             double[] yx = graphMP.x;
             if (func.getFuncValue(yx) < optimalVal) {
                 optimalVal =  - func.getFuncValue(yx);
-                System.out.println(func.getQ());
+                //System.out.println(func.getQ());
                 bestGraphMP = graphMP;
                 if (verboseLevel == 0) {
                     System.out.println("result subgraph is: " + Arrays.toString(bestGraphMP.resultNodes_Tail));
@@ -59,7 +59,13 @@ public class GlassDetectionTest {
     }
 
     public static void main(String args[]) {
+        new GlassDetectionTest().testToyExample("data/PixelData/APDM-10X11_C10.0_trueSubSize_30.txt");
+        new GlassDetectionTest().testToyExample("data/PixelData/APDM-10X11_C30.0_trueSubSize_30.txt");
         new GlassDetectionTest().testToyExample("data/PixelData/APDM-10X11_C50.0_trueSubSize_30.txt");
+        new GlassDetectionTest().testToyExample("data/PixelData/APDM-10X11_C100.0_trueSubSize_30.txt");
+        new GlassDetectionTest().testToyExample("data/PixelData/APDM-10X11_C150.0_trueSubSize_30.txt");
+        new GlassDetectionTest().testToyExample("data/PixelData/APDM-10X11_C200.0_trueSubSize_30.txt");
+        new GlassDetectionTest().testToyExample("data/PixelData/APDM-10X11_C2000.0_trueSubSize_30.txt");
         //new GlassDetectionTest().testToyExample("data/GridData/APDM-GridData-100_noise_0.0_trueSubSize_30_4.txt");
         //new TestToyExample().testToyExample("data/SimulationData/Protest/APDM-GridData-100-precen_0.1-noise_0-numCC_1_0.txt");
         //new GlassDetectionTest().testToyExample("data/GridDataEBP/APDM-GridData-100_noise_0.0_trueSubSize_30_0.txt");

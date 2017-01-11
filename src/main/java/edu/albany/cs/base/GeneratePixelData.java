@@ -23,7 +23,7 @@ public class GeneratePixelData {
     public GeneratePixelData(String[] args) {
         M = 10;
         N = 11;
-        c = 50;
+        c = 2000;
         numOfTrueNodes = 30;
         graphSize = M*N;
     }
@@ -129,7 +129,8 @@ public class GeneratePixelData {
         }
 
         NormalDistribution normAbnormalNodes = new NormalDistribution(10, stdAbNorm);
-        NormalDistribution normNormalNodes = new NormalDistribution(200, stdNorm);
+        NormalDistribution normNormalNodes = new NormalDistribution(10+c, stdNorm);
+
 
         for (int j = 0; j < graphSize; j++) {
             //abnormal picture -> weight[j][0]
