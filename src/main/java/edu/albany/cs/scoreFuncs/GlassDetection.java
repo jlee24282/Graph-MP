@@ -50,9 +50,6 @@ public class GlassDetection implements Function {
 
     private int decidePicture(){
         int index = -1;
-
-
-
         return index;
     }
 
@@ -185,7 +182,7 @@ public class GlassDetection implements Function {
     private BigDecimal[] argMaxFx(Function func) {
         BigDecimal[] x = new BigDecimal[n];
 
-        BigDecimal gamma = new BigDecimal("0.0001");
+        BigDecimal gamma = new BigDecimal("0.001");
         BigDecimal err = new BigDecimal(1e-10D); //
         int maximumItersNum = 500;
 
@@ -207,8 +204,8 @@ public class GlassDetection implements Function {
             BigDecimal oldFuncValue = new BigDecimal(func.getFuncValue(dx));
 
             for (int i = 0; i < x.length; i++) {
-                //x[i] = x[i].add(gamma.multiply(gradient[i]));
-                x[i] = x[i].subtract(gamma.multiply(gradient[i]));
+                x[i] = x[i].add(gamma.multiply(gradient[i]));
+                //x[i] = x[i].subtract(gamma.multiply(gradient[i]));
             }
             dx = new double[x.length];
             for (int i = 0; i < x.length; i++) {

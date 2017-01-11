@@ -3,8 +3,6 @@ package edu.albany.cs.base;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.math3.distribution.NormalDistribution;
 
-import org.apache.commons.math3.random.RandomDataGenerator;
-
 import java.io.IOException;
 import java.util.*;
 
@@ -23,7 +21,7 @@ public class GeneratePixelData {
     public GeneratePixelData(String[] args) {
         M = 10;
         N = 11;
-        c = 2000;
+        c = 1000;
         numOfTrueNodes = 30;
         graphSize = M*N;
     }
@@ -33,61 +31,24 @@ public class GeneratePixelData {
 
         GenerateMNSingleGraph g = new GenerateMNSingleGraph(M, N);
         ArrayList<Edge> treEdges = randomWalk(g.adj, numTrueNodes);
-        double[] weight = new double[g.numOfNodes];
         int[] trueNodes = null;
-        Arrays.fill(weight, 1.0);
         Random rand = new Random();
         for (Edge e : treEdges) {
-            weight[e.i] = rand.nextInt(256) + this.c;
-            weight[e.j] = rand.nextInt(256) + this.c;
-
-            if(weight[e.i] < 0)
-                weight[e.i] = 0;
-            else if(weight[e.i] >255)
-                weight[e.i] = 255;
-            if(weight[e.j] < 0)
-                weight[e.j] = 0;
-            else if(weight[e.j] >255)
-                weight[e.j] = 255;
+//255 constraint
+//            if(weight[e.i] < 0)
+//                weight[e.i] = 0;
+//            else if(weight[e.i] >255)
+//                weight[e.i] = 255;
+//            if(weight[e.j] < 0)
+//                weight[e.j] = 0;
+//            else if(weight[e.j] >255)
+//                weight[e.j] = 255;
 
             if (!ArrayUtils.contains(trueNodes, e.i)) {
                 trueNodes = ArrayUtils.add(trueNodes, e.i);
             }
             if (!ArrayUtils.contains(trueNodes, e.j)) {
                 trueNodes = ArrayUtils.add(trueNodes, e.j);
-            }
-        }
-
-        int noiseLevelInTrueNodes = (int) (((noiseLevel + 0.0) / 100) * (trueNodes.length));
-        int[] alreadyDone = null;
-        for (int k = 0; k < noiseLevelInTrueNodes; k++) {
-            while (true) {
-                int valueToFind = new Random().nextInt(trueNodes.length);
-                if (!ArrayUtils.contains(alreadyDone, valueToFind)) {
-                    weight[trueNodes[valueToFind]] = 255.0;
-                    alreadyDone = ArrayUtils.add(alreadyDone, valueToFind);
-                    break;
-                }
-            }
-        }
-
-        int[] normalNodes = ArrayUtils
-                .removeElements(new RandomDataGenerator().nextPermutation(weight.length, weight.length), trueNodes);
-
-        for (int norm : normalNodes) {
-            weight[norm] = rand.nextInt(256);
-        }
-
-        int noiseLevelInNormalNodes = (int) (((noiseLevel + 0.0) / 100) * (weight.length - trueNodes.length + 0.0));
-        alreadyDone = null;
-        for (int j = 0; j < noiseLevelInNormalNodes; j++) {
-            while (true) {
-                int valueToFind = new Random().nextInt(normalNodes.length);
-                if (!ArrayUtils.contains(alreadyDone, valueToFind)) {
-                    weight[normalNodes[valueToFind]] = 255;
-                    alreadyDone = ArrayUtils.add(alreadyDone, valueToFind);
-                    break;
-                }
             }
         }
 
@@ -99,6 +60,7 @@ public class GeneratePixelData {
 
         for(int i = 0; i< trueNodes.size(); i++){
             int[] key = new int[]{trueNodes.get(i).i, trueNodes.get(i).j};
+            System.out.println("Test" + ArrayUtils.toString(key));
             tEdge.put(key, 1.0);
         }
 
@@ -112,7 +74,6 @@ public class GeneratePixelData {
         meanAbNorm = meanNorm - this.c;
         stdNorm = 1;
         stdAbNorm = 1;
-
 
         HashMap<int[], Double> trueSubGraphEdges 	= aList2HMap(treEdges);
 
@@ -131,7 +92,6 @@ public class GeneratePixelData {
         NormalDistribution normAbnormalNodes = new NormalDistribution(10, stdAbNorm);
         NormalDistribution normNormalNodes = new NormalDistribution(10+c, stdNorm);
 
-
         for (int j = 0; j < graphSize; j++) {
             //abnormal picture -> weight[j][0]
             if (nodes.contains(j)) {
@@ -144,11 +104,12 @@ public class GeneratePixelData {
                 weight[j][k] = (int) normNormalNodes.sample();
             }
 
+//255 constraint
             //should be between 0 and 255
-            if(weight[j][0] < 0)
-                weight[j][0] = 0;
-            else if(weight[j][0] >255)
-                weight[j][0] = 255;
+//            if(weight[j][0] < 0)
+//                weight[j][0] = 0;
+//            else if(weight[j][0] >255)
+//                weight[j][0] = 255;
         }
 
 
@@ -210,9 +171,9 @@ public class GeneratePixelData {
         return false;
     }
 
-    public void generateSingleCase() throws IOException {
+    public void generateSingleCase(double c) throws IOException {
         double noiseLevel = 0.0D;
-
+        this.c = c;
         String outputFileName = "data/PixelData/APDM-" +M+"X"+N+ "_C" + this.c + "_trueSubSize_"
                 + numOfTrueNodes + ".txt";
         generateGridDataWithNoise(numOfTrueNodes, graphSize, noiseLevel, outputFileName, false);
@@ -243,7 +204,16 @@ public class GeneratePixelData {
             }
             Utils.stop();
         }
-        new GeneratePixelData(args).generateSingleCase();
+        //new GeneratePixelData(args).generateSingleCase(0.0);
+//        new GeneratePixelData(args).generateSingleCase(5.0);
+//        new GeneratePixelData(args).generateSingleCase(10.0);
+//        new GeneratePixelData(args).generateSingleCase(30.0);
+//        new GeneratePixelData(args).generateSingleCase(50.0);
+//        new GeneratePixelData(args).generateSingleCase(100.0);
+//        new GeneratePixelData(args).generateSingleCase(150.0);
+//        new GeneratePixelData(args).generateSingleCase(200.0);
+//        new GeneratePixelData(args).generateSingleCase(1000.0);
+        new GeneratePixelData(args).generateSingleCase(10000.0);
         System.out.println("DONE");
     }
 }
