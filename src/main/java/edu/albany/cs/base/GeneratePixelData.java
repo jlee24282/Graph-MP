@@ -212,7 +212,9 @@ public class GeneratePixelData {
 //        new GeneratePixelData(args).generateSingleCase(100.0);
 //        new GeneratePixelData(args).generateSingleCase(150.0);
 //        new GeneratePixelData(args).generateSingleCase(200.0);
-//        new GeneratePixelData(args).generateSingleCase(1000.0);
+//        new GeneratePixelData(args).generateSingleCase(300.0);
+//        new GeneratePixelData(args).generateSingleCase(500.0);
+ //       new GeneratePixelData(args).generateSingleCase(1000.0);
         new GeneratePixelData(args).generateSingleCase(10000.0);
         System.out.println("DONE");
     }

@@ -575,8 +575,9 @@ public class APDMInputFormat {
 							data.base[count] = Double.parseDouble(str[1]);
 							data.counts[count] = Double.parseDouble(str[2]);
 						} else if(data.dataSource.equals("PixelData")){
-							for(int i = 0; i< 12; i++)
-								data.greyValues[count][i] = Double.parseDouble(str[1]);
+							for(int i = 1; i< str.length; i++) {
+								data.greyValues[count][i-1] = Double.parseDouble(str[i]);
+							}
 						}
 						count++;
 					}

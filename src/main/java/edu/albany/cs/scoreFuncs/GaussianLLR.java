@@ -11,7 +11,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-public class GlassDetection implements Function {
+public class GaussianLLR implements Function {
 
     private final double[][] greyValues;
     private final double BAll;
@@ -24,7 +24,7 @@ public class GlassDetection implements Function {
 
     private int verboseLevel = 1;
 
-    public GlassDetection(double[][] greyValues) {
+    public GaussianLLR(double[][] greyValues) {
         this.greyValues = greyValues;
         this.picIndex = 0;
         this.funcID = FuncType.Unknown;
@@ -86,45 +86,40 @@ public class GlassDetection implements Function {
     }
     @Override
     public double[] getGradient(double[] x) {
-
         if (x == null || c == null || x.length != c.length) {
             new IllegalArgumentException("Error : Invalid parameters ...");
             System.exit(0);
         }
         double[] gradient = new double[n];
-        double sigmaX = StatUtils.sum(x);
-        if (sigmaX == 0.0D) {
+        double B = new ArrayRealVector(x).dotProduct(new ArrayRealVector(b));
+        double C = new ArrayRealVector(x).dotProduct(new ArrayRealVector(c));
+
+        if (B == 0.0D) {
             System.out.println(funcID + " Error : the denominator should not be zero.");
             System.exit(0);
         }
-        double sigmaCX = new ArrayRealVector(x).dotProduct(new ArrayRealVector(c));
         for (int i = 0; i < gradient.length; i++) {
-            gradient[i] =-( c[i] * (Math.sqrt(sigmaX) / sigmaX) - (0.5D) * (sigmaCX / Math.pow(sigmaX, 1.5D)) );
+            gradient[i] =-( (C/B-1)*c[i] + (1- Math.pow(C/B,2)/2) * b[i]);
         }
         return gradient;
     }
 
     @Override
     public double getFuncValue(double[] x) {
-        double funcValue = 0.0D;
         if (x == null || c == null || x.length != c.length) {
             new IllegalArgumentException("Error : Invalid parameters ...");
             System.exit(0);
         }
-        double sigmaX = StatUtils.sum(x);
-        double sigmaCX = new ArrayRealVector(x).dotProduct(new ArrayRealVector(c));
-        if (sigmaX <= 0.0D) {
-            System.out.println("funcValue error ...");
-            System.exit(0);
-        } else {
-            funcValue = sigmaCX / Math.sqrt(sigmaX);
-        }
-        if (!Double.isFinite(funcValue)) {
-            System.out.println(funcID + " Error : elevated mean scan stat is not a real value, f is " + funcValue);
+        double B = new ArrayRealVector(x).dotProduct(new ArrayRealVector(b));
+        double C = new ArrayRealVector(x).dotProduct(new ArrayRealVector(c));
+        double llrScore = llrScore = Math.pow((C-B),2)/(2*B);
+
+        if (!Double.isFinite(llrScore)) {
+            System.out.println(funcID + " Error : elevated mean scan stat is not a real value, f is " + llrScore);
             System.exit(0);
         }
 
-        return -funcValue;
+        return -llrScore;
     }
 
     /**
