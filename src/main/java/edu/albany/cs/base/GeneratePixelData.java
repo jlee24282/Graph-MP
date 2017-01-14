@@ -60,7 +60,7 @@ public class GeneratePixelData {
 
         for(int i = 0; i< trueNodes.size(); i++){
             int[] key = new int[]{trueNodes.get(i).i, trueNodes.get(i).j};
-            System.out.println("Test" + ArrayUtils.toString(key));
+            //System.out.println("Test" + ArrayUtils.toString(key));
             tEdge.put(key, 1.0);
         }
 
@@ -89,8 +89,8 @@ public class GeneratePixelData {
             nodes.add(edge.j);
         }
 
-        NormalDistribution normAbnormalNodes = new NormalDistribution(10, stdAbNorm);
-        NormalDistribution normNormalNodes = new NormalDistribution(10+c, stdNorm);
+        NormalDistribution normAbnormalNodes = new NormalDistribution(10+c, stdAbNorm);
+        NormalDistribution normNormalNodes = new NormalDistribution(10, stdNorm);
 
         for (int j = 0; j < graphSize; j++) {
             //abnormal picture -> weight[j][0]
@@ -204,17 +204,17 @@ public class GeneratePixelData {
             }
             Utils.stop();
         }
-        //new GeneratePixelData(args).generateSingleCase(0.0);
+//        new GeneratePixelData(args).generateSingleCase(0.0);
 //        new GeneratePixelData(args).generateSingleCase(5.0);
 //        new GeneratePixelData(args).generateSingleCase(10.0);
 //        new GeneratePixelData(args).generateSingleCase(30.0);
 //        new GeneratePixelData(args).generateSingleCase(50.0);
 //        new GeneratePixelData(args).generateSingleCase(100.0);
 //        new GeneratePixelData(args).generateSingleCase(150.0);
-//        new GeneratePixelData(args).generateSingleCase(200.0);
-//        new GeneratePixelData(args).generateSingleCase(300.0);
-//        new GeneratePixelData(args).generateSingleCase(500.0);
- //       new GeneratePixelData(args).generateSingleCase(1000.0);
+        new GeneratePixelData(args).generateSingleCase(200.0);
+        new GeneratePixelData(args).generateSingleCase(300.0);
+        new GeneratePixelData(args).generateSingleCase(500.0);
+        new GeneratePixelData(args).generateSingleCase(1000.0);
         new GeneratePixelData(args).generateSingleCase(10000.0);
         System.out.println("DONE");
     }

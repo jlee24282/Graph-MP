@@ -14,13 +14,12 @@ import java.util.Random;
 public class GaussianLLR implements Function {
 
     private final double[][] greyValues;
-    private final double BAll;
-    private final double CAll;
     private final FuncType funcID;
     private final int n;
     private double[] b;
-    private double[] c;
+    private double[][] c;
     private int picIndex;
+    private double q;
 
     private int verboseLevel = 1;
 
@@ -30,15 +29,16 @@ public class GaussianLLR implements Function {
         this.funcID = FuncType.Unknown;
         this.n = greyValues.length;
         this.b = new double[n];
-        this.c = new double[n];
-        BAll = StatUtils.sum(b);
-        CAll = StatUtils.sum(c);
+        this.c = new double[12][n];
         double mean, std;
+        this.picIndex = 0;
         for(int i = 0; i< n; i++){
             mean = getMedian(greyValues[i]);
             std = getMAD(greyValues[i]);
             b[i] = mean*mean/(std*std);
-            c[i] = mean*greyValues[i][picIndex]/(std*std);
+            for (int pic = 0; pic< 12; pic ++){
+                c[pic][i] = mean*greyValues[i][pic]/(std*std);
+            }
         }
     }
 
@@ -86,34 +86,58 @@ public class GaussianLLR implements Function {
     }
     @Override
     public double[] getGradient(double[] x) {
-        if (x == null || c == null || x.length != c.length) {
+        if (x == null || c == null ) {
             new IllegalArgumentException("Error : Invalid parameters ...");
             System.exit(0);
         }
         double[] gradient = new double[n];
         double B = new ArrayRealVector(x).dotProduct(new ArrayRealVector(b));
-        double C = new ArrayRealVector(x).dotProduct(new ArrayRealVector(c));
+        picIndex = calcPicIndex(x);
+        double C = new ArrayRealVector(x).dotProduct(new ArrayRealVector(c[picIndex]));
 
         if (B == 0.0D) {
             System.out.println(funcID + " Error : the denominator should not be zero.");
             System.exit(0);
         }
         for (int i = 0; i < gradient.length; i++) {
-            gradient[i] =-( (C/B-1)*c[i] + (1- Math.pow(C/B,2)/2) * b[i]);
+            gradient[i] =-( (C/B-1)*c[picIndex][i] + (1- Math.pow(C/B,2)/2) * b[i]);
         }
         return gradient;
     }
+    private int calcPicIndex(double[] x){
+        int picIn = 0;
 
+        double minLLR = Double.MAX_VALUE;
+        int picin = -1;
+        //get picIndex
+        for(int i = 0; i< 12; i ++){
+            double B = new ArrayRealVector(x).dotProduct(new ArrayRealVector(b));
+            double C = new ArrayRealVector(x).dotProduct(new ArrayRealVector(c[i]));
+            if(C/B > 1 && StatUtils.sum(x) != 0){
+                if(minLLR > getLLR(x, b, c[i])){
+                    minLLR = getLLR(x, b, c[i]);
+                    picin = i;
+                }
+                //System.out.print(" INDEX " + i + " " + getLLR(x, b, c[i]));
+                for(int j = 0; j< n; j++){
+                    if(x[j] != 0) {
+                        //System.out.print((greyValues[j][i] + " "));
+                    }
+                }
+                //System.out.println();
+            }
+        }
+        //System.out.println("picIn" + picin);
+        return picIn;
+    }
     @Override
     public double getFuncValue(double[] x) {
-        if (x == null || c == null || x.length != c.length) {
+        if (x == null || c == null ) {
             new IllegalArgumentException("Error : Invalid parameters ...");
             System.exit(0);
         }
-        double B = new ArrayRealVector(x).dotProduct(new ArrayRealVector(b));
-        double C = new ArrayRealVector(x).dotProduct(new ArrayRealVector(c));
-        double llrScore = llrScore = Math.pow((C-B),2)/(2*B);
-
+        picIndex = calcPicIndex(x);
+        double llrScore = getLLR(x, b, c[picIndex]);
         if (!Double.isFinite(llrScore)) {
             System.out.println(funcID + " Error : elevated mean scan stat is not a real value, f is " + llrScore);
             System.exit(0);
@@ -121,7 +145,13 @@ public class GaussianLLR implements Function {
 
         return -llrScore;
     }
+    private double getLLR(double[] x, double[] b, double[] c){
+        double B = new ArrayRealVector(x).dotProduct(new ArrayRealVector(b));
+        double C = new ArrayRealVector(x).dotProduct(new ArrayRealVector(c));
+        double llrScore = Math.pow((C-B),2)/(2*B);
 
+        return llrScore;
+    }
     /**
      * calculate function xlog(x/a)
      */
