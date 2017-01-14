@@ -25,7 +25,7 @@ public class GaussianLLR implements Function {
 
     public GaussianLLR(double[][] greyValues) {
         this.greyValues = greyValues;
-        this.picIndex = 0;
+        this.picIndex = -1;
         this.funcID = FuncType.Unknown;
         this.n = greyValues.length;
         this.b = new double[n];
@@ -301,5 +301,7 @@ public class GaussianLLR implements Function {
         }
         return x;
     }
-
+    public int getPicIndex(){
+        return this.picIndex;
+    }
 }

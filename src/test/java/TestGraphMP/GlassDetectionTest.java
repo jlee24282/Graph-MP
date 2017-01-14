@@ -33,6 +33,7 @@ public class GlassDetectionTest {
         double optimalVal =  Double.MAX_VALUE;
         PreRec bestPreRec = new PreRec();
         GraphMP bestGraphMP = null;
+        int bestPicture = -1;
         for (int s : candidateS) {
             double B = s - 1 + 0.0D;
             int t = 5;
@@ -43,6 +44,7 @@ public class GlassDetectionTest {
             double[] yx = graphMP.x;
             if (func.getFuncValue(yx) < optimalVal) {
                 optimalVal = -func.getFuncValue(yx);
+                bestPicture = func.getPicIndex();
                 //System.out.println(func.getQ());
                 bestGraphMP = graphMP;
                 if (verboseLevel == 0) {
@@ -51,6 +53,7 @@ public class GlassDetectionTest {
                 }
             }
         }
+        System.out.println("Picture Index: " + bestPicture);
         System.out.println("precision : " + bestPreRec.pre + " ; recall : " + bestPreRec.rec);
         System.out.println("result subgraph is: " + Arrays.toString(bestGraphMP.resultNodes_Tail));
         System.out.println("true subgraph is: " + Arrays.toString(apdm.data.trueSubGraphNodes));
