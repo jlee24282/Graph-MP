@@ -1,6 +1,4 @@
 package edu.albany.cs.scoreFuncs;
-import edu.albany.cs.base.ArrayIndexSort;
-import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.math3.linear.ArrayRealVector;
 import org.apache.commons.math3.stat.StatUtils;
 import org.apache.commons.math3.stat.descriptive.rank.Median;
@@ -8,7 +6,6 @@ import org.apache.commons.math3.stat.descriptive.rank.Median;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Random;
 
 public class GaussianLLR implements Function {
@@ -250,11 +247,13 @@ public class GaussianLLR implements Function {
             else
                 result[i] = x[i].doubleValue();
         }
+
         for(int i = 0; i < n; i++){
             if(!S.contains(i)){
                 result[i] = 0.0D;
             }
         }
+
         return result;
     }
 

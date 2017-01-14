@@ -1,6 +1,4 @@
 package edu.albany.cs.scoreFuncs;
-import edu.albany.cs.base.ArrayIndexSort;
-import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.math3.linear.ArrayRealVector;
 import org.apache.commons.math3.stat.StatUtils;
 import org.apache.commons.math3.stat.descriptive.rank.Median;
@@ -8,37 +6,36 @@ import org.apache.commons.math3.stat.descriptive.rank.Median;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Random;
 
 public class GlassDetection implements Function {
 
     private final double[][] greyValues;
-    private final double BAll;
-    private final double CAll;
     private final FuncType funcID;
     private final int n;
     private double[] b;
-    private double[] c;
+    private double[][] c;
     private int picIndex;
+    private double q;
 
     private int verboseLevel = 1;
 
     public GlassDetection(double[][] greyValues) {
         this.greyValues = greyValues;
-        this.picIndex = 0;
+        this.picIndex = -1;
         this.funcID = FuncType.Unknown;
         this.n = greyValues.length;
         this.b = new double[n];
-        this.c = new double[n];
-        BAll = StatUtils.sum(b);
-        CAll = StatUtils.sum(c);
+        this.c = new double[12][n];
         double mean, std;
+        this.picIndex = 0;
         for(int i = 0; i< n; i++){
             mean = getMedian(greyValues[i]);
             std = getMAD(greyValues[i]);
             b[i] = mean*mean/(std*std);
-            c[i] = mean*greyValues[i][picIndex]/(std*std);
+            for (int pic = 0; pic< 12; pic ++){
+                c[pic][i] = mean*greyValues[i][pic]/(std*std);
+            }
         }
     }
 
@@ -86,47 +83,72 @@ public class GlassDetection implements Function {
     }
     @Override
     public double[] getGradient(double[] x) {
-
-        if (x == null || c == null || x.length != c.length) {
+        if (x == null || c == null ) {
             new IllegalArgumentException("Error : Invalid parameters ...");
             System.exit(0);
         }
         double[] gradient = new double[n];
-        double sigmaX = StatUtils.sum(x);
-        if (sigmaX == 0.0D) {
+        double B = new ArrayRealVector(x).dotProduct(new ArrayRealVector(b));
+        picIndex = calcPicIndex(x);
+        double C = new ArrayRealVector(x).dotProduct(new ArrayRealVector(c[picIndex]));
+
+        if (B == 0.0D) {
             System.out.println(funcID + " Error : the denominator should not be zero.");
             System.exit(0);
         }
-        double sigmaCX = new ArrayRealVector(x).dotProduct(new ArrayRealVector(c));
         for (int i = 0; i < gradient.length; i++) {
-            gradient[i] =-( c[i] * (Math.sqrt(sigmaX) / sigmaX) - (0.5D) * (sigmaCX / Math.pow(sigmaX, 1.5D)) );
+            gradient[i] =-( (C/B-1)*c[picIndex][i] + (1- Math.pow(C/B,2)/2) * b[i]);
         }
         return gradient;
     }
+    private int calcPicIndex(double[] x){
+        int picIn = 0;
 
+        double minLLR = Double.MAX_VALUE;
+        int picin = -1;
+        //get picIndex
+        for(int i = 0; i< 12; i ++){
+            double B = new ArrayRealVector(x).dotProduct(new ArrayRealVector(b));
+            double C = new ArrayRealVector(x).dotProduct(new ArrayRealVector(c[i]));
+            if(C/B > 1 && StatUtils.sum(x) != 0){
+                if(minLLR > getLLR(x, b, c[i])){
+                    minLLR = getLLR(x, b, c[i]);
+                    picin = i;
+                }
+                //System.out.print(" INDEX " + i + " " + getLLR(x, b, c[i]));
+                for(int j = 0; j< n; j++){
+                    if(x[j] != 0) {
+                        //System.out.print((greyValues[j][i] + " "));
+                    }
+                }
+                //System.out.println();
+            }
+        }
+        //System.out.println("picIn" + picin);
+        return picIn;
+    }
     @Override
     public double getFuncValue(double[] x) {
-        double funcValue = 0.0D;
-        if (x == null || c == null || x.length != c.length) {
+        if (x == null || c == null ) {
             new IllegalArgumentException("Error : Invalid parameters ...");
             System.exit(0);
         }
-        double sigmaX = StatUtils.sum(x);
-        double sigmaCX = new ArrayRealVector(x).dotProduct(new ArrayRealVector(c));
-        if (sigmaX <= 0.0D) {
-            System.out.println("funcValue error ...");
-            System.exit(0);
-        } else {
-            funcValue = sigmaCX / Math.sqrt(sigmaX);
-        }
-        if (!Double.isFinite(funcValue)) {
-            System.out.println(funcID + " Error : elevated mean scan stat is not a real value, f is " + funcValue);
+        picIndex = calcPicIndex(x);
+        double llrScore = getLLR(x, b, c[picIndex]);
+        if (!Double.isFinite(llrScore)) {
+            System.out.println(funcID + " Error : elevated mean scan stat is not a real value, f is " + llrScore);
             System.exit(0);
         }
 
-        return -funcValue;
+        return -llrScore;
     }
+    private double getLLR(double[] x, double[] b, double[] c){
+        double B = new ArrayRealVector(x).dotProduct(new ArrayRealVector(b));
+        double C = new ArrayRealVector(x).dotProduct(new ArrayRealVector(c));
+        double llrScore = Math.pow((C-B),2)/(2*B);
 
+        return llrScore;
+    }
     /**
      * calculate function xlog(x/a)
      */
@@ -225,11 +247,13 @@ public class GlassDetection implements Function {
             else
                 result[i] = x[i].doubleValue();
         }
+
         for(int i = 0; i < n; i++){
             if(!S.contains(i)){
                 result[i] = 0.0D;
             }
         }
+
         return result;
     }
 
@@ -276,5 +300,7 @@ public class GlassDetection implements Function {
         }
         return x;
     }
-
+    public int getPicIndex(){
+        return this.picIndex;
+    }
 }

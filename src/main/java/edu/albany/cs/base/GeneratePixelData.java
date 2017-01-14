@@ -34,15 +34,6 @@ public class GeneratePixelData {
         int[] trueNodes = null;
         Random rand = new Random();
         for (Edge e : treEdges) {
-//255 constraint
-//            if(weight[e.i] < 0)
-//                weight[e.i] = 0;
-//            else if(weight[e.i] >255)
-//                weight[e.i] = 255;
-//            if(weight[e.j] < 0)
-//                weight[e.j] = 0;
-//            else if(weight[e.j] >255)
-//                weight[e.j] = 255;
 
             if (!ArrayUtils.contains(trueNodes, e.i)) {
                 trueNodes = ArrayUtils.add(trueNodes, e.i);

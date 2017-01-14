@@ -1070,7 +1070,7 @@ public class Utils {
 	 * of the node has 4 neighbors
 	 *
 	 * @param N
-	 *            we have N*N number of nodes need to simulate
+	 *            we have Column*Column number of nodes need to simulate
 	 */
 	public static boolean[][] generateGridGraph(int N) {
 		boolean[][] graph = new boolean[N * N][N * N];

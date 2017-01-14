@@ -64,33 +64,33 @@ public class GenerateMNSingleGraph {
                 /*
                 if (i != j) {
                     //top edge
-                    if(current < N){
+                    if(current < Column){
                         //Right top corner
-                        if(current%N == N-1){
+                        if(current%Column == Column-1){
                             System.out.println("RightTopCorner" + current);
                             graph[i][j-1] = weight;
-                            graph[i][j+N] = weight;
+                            graph[i][j+Column] = weight;
                         //topedge
                         }else{
                             System.out.println("TopEdge" + current);
                             graph[i][j-1] = weight;
                             graph[i][j+1] = weight;
-                            graph[i][j+N] = weight;
+                            graph[i][j+Column] = weight;
                         }
                     }
                     //down edge
-                    else if(current >= M*N*M*N - M*N){
+                    else if(current >= Row*Column*Row*Column - Row*Column){
                         //down left corner
-                        if(current%N == 0){
+                        if(current%Column == 0){
                             System.out.println("DownLeftCorner" + current);
                             graph[i][j+1] = weight;
-                            graph[i][j-N] = weight;
+                            graph[i][j-Column] = weight;
                         }//down edge
                         else{
                             System.out.println("DownEdge" + current + i + j);
                             graph[i][j-1] = weight;
                             graph[i][j+1] = weight;
-                            graph[i][j-N] = weight;
+                            graph[i][j-Column] = weight;
 
                         }
                     }
@@ -99,28 +99,28 @@ public class GenerateMNSingleGraph {
                         System.out.println("middle" + current);
 
                         //middle left edge
-                        if(current%N == 0){
+                        if(current%Column == 0){
                             System.out.println("Middle left edge" + current);
                             graph[i][j + 1] = weight;
-                            if(j-N >= 0)
-                                graph[i][j - N] = weight;
-                            if(j+N < M*N)
-                                graph[i][j + N] = weight;
+                            if(j-Column >= 0)
+                                graph[i][j - Column] = weight;
+                            if(j+Column < Row*Column)
+                                graph[i][j + Column] = weight;
                         }//middle right edge
-                        else if(current%N == N-1){
+                        else if(current%Column == Column-1){
                             System.out.println("middle right edge" + current + i + j);
                             graph[i][j - 1] = weight;
-                            graph[i][j - N] = weight;
-                            if(j+N < M*N)
-                                graph[i][j + N] = weight;
+                            graph[i][j - Column] = weight;
+                            if(j+Column < Row*Column)
+                                graph[i][j + Column] = weight;
                         }
                         else{
                             graph[i][j - 1] = weight;
                             graph[i][j + 1] = weight;
-                            if(j-N >= 0)
-                                graph[i][j - N] = weight;
-                            if(j+N < M*N)
-                                graph[i][j + N] = weight;
+                            if(j-Column >= 0)
+                                graph[i][j - Column] = weight;
+                            if(j+Column < Row*Column)
+                                graph[i][j + Column] = weight;
                         }
 
                     }
