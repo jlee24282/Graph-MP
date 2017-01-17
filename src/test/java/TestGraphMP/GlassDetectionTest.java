@@ -27,7 +27,7 @@ public class GlassDetectionTest {
 
         /** step2: optimization */
         int[] candidateS = new int[] {13, 14, 15, 16, 17, 18};
-        double optimalVal =  Double.MAX_VALUE;
+        double optimalVal = Double.MAX_VALUE;
         PreRec bestPreRec = new PreRec();
         GraphMP bestGraphMP = null;
         int bestPicture = -1;
