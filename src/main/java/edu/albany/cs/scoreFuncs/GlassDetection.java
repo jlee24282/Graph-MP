@@ -1,99 +1,38 @@
 package edu.albany.cs.scoreFuncs;
 import org.apache.commons.math3.linear.ArrayRealVector;
-import org.apache.commons.math3.stat.StatUtils;
-import org.apache.commons.math3.stat.descriptive.rank.Median;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
-
+/*
+    Simplified Regression
+ */
 public class GlassDetection implements Function {
 
     private final double[][] greyValues;
     private final FuncType funcID;
     private final int n;
-    private double[] b;
-    private double[][] c;
     private int picIndex;
-    private double q;
-    private final int picCount;
     private double[][] greyValuesT;
-
+    private final int picCount;
     private int verboseLevel = 1;
 
     public GlassDetection(double[][] greyValues) {
-        this.greyValues = greyValues;
-        this.picIndex = -1;
-        this.funcID = FuncType.Unknown;
-        this.n = greyValues.length;
-        this.b = new double[n];
-        this.c = new double[12][n];
+        this.greyValues     = greyValues;
+        this.funcID         = FuncType.Unknown;
+        this.n              = greyValues.length;
+        this.picIndex       = 0;
+        this.picCount        = greyValues[0].length;
         this.greyValuesT    = new double[greyValues[0].length][n];
 
-        double mean, std;
-        this.picIndex = 0;
-        for(int i = 0; i< n; i++){
-            mean = getMedian(greyValues[i]);
-            std = getMAD(greyValues[i]);
-            b[i] = mean*mean/(std*std);
-            for (int pic = 0; pic < 12; pic ++){
-                c[pic][i] = mean*greyValues[i][pic]/(std*std);
-            }
-        }
-
-        this.picCount = greyValues[0].length;
-
         for(int i = 0; i < n; i++){
-            for (int j = 0; j < greyValues[0].length; j++){
+            for (int j = 0; j < picCount; j++){
                 greyValuesT[j][i] = greyValues[i][j];
             }
         }
-
     }
 
-    private double getMean(double[] values){
-        double result = 0.0;
-        double sum = 0.0;
-
-        for (int i = 0; i < values.length; i ++){
-            sum += values[i];
-        }
-        result = sum/values.length;
-        return result;
-    }
-
-    private double getMedian(double[] values){
-        Median median = new Median();
-        double medianValue = median.evaluate(values);
-        return medianValue;
-    }
-
-    private double getMAD(double[] values){
-        Median median = new Median();
-        double medianValue = median.evaluate(values);
-        double std = 0.0;
-
-        for (int i=0; i<values.length;i++) {
-            std = std + Math.pow(values[i] - medianValue, 2);
-        }
-        std = std/values.length;
-        std = Math.sqrt(std);
-        return std;
-    }
-
-    private double getStd(double[] values){
-        double mean = getMean(values);
-        double std = 0.0;
-
-        //System.out.println(ArrayUtils.toString(values));
-        for (int i=0; i<values.length;i++) {
-            std = std + Math.pow(values[i] - mean, 2);
-        }
-        std = std/values.length;
-        std = Math.sqrt(std);
-        return std;
-    }
     @Override
     public double[] getGradient(double[] x) {
         if (x == null || greyValues[picIndex] == null ) {
@@ -129,32 +68,7 @@ public class GlassDetection implements Function {
 
         return gradient;
     }
-    private int calcPicIndex(double[] x){
-        int picIn = 0;
 
-        double minLLR = Double.MAX_VALUE;
-        int picin = -1;
-        //get picIndex
-        for(int i = 0; i< 12; i ++){
-            double B = new ArrayRealVector(x).dotProduct(new ArrayRealVector(b));
-            double C = new ArrayRealVector(x).dotProduct(new ArrayRealVector(c[i]));
-            if(C/B > 1 && StatUtils.sum(x) != 0){
-                if(minLLR > getLLR(x, b, c[i])){
-                    minLLR = getLLR(x, b, c[i]);
-                    picin = i;
-                }
-                //System.out.print(" INDEX " + i + " " + getLLR(x, b, c[i]));
-                for(int j = 0; j< n; j++){
-                    if(x[j] != 0) {
-                        //System.out.print((greyValues[j][i] + " "));
-                    }
-                }
-                //System.out.println();
-            }
-        }
-        //System.out.println("picIn" + picin);
-        return picIn;
-    }
     @Override
     public double getFuncValue(double[] x) {
         if (x == null || greyValues[picIndex] == null  ) {
@@ -174,27 +88,6 @@ public class GlassDetection implements Function {
 
         double funcScore = Math.pow((x0w+1), 2) + sumXW_Z_pow;
         return funcScore;
-    }
-    private double getLLR(double[] x, double[] b, double[] c){
-        double B = new ArrayRealVector(x).dotProduct(new ArrayRealVector(b));
-        double C = new ArrayRealVector(x).dotProduct(new ArrayRealVector(c));
-        double llrScore = Math.pow((C-B),2)/(2*B);
-
-        return llrScore;
-    }
-    /**
-     * calculate function xlog(x/a)
-     */
-    private double calXlogXA(double x, double a) {
-        if (x <= 0.0D) {
-            return 0.0D;
-        } else {
-            if (a <= 0.0D) {
-                System.out.println("function xlog(x/a) is error");
-                System.exit(0);
-            }
-            return x * Math.log(x / a);
-        }
     }
 
     /**
@@ -333,9 +226,12 @@ public class GlassDetection implements Function {
         }
         return x;
     }
+
+    //getter picIndex
     public int getPicIndex(){
         return this.picIndex;
     }
+
 
     private double[] multiply(double[] a, double b){
         double[] result = new double[n];
