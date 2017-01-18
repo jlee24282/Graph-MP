@@ -48,23 +48,26 @@ public class GlassDetection implements Function {
             System.exit(0);
         }
         //gradient by x
-        double x0w = new ArrayRealVector(x).dotProduct(new ArrayRealVector(greyValuesT[picIndex]));
-        double[] part1 = multiply(greyValuesT[picIndex],(x0w + 1)*2);
+        double[] part1 = new double[n];
         for (int k = 0; k < picCount; k++){
-//            if(k != picIndex){
-                double xw = new ArrayRealVector(x).dotProduct(new ArrayRealVector(greyValuesT[k]));
+            double xw = new ArrayRealVector(x).dotProduct(new ArrayRealVector(greyValuesT[k]));
+            if(k != picIndex)
                 part1 = addition(part1, multiply(greyValuesT[k], 2*(xw-1)));
-//            }
+            else
+                part1 = addition(part1, multiply(greyValuesT[k], 2*(xw+1)));
         }
         //gradient by w
-        double[] part2 = multiply(x, (x0w + 1)*2);
+        double[] part2 = new double[n];
         for (int k = 0; k < picCount; k++){
-            if(k != picIndex){
-                double xw = new ArrayRealVector(x).dotProduct(new ArrayRealVector(greyValuesT[k]));
-                part2 = addition(part2, multiply(x, 2*(xw-1)));
-            }
+            double xw = new ArrayRealVector(x).dotProduct(new ArrayRealVector(greyValuesT[k]));
+            if(k != picIndex)
+                part2 = addition(part1, multiply(x, 2*(xw-1)));
+            else
+                part2 = addition(part1, multiply(x, 2*(xw+1)));
         }
-        return part2;
+
+        double x0w = new ArrayRealVector(x).dotProduct(new ArrayRealVector(greyValuesT[picIndex]));
+        return  multiply(greyValuesT[picIndex], 2 * StatUtils.sum(x));
     }
 
     @Override
@@ -73,19 +76,8 @@ public class GlassDetection implements Function {
             new IllegalArgumentException("Error : Invalid parameters ...");
             System.exit(0);
         }
-
         double x0w = new ArrayRealVector(x).dotProduct(new ArrayRealVector(greyValuesT[picIndex]));
-        double sumXW_Z_pow = 0;
-
-        for (int k = 0; k < picCount; k++){
-            if(k != picIndex){
-                double xkw = new ArrayRealVector(x).dotProduct(new ArrayRealVector(greyValuesT[k]));
-                sumXW_Z_pow += Math.pow(xkw-1,2);
-            }
-        }
-
-        double funcScore = Math.pow((x0w+1), 2) + sumXW_Z_pow;
-        return funcScore;
+        return Math.pow((x0w+1), 2);
     }
 
     /**
