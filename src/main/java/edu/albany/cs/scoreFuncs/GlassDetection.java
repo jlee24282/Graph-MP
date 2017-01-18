@@ -1,5 +1,7 @@
 package edu.albany.cs.scoreFuncs;
+import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.math3.linear.ArrayRealVector;
+import org.apache.commons.math3.stat.StatUtils;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -17,6 +19,7 @@ public class GlassDetection implements Function {
     private double[][] greyValuesT;
     private final int picCount;
     private int verboseLevel = 1;
+    private double[][] c;
 
     public GlassDetection(double[][] greyValues) {
         this.greyValues     = greyValues;
@@ -26,10 +29,15 @@ public class GlassDetection implements Function {
         this.picCount        = greyValues[0].length;
         this.greyValuesT    = new double[greyValues[0].length][n];
 
+        this.c = new double[n][n];
         for(int i = 0; i < n; i++){
             for (int j = 0; j < picCount; j++){
                 greyValuesT[j][i] = greyValues[i][j];
             }
+        }
+
+        for (int i = 0; i < n; i++) {
+            c[i][i] = greyValuesT[picIndex][i];
         }
     }
 
@@ -39,34 +47,24 @@ public class GlassDetection implements Function {
             new IllegalArgumentException("Error : Invalid parameters ...");
             System.exit(0);
         }
-
+        //gradient by x
         double x0w = new ArrayRealVector(x).dotProduct(new ArrayRealVector(greyValuesT[picIndex]));
-        double[] part2 = new double[n];
-        double[] part4 = new double[n];
-        Arrays.fill(part2, 0.0);
-        Arrays.fill(part4, 0.0);
-
-        for (int k = 0; k < picCount; k++){
-            if(k != picIndex){
-                double xw = new ArrayRealVector(x).dotProduct(new ArrayRealVector(greyValuesT[k]));
-                part2 = addition(part2, multiply(greyValuesT[k], 2*(xw-1)));
-            }
-        }
-        for (int k = 0; k < picCount; k++){
-            if(k != picIndex){
-                double xw = new ArrayRealVector(x).dotProduct(new ArrayRealVector(greyValuesT[k]));
-                part4 = addition(part4, multiply(x, 2*(xw-1)));
-            }
-        }
-
         double[] part1 = multiply(greyValuesT[picIndex],(x0w + 1)*2);
-        double[] part3 = multiply(x, (x0w + 1)*2);
-
-        //multiply by -1 for the gradient ascend
-        double[] gradient = addition(addition(part1, part2), addition(part3, part4));
-
-
-        return gradient;
+        for (int k = 0; k < picCount; k++){
+//            if(k != picIndex){
+                double xw = new ArrayRealVector(x).dotProduct(new ArrayRealVector(greyValuesT[k]));
+                part1 = addition(part1, multiply(greyValuesT[k], 2*(xw-1)));
+//            }
+        }
+        //gradient by w
+        double[] part2 = multiply(x, (x0w + 1)*2);
+        for (int k = 0; k < picCount; k++){
+            if(k != picIndex){
+                double xw = new ArrayRealVector(x).dotProduct(new ArrayRealVector(greyValuesT[k]));
+                part2 = addition(part2, multiply(x, 2*(xw-1)));
+            }
+        }
+        return part2;
     }
 
     @Override
@@ -246,6 +244,15 @@ public class GlassDetection implements Function {
         double[] result = new double[n];
         for(int i= 0; i < n; i++){
             result[i] = a[i] + b[i];
+        }
+        return result;
+    }
+
+
+    public double[] divide(double[] a, double b){
+        double[] result = new double[n];
+        for(int i= 0; i<n; i++){
+            result[i] = a[i] / b;
         }
         return result;
     }

@@ -41,7 +41,7 @@ public class PixelToAPDMData {
 
         try {
             //img = ImageIO.read(new FileInputStream("test-p1.png"));
-            img = ImageIO.read(new FileInputStream(inputFile + "/siggi.gif"));
+            img = ImageIO.read(new FileInputStream(inputFile + "/an2i_up_neutral_open.jpg"));
         } catch (IOException e) {
             System.out.println(e);
             exit(0);

@@ -26,8 +26,8 @@ public class GlassDetectionTest {
         GlassDetection func = new GlassDetection(apdm.data.greyValues);
 
         /** step2: optimization */
-        int[] candidateS = new int[] {13, 14, 15, 16, 17, 18};
-        double optimalVal = Double.MAX_VALUE;
+        int[] candidateS = new int[] {2, 3, 4, 5,  6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18};
+        double optimalVal = - Double.MAX_VALUE;
         PreRec bestPreRec = new PreRec();
         GraphMP bestGraphMP = null;
         int bestPicture = -1;
@@ -39,8 +39,8 @@ public class GlassDetectionTest {
             bestPreRec = new PreRec(graphMP.resultNodes_supportX, apdm.data.trueSubGraphNodes);
             //System.out.println(bestPreRec.toString()+" "+func.getFuncValue(graphMP.x));
             double[] yx = graphMP.x;
-            if (func.getFuncValue(yx) < optimalVal) {
-                optimalVal = -func.getFuncValue(yx);
+            if (func.getFuncValue(yx) > optimalVal) {
+                optimalVal = func.getFuncValue(yx);
                 bestPicture = func.getPicIndex();
                 //System.out.println(func.getQ());
                 bestGraphMP = graphMP;
@@ -60,15 +60,15 @@ public class GlassDetectionTest {
     public static void main(String args[]) {
 //        new GlassDetectionTest().testToyExample("data/PixelData/APDM-10X11_C0.0_trueSubSize_30.txt");
 //        new GlassDetectionTest().testToyExample("data/PixelData/APDM-10X11_C5.0_trueSubSize_30.txt");
-        new GlassDetectionTest().testToyExample("data/PixelData/APDM-10X11_C10.0_trueSubSize_30.txt");
+        new GlassDetectionTest().testToyExample("data/PixelData/SimulationData/AbHigh/APDM-10X11_C10.0_trueSubSize_30.txt");
        //s new GlassDetectionTest().testToyExample("data/PixelData/APDM-10X11_C30.0_tsrueSubSize_30.txt");
-        new GlassDetectionTest().testToyExample("data/PixelData/APDM-10X11_C50.0_trueSubSize_30.txt");
-        new GlassDetectionTest().testToyExample("data/PixelData/APDM-10X11_C100.0_trueSubSize_30.txt");
-        new GlassDetectionTest().testToyExample("data/PixelData/APDM-10X11_C150.0_trueSubSize_30.txt");
-        new GlassDetectionTest().testToyExample("data/PixelData/APDM-10X11_C200.0_trueSubSize_30_1.txt");
-        new GlassDetectionTest().testToyExample("data/PixelData/APDM-10X11_C200.0_trueSubSize_30_2.txt");
-        new GlassDetectionTest().testToyExample("data/PixelData/APDM-10X11_C200.0_trueSubSize_30_3.txt");
-        new GlassDetectionTest().testToyExample("data/PixelData/APDM-10X11_C200.0_trueSubSize_30_4.txt");
-        new GlassDetectionTest().testToyExample("data/PixelData/APDM-10X11_C200.0_trueSubSize_30_5.txt");
+        new GlassDetectionTest().testToyExample("data/PixelData/SimulationData/AbHigh/APDM-10X11_C50.0_trueSubSize_30.txt");
+        new GlassDetectionTest().testToyExample("data/PixelData/SimulationData/AbHigh/APDM-10X11_C100.0_trueSubSize_30.txt");
+        new GlassDetectionTest().testToyExample("data/PixelData/SimulationData/AbHigh/APDM-10X11_C150.0_trueSubSize_30.txt");
+//        new GlassDetectionTest().testToyExample("data/PixelData/SimulationData/APDM-10X11_C200.0_trueSubSize_30_1.txt");
+//        new GlassDetectionTest().testToyExample("data/PixelData/SimulationData/APDM-10X11_C200.0_trueSubSize_30_2.txt");
+//        new GlassDetectionTest().testToyExample("data/PixelData/SimulationData/APDM-10X11_C200.0_trueSubSize_30_3.txt");
+//        new GlassDetectionTest().testToyExample("data/PixelData/SimulationData/APDM-10X11_C200.0_trueSubSize_30_4.txt");
+//        new GlassDetectionTest().testToyExample("data/PixelData/SimulationData/APDM-10X11_C200.0_trueSubSize_30_5.txt");
     }
 }
