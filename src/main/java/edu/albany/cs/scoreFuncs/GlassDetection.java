@@ -47,28 +47,37 @@ public class GlassDetection implements Function {
             new IllegalArgumentException("Error : Invalid parameters ...");
             System.exit(0);
         }
-        //gradient by x
-        double[] part1 = new double[n];
-        for (int k = 0; k < picCount; k++){
-            double xw = new ArrayRealVector(x).dotProduct(new ArrayRealVector(greyValuesT[k]));
-            if(k != picIndex)
-                part1 = addition(part1, multiply(greyValuesT[k], 2*(xw-1)));
-            else
-                part1 = addition(part1, multiply(greyValuesT[k], 2*(xw+1)));
-        }
-        //gradient by w
-        double[] part2 = new double[n];
-        for (int k = 0; k < picCount; k++){
-            double xw = new ArrayRealVector(x).dotProduct(new ArrayRealVector(greyValuesT[k]));
-            if(k != picIndex)
-                part2 = addition(part1, multiply(x, 2*(xw-1)));
-            else
-                part2 = addition(part1, multiply(x, 2*(xw+1)));
-        }
 
         double x0w = new ArrayRealVector(x).dotProduct(new ArrayRealVector(greyValuesT[picIndex]));
-        return  multiply(greyValuesT[picIndex], 2 * StatUtils.sum(x));
+        double[] part2 = new double[n];
+        double[] part4 = new double[n];
+        Arrays.fill(part2, 0.0);
+        Arrays.fill(part4, 0.0);
+
+        for (int k = 0; k < picCount; k++){
+            if(k != picIndex){
+                double xw = new ArrayRealVector(x).dotProduct(new ArrayRealVector(greyValuesT[k]));
+                //part2 = addition(part2, multiply(greyValuesT[k],(200-2)));
+                part2 = addition(part2, multiply(greyValuesT[k], 2*(xw-1)));
+            }
+        }
+        for (int k = 0; k < picCount; k++){
+            if(k != picIndex){
+                double xw = new ArrayRealVector(x).dotProduct(new ArrayRealVector(greyValuesT[k]));
+                part4 = addition(part4, multiply(x, 2*(xw-1)));
+            }
+        }
+
+        double[] part1 = multiply(greyValuesT[picIndex],(x0w + 1)*2);
+        //double[] part1 = multiply(greyValuesT[picIndex],(+2));
+        double[] part3 = multiply(x, (x0w + 1)*2);
+
+        //double[] gradient = addition(part3, part4);
+        double[] gradient = addition(addition(part1, part2), addition(part3, part4));
+//        return part1;
+        return gradient;
     }
+
 
     @Override
     public double getFuncValue(double[] x) {
@@ -76,9 +85,22 @@ public class GlassDetection implements Function {
             new IllegalArgumentException("Error : Invalid parameters ...");
             System.exit(0);
         }
+        //x = divide(x, x.length);
+
         double x0w = new ArrayRealVector(x).dotProduct(new ArrayRealVector(greyValuesT[picIndex]));
-        return Math.pow((x0w+1), 2);
+        double sumXW_Z_pow = 0;
+
+        for (int k = 0; k < picCount; k++){
+            if(k != picIndex){
+                double xkw = new ArrayRealVector(x).dotProduct(new ArrayRealVector(greyValuesT[k]));
+                sumXW_Z_pow += Math.pow(xkw-1,2);
+            }
+        }
+
+        double funcScore = Math.pow((x0w+1), 2) + sumXW_Z_pow;
+        return funcScore;
     }
+
 
     /**
      * To do maximization
@@ -179,9 +201,9 @@ public class GlassDetection implements Function {
         /** numGraphNodes : defines number of nodes in graph*/
         BigDecimal[] x = new BigDecimal[n];
         /** the step size */
-        BigDecimal gamma = new BigDecimal("0.0001");
+        BigDecimal gamma = new BigDecimal("0.000001");
         BigDecimal err = new BigDecimal(1e-6D); //
-        int maximumItersNum = 100;
+        int maximumItersNum = 500;
         /** initialize x */
         for (int i = 0; i < x.length; i++) {
             x[i] = new BigDecimal(new Random().nextDouble());
@@ -207,9 +229,17 @@ public class GlassDetection implements Function {
                 dx[i] = x[i].doubleValue();
             }
             BigDecimal diff = oldFuncValue.subtract(new BigDecimal(func.getFuncValue(dx)));
+            diff = diff.abs();
             /** if it is less than error bound or it has more than 100 iterations, it terminates.*/
 
-            if ((diff.compareTo(err) == -1) || iter >= maximumItersNum) {
+            if ((diff.compareTo(err) == -1) ) {
+                System.out.println("CONVERGE: " + iter);
+                System.out.println(ArrayUtils.toString(gradient));
+
+                break;
+            }
+            if(iter>= maximumItersNum){
+                //System.out.println("NUMBER");
                 break;
             }
             iter++;
