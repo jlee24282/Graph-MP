@@ -26,7 +26,7 @@ public class GlassDetectionTest {
         GlassDetection func = new GlassDetection(apdm.data.greyValues);
 
         /** step2: optimization */
-        int[] candidateS = new int[] {8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18};
+        int[] candidateS = new int[] {3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18};
         double optimalVal = - Double.MAX_VALUE;
         PreRec bestPreRec = new PreRec();
         GraphMP bestGraphMP = null;

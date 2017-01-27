@@ -29,12 +29,15 @@ public class GeneratePixelData {
     public void generateGridDataWithNoise(int numTrueNodes, int NumOfNodes, double noiseLevel,
                                           String outPutFileName, boolean flag) throws IOException {
 
+        System.out.println("CHECK1");
         GenerateMNSingleGraph g = new GenerateMNSingleGraph(M, N);
+        System.out.println("CHECK2");
         ArrayList<Edge> treEdges = randomWalk(g.adj, numTrueNodes);
+        System.out.println("CHECK33");
         int[] trueNodes = null;
-        Random rand = new Random();
         for (Edge e : treEdges) {
 
+            System.out.println("CHECK3653");
             if (!ArrayUtils.contains(trueNodes, e.i)) {
                 trueNodes = ArrayUtils.add(trueNodes, e.i);
             }
@@ -43,6 +46,7 @@ public class GeneratePixelData {
             }
         }
 
+        System.out.println("CHECK3");
         genData(g.edges, treEdges, outPutFileName);
     }
 
@@ -80,6 +84,7 @@ public class GeneratePixelData {
             nodes.add(edge.j);
         }
 
+        System.out.println("CHECK4");
         NormalDistribution normAbnormalNodes = new NormalDistribution(10+c, stdAbNorm);
         NormalDistribution normNormalNodes = new NormalDistribution(10, stdNorm);
 
@@ -95,12 +100,6 @@ public class GeneratePixelData {
                 weight[j][k] = (int) normNormalNodes.sample();
             }
 
-//255 constraint
-            //should be between 0 and 255
-//            if(weight[j][0] < 0)
-//                weight[j][0] = 0;
-//            else if(weight[j][0] >255)
-//                weight[j][0] = 255;
         }
 
 
@@ -201,12 +200,12 @@ public class GeneratePixelData {
 //        new GeneratePixelData(args).generateSingleCase(30.0);
 //        new GeneratePixelData(args).generateSingleCase(50.0);
 //        new GeneratePixelData(args).generateSingleCase(100.0);
-//        new GeneratePixelData(args).generateSingleCase(150.0);
-//        new GeneratePixelData(args).generateSingleCase(200.0);
-        new GeneratePixelData(args).generateSingleCase(300.0);
-        new GeneratePixelData(args).generateSingleCase(500.0);
-        new GeneratePixelData(args).generateSingleCase(1000.0);
-        new GeneratePixelData(args).generateSingleCase(10000.0);
+        new GeneratePixelData(args).generateSingleCase(150.0);
+        new GeneratePixelData(args).generateSingleCase(200.0);
+//        new GeneratePixelData(args).generateSingleCase(300.0);
+//        new GeneratePixelData(args).generateSingleCase(500.0);
+//        new GeneratePixelData(args).generateSingleCase(1000.0);
+//        new GeneratePixelData(args).generateSingleCase(10000.0);
         System.out.println("DONE");
     }
 }
