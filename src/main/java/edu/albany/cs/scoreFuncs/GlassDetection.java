@@ -34,6 +34,7 @@ public class GlassDetection implements Function {
         this.c = new double[n][n];
         for(int i = 0; i < n; i++){
             for (int j = 0; j < picCount; j++){
+                greyValues[i][j] = greyValues[i][j]/150.0;
                 greyValuesT[j][i] = greyValues[i][j];
             }
         }
@@ -49,34 +50,17 @@ public class GlassDetection implements Function {
             new IllegalArgumentException("Error : Invalid parameters ...");
             System.exit(0);
         }
-        x = divide(x,  x.length);
         double x0w = new ArrayRealVector(x).dotProduct(new ArrayRealVector(greyValuesT[picIndex]));
         double[] part2 = new double[n];
-        double[] part4 = new double[n];
         Arrays.fill(part2, 0.0);
-        Arrays.fill(part4, 0.0);
-
         for (int k = 0; k < picCount; k++){
             if(k != picIndex){
                 double xw = new ArrayRealVector(x).dotProduct(new ArrayRealVector(greyValuesT[k]));
-                //part2 = addition(part2, multiply(greyValuesT[k],(200-2)));
-                part2 = addition(part2, multiply(greyValuesT[k], 2*(xw-1)));
+                part2 = addition(part2, multiply(greyValuesT[k], 2*(xw+1)));
             }
         }
-        for (int k = 0; k < picCount; k++){
-            if(k != picIndex){
-                double xw = new ArrayRealVector(x).dotProduct(new ArrayRealVector(greyValuesT[k]));
-                part4 = addition(part4, multiply(x, 2*(xw-1)));
-            }
-        }
-
-        double[] part1 = multiply(greyValuesT[picIndex],(x0w + 1)*2);
-        //double[] part1 = multiply(greyValuesT[picIndex],(+2));
-        double[] part3 = multiply(x, (x0w + 1)*2);
-
-        //double[] gradient = addition(part1, part2);
-        double[] gradient = addition(addition(part1, part2), addition(part3, part4));
-//        return part1;
+        double[] part1 = multiply(greyValuesT[picIndex],(x0w-1)*2);
+        double[] gradient = addition(part1, part2);
         return gradient;
     }
 
@@ -87,7 +71,6 @@ public class GlassDetection implements Function {
             new IllegalArgumentException("Error : Invalid parameters ...");
             System.exit(0);
         }
-        x = divide(x,  x.length);
 
         double x0w = new ArrayRealVector(x).dotProduct(new ArrayRealVector(greyValuesT[picIndex]));
         double sumXW_Z_pow = 0;
@@ -95,11 +78,11 @@ public class GlassDetection implements Function {
         for (int k = 0; k < picCount; k++){
             if(k != picIndex){
                 double xkw = new ArrayRealVector(x).dotProduct(new ArrayRealVector(greyValuesT[k]));
-                sumXW_Z_pow += Math.pow(xkw-1,2);
+                sumXW_Z_pow += Math.pow(xkw+1,2);
             }
         }
 
-        double funcScore = Math.pow((x0w+1), 2) + sumXW_Z_pow;
+        double funcScore = Math.pow((x0w-1), 2) + sumXW_Z_pow;
         return funcScore;
     }
 
@@ -203,9 +186,10 @@ public class GlassDetection implements Function {
         /** numGraphNodes : defines number of nodes in graph*/
         BigDecimal[] x = new BigDecimal[n];
         /** the step size */
-        BigDecimal gamma = new BigDecimal("0.0000000000005");
-        BigDecimal err = new BigDecimal(1e-5D); //
-        int maximumItersNum = 500;
+        //BigDecimal gamma = new BigDecimal("0.0000003");
+        BigDecimal gamma = new BigDecimal("0.001");
+        BigDecimal err = new BigDecimal(1e-6D); //
+        int maximumItersNum = 600;
         /** initialize x */
         for (int i = 0; i < x.length; i++) {
             x[i] = new BigDecimal(new Random().nextDouble());
@@ -236,7 +220,6 @@ public class GlassDetection implements Function {
 
             if ((diff.compareTo(err) == -1) ) {
                 System.out.println("CONVERGE: " + iter);
-                System.out.println(ArrayUtils.toString(gradient));
 
                 break;
             }

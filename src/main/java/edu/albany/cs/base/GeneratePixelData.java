@@ -3,6 +3,7 @@ package edu.albany.cs.base;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.math3.distribution.NormalDistribution;
 import org.apache.commons.math3.distribution.PoissonDistribution;
+import org.apache.commons.math3.stat.descriptive.rank.Median;
 
 import java.io.IOException;
 import java.util.*;
@@ -30,15 +31,11 @@ public class GeneratePixelData {
     public void generateGridDataWithNoise(int numTrueNodes, int NumOfNodes, double noiseLevel,
                                           String outPutFileName, boolean flag) throws IOException {
 
-        System.out.println("CHECK1");
-        GenerateMNSingleGraph g = new GenerateMNSingleGraph(M, N);
-        System.out.println("CHECK2");
-        ArrayList<Edge> treEdges = randomWalk(g.adj, numTrueNodes);
-        System.out.println("CHECK33");
+        GenerateMNSingleGraph g = new GenerateMNSingleGraph(M,N);
+       // ArrayList<Edge> treEdges = randomWalk(g.adj, numTrueNodes);
+        ArrayList<Edge> treEdges = bestRandomWalk(g.adj, numTrueNodes);
         int[] trueNodes = null;
         for (Edge e : treEdges) {
-
-            System.out.println("CHECK3653");
             if (!ArrayUtils.contains(trueNodes, e.i)) {
                 trueNodes = ArrayUtils.add(trueNodes, e.i);
             }
@@ -47,7 +44,6 @@ public class GeneratePixelData {
             }
         }
 
-        System.out.println("CHECK3");
         genData(g.edges, treEdges, outPutFileName);
     }
 
@@ -85,7 +81,6 @@ public class GeneratePixelData {
             nodes.add(edge.j);
         }
 
-        System.out.println("CHECK4");
 //        NormalDistribution normAbnormalNodes = new NormalDistribution(10+c, stdAbNorm);
 //        NormalDistribution normNormalNodes = new NormalDistribution(10, stdNorm);
 
@@ -103,12 +98,56 @@ public class GeneratePixelData {
             for(int k = 1; k < 12; k++){
                 weight[j][k] = (int) normNormalNodes.sample();
             }
-
         }
-
 
         APDMInputFormat.generateAPDMFilePixel("Test", "PixelData", edges, weight,
                 count,  trueSubGraphEdges,  outPutFileName);
+    }
+
+    private double getMean(double[] values){
+        double result = 0.0;
+        double sum = 0.0;
+
+        for (int i = 0; i < values.length; i ++){
+            sum += values[i];
+        }
+        result = sum/values.length;
+        return result;
+    }
+
+
+    private double getStd(double[] values){
+        double mean = getMean(values);
+        double std = 0.0;
+
+        //System.out.println(ArrayUtils.toString(values));
+        for (int i=0; i<values.length;i++) {
+            std = std + Math.pow(values[i] - mean, 2);
+        }
+        std = std/values.length;
+        std = Math.sqrt(std);
+        return std;
+    }
+
+    private ArrayList<Edge> bestRandomWalk(ArrayList<ArrayList<Integer>> arr, int numTrueNodes) {
+        ArrayList<Edge> bestTreEdges = null;
+        double bestESTD = Double.MAX_VALUE;
+
+        for(int i = 0; i < 1000; i++) {
+            ArrayList<Edge> treEdges = randomWalk(arr, numTrueNodes);
+            double[] treEdgeArr = new double[treEdges.size()+1];
+            int idx = 0;
+            for (Edge e : treEdges) {
+                treEdgeArr[idx++] = e.i;
+                treEdgeArr[idx] = e.j;
+            }
+            double std = getStd(treEdgeArr);
+            if(std < bestESTD && treEdges.size() == numTrueNodes-1){
+                bestESTD = std;
+                bestTreEdges = treEdges;
+            }
+        }
+        return bestTreEdges;
     }
 
     /**
@@ -128,7 +167,11 @@ public class GeneratePixelData {
         HashSet<Integer> h = new HashSet<Integer>();
         h.add(start);
         int count = 0;
+        int iteration = 0;
         while (h.size() < numTrueNodes) {
+            iteration++;
+            if(iteration == 1000)
+                break;
             int next = arr.get(start).get(random.nextInt(arr.get(start).size()));
             if (h.contains(next)) {
                 continue;
@@ -198,14 +241,14 @@ public class GeneratePixelData {
             }
             Utils.stop();
         }
-//        new GeneratePixelData(args).generateSingleCase(0.0);
+  //      new GeneratePixelData(args).generateSingleCase(0.0);
 //        new GeneratePixelData(args).generateSingleCase(5.0);
 //        new GeneratePixelData(args).generateSingleCase(10.0);
 //        new GeneratePixelData(args).generateSingleCase(30.0);
 //        new GeneratePixelData(args).generateSingleCase(50.0);
 //        new GeneratePixelData(args).generateSingleCase(100.0);
-        new GeneratePixelData(args).generateSingleCase(150.0);
-        new GeneratePixelData(args).generateSingleCase(200.0);
+//        new GeneratePixelData(args).generateSingleCase(150.0);
+          new GeneratePixelData(args).generateSingleCase(200.0);
 //        new GeneratePixelData(args).generateSingleCase(300.0);
 //        new GeneratePixelData(args).generateSingleCase(500.0);
 //        new GeneratePixelData(args).generateSingleCase(1000.0);
