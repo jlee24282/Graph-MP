@@ -1,4 +1,5 @@
 package edu.albany.cs.scoreFuncs;
+import edu.albany.cs.base.ArrayIndexSort;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.math3.linear.ArrayRealVector;
 import org.apache.commons.math3.stat.StatUtils;
@@ -6,6 +7,7 @@ import org.apache.commons.math3.stat.StatUtils;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 /*
     Simplified Regression
@@ -47,7 +49,7 @@ public class GlassDetection implements Function {
             new IllegalArgumentException("Error : Invalid parameters ...");
             System.exit(0);
         }
-
+        x = divide(x,  x.length);
         double x0w = new ArrayRealVector(x).dotProduct(new ArrayRealVector(greyValuesT[picIndex]));
         double[] part2 = new double[n];
         double[] part4 = new double[n];
@@ -85,7 +87,7 @@ public class GlassDetection implements Function {
             new IllegalArgumentException("Error : Invalid parameters ...");
             System.exit(0);
         }
-        //x = divide(x, x.length);
+        x = divide(x,  x.length);
 
         double x0w = new ArrayRealVector(x).dotProduct(new ArrayRealVector(greyValuesT[picIndex]));
         double sumXW_Z_pow = 0;
@@ -201,7 +203,7 @@ public class GlassDetection implements Function {
         /** numGraphNodes : defines number of nodes in graph*/
         BigDecimal[] x = new BigDecimal[n];
         /** the step size */
-        BigDecimal gamma = new BigDecimal("0.0000001");
+        BigDecimal gamma = new BigDecimal("0.0000000000005");
         BigDecimal err = new BigDecimal(1e-5D); //
         int maximumItersNum = 500;
         /** initialize x */

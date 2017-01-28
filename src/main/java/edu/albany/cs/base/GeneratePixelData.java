@@ -95,7 +95,7 @@ public class GeneratePixelData {
         for (int j = 0; j < graphSize; j++) {
             //abnormal picture -> weight[j][0]
             if (nodes.contains(j)) {
-                weight[j][0] = (int) normAbnormalNodes.sample();
+                weight[j][0] = 1.5*(int) normAbnormalNodes.sample();
             } else {
                 weight[j][0] = (int) normNormalNodes.sample();
             }
