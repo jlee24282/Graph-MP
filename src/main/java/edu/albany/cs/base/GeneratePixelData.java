@@ -2,6 +2,7 @@ package edu.albany.cs.base;
 
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.math3.distribution.NormalDistribution;
+import org.apache.commons.math3.distribution.PoissonDistribution;
 
 import java.io.IOException;
 import java.util.*;
@@ -20,7 +21,7 @@ public class GeneratePixelData {
 
     public GeneratePixelData(String[] args) {
         M = 10;
-        N = 11;
+        N = 10;
         c = 1000;
         numOfTrueNodes = 30;
         graphSize = M*N;
@@ -85,8 +86,11 @@ public class GeneratePixelData {
         }
 
         System.out.println("CHECK4");
-        NormalDistribution normAbnormalNodes = new NormalDistribution(10+c, stdAbNorm);
-        NormalDistribution normNormalNodes = new NormalDistribution(10, stdNorm);
+//        NormalDistribution normAbnormalNodes = new NormalDistribution(10+c, stdAbNorm);
+//        NormalDistribution normNormalNodes = new NormalDistribution(10, stdNorm);
+
+        PoissonDistribution normAbnormalNodes = new PoissonDistribution(10+c);
+        PoissonDistribution normNormalNodes = new PoissonDistribution(10.0D);
 
         for (int j = 0; j < graphSize; j++) {
             //abnormal picture -> weight[j][0]

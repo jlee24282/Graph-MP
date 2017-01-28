@@ -72,7 +72,7 @@ public class GlassDetection implements Function {
         //double[] part1 = multiply(greyValuesT[picIndex],(+2));
         double[] part3 = multiply(x, (x0w + 1)*2);
 
-        //double[] gradient = addition(part3, part4);
+        //double[] gradient = addition(part1, part2);
         double[] gradient = addition(addition(part1, part2), addition(part3, part4));
 //        return part1;
         return gradient;
@@ -201,7 +201,7 @@ public class GlassDetection implements Function {
         /** numGraphNodes : defines number of nodes in graph*/
         BigDecimal[] x = new BigDecimal[n];
         /** the step size */
-        BigDecimal gamma = new BigDecimal("0.0000005");
+        BigDecimal gamma = new BigDecimal("0.0000001");
         BigDecimal err = new BigDecimal(1e-5D); //
         int maximumItersNum = 500;
         /** initialize x */
