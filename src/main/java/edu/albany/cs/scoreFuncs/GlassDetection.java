@@ -34,7 +34,7 @@ public class GlassDetection implements Function {
         this.c = new double[n][n];
         for(int i = 0; i < n; i++){
             for (int j = 0; j < picCount; j++){
-                greyValues[i][j] = greyValues[i][j]/150.0;
+                greyValues[i][j] = greyValues[i][j]/100.0;
                 greyValuesT[j][i] = greyValues[i][j];
             }
         }
@@ -56,10 +56,10 @@ public class GlassDetection implements Function {
         for (int k = 0; k < picCount; k++){
             if(k != picIndex){
                 double xw = new ArrayRealVector(x).dotProduct(new ArrayRealVector(greyValuesT[k]));
-                part2 = addition(part2, multiply(greyValuesT[k], 2*(xw+1)));
+                part2 = addition(part2, multiply(greyValuesT[k], 2*(xw+100)));
             }
         }
-        double[] part1 = multiply(greyValuesT[picIndex],(x0w-1)*2);
+        double[] part1 = multiply(greyValuesT[picIndex],(x0w-100)*2);
         double[] gradient = addition(part1, part2);
         return gradient;
     }
@@ -78,11 +78,11 @@ public class GlassDetection implements Function {
         for (int k = 0; k < picCount; k++){
             if(k != picIndex){
                 double xkw = new ArrayRealVector(x).dotProduct(new ArrayRealVector(greyValuesT[k]));
-                sumXW_Z_pow += Math.pow(xkw+1,2);
+                sumXW_Z_pow += Math.pow(xkw+100,2);
             }
         }
 
-        double funcScore = Math.pow((x0w-1), 2) + sumXW_Z_pow;
+        double funcScore = Math.pow((x0w-100), 2) + sumXW_Z_pow;
         return funcScore;
     }
 
@@ -101,9 +101,11 @@ public class GlassDetection implements Function {
                 result[i] = 0.0;
             } else if (x[i].doubleValue() > 1) {
                 result[i] = 1.0;
-            } else {
+            }
+            else {
                 result[i] = x[i].doubleValue();
             }
+
         }
 
         // fill 0 for constraint
@@ -163,12 +165,16 @@ public class GlassDetection implements Function {
         double[] result = new double[x.length];
         //Constraint Check and Projection
         for(int i = 0; i < x.length; i++){
-            if(x[i].doubleValue() < 0)
+//            if(x[i].doubleValue() < 0)
+//                result[i] = 0.0D;
+//            else if(x[i].doubleValue() > 1)
+//                result[i] = 1.0D;
+//            else
+//                result[i] = x[i].doubleValue();
+            if(x[i].doubleValue() <= 0)
                 result[i] = 0.0D;
-            else if(x[i].doubleValue() > 1)
-                result[i] = 1.0D;
             else
-                result[i] = x[i].doubleValue();
+                result[i] = 1.0D;
         }
 
         for(int i = 0; i < n; i++){
@@ -187,9 +193,9 @@ public class GlassDetection implements Function {
         BigDecimal[] x = new BigDecimal[n];
         /** the step size */
         //BigDecimal gamma = new BigDecimal("0.0000003");
-        BigDecimal gamma = new BigDecimal("0.001");
+        BigDecimal gamma = new BigDecimal("0.002");
         BigDecimal err = new BigDecimal(1e-6D); //
-        int maximumItersNum = 600;
+        int maximumItersNum = 5000;
         /** initialize x */
         for (int i = 0; i < x.length; i++) {
             x[i] = new BigDecimal(new Random().nextDouble());

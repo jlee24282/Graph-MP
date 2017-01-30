@@ -21,10 +21,10 @@ public class GeneratePixelData {
     int graphSize;
 
     public GeneratePixelData(String[] args) {
-        M = 10;
-        N = 10;
+        M = 3;
+        N = 3;
         c = 1000;
-        numOfTrueNodes = 30;
+        numOfTrueNodes = 3;
         graphSize = M*N;
     }
 
