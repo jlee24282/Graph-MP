@@ -25,7 +25,7 @@ public class GeneratePixelData {
         M = 10;
         N = 10;
         c = 1000;
-        numOfTrueNodes = 25;
+        numOfTrueNodes = 5;
         graphSize = M*N;
     }
 
@@ -85,8 +85,8 @@ public class GeneratePixelData {
 //        NormalDistribution normAbnormalNodes = new NormalDistribution(10+c, stdAbNorm);
 //        NormalDistribution normNormalNodes = new NormalDistribution(10, stdNorm);
 
-        PoissonDistribution normAbnormalNodes = new PoissonDistribution(10+c);
-        PoissonDistribution normNormalNodes = new PoissonDistribution(10.0D);
+        PoissonDistribution normAbnormalNodes = new PoissonDistribution(10.0);
+        PoissonDistribution normNormalNodes = new PoissonDistribution(10+c);
 
         for (int j = 0; j < graphSize; j++) {
             //abnormal picture -> weight[j][0]
@@ -212,7 +212,7 @@ public class GeneratePixelData {
     public void generateSingleCase(double c) throws IOException {
         double noiseLevel = 0.0D;
         this.c = c;
-        String outputFileName = "data/PixelData/SimulationData/AbHigh/APDM-" +M+"X"+N+ "_C" + this.c + "_trueSubSize_"
+        String outputFileName = "data/PixelData/SimulationData/AbLow/APDM-" +M+"X"+N+ "_C" + this.c + "_trueSubSize_"
                 + numOfTrueNodes + ".txt";
         generateGridDataWithNoise(numOfTrueNodes, graphSize, noiseLevel, outputFileName, false);
         testTrueSubGraph(outputFileName);
@@ -249,7 +249,7 @@ public class GeneratePixelData {
 //        new GeneratePixelData(args).generateSingleCase(50.0);
 //        new GeneratePixelData(args).generateSingleCase(100.0);
 //        new GeneratePixelData(args).generateSingleCase(150.0);
-          new GeneratePixelData(args).generateSingleCase(200.0);
+          new GeneratePixelData(args).generateSingleCase(100.0);
 //        new GeneratePixelData(args).generateSingleCase(300.0);
 //        new GeneratePixelData(args).generateSingleCase(500.0);
 //        new GeneratePixelData(args).generateSingleCase(1000.0);

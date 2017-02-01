@@ -51,7 +51,7 @@ public class GraphMP {
 	public double funcValue = -1.0D;
 	public double runTime;
 
-	private int verboseLevel = 10;
+	private int verboseLevel = 0;
 	private int check = 1;
 
 	public GraphMP(ArrayList<Integer[]> edges, ArrayList<Double> edgeCosts, double[] c, int s, int g, double B, int t,
