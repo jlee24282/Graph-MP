@@ -88,7 +88,7 @@ public class ToyFunc implements Function {
 				gradient[i] =  (2 * weight[i] * weight[i] * x[i] - weight[i] / 2.0 );
 			return gradient;
 		}
-		/**
+	/**
 	 * @param x
 	 *            get value of this function at point x
 	 * @return the value of this function

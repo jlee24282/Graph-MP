@@ -1,12 +1,13 @@
 package edu.albany.cs.base;
 
 import org.apache.commons.lang3.ArrayUtils;
-import org.apache.commons.math3.distribution.NormalDistribution;
 import org.apache.commons.math3.distribution.PoissonDistribution;
-import org.apache.commons.math3.stat.descriptive.rank.Median;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Random;
 
 public class GeneratePixelData {
 
@@ -21,10 +22,10 @@ public class GeneratePixelData {
     int graphSize;
 
     public GeneratePixelData(String[] args) {
-        M = 3;
-        N = 3;
+        M = 10;
+        N = 10;
         c = 1000;
-        numOfTrueNodes = 3;
+        numOfTrueNodes = 25;
         graphSize = M*N;
     }
 

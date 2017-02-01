@@ -51,7 +51,7 @@ public class GraphMP {
 	public double funcValue = -1.0D;
 	public double runTime;
 
-	private int verboseLevel = 0;
+	private int verboseLevel = 10;
 	private int check = 1;
 
 	public GraphMP(ArrayList<Integer[]> edges, ArrayList<Double> edgeCosts, double[] c, int s, int g, double B, int t,
@@ -126,8 +126,11 @@ public class GraphMP {
 			for (int j = 0; j < b.length; j++) {
 				x[j] = 0.0D;
 			}
+			int test = 0;
 			for (int j : pcsfTail.bestForest.nodesInF) {
 				x[j] = b[j];
+//				System.out.println(x[j]);
+//				System.out.println(pcsfTail.bestForest.nodesInF.get(test++));
 			}
 			if (verboseLevel > 0) {
 				System.out.println("number of head nodes : " + pcsfHead.bestForest.nodesInF.size());

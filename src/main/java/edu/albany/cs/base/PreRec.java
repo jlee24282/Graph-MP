@@ -1,20 +1,15 @@
 package edu.albany.cs.base;
 
+import org.apache.commons.lang3.ArrayUtils;
+
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashSet;
 
-import org.apache.commons.lang3.ArrayUtils;
-
 /**
  * Given the result subgraph nodes and true subgraph nodes, we calculate the
  * precion, recall and fmeasure.
- * 
- * Please see more details of precision and recall:
- * {@link https://en.wikipedia.org/wiki/Precision_and_recall}
- * 
- * Please see more details of fmeasure:
- * {@link https://en.wikipedia.org/wiki/F1_score}
+ *
  * 
  * @author baojian
  *
@@ -59,6 +54,7 @@ public class PreRec {
 			fmeasure = 0.0D;
 		}
 		int[] intersect = Utils.intersect(result, groundTru);
+
 		if (intersect == null || intersect.length == 0) {
 			pre = 0.0D;
 			rec = 0.0D;

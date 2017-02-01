@@ -67,7 +67,7 @@ public class EMSStat implements Function {
 		for (int i = 0; i < gradient.length; i++) {
 			gradient[i] = c[i] * (Math.sqrt(sigmaX) / sigmaX) - (0.5D) * (sigmaCX / Math.pow(sigmaX, 1.5D));
 		}
-		System.out.println("gradient:" + Arrays.toString(gradient));
+//		System.out.println("gradient:" + Arrays.toString(gradient));
 		return gradient;
 	}
 
@@ -171,7 +171,7 @@ public class EMSStat implements Function {
 		for (int i = 0; i < n; i++) {
 			grad[i] = new BigDecimal(gradient[i]);
 		}
-		System.out.println("gradient:" + grad);
+//		System.out.println("gradient:" + grad);
 		return grad;
 	}
 
@@ -210,7 +210,7 @@ public class EMSStat implements Function {
 			}
 		}
 
-		System.out.println("X result: "+ Arrays.toString(argMaxX));
+//		System.out.println("X result: "+ Arrays.toString(argMaxX));
 		result = argMaxX;
 		return result;
 	}

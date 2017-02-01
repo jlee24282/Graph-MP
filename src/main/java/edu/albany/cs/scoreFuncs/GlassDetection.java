@@ -1,13 +1,9 @@
 package edu.albany.cs.scoreFuncs;
-import edu.albany.cs.base.ArrayIndexSort;
-import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.math3.linear.ArrayRealVector;
-import org.apache.commons.math3.stat.StatUtils;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Random;
 /*
     Simplified Regression
@@ -165,16 +161,16 @@ public class GlassDetection implements Function {
         double[] result = new double[x.length];
         //Constraint Check and Projection
         for(int i = 0; i < x.length; i++){
-//            if(x[i].doubleValue() < 0)
-//                result[i] = 0.0D;
-//            else if(x[i].doubleValue() > 1)
-//                result[i] = 1.0D;
-//            else
-//                result[i] = x[i].doubleValue();
-            if(x[i].doubleValue() <= 0)
+            if(x[i].doubleValue() < 0)
                 result[i] = 0.0D;
-            else
+            else if(x[i].doubleValue() > 1)
                 result[i] = 1.0D;
+            else
+                result[i] = x[i].doubleValue();
+//            if(x[i].doubleValue() <= 0)
+//                result[i] = 0.0D;
+//            else
+//                result[i] = 1.0D;
         }
 
         for(int i = 0; i < n; i++){

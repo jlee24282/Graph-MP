@@ -1,15 +1,15 @@
 package TestGraphMP;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Arrays;
-
-import org.junit.Test;
-
 import edu.albany.cs.base.APDMInputFormat;
 import edu.albany.cs.base.PreRec;
 import edu.albany.cs.graphMP.GraphMP;
 import edu.albany.cs.scoreFuncs.EBPStat;
 import edu.albany.cs.scoreFuncs.EMSStat;
+import org.apache.commons.lang3.ArrayUtils;
+import org.junit.Test;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class TestGraphMP {
 
@@ -35,7 +35,7 @@ public class TestGraphMP {
 		/** step1: score function */
 		EMSStat func = new EMSStat(apdm.data.base, apdm.data.counts);
 		/** step2: optimization */
-		int[] candidateS = new int[] { 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 };
+		int[] candidateS = new int[] { 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30 };
 		//size of subgraph
 		double optimalVal = -Double.MAX_VALUE;
 		
@@ -51,12 +51,20 @@ public class TestGraphMP {
 			double[] yx = graphMP.x;
 			if (func.getFuncValue(yx) > optimalVal) {
 				optimalVal = func.getFuncValue(yx);
+
+
 				bestPreRec = new PreRec(graphMP.resultNodes_supportX, apdm.data.trueSubGraphNodes);
 				bestGraphMP = graphMP;
+
+
 				if (verboseLevel == 0) {
 					System.out.println("current best [pre,rec]: " + "[" + bestPreRec.pre + "," + bestPreRec.rec + "]");
 				}
 			}
+
+			System.out.println(ArrayUtils.toString(graphMP.resultNodes_supportX));
+			System.out.println(ArrayUtils.toString(graphMP.resultNodes_Tail));
+
 		}
 		System.out.println("precision : " + bestPreRec.pre + " ; recall : " + bestPreRec.rec);
 		System.out.println("result subgraph is: " + Arrays.toString(bestGraphMP.resultNodes_Tail));
@@ -93,8 +101,9 @@ public class TestGraphMP {
 			if (func.getFuncValue(yx) > optimalVal) {
 				optimalVal = func.getFuncValue(yx);
 
-				bestPreRec = new PreRec(graphMP.resultNodes_supportX, apdm.data.trueSubGraphNodes);
 				bestGraphMP = graphMP;
+				bestPreRec = new PreRec(graphMP.resultNodes_supportX, apdm.data.trueSubGraphNodes);
+
 				if (verboseLevel == 0) {
 					System.out.println("current best [pre,rec]: " + "[" + bestPreRec.pre + "," + bestPreRec.rec + "]");
 				}
