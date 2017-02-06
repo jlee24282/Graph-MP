@@ -1,20 +1,24 @@
 package TestGraphMP;
 
 import edu.albany.cs.base.APDMInputFormat;
-import edu.albany.cs.base.PreRec;
+import edu.albany.cs.base.PixelToAPDMData;
 import edu.albany.cs.graphMP.GraphMP;
 import edu.albany.cs.scoreFuncs.GlassDetection;
 import org.apache.commons.lang3.ArrayUtils;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 
 public class GlassDetectionTest {
-
+    public int downsizenum = 4;
     private int verboseLevel = 0;
 
-    public void testToyExample(String inputFilePath) {
+    public void testToyExample(String inputFilePath) throws IOException{
         System.out.println("\n------------------------------ test starts ------------------------------");
         System.out.println("testing file path: " + inputFilePath);
         /** step0: data file */
@@ -29,7 +33,6 @@ public class GlassDetectionTest {
         /** step2: optimization */
         int[] candidateS = new int[] { 9, 10, 11, 12, 13, 14, 15, 16};
         double optimalVal =  Double.MAX_VALUE;
-        PreRec bestPreRec = new PreRec();
         GraphMP bestGraphMP = null;
         int bestPicture = -1;
         for (int s : candidateS) {
@@ -45,45 +48,50 @@ public class GlassDetectionTest {
             if (func.getFuncValue(yx) < optimalVal) {
                 optimalVal = func.getFuncValue(yx);
                 bestPicture = func.getPicIndex();
-                //System.out.println(func.getQ());
                 bestGraphMP = graphMP;
-//                System.out.println(ArrayUtils.toString(graphMP.resultNodes_supportX));
-//                System.out.println(ArrayUtils.toString(bestGraphMP.resultNodes_Tail));
-                bestPreRec = new PreRec(graphMP.resultNodes_Tail, apdm.data.trueSubGraphNodes);
-                //bestPreRec = new PreRec(bestGraphMP.resultNodes_Tail, apdm.data.trueSubGraphNodes);
-                if (verboseLevel == 0) {
-                    System.out.println("result subgraph is: " + Arrays.toString(bestGraphMP.resultNodes_Tail));
-                    System.out.println("current best [pre,rec]: " + "[" + bestPreRec.pre + "," + bestPreRec.rec + "]");
-                }
             }
         }
         System.out.println("sRESULT**********************************************: ");
         System.out.println("Picture Index: " + bestPicture);
-        System.out.println("precision : " + bestPreRec.pre + " ; recall : " + bestPreRec.rec);
         System.out.println("result subgraph is: " + Arrays.toString(bestGraphMP.resultNodes_Tail));
-//        System.out.println(ArrayUtils.toString(bestGraphMP.resultNodes_supportX));
-        System.out.println("true subgraph is: " + Arrays.toString(apdm.data.trueSubGraphNodes));
         System.out.println("------------------------------ test ends --------------------------------\n");
+
+        displayResultPicture(bestGraphMP.resultNodes_Tail);
+
     }
 
-    public static void main(String args[]) {
-//        new GlassDetectionTest().testToyExample("data/PixelData/SimulationData/AbLow/APDM-10X11_C10.0_trueSubSize_30.txt");
-//        new GlassDetectionTest().testToyExample("data/PixelData/SimulationData/AbLow/APDM-10X11_C50.0_trueSubSize_30.txt");
-//        new GlassDetectionTest().testToyExample("data/PixelData/SimulationData/AbLow/APDM-10X11_C100.0_trueSubSize_30.txt");
-//        new GlassDetectionTest().testToyExample("data/PixelData/SimulationData/AbLow/APDM-10X11_C150.0_trueSubSize_30.txt");
+    private void displayResultPicture(int[] resultGraph) throws IOException{
 
-//        new GlassDetectionTest().testToyExample("data/PixelData/SimulationData/AbHigh/APDM-10X10_C0.0_trueSubSize_30.txt");
-//        new GlassDetectionTest().testToyExample("data/PixelData/SimulationData/AbHigh/APDM-10X11_C10.0_trueSubSize_30.txt");
-//        new GlassDetectionTest().testToyExample("data/PixelData/SimulationData/AbHigh/APDM-10X11_C50.0_trueSubSize_30.txt");
-//        new GlassDetectionTest().testToyExample("data/PixelData/SimulationData/AbHigh/APDM-10X11_C100.0_trueSubSize_30.txt");
-        new GlassDetectionTest().testToyExample("data/PixelData/SimulationData/AbLow/APDM-10X10_C100.0_trueSubSize_5.txt");
-//        new GlassDetectionTest().testToyExample("data/PixelData/SimulationData/AbHigh/APDM-10X10_C200.0_trueSubSize_2.txt");
-//        new GlassDetectionTest().testToyExample("data/PixelData/SimulationData/AbHigh/APDM-10X10_C200.0_trueSubSize_25.txt");
-//        new GlassDetectionTest().testToyExample("data/PixelData/SimulationData/AbHigh/APDM-10X11_C300.0_trueSubSize_30.txt");
-//        new GlassDetectionTest().testToyExample("data/PixelData/SimulationData/APDM-10X11_C200.0_trueSubSize_30_1.txt");
-//        new GlassDetectionTest().testToyExample("data/PixelData/SimulationData/APDM-10X11_C200.0_trueSubSize_30_2.txt");
-//        new GlassDetectionTest().testToyExample("data/PixelData/SimulationData/APDM-10X11_C200.0_trueSubSize_30_3.txt");
-//        new GlassDetectionTest().testToyExample("data/PixelData/SimulationData/APDM-10X11_C200.0_trueSubSize_30_4.txt");
-//        new GlassDetectionTest().testToyExample("data/PixelData/SimulationData/APDM-10X11_C200.0_trueSubSize_30_5.txt");
+        int[] imagePixel = new int[100];
+        String inputFiles = "data/PixelData/RealData/Images/ImageData/pngFiles/faces/an2i/";
+        PixelToAPDMData pd = new PixelToAPDMData();
+        imagePixel = pd.getGreyLevelsFromImages(inputFiles + "an2i_straight_neutral_sunglasses_" + downsizenum+ ".png");
+        BufferedImage inputImage = pd.getBufferedImage();
+
+        for(int i : resultGraph){
+            int alpha = 255;
+            int red   = 0;
+            int green = 255;
+            int blue  = 0;
+
+            int argb = alpha << 24 + red << 16 + green << 8 + blue;
+
+            imagePixel[i] = argb;
+        }
+
+        try{
+            File f = new File("data/PixelData/RealData/Results/Output_" + downsizenum+ ".png");
+            BufferedImage resultImage = inputImage;
+            resultImage.setRGB(0, 0, pd.getWidth(), pd.getHeight(), imagePixel, 0, pd.getWidth());
+            ImageIO.write(resultImage, "png", f);
+            System.out.println("CREATED");
+        }catch(IOException e){
+            System.out.println(e);
+        }
+    }
+
+    public static void main(String args[]) throws IOException{
+        int downsizenum = 4;
+        new GlassDetectionTest().testToyExample("data/PixelData/RealData/APDM/APDM-an2i-" + downsizenum+ "-30X32.txt");
     }
 }

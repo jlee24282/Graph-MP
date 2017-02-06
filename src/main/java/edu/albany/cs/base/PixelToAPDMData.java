@@ -2,7 +2,6 @@ package edu.albany.cs.base;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.awt.image.WritableRaster;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Arrays;
@@ -11,95 +10,112 @@ import static java.lang.System.exit;
 
 
 public class PixelToAPDMData {
-    private int PIC_ROWS;
-    private int PIC_COLUMNS;
+    private int PIC_HEIGHT;
+    private int PIC_WIDTH;
     private int PIXEL_COUNT;
     private int PICTURE_COUNT;
     private double[][] greyValues;
+    private BufferedImage img;
 
     public PixelToAPDMData(){
         //temporary for now
         PICTURE_COUNT = 12;
-
+        img = null;
     }
 
     public void generateSingleCase(String inputFiles, String outputFile) throws IOException {
-        this.greyValues     = getGreyLevelsFromImages(inputFiles);
-        //this.PIC_COLUMNS = greyValues[0].length;
-        //this.PIC_ROWS = greyValues.length;
-        //this.PIXEL_COUNT    = PIC_COLUMNS * PIC_ROWS;
+        this.greyValues     = getGreyLevels(inputFiles);
 
-        outputFile = outputFile + PIC_ROWS +"X"+ PIC_COLUMNS + ".txt";
+        outputFile = outputFile + PIC_HEIGHT +"X"+ PIC_WIDTH + ".txt";
         generatePixelAPDM(outputFile);
 
         //test if all connected
         testTrueSubGraph(outputFile);
     }
 
-    private double[][] getGreyLevelsFromImages(String inputFile) throws IOException{
+    private double[][] getGreyLevels(String inputFiles) throws IOException{
+        //an2i_left_neutral_open_2.png;
+        int[][] greyValuesT = new int[100][100];
+
+        greyValuesT[0] = getGreyLevelsFromImages(inputFiles + "an2i_straight_neutral_sunglasses_4.png");
+        greyValuesT[1] = getGreyLevelsFromImages(inputFiles + "an2i_straight_neutral_open_4.png");
+        greyValuesT[2] = getGreyLevelsFromImages(inputFiles + "an2i_straight_sad_open_4.png");
+        greyValuesT[3] = getGreyLevelsFromImages(inputFiles + "an2i_straight_angry_open_4.png");
+        greyValuesT[4] = getGreyLevelsFromImages(inputFiles + "an2i_straight_happy_open_4.png");
+        greyValuesT[5] = getGreyLevelsFromImages(inputFiles + "an2i_left_happy_open_4.png");
+        greyValuesT[6] = getGreyLevelsFromImages(inputFiles + "an2i_left_angry_open_4.png");
+        greyValuesT[7] = getGreyLevelsFromImages(inputFiles + "an2i_left_neutral_open_4.png");
+        greyValuesT[8] = getGreyLevelsFromImages(inputFiles + "an2i_left_sad_open_4.png");
+        greyValuesT[9] = getGreyLevelsFromImages(inputFiles + "an2i_right_happy_open_4.png");
+        greyValuesT[10] = getGreyLevelsFromImages(inputFiles + "an2i_right_sad_open_4.png");
+        greyValuesT[11] = getGreyLevelsFromImages(inputFiles + "an2i_right_neutral_open_4.png");
+
+        greyValues = new double[PIXEL_COUNT][PICTURE_COUNT];
+
+        for(int i = 0; i< 12; i++){
+            for (int k = 0; k< PIXEL_COUNT; k++){
+                greyValues[k][i] = greyValuesT[i][k];
+            }
+        }
+
+        return greyValues;
+    }
+
+    public int[] getGreyLevelsFromImages(String inputFile) throws IOException{
         //get picture and get rgb
-        BufferedImage img = null;
 
         try {
-            //img = ImageIO.read(new FileInputStream("test-p1.png"));
-            img = ImageIO.read(new FileInputStream(inputFile + "/siggi.gif"));
+            img = ImageIO.read(new FileInputStream(inputFile));
         } catch (IOException e) {
             System.out.println(e);
             exit(0);
         }
-        PIC_ROWS = img.getHeight();
-        PIC_COLUMNS = img.getWidth();
-        PIXEL_COUNT = (int)(Math.ceil(PIC_ROWS / 5.0) * Math.ceil(PIC_COLUMNS / 5.0));
-        double[][] grayLevels = new double[PIXEL_COUNT][PICTURE_COUNT];
 
-        for(int i = 0; i< PIXEL_COUNT; i++)
-            Arrays.fill(grayLevels[i],0.0);
+        PIC_HEIGHT = img.getHeight();
+        PIC_WIDTH = img.getWidth();
+        PIXEL_COUNT = (int)(Math.ceil(PIC_HEIGHT) * Math.ceil(PIC_WIDTH));
+        int[] grayLevels = new int[PIXEL_COUNT];
+        Arrays.fill(grayLevels,0);
 
         //convert to grayscale
-        int k = 0;
-        System.out.println("SIZE: " + k + " " + PIC_ROWS/5 + " " + PIC_COLUMNS/5);
+        int[] imageRGB = img.getRGB(0, 0, PIC_WIDTH, PIC_HEIGHT, null, 0, PIC_WIDTH);
         int[] tempImageCheck = new int[PIXEL_COUNT];
-        for(int y = 0; y < PIC_ROWS; y++){
-            for(int x = 0; x < PIC_COLUMNS; x++){
-                if(x % 5 == 0 && y % 5 == 0) {
-                    int p = img.getRGB(x, y);
-                    int a = (p >> 24) & 0xff;
-                    int r = (p >> 16) & 0xff;
-                    int g = (p >> 8) & 0xff;
-                    int b = p & 0xff;
+        for(int i = 0; i < PIC_HEIGHT * PIC_WIDTH; i++){
+            int p = imageRGB[i];
+            tempImageCheck[i] = p;
 
-                    //calculate average(grayVal)
-                    tempImageCheck[k] = (r + g + b) / 3;
-                    grayLevels[k++][0] = (r + g + b) / 3;
-                }
-            }
+    //        int a 	= (imageRGB[i] >> 16) & 0xff;
+            int r 	= (imageRGB[i] >> 16) & 0xff;
+            int g 	= (imageRGB[i] >> 8) & 0xff;
+            int b 	= (imageRGB[i]) & 0xff;
+            //calculate average(grayVal)
+            grayLevels[i] = (r + g + b) / 3;
+            r = (r + g + b) / 3;
+            g = r;
+            b = r;
+
+            tempImageCheck[i] = r << 16 | g << 8 | b;
         }
-        System.out.println("SIZE: " + k + " " + PIC_ROWS + " " + PIC_COLUMNS);
-        PIC_COLUMNS = (int) Math.ceil(PIC_COLUMNS/5.0);
-        PIC_ROWS = (int) Math.ceil(PIC_ROWS/5.0);
 
-        //checking output
 //        try{
 //            File f = new File("data/Output.png");
-//            BufferedImage bi = getImageFromArray(tempImageCheck, PIC_COLUMNS, PIC_ROWS);
-//            ImageIO.write(bi, "png", f);
+//            BufferedImage resultImage = img;
+//            resultImage.setRGB(0, 0, PIC_WIDTH, PIC_HEIGHT, tempImageCheck, 0, PIC_WIDTH);
+//            ImageIO.write(resultImage, "png", f);
 //            System.out.println("CREATED");
 //        }catch(IOException e){
 //            System.out.println(e);
 //        }
+
+
+        //checking output
         return grayLevels;
     }
 
-    private static BufferedImage getImageFromArray(int[] pixels, int width, int height) {
-        BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
-        WritableRaster raster = (WritableRaster) image.getData();
-        raster.setPixels(0,0,width,height,pixels);
-        return image;
-    }
 
     private void generatePixelAPDM(String outputFileName){
         //gen edges
-        GenerateMNSingleGraph g = new GenerateMNSingleGraph(PIC_ROWS, PIC_COLUMNS);
+        GenerateMNSingleGraph g = new GenerateMNSingleGraph(PIC_HEIGHT, PIC_WIDTH);
         //nothing in count
         double[] count          = new double[PIXEL_COUNT];
         Arrays.fill(count, 0.0);
@@ -118,8 +134,19 @@ public class PixelToAPDMData {
 
     public static void main(String args[]) throws IOException{
         new PixelToAPDMData().generateSingleCase(
-                "data/PixelData/RealData",
-                "data/PixelData/RealData/APDM/APDM-");
+                "data/PixelData/RealData/Images/ImageData/pngFiles/faces/an2i/",
+                "data/PixelData/RealData/APDM/APDM-an2i-4-");
     }
 
+    public BufferedImage getBufferedImage(){
+        return img;
+    }
+
+    public int getWidth(){
+        return PIC_WIDTH;
+    }
+
+    public int getHeight(){
+        return PIC_HEIGHT;
+    }
 }

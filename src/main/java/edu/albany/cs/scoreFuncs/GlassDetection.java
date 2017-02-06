@@ -189,7 +189,7 @@ public class GlassDetection implements Function {
         BigDecimal[] x = new BigDecimal[n];
         /** the step size */
         //BigDecimal gamma = new BigDecimal("0.0000003");
-        BigDecimal gamma = new BigDecimal("0.002");
+        BigDecimal gamma = new BigDecimal("0.00002");
         BigDecimal err = new BigDecimal(1e-6D); //
         int maximumItersNum = 5000;
         /** initialize x */
@@ -233,6 +233,58 @@ public class GlassDetection implements Function {
         }
         return x;
     }
+
+    //-----------------For simulation
+//
+//    private BigDecimal[] argMinFx(Function func) {
+//        /** numGraphNodes : defines number of nodes in graph*/
+//        BigDecimal[] x = new BigDecimal[n];
+//        /** the step size */
+//        //BigDecimal gamma = new BigDecimal("0.0000003");
+//        BigDecimal gamma = new BigDecimal("0.0002");
+//        BigDecimal err = new BigDecimal(1e-6D); //
+//        int maximumItersNum = 5000;
+//        /** initialize x */
+//        for (int i = 0; i < x.length; i++) {
+//            x[i] = new BigDecimal(new Random().nextDouble());
+//        }
+//        int iter = 0;
+//        while (true) {
+//            /** get gradient for current iteration*/
+//            BigDecimal[] gradient = func.getGradientBigDecimal(x);
+//            double[] dx = new double[x.length];
+//
+//            for (int i = 0; i < x.length; i++) {
+//                dx[i] = x[i].doubleValue();
+//            }
+//            BigDecimal oldFuncValue = new BigDecimal(func.getFuncValue(dx));
+//
+//            for (int i = 0; i < x.length; i++) {
+//                x[i] = x[i].subtract(gamma.multiply(gradient[i]));
+//                //x[i] = x[i].add(gamma.multiply(gradient[i]));
+//            }
+//            dx = new double[x.length];
+//
+//            for (int i = 0; i < x.length; i++) {
+//                dx[i] = x[i].doubleValue();
+//            }
+//            BigDecimal diff = oldFuncValue.subtract(new BigDecimal(func.getFuncValue(dx)));
+//            diff = diff.abs();
+//            /** if it is less than error bound or it has more than 100 iterations, it terminates.*/
+//
+//            if ((diff.compareTo(err) == -1) ) {
+//                System.out.println("CONVERGE: " + iter);
+//
+//                break;
+//            }
+//            if(iter>= maximumItersNum){
+//                //System.out.println("NUMBER");
+//                break;
+//            }
+//            iter++;
+//        }
+//        return x;
+//    }
 
     //getter picIndex
     public int getPicIndex(){
