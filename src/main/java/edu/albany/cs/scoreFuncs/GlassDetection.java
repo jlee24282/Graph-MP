@@ -1,5 +1,8 @@
 package edu.albany.cs.scoreFuncs;
+
+import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.math3.linear.ArrayRealVector;
+import org.apache.commons.math3.stat.StatUtils;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -28,9 +31,15 @@ public class GlassDetection implements Function {
         this.greyValuesT    = new double[greyValues[0].length][n];
 
         this.c = new double[n][n];
+        double[] temp = new double[n];
+        for(int i = 0; i< n; i++){
+            temp[i] = greyValues[i][0];
+        }
+
+        //transpose
         for(int i = 0; i < n; i++){
             for (int j = 0; j < picCount; j++){
-                greyValues[i][j] = greyValues[i][j]/100.0;
+                greyValues[i][j] = greyValues[i][j]/Math.pow(10.0, getLengthOfDecimal(temp));
                 greyValuesT[j][i] = greyValues[i][j];
             }
         }
@@ -38,6 +47,19 @@ public class GlassDetection implements Function {
         for (int i = 0; i < n; i++) {
             c[i][i] = greyValuesT[picIndex][i];
         }
+    }
+    private int getLengthOfDecimal(double[] nums){
+        int decimalLength = 0;
+        int floatLength = 0;
+        Double num = StatUtils.sum(nums)/nums.length;
+        String[] splitter = num.toString().split("\\.");
+        decimalLength = splitter[1].length();   // Before Decimal Count
+        floatLength = splitter[0].length();   // Before Decimal Count
+
+        if (num  < 0)
+            return 6;
+        else
+            return 2;
     }
 
     @Override
@@ -189,7 +211,7 @@ public class GlassDetection implements Function {
         BigDecimal[] x = new BigDecimal[n];
         /** the step size */
         //BigDecimal gamma = new BigDecimal("0.0000003");
-        BigDecimal gamma = new BigDecimal("0.00002");
+        BigDecimal gamma = new BigDecimal("0.00001");
         BigDecimal err = new BigDecimal(1e-6D); //
         int maximumItersNum = 5000;
         /** initialize x */
@@ -201,7 +223,8 @@ public class GlassDetection implements Function {
             /** get gradient for current iteration*/
             BigDecimal[] gradient = func.getGradientBigDecimal(x);
             double[] dx = new double[x.length];
-
+            if(iter %200 == 0)
+                System.out.println(ArrayUtils.toString(gradient));
             for (int i = 0; i < x.length; i++) {
                 dx[i] = x[i].doubleValue();
             }
@@ -231,6 +254,7 @@ public class GlassDetection implements Function {
             }
             iter++;
         }
+        System.out.println("DONE");
         return x;
     }
 

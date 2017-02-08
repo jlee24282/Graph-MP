@@ -15,7 +15,8 @@ import java.util.Arrays;
 
 
 public class GlassDetectionTest {
-    public int downsizenum = 4;
+    public static final int downsizenum = 4;
+    public static final String NAME = "saavik";
     private int verboseLevel = 0;
 
     public void testToyExample(String inputFilePath) throws IOException{
@@ -31,7 +32,7 @@ public class GlassDetectionTest {
         GlassDetection func = new GlassDetection(apdm.data.greyValues);
 
         /** step2: optimization */
-        int[] candidateS = new int[] { 9, 10, 11, 12, 13, 14, 15, 16};
+        int[] candidateS = new int[] { 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22};
         double optimalVal =  Double.MAX_VALUE;
         GraphMP bestGraphMP = null;
         int bestPicture = -1;
@@ -63,24 +64,25 @@ public class GlassDetectionTest {
     private void displayResultPicture(int[] resultGraph) throws IOException{
 
         int[] imagePixel = new int[100];
-        String inputFiles = "data/PixelData/RealData/Images/ImageData/pngFiles/faces/an2i/";
+        String inputFiles = "data/PixelData/RealData/Images/ImageData/pngFiles/faces/"+NAME+"/";
         PixelToAPDMData pd = new PixelToAPDMData();
-        imagePixel = pd.getGreyLevelsFromImages(inputFiles + "an2i_straight_neutral_sunglasses_" + downsizenum+ ".png");
+        imagePixel = pd.getGreyLevelsFromImages(inputFiles +NAME+ "_straight_neutral_sunglasses_" + downsizenum+ ".png");
         BufferedImage inputImage = pd.getBufferedImage();
 
         for(int i : resultGraph){
-            int alpha = 255;
-            int red   = 0;
+            int alpha = 0;
+            int red   = 255;
             int green = 255;
-            int blue  = 0;
+            int blue  = 255;
 
             int argb = alpha << 24 + red << 16 + green << 8 + blue;
 
-            imagePixel[i] = argb;
+            //imagePixel[i] = -5921371;
+            imagePixel[i] = 16711680;
         }
 
         try{
-            File f = new File("data/PixelData/RealData/Results/Output_" + downsizenum+ ".png");
+            File f = new File("data/PixelData/RealData/Results/Output_" +NAME+"_"+ downsizenum+ ".png");
             BufferedImage resultImage = inputImage;
             resultImage.setRGB(0, 0, pd.getWidth(), pd.getHeight(), imagePixel, 0, pd.getWidth());
             ImageIO.write(resultImage, "png", f);
@@ -91,7 +93,11 @@ public class GlassDetectionTest {
     }
 
     public static void main(String args[]) throws IOException{
-        int downsizenum = 4;
-        new GlassDetectionTest().testToyExample("data/PixelData/RealData/APDM/APDM-an2i-" + downsizenum+ "-30X32.txt");
+        if (downsizenum == 2)
+            new GlassDetectionTest().testToyExample("data/PixelData/RealData/APDM/APDM-"+NAME+"-" + downsizenum+ "-60X64.txt");
+        if (downsizenum == 4)
+            new GlassDetectionTest().testToyExample("data/PixelData/RealData/APDM/APDM-"+NAME+"-" + downsizenum+ "-30X32.txt");
+        //int[] data = {781, 782, 783, 813, 815, 816, 833, 845, 865, 877, 897, 898, 899, 900, 901, 902, 903, 904, 905, 906, 907, 908, 909, 928, 929, 930};
+        //new GlassDetectionTest().displayResultPicture(data);
     }
 }

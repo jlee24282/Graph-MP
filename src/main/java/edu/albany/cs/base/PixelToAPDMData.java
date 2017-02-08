@@ -10,6 +10,8 @@ import static java.lang.System.exit;
 
 
 public class PixelToAPDMData {
+    public static final String NAME = "saavik";
+    public static final int downsize = 2;
     private int PIC_HEIGHT;
     private int PIC_WIDTH;
     private int PIXEL_COUNT;
@@ -37,18 +39,18 @@ public class PixelToAPDMData {
         //an2i_left_neutral_open_2.png;
         int[][] greyValuesT = new int[100][100];
 
-        greyValuesT[0] = getGreyLevelsFromImages(inputFiles + "an2i_straight_neutral_sunglasses_4.png");
-        greyValuesT[1] = getGreyLevelsFromImages(inputFiles + "an2i_straight_neutral_open_4.png");
-        greyValuesT[2] = getGreyLevelsFromImages(inputFiles + "an2i_straight_sad_open_4.png");
-        greyValuesT[3] = getGreyLevelsFromImages(inputFiles + "an2i_straight_angry_open_4.png");
-        greyValuesT[4] = getGreyLevelsFromImages(inputFiles + "an2i_straight_happy_open_4.png");
-        greyValuesT[5] = getGreyLevelsFromImages(inputFiles + "an2i_left_happy_open_4.png");
-        greyValuesT[6] = getGreyLevelsFromImages(inputFiles + "an2i_left_angry_open_4.png");
-        greyValuesT[7] = getGreyLevelsFromImages(inputFiles + "an2i_left_neutral_open_4.png");
-        greyValuesT[8] = getGreyLevelsFromImages(inputFiles + "an2i_left_sad_open_4.png");
-        greyValuesT[9] = getGreyLevelsFromImages(inputFiles + "an2i_right_happy_open_4.png");
-        greyValuesT[10] = getGreyLevelsFromImages(inputFiles + "an2i_right_sad_open_4.png");
-        greyValuesT[11] = getGreyLevelsFromImages(inputFiles + "an2i_right_neutral_open_4.png");
+        greyValuesT[0] = getGreyLevelsFromImages(inputFiles + NAME + "_straight_neutral_sunglasses_"+downsize+".png");
+        greyValuesT[1] = getGreyLevelsFromImages(inputFiles + NAME +"_straight_neutral_open_"+downsize+".png");
+        greyValuesT[2] = getGreyLevelsFromImages(inputFiles + NAME +"_straight_sad_open_"+downsize+".png");
+        greyValuesT[3] = getGreyLevelsFromImages(inputFiles + NAME +"_straight_angry_open_"+downsize+".png");
+        greyValuesT[4] = getGreyLevelsFromImages(inputFiles + NAME +"_up_happy_open_"+downsize+".png");
+        greyValuesT[5] = getGreyLevelsFromImages(inputFiles + NAME +"_up_happy_open_"+downsize+".png");
+        greyValuesT[6] = getGreyLevelsFromImages(inputFiles + NAME +"_left_angry_open_"+downsize+".png");
+        greyValuesT[7] = getGreyLevelsFromImages(inputFiles + NAME +"_left_neutral_open_"+downsize+".png");
+        greyValuesT[8] = getGreyLevelsFromImages(inputFiles + NAME +"_left_sad_open_"+downsize+".png");
+        greyValuesT[9] = getGreyLevelsFromImages(inputFiles + NAME +"_right_happy_open_"+downsize+".png");
+        greyValuesT[10] = getGreyLevelsFromImages(inputFiles + NAME +"_right_sad_open_"+downsize+".png");
+        greyValuesT[11] = getGreyLevelsFromImages(inputFiles + NAME +"_right_neutral_open_"+downsize+".png");
 
         greyValues = new double[PIXEL_COUNT][PICTURE_COUNT];
 
@@ -89,12 +91,14 @@ public class PixelToAPDMData {
             int g 	= (imageRGB[i] >> 8) & 0xff;
             int b 	= (imageRGB[i]) & 0xff;
             //calculate average(grayVal)
-            grayLevels[i] = (r + g + b) / 3;
+            //grayLevels[i] = (r + g + b) / 3;
+            grayLevels[i] =  p;
             r = (r + g + b) / 3;
             g = r;
             b = r;
 
-            tempImageCheck[i] = r << 16 | g << 8 | b;
+            tempImageCheck[i] = r;//((r&0x0ff)<<16)|((g&0x0ff)<<8)|(b&0x0ff);
+            grayLevels[i] = tempImageCheck[i];
         }
 
 //        try{
@@ -134,8 +138,8 @@ public class PixelToAPDMData {
 
     public static void main(String args[]) throws IOException{
         new PixelToAPDMData().generateSingleCase(
-                "data/PixelData/RealData/Images/ImageData/pngFiles/faces/an2i/",
-                "data/PixelData/RealData/APDM/APDM-an2i-4-");
+                "data/PixelData/RealData/Images/ImageData/pngFiles/faces/"+NAME+"/",
+                "data/PixelData/RealData/APDM/APDM-"+NAME+"-"+downsize+"-");
     }
 
     public BufferedImage getBufferedImage(){
