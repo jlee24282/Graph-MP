@@ -89,6 +89,7 @@ public class GraphMP {
 			x = this.initializeX_RandomSingleNode();
 		} else {
 			/** return X0 with maximum connected component nodes with 1.0D */
+			//x = initializeX_Random();
 			x = initializeX_Random();
 		}
 		ArrayList<Double> fValues = new ArrayList<>();
@@ -177,6 +178,19 @@ public class GraphMP {
 		Random rand = new Random();
 		for (int i = 0; i < c.length; i++) {
 			if (rand.nextDouble() < 0.5D) {
+				x0[i] = 1.0D;
+			} else {
+				x0[i] = 0.0D;
+			}
+		}
+		return x0;
+	}
+
+	private double[] initializeXMiddle() {
+		double[] x0 = new double[c.length];
+		//int[] trueSub = {1560, 1570, 1565};
+		for (int i = 0; i < c.length; i++) {
+			if (i % 2 == 0) {
 				x0[i] = 1.0D;
 			} else {
 				x0[i] = 0.0D;

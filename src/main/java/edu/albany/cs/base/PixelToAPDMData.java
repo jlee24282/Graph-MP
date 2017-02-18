@@ -10,7 +10,7 @@ import static java.lang.System.exit;
 
 
 public class PixelToAPDMData {
-    public static final String NAME = "saavik";
+    public static final String NAME = "testOneCircle";
     public static final int downsize = 2;
     private int PIC_HEIGHT;
     private int PIC_WIDTH;
@@ -39,18 +39,23 @@ public class PixelToAPDMData {
         //an2i_left_neutral_open_2.png;
         int[][] greyValuesT = new int[100][100];
 
-        greyValuesT[0] = getGreyLevelsFromImages(inputFiles + NAME + "_straight_neutral_sunglasses_"+downsize+".png");
-        greyValuesT[1] = getGreyLevelsFromImages(inputFiles + NAME +"_straight_neutral_open_"+downsize+".png");
-        greyValuesT[2] = getGreyLevelsFromImages(inputFiles + NAME +"_straight_sad_open_"+downsize+".png");
-        greyValuesT[3] = getGreyLevelsFromImages(inputFiles + NAME +"_straight_angry_open_"+downsize+".png");
-        greyValuesT[4] = getGreyLevelsFromImages(inputFiles + NAME +"_up_happy_open_"+downsize+".png");
-        greyValuesT[5] = getGreyLevelsFromImages(inputFiles + NAME +"_up_happy_open_"+downsize+".png");
-        greyValuesT[6] = getGreyLevelsFromImages(inputFiles + NAME +"_left_angry_open_"+downsize+".png");
-        greyValuesT[7] = getGreyLevelsFromImages(inputFiles + NAME +"_left_neutral_open_"+downsize+".png");
-        greyValuesT[8] = getGreyLevelsFromImages(inputFiles + NAME +"_left_sad_open_"+downsize+".png");
-        greyValuesT[9] = getGreyLevelsFromImages(inputFiles + NAME +"_right_happy_open_"+downsize+".png");
-        greyValuesT[10] = getGreyLevelsFromImages(inputFiles + NAME +"_right_sad_open_"+downsize+".png");
-        greyValuesT[11] = getGreyLevelsFromImages(inputFiles + NAME +"_right_neutral_open_"+downsize+".png");
+
+//        greyValuesT[0] = getGreyLevelsFromImages(inputFiles + NAME + "_straight_neutral_sunglasses_"+downsize+".png");
+//        greyValuesT[1] = getGreyLevelsFromImages(inputFiles + NAME +"_straight_neutral_open_"+downsize+".png");
+//        greyValuesT[2] = getGreyLevelsFromImages(inputFiles + NAME +"_straight_sad_open_"+downsize+".png");
+//        greyValuesT[3] = getGreyLevelsFromImages(inputFiles + NAME +"_straight_angry_open_"+downsize+".png");
+//        greyValuesT[4] = getGreyLevelsFromImages(inputFiles + NAME +"_up_happy_open_"+downsize+".png");
+//        greyValuesT[5] = getGreyLevelsFromImages(inputFiles + NAME +"_up_happy_open_"+downsize+".png");
+//        greyValuesT[6] = getGreyLevelsFromImages(inputFiles + NAME +"_left_angry_open_"+downsize+".png");
+//        greyValuesT[7] = getGreyLevelsFromImages(inputFiles + NAME +"_left_neutral_open_"+downsize+".png");
+//        greyValuesT[8] = getGreyLevelsFromImages(inputFiles + NAME +"_left_sad_open_"+downsize+".png");
+//        greyValuesT[9] = getGreyLevelsFromImages(inputFiles + NAME +"_right_happy_open_"+downsize+".png");
+//        greyValuesT[10] = getGreyLevelsFromImages(inputFiles + NAME +"_right_sad_open_"+downsize+".png");
+//        greyValuesT[11] = getGreyLevelsFromImages(inputFiles + NAME +"_right_neutral_open_"+downsize+".png");
+
+        for( int i = 0; i< 12; i++){
+            greyValuesT[i] = getGreyLevelsFromImages(inputFiles + i +  ".png");
+        }
 
         greyValues = new double[PIXEL_COUNT][PICTURE_COUNT];
 
@@ -77,6 +82,7 @@ public class PixelToAPDMData {
         PIC_WIDTH = img.getWidth();
         PIXEL_COUNT = (int)(Math.ceil(PIC_HEIGHT) * Math.ceil(PIC_WIDTH));
         int[] grayLevels = new int[PIXEL_COUNT];
+        System.out.println(PIXEL_COUNT);
         Arrays.fill(grayLevels,0);
 
         //convert to grayscale
@@ -137,9 +143,17 @@ public class PixelToAPDMData {
     }
 
     public static void main(String args[]) throws IOException{
-        new PixelToAPDMData().generateSingleCase(
-                "data/PixelData/RealData/Images/ImageData/pngFiles/faces/"+NAME+"/",
-                "data/PixelData/RealData/APDM/APDM-"+NAME+"-"+downsize+"-");
+
+        if (NAME.contains("test")){
+            new PixelToAPDMData().generateSingleCase(
+                    "data/PixelData/RealData/Images/ImageData/pngFiles/test/",
+                    "data/PixelData/RealData/APDM/APDM-"+NAME);
+        }
+        else{
+            new PixelToAPDMData().generateSingleCase(
+                    "data/PixelData/RealData/Images/ImageData/pngFiles/test/"+NAME+"/",
+                    "data/PixelData/RealData/APDM/APDM-"+NAME+"-"+downsize+"-");
+        }
     }
 
     public BufferedImage getBufferedImage(){

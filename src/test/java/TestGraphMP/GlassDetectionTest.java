@@ -9,14 +9,15 @@ import org.apache.commons.lang3.ArrayUtils;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 
 public class GlassDetectionTest {
-    public static final int downsizenum = 4;
-    public static final String NAME = "saavik";
+    public static final int downsizenum = 2;
+    public static final String NAME = "TEST";
     private int verboseLevel = 0;
 
     public void testToyExample(String inputFilePath) throws IOException{
@@ -36,15 +37,31 @@ public class GlassDetectionTest {
         double optimalVal =  Double.MAX_VALUE;
         GraphMP bestGraphMP = null;
         int bestPicture = -1;
+        FileWriter fileWriter = null;
+
+        try{
+            String filename = NAME+"-" + downsizenum + ".txt";
+            fileWriter = new FileWriter("data/PixelData/RealData/ResultData/"+ NAME, true);
+//            fileWriter = new FileWriter("data/PixelData/RealData/ResultData/test.txt", true);
+//            fileWriter.write("test1");
+//            fileWriter.close();
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+
         for (int s : candidateS) {
             double B = s - 1 + 0.0D;
             int t = 5;
+//            fileWriter.write("test2");
             GraphMP graphMP = new GraphMP(edges, edgeCosts, apdm.data.base, s, 1, B, t, false/** maximumCC */
                     , null, func, null);
             System.out.println("s**********************************************: " + s);
+            fileWriter.write("s**********************************************: " + s+ "\n");
             System.out.println("Current result: " + ArrayUtils.toString(graphMP.resultNodes_supportX));
+            fileWriter.write("Current result: " + ArrayUtils.toString(graphMP.resultNodes_supportX) + "\n");
             System.out.println("Current function value: " + graphMP.funcValue);
-            System.out.println(func.getFuncValue(graphMP.x) + " "+ ArrayUtils.toString(graphMP.x));
+            fileWriter.write("Current function value: " + graphMP.funcValue+ "\n");
+            System.out.println(func.getFuncValue(graphMP.x) + " "+ ArrayUtils.toString(graphMP.x)+ "\n");
             double[] yx = graphMP.x;
             if (func.getFuncValue(yx) < optimalVal) {
                 optimalVal = func.getFuncValue(yx);
@@ -53,12 +70,15 @@ public class GlassDetectionTest {
             }
         }
         System.out.println("sRESULT**********************************************: ");
+        fileWriter.write("sRESULT**********************************************: "+ "\n");
         System.out.println("Picture Index: " + bestPicture);
         System.out.println("result subgraph is: " + Arrays.toString(bestGraphMP.resultNodes_Tail));
+        fileWriter.write("result subgraph is: " + Arrays.toString(bestGraphMP.resultNodes_Tail)+ "\n");
         System.out.println("------------------------------ test ends --------------------------------\n");
+        fileWriter.write("------------------------------ test ends --------------------------------\n");
 
-        displayResultPicture(bestGraphMP.resultNodes_Tail);
-
+        //displayResultPicture(bestGraphMP.resultNodes_Tail);
+        fileWriter.close();
     }
 
     private void displayResultPicture(int[] resultGraph) throws IOException{
@@ -93,10 +113,15 @@ public class GlassDetectionTest {
     }
 
     public static void main(String args[]) throws IOException{
-        if (downsizenum == 2)
-            new GlassDetectionTest().testToyExample("data/PixelData/RealData/APDM/APDM-"+NAME+"-" + downsizenum+ "-60X64.txt");
-        if (downsizenum == 4)
-            new GlassDetectionTest().testToyExample("data/PixelData/RealData/APDM/APDM-"+NAME+"-" + downsizenum+ "-30X32.txt");
+        if(NAME.contains("TEST")) {
+            new GlassDetectionTest().testToyExample("data/PixelData/RealData/APDM/APDM-"+"testOneCircle.txt");
+        }
+        else{
+            if (downsizenum == 2)
+                new GlassDetectionTest().testToyExample("data/PixelData/RealData/APDM/APDM-"+NAME+"-" + downsizenum+ "-60X64.txt");
+            if (downsizenum == 4)
+                new GlassDetectionTest().testToyExample("data/PixelData/RealData/APDM/APDM-"+NAME+"-" + downsizenum+ "-30X32.txt");
+        }
         //int[] data = {781, 782, 783, 813, 815, 816, 833, 845, 865, 877, 897, 898, 899, 900, 901, 902, 903, 904, 905, 906, 907, 908, 909, 928, 929, 930};
         //new GlassDetectionTest().displayResultPicture(data);
     }

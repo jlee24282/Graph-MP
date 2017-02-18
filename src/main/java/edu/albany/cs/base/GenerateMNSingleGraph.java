@@ -85,7 +85,7 @@ public class GenerateMNSingleGraph {
 
     private int[][] generateGraph(boolean flag){
         double[][] graph = generateGraph(1.0);
-        int[][] adj = new int[N*N][] ;
+        int[][] adj = new int[M*N][] ;
         for(int j = 0 ; j < graph.length ; j ++){
             int[] arr = null ;
             for( int k = 0 ; k < graph[j].length ; k ++){

@@ -211,9 +211,17 @@ public class GlassDetection implements Function {
         BigDecimal[] x = new BigDecimal[n];
         /** the step size */
         //BigDecimal gamma = new BigDecimal("0.0000003");
-        BigDecimal gamma = new BigDecimal("0.00001");
+
+        //Real Pic
+        //BigDecimal gamma = new BigDecimal("0.000085");
+
+        //Test 4
+        //BigDecimal gamma = new BigDecimal("0.00001");
+
+        //Test 2
+        BigDecimal gamma = new BigDecimal("0.000005");
         BigDecimal err = new BigDecimal(1e-6D); //
-        int maximumItersNum = 5000;
+        int maximumItersNum = 20000;
         /** initialize x */
         for (int i = 0; i < x.length; i++) {
             x[i] = new BigDecimal(new Random().nextDouble());
@@ -223,8 +231,6 @@ public class GlassDetection implements Function {
             /** get gradient for current iteration*/
             BigDecimal[] gradient = func.getGradientBigDecimal(x);
             double[] dx = new double[x.length];
-            if(iter %200 == 0)
-                System.out.println(ArrayUtils.toString(gradient));
             for (int i = 0; i < x.length; i++) {
                 dx[i] = x[i].doubleValue();
             }
@@ -252,9 +258,13 @@ public class GlassDetection implements Function {
                 //System.out.println("NUMBER");
                 break;
             }
+            if(iter %200 == 0) {
+                System.out.println(ArrayUtils.toString(gradient));
+                System.out.println(diff);
+            }
             iter++;
         }
-        System.out.println("DONE");
+        //System.out.println("DONE");
         return x;
     }
 
