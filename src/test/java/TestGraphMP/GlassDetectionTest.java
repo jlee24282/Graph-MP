@@ -17,7 +17,7 @@ import java.util.Arrays;
 
 public class GlassDetectionTest {
     public static final int downsizenum = 2;
-    public static final String NAME = "TEST";
+    public static final String NAME = "TESTOneCircle";
     private int verboseLevel = 0;
 
     public void testToyExample(String inputFilePath) throws IOException{
@@ -40,16 +40,17 @@ public class GlassDetectionTest {
         FileWriter fileWriter = null;
 
         try{
-            String filename = NAME+"-" + downsizenum + ".txt";
             fileWriter = new FileWriter("data/PixelData/RealData/ResultData/"+ NAME, true);
 //            fileWriter = new FileWriter("data/PixelData/RealData/ResultData/test.txt", true);
-//            fileWriter.write("test1");
-//            fileWriter.close();
+            fileWriter.write("\n------------------------------ test starts ------------------------------ \n");
+            fileWriter.close();
         }catch(IOException e){
             e.printStackTrace();
         }
 
         for (int s : candidateS) {
+            fileWriter = new FileWriter("data/PixelData/RealData/ResultData/"+ NAME, true);
+//
             double B = s - 1 + 0.0D;
             int t = 5;
 //            fileWriter.write("test2");
@@ -57,18 +58,21 @@ public class GlassDetectionTest {
                     , null, func, null);
             System.out.println("s**********************************************: " + s);
             fileWriter.write("s**********************************************: " + s+ "\n");
-            System.out.println("Current result: " + ArrayUtils.toString(graphMP.resultNodes_supportX));
-            fileWriter.write("Current result: " + ArrayUtils.toString(graphMP.resultNodes_supportX) + "\n");
+            System.out.println("Current result: " + ArrayUtils.toString(graphMP.resultNodes_Tail));
+            fileWriter.write("Current result: " + ArrayUtils.toString(graphMP.resultNodes_Tail) + "\n");
             System.out.println("Current function value: " + graphMP.funcValue);
             fileWriter.write("Current function value: " + graphMP.funcValue+ "\n");
             System.out.println(func.getFuncValue(graphMP.x) + " "+ ArrayUtils.toString(graphMP.x)+ "\n");
             double[] yx = graphMP.x;
-            if (func.getFuncValue(yx) < optimalVal) {
+            if (func.getFuncValue(yx) < optimalVal && graphMP.resultNodes_Tail[0] != graphMP.x.length-1) {
                 optimalVal = func.getFuncValue(yx);
                 bestPicture = func.getPicIndex();
                 bestGraphMP = graphMP;
             }
+            fileWriter.close();
         }
+
+        fileWriter = new FileWriter("data/PixelData/RealData/ResultData/"+ NAME, true);
         System.out.println("sRESULT**********************************************: ");
         fileWriter.write("sRESULT**********************************************: "+ "\n");
         System.out.println("Picture Index: " + bestPicture);
@@ -114,7 +118,7 @@ public class GlassDetectionTest {
 
     public static void main(String args[]) throws IOException{
         if(NAME.contains("TEST")) {
-            new GlassDetectionTest().testToyExample("data/PixelData/RealData/APDM/APDM-"+"testOneCircle.txt");
+            new GlassDetectionTest().testToyExample("data/PixelData/RealData/APDM/APDM-"+ NAME +".txt");
         }
         else{
             if (downsizenum == 2)

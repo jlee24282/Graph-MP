@@ -218,8 +218,9 @@ public class GlassDetection implements Function {
         //Test 4
         //BigDecimal gamma = new BigDecimal("0.00001");
 
-        //Test 2
-        BigDecimal gamma = new BigDecimal("0.000005");
+        //Test 2 2 circle
+        //BigDecimal gamma = new BigDecimal("0.000005");
+        BigDecimal gamma = new BigDecimal("0.00001");
         BigDecimal err = new BigDecimal(1e-6D); //
         int maximumItersNum = 20000;
         /** initialize x */
