@@ -1,5 +1,6 @@
 package edu.albany.cs.scoreFuncs;
 
+import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.math3.linear.ArrayRealVector;
 import org.apache.commons.math3.stat.StatUtils;
 
@@ -161,7 +162,7 @@ public class G_toy implements Function{
         /** numGraphNodes : defines number of nodes in graph*/
 		BigDecimal[] x = new BigDecimal[n];
 		/** the step size */
-		BigDecimal gamma = new BigDecimal("0.001");
+		BigDecimal gamma = new BigDecimal("0.0001");
 		BigDecimal err = new BigDecimal(1e-6D); //
 		int maximumItersNum = 100;
 		/** initialize x */
@@ -190,14 +191,22 @@ public class G_toy implements Function{
 			BigDecimal diff = oldFuncValue.subtract(new BigDecimal(func.getFuncValue(dx)));
 			/** if it is less than error bound or it has more than 100 iterations, it terminates.*/
 		
-			if ((diff.compareTo(err) == -1) || iter >= maximumItersNum) {
+			if ((diff.compareTo(err) == -1) ) {
+				System.out.println("Converge");
 				break;
+			}
+
+			if (iter >= maximumItersNum) {
+				System.out.println("max");
+				break;
+			}
+
+			if(iter %20 == 0) {
+				System.out.println(ArrayUtils.toString(gradient));
+				System.out.println(diff);
 			}
 			iter++;
 		}
 		return x;
 		}
-
-
-	
 	}

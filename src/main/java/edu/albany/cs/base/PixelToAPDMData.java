@@ -10,7 +10,7 @@ import static java.lang.System.exit;
 
 
 public class PixelToAPDMData {
-    public static final String NAME = "testOneCircle";
+    public static final String NAME = "testDoubleCircle";
     public static final int downsize = 2;
     private int PIC_HEIGHT;
     private int PIC_WIDTH;

@@ -17,7 +17,7 @@ import java.util.Arrays;
 
 public class GlassDetectionTest {
     public static final int downsizenum = 2;
-    public static final String NAME = "TESTOneCircle";
+    public static final String NAME = "testDoubleCircle";
     private int verboseLevel = 0;
 
     public void testToyExample(String inputFilePath) throws IOException{
@@ -33,7 +33,7 @@ public class GlassDetectionTest {
         GlassDetection func = new GlassDetection(apdm.data.greyValues);
 
         /** step2: optimization */
-        int[] candidateS = new int[] { 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22};
+        int[] candidateS = new int[] {  4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20};
         double optimalVal =  Double.MAX_VALUE;
         GraphMP bestGraphMP = null;
         int bestPicture = -1;
@@ -64,6 +64,7 @@ public class GlassDetectionTest {
             fileWriter.write("Current function value: " + graphMP.funcValue+ "\n");
             System.out.println(func.getFuncValue(graphMP.x) + " "+ ArrayUtils.toString(graphMP.x)+ "\n");
             double[] yx = graphMP.x;
+            System.out.println("LENGTH: " + graphMP.x.length + " " + graphMP.resultNodes_Tail.length);
             if (func.getFuncValue(yx) < optimalVal && graphMP.resultNodes_Tail[0] != graphMP.x.length-1) {
                 optimalVal = func.getFuncValue(yx);
                 bestPicture = func.getPicIndex();
@@ -117,7 +118,7 @@ public class GlassDetectionTest {
     }
 
     public static void main(String args[]) throws IOException{
-        if(NAME.contains("TEST")) {
+        if(NAME.contains("test")) {
             new GlassDetectionTest().testToyExample("data/PixelData/RealData/APDM/APDM-"+ NAME +".txt");
         }
         else{

@@ -36,7 +36,7 @@ public class TestToyExample {
 			int t = 5;
 			GraphMP graphMP = new GraphMP(edges, edgeCosts, apdm.data.base, s, 1, B, t, false/** maximumCC */
 			, null, func, null);
-			bestPreRec = new PreRec(graphMP.resultNodes_supportX, apdm.data.trueSubGraphNodes);
+			bestPreRec = new PreRec(graphMP.resultNodes_Tail, apdm.data.trueSubGraphNodes);
 			//System.out.println(bestPreRec.toString()+" "+func.getFuncValue(graphMP.x));
 			double[] yx = graphMP.x;
 			if (func.getFuncValue(yx) < optimalVal) {
@@ -55,7 +55,7 @@ public class TestToyExample {
 	}
 
 	public static void main(String args[]) {
-		new TestToyExample().testToyExample("data/APDM-GridData-100_noise_0.0_trueSubSize_30_4.txt");
+		new TestToyExample().testToyExample("data/GridData/APDM-GridData-100_noise_0.0_trueSubSize_30_4.txt");
 		//new TestToyExample().testToyExample("data/SimulationData/Protest/APDM-GridData-100-precen_0.1-noise_0-numCC_1_0.txt");
 		//new TestToyExample().testToyExample("data/GridDataEBP/APDM-GridData-100_noise_0.0_trueSubSize_30_0.txt");
 		//new TestToyExample().testToyExample("data/PixelData/APDM-10X11_C40.0_trueSubSize_30.txt");
