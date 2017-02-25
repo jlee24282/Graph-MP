@@ -74,10 +74,10 @@ public class GlassDetection implements Function {
         for (int k = 0; k < picCount; k++){
             if(k != picIndex){
                 double xw = new ArrayRealVector(x).dotProduct(new ArrayRealVector(greyValuesT[k]));
-                part2 = addition(part2, multiply(greyValuesT[k], 2*(xw+100)));
+                part2 = addition(part2, multiply(greyValuesT[k], 2*(xw+x.length)));
             }
         }
-        double[] part1 = multiply(greyValuesT[picIndex],(x0w-100)*2);
+        double[] part1 = multiply(greyValuesT[picIndex],(x0w-x.length)*2);
         double[] gradient = addition(part1, part2);
         return gradient;
     }
@@ -96,11 +96,11 @@ public class GlassDetection implements Function {
         for (int k = 0; k < picCount; k++){
             if(k != picIndex){
                 double xkw = new ArrayRealVector(x).dotProduct(new ArrayRealVector(greyValuesT[k]));
-                sumXW_Z_pow += Math.pow(xkw+100,2);
+                sumXW_Z_pow += Math.pow(xkw+x.length,2);
             }
         }
 
-        double funcScore = Math.pow((x0w-100), 2) + sumXW_Z_pow;
+        double funcScore = Math.pow((x0w-x.length), 2) + sumXW_Z_pow;
         return funcScore;
     }
 
@@ -220,7 +220,7 @@ public class GlassDetection implements Function {
 
         //Test 2 2 circle
         //BigDecimal gamma = new BigDecimal("0.000005");
-        BigDecimal gamma = new BigDecimal("0.0001");
+        BigDecimal gamma = new BigDecimal("0.00001");
         BigDecimal err = new BigDecimal(1e-5D); //
         int maximumItersNum = 20000;
         /** initialize x */

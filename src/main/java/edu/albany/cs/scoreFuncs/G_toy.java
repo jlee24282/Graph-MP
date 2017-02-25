@@ -162,9 +162,9 @@ public class G_toy implements Function{
         /** numGraphNodes : defines number of nodes in graph*/
 		BigDecimal[] x = new BigDecimal[n];
 		/** the step size */
-		BigDecimal gamma = new BigDecimal("0.0001");
+		BigDecimal gamma = new BigDecimal("0.00001");
 		BigDecimal err = new BigDecimal(1e-6D); //
-		int maximumItersNum = 100;
+		int maximumItersNum = 500;
 		/** initialize x */
 		for (int i = 0; i < x.length; i++) {
 			x[i] = new BigDecimal(new Random().nextDouble());
@@ -190,9 +190,9 @@ public class G_toy implements Function{
 			}
 			BigDecimal diff = oldFuncValue.subtract(new BigDecimal(func.getFuncValue(dx)));
 			/** if it is less than error bound or it has more than 100 iterations, it terminates.*/
-		
+			diff = diff.abs();
 			if ((diff.compareTo(err) == -1) ) {
-				System.out.println("Converge");
+				System.out.println("Converge: " + iter);
 				break;
 			}
 
@@ -201,7 +201,7 @@ public class G_toy implements Function{
 				break;
 			}
 
-			if(iter %20 == 0) {
+			if(iter %40 == 0) {
 				System.out.println(ArrayUtils.toString(gradient));
 				System.out.println(diff);
 			}
