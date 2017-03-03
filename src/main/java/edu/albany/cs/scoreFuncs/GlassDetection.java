@@ -208,49 +208,39 @@ public class GlassDetection implements Function {
 
     private BigDecimal[] argMinFx(Function func) {
         /** numGraphNodes : defines number of nodes in graph*/
-        BigDecimal[] x = new BigDecimal[n];
+        BigDecimal[] bigDx = new BigDecimal[n];
+        double[] x = new double[n];
         /** the step size */
-        //BigDecimal gamma = new BigDecimal("0.0000003");
-
-        //Real Pic
-        //BigDecimal gamma = new BigDecimal("0.000085");
-
-        //Test 4
-        //BigDecimal gamma = new BigDecimal("0.00001");
-
-        //Test 2 2 circle
-        //BigDecimal gamma = new BigDecimal("0.000005");
-        BigDecimal gamma = new BigDecimal("0.00001");
-        BigDecimal err = new BigDecimal(1e-5D); //
-        int maximumItersNum = 20000;
+        double gamma = 0.00005;
+        double err = 1e-5D; //
+        int maximumItersNum = 50000;
         /** initialize x */
         for (int i = 0; i < x.length; i++) {
-            x[i] = new BigDecimal(new Random().nextDouble());
+            x[i] = new Random().nextDouble();
         }
+
         int iter = 0;
         while (true) {
             /** get gradient for current iteration*/
-            BigDecimal[] gradient = func.getGradientBigDecimal(x);
+            double[] gradient = func.getGradient(x);
             double[] dx = new double[x.length];
             for (int i = 0; i < x.length; i++) {
-                dx[i] = x[i].doubleValue();
+                dx[i] = x[i];
             }
-            BigDecimal oldFuncValue = new BigDecimal(func.getFuncValue(dx));
+            double oldFuncValue = func.getFuncValue(dx);
 
             for (int i = 0; i < x.length; i++) {
-                x[i] = x[i].subtract(gamma.multiply(gradient[i]));
+                x[i] = x[i] - (gamma*(gradient[i]));
                 //x[i] = x[i].add(gamma.multiply(gradient[i]));
             }
             dx = new double[x.length];
-
             for (int i = 0; i < x.length; i++) {
-                dx[i] = x[i].doubleValue();
+                dx[i] = x[i];
             }
-            BigDecimal diff = oldFuncValue.subtract(new BigDecimal(func.getFuncValue(dx)));
-            diff = diff.abs();
+            double diff = Math.abs(oldFuncValue - func.getFuncValue(dx));
             /** if it is less than error bound or it has more than 100 iterations, it terminates.*/
 
-            if ((diff.compareTo(err) == -1) ) {
+            if (diff <=  err ) {
                 System.out.println("CONVERGE: " + iter);
 
                 break;
@@ -266,7 +256,11 @@ public class GlassDetection implements Function {
             iter++;
         }
         //System.out.println("DONE");
-        return x;
+
+        for (int i = 0; i < x.length; i++) {
+            bigDx[i] = new BigDecimal(x[i]);
+        }
+        return bigDx;
     }
 
     //-----------------For simulation

@@ -28,7 +28,7 @@ public class TestToyExample {
 //		Utils.stop();
 		/** step2: optimization */
 		int[] candidateS = new int[] { 3, 4, 5,6,7,8,9,10,11,12, 13, 14, 15, 16};
-		double optimalVal = Double.MAX_VALUE;
+		double optimalVal = -Double.MAX_VALUE;
 		PreRec bestPreRec = new PreRec();
 		GraphMP bestGraphMP = null;
 		for (int s : candidateS) {
@@ -39,8 +39,8 @@ public class TestToyExample {
 			bestPreRec = new PreRec(graphMP.resultNodes_supportX, apdm.data.trueSubGraphNodes);
 			//System.out.println(bestPreRec.toString()+" "+func.getFuncValue(graphMP.x));
 			double[] yx = graphMP.x;
-			if (func.getFuncValue(yx) < optimalVal) {
-				optimalVal = func.getFuncValue(yx);
+			if (func.getFuncValue(yx) > optimalVal) {
+				optimalVal = -func.getFuncValue(yx);
 				
 				bestGraphMP = graphMP;
 				if (verboseLevel == 0) {

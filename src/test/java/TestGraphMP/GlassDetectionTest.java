@@ -16,8 +16,8 @@ import java.util.Arrays;
 
 
 public class GlassDetectionTest {
-    public static final int downsizenum = 2;
-    public static final String NAME = "testDoubleCircle";
+    public static final int downsizenum = 4;
+    public static final String NAME = "saavik";
     private int verboseLevel = 0;
 
     public void testToyExample(String inputFilePath) throws IOException{

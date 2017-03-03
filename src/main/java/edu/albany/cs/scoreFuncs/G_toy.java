@@ -162,7 +162,7 @@ public class G_toy implements Function{
         /** numGraphNodes : defines number of nodes in graph*/
 		BigDecimal[] x = new BigDecimal[n];
 		/** the step size */
-		BigDecimal gamma = new BigDecimal("0.00001");
+		BigDecimal gamma = new BigDecimal("0.0001");
 		BigDecimal err = new BigDecimal(1e-6D); //
 		int maximumItersNum = 500;
 		/** initialize x */
