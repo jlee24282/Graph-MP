@@ -176,13 +176,19 @@ public class GraphMP {
 	private double[] initializeX_Random() {
 		double[] x0 = new double[c.length];
 		Random rand = new Random();
-		for (int i = 0; i < c.length; i++) {
-			if (rand.nextDouble() < 0.5D) {
-				x0[i] = 1.0D;
-			} else {
-				x0[i] = 0.0D;
-			}
+//		for (int i = 0; i < c.length; i++) {
+//			if (rand.nextDouble() < 0.5D) {
+//				x0[i] = 1.0D;
+//			} else {
+//				x0[i] = 0.0D;
+//			}
+//		}
+		int[] list = {305,335,365,395,400,402,406,407,408,425,426,427,428,429,430,431,432,433,434,435,436,437,438,439,440,459,460,461,468,469,470,490,491,497,498,499};
+
+		for(int i: list){
+			x0[i] = 1;
 		}
+
 		return x0;
 	}
 

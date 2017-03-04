@@ -2,12 +2,10 @@ package edu.albany.cs.scoreFuncs;
 
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.math3.linear.ArrayRealVector;
-import org.apache.commons.math3.stat.StatUtils;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Random;
 /*
     Simplified Regression
  */
@@ -39,7 +37,7 @@ public class GlassDetection implements Function {
         //transpose
         for(int i = 0; i < n; i++){
             for (int j = 0; j < picCount; j++){
-                greyValues[i][j] = greyValues[i][j]/Math.pow(10.0, getLengthOfDecimal(temp));
+                greyValues[i][j] = greyValues[i][j]/Math.pow(10.0, 2);
                 greyValuesT[j][i] = greyValues[i][j];
             }
         }
@@ -48,19 +46,7 @@ public class GlassDetection implements Function {
             c[i][i] = greyValuesT[picIndex][i];
         }
     }
-    private int getLengthOfDecimal(double[] nums){
-        int decimalLength = 0;
-        int floatLength = 0;
-        Double num = StatUtils.sum(nums)/nums.length;
-        String[] splitter = num.toString().split("\\.");
-        decimalLength = splitter[1].length();   // Before Decimal Count
-        floatLength = splitter[0].length();   // Before Decimal Count
 
-        if (num  < 0)
-            return 6;
-        else
-            return 2;
-    }
 
     @Override
     public double[] getGradient(double[] x) {
@@ -183,9 +169,9 @@ public class GlassDetection implements Function {
         double[] result = new double[x.length];
         //Constraint Check and Projection
         for(int i = 0; i < x.length; i++){
-            if(x[i].doubleValue() < 0)
+            if(x[i].doubleValue() < 0.5)
                 result[i] = 0.0D;
-            else if(x[i].doubleValue() > 1)
+            else if(x[i].doubleValue() > 0.5)
                 result[i] = 1.0D;
             else
                 result[i] = x[i].doubleValue();
@@ -208,112 +194,61 @@ public class GlassDetection implements Function {
 
     private BigDecimal[] argMinFx(Function func) {
         /** numGraphNodes : defines number of nodes in graph*/
-        BigDecimal[] bigDx = new BigDecimal[n];
-        double[] x = new double[n];
-        /** the step size */
-        double gamma = 0.00005;
-        double err = 1e-5D; //
-        int maximumItersNum = 50000;
-        /** initialize x */
-        for (int i = 0; i < x.length; i++) {
-            x[i] = new Random().nextDouble();
-        }
+        BigDecimal[] x  = new BigDecimal[n];
+        double[] dx     = new double[x.length];
+        double gamma    = 0.00001;
+        double err      = 1e-5D; //
+        int maximumItersNum = 20000;
 
+
+        /** initialize x */
+//        for (int i = 0; i < x.length; i++) {
+//            x[i] = new BigDecimal(new Random().nextDouble());
+//            dx[i] = x[i].doubleValue();
+//        }
+        int[] list = {305,335,365,395,400,402,406,407,408,425,426,427,428,429,430,431,432,433,434,435,436,437,438,439,440,459,460,461,468,469,470,490,491,497,498,499};
+
+        for(int i: list){
+            dx[i] = 1;
+        }
         int iter = 0;
         while (true) {
             /** get gradient for current iteration*/
-            double[] gradient = func.getGradient(x);
-            double[] dx = new double[x.length];
-            for (int i = 0; i < x.length; i++) {
-                dx[i] = x[i];
-            }
+            double[] gradient = func.getGradient(dx);
             double oldFuncValue = func.getFuncValue(dx);
 
             for (int i = 0; i < x.length; i++) {
-                x[i] = x[i] - (gamma*(gradient[i]));
+                dx[i] = dx[i] - (gamma*(gradient[i]));
                 //x[i] = x[i].add(gamma.multiply(gradient[i]));
-            }
-            dx = new double[x.length];
-            for (int i = 0; i < x.length; i++) {
-                dx[i] = x[i];
             }
             double diff = Math.abs(oldFuncValue - func.getFuncValue(dx));
             /** if it is less than error bound or it has more than 100 iterations, it terminates.*/
 
-            if (diff <=  err ) {
+            if ( diff < err ) {
                 System.out.println("CONVERGE: " + iter);
-
                 break;
             }
             if(iter>= maximumItersNum){
                 //System.out.println("NUMBER");
                 break;
             }
-            if(iter %200 == 0) {
+            if(iter %1000 == 0) {
                 System.out.println(ArrayUtils.toString(gradient));
-                System.out.println(diff);
+                System.out.println(ArrayUtils.toString(dx));
             }
             iter++;
         }
         //System.out.println("DONE");
 
-        for (int i = 0; i < x.length; i++) {
-            bigDx[i] = new BigDecimal(x[i]);
+        for(int i = 0; i< x.length; i++){
+            x[i] = new BigDecimal(dx[i]);
         }
-        return bigDx;
+        return x;
     }
 
-    //-----------------For simulation
-//
-//    private BigDecimal[] argMinFx(Function func) {
-//        /** numGraphNodes : defines number of nodes in graph*/
-//        BigDecimal[] x = new BigDecimal[n];
-//        /** the step size */
-//        //BigDecimal gamma = new BigDecimal("0.0000003");
-//        BigDecimal gamma = new BigDecimal("0.0002");
-//        BigDecimal err = new BigDecimal(1e-6D); //
-//        int maximumItersNum = 5000;
-//        /** initialize x */
-//        for (int i = 0; i < x.length; i++) {
-//            x[i] = new BigDecimal(new Random().nextDouble());
-//        }
-//        int iter = 0;
-//        while (true) {
-//            /** get gradient for current iteration*/
-//            BigDecimal[] gradient = func.getGradientBigDecimal(x);
-//            double[] dx = new double[x.length];
-//
-//            for (int i = 0; i < x.length; i++) {
-//                dx[i] = x[i].doubleValue();
-//            }
-//            BigDecimal oldFuncValue = new BigDecimal(func.getFuncValue(dx));
-//
-//            for (int i = 0; i < x.length; i++) {
-//                x[i] = x[i].subtract(gamma.multiply(gradient[i]));
-//                //x[i] = x[i].add(gamma.multiply(gradient[i]));
-//            }
-//            dx = new double[x.length];
-//
-//            for (int i = 0; i < x.length; i++) {
-//                dx[i] = x[i].doubleValue();
-//            }
-//            BigDecimal diff = oldFuncValue.subtract(new BigDecimal(func.getFuncValue(dx)));
-//            diff = diff.abs();
-//            /** if it is less than error bound or it has more than 100 iterations, it terminates.*/
-//
-//            if ((diff.compareTo(err) == -1) ) {
-//                System.out.println("CONVERGE: " + iter);
-//
-//                break;
-//            }
-//            if(iter>= maximumItersNum){
-//                //System.out.println("NUMBER");
-//                break;
-//            }
-//            iter++;
-//        }
-//        return x;
-//    }
+
+
+
 
     //getter picIndex
     public int getPicIndex(){

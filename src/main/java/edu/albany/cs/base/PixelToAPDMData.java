@@ -39,7 +39,7 @@ public class PixelToAPDMData {
         //an2i_left_neutral_open_2.png;
         int[][] greyValuesT = new int[PICTURE_COUNT][960];
 
-        greyValuesT[0] = getGreyLevelsFromImages(inputFiles + NAME + "_straight_neutral_sunglasses_"+downsize+".png");
+        greyValuesT[0] = getGreyLevelsFromImages(inputFiles + NAME + "_straight_neutral_open_manualSunglass_"+downsize+".png");
         greyValuesT[1] = getGreyLevelsFromImages(inputFiles + NAME +"_straight_neutral_open_"+downsize+".png");
         greyValuesT[2] = getGreyLevelsFromImages(inputFiles + NAME +"_straight_neutral_open_"+downsize+".png");
         greyValuesT[3] = getGreyLevelsFromImages(inputFiles + NAME +"_straight_neutral_open_"+downsize+".png");
