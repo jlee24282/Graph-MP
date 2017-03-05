@@ -39,30 +39,30 @@ public class PixelToAPDMData {
         //an2i_left_neutral_open_2.png;
         int[][] greyValuesT = new int[PICTURE_COUNT][960];
 
-        greyValuesT[0] = getGreyLevelsFromImages(inputFiles + NAME + "_straight_neutral_open_manualSunglass_"+downsize+".png");
-        greyValuesT[1] = getGreyLevelsFromImages(inputFiles + NAME +"_straight_neutral_open_"+downsize+".png");
-        greyValuesT[2] = getGreyLevelsFromImages(inputFiles + NAME +"_straight_neutral_open_"+downsize+".png");
-        greyValuesT[3] = getGreyLevelsFromImages(inputFiles + NAME +"_straight_neutral_open_"+downsize+".png");
-        greyValuesT[4] = getGreyLevelsFromImages(inputFiles + NAME +"_straight_neutral_open_"+downsize+".png");
-        greyValuesT[5] = getGreyLevelsFromImages(inputFiles + NAME +"_straight_neutral_open_"+downsize+".png");
-        greyValuesT[6] = getGreyLevelsFromImages(inputFiles + NAME +"_straight_neutral_open_"+downsize+".png");
-        greyValuesT[7] = getGreyLevelsFromImages(inputFiles + NAME +"_straight_neutral_open_"+downsize+".png");
-        greyValuesT[8] = getGreyLevelsFromImages(inputFiles + NAME +"_straight_neutral_open_"+downsize+".png");
-        greyValuesT[9] = getGreyLevelsFromImages(inputFiles + NAME +"_straight_neutral_open_"+downsize+".png");
-        greyValuesT[10] = getGreyLevelsFromImages(inputFiles + NAME +"_straight_neutral_open_"+downsize+".png");
-//
-//        greyValuesT[0] = getGreyLevelsFromImages(inputFiles + NAME + "_straight_neutral_sunglasses_"+downsize+".png");
+//        greyValuesT[0] = getGreyLevelsFromImages(inputFiles + NAME + "_straight_neutral_open_manualSunglass_"+downsize+".png");
 //        greyValuesT[1] = getGreyLevelsFromImages(inputFiles + NAME +"_straight_neutral_open_"+downsize+".png");
-//        greyValuesT[2] = getGreyLevelsFromImages(inputFiles + NAME +"_straight_sad_open_"+downsize+".png");
-//        greyValuesT[3] = getGreyLevelsFromImages(inputFiles + NAME +"_straight_angry_open_"+downsize+".png");
-//        greyValuesT[4] = getGreyLevelsFromImages(inputFiles + NAME +"_up_happy_open_"+downsize+".png");
-//        greyValuesT[5] = getGreyLevelsFromImages(inputFiles + NAME +"_up_happy_open_"+downsize+".png");
-//        greyValuesT[6] = getGreyLevelsFromImages(inputFiles + NAME +"_left_angry_open_"+downsize+".png");
-//        greyValuesT[7] = getGreyLevelsFromImages(inputFiles + NAME +"_left_neutral_open_"+downsize+".png");
-//        greyValuesT[8] = getGreyLevelsFromImages(inputFiles + NAME +"_left_sad_open_"+downsize+".png");
-//        greyValuesT[9] = getGreyLevelsFromImages(inputFiles + NAME +"_right_happy_open_"+downsize+".png");
-//        greyValuesT[10] = getGreyLevelsFromImages(inputFiles + NAME +"_right_sad_open_"+downsize+".png");
-//        greyValuesT[11] = getGreyLevelsFromImages(inputFiles + NAME +"_right_neutral_open_"+downsize+".png");
+//        greyValuesT[2] = getGreyLevelsFromImages(inputFiles + NAME +"_straight_neutral_open_"+downsize+".png");
+//        greyValuesT[3] = getGreyLevelsFromImages(inputFiles + NAME +"_straight_neutral_open_"+downsize+".png");
+//        greyValuesT[4] = getGreyLevelsFromImages(inputFiles + NAME +"_straight_neutral_open_"+downsize+".png");
+//        greyValuesT[5] = getGreyLevelsFromImages(inputFiles + NAME +"_straight_neutral_open_"+downsize+".png");
+//        greyValuesT[6] = getGreyLevelsFromImages(inputFiles + NAME +"_straight_neutral_open_"+downsize+".png");
+//        greyValuesT[7] = getGreyLevelsFromImages(inputFiles + NAME +"_straight_neutral_open_"+downsize+".png");
+//        greyValuesT[8] = getGreyLevelsFromImages(inputFiles + NAME +"_straight_neutral_open_"+downsize+".png");
+//        greyValuesT[9] = getGreyLevelsFromImages(inputFiles + NAME +"_straight_neutral_open_"+downsize+".png");
+//        greyValuesT[10] = getGreyLevelsFromImages(inputFiles + NAME +"_straight_neutral_open_"+downsize+".png");
+//
+        greyValuesT[0] = getGreyLevelsFromImages(inputFiles + NAME + "_straight_neutral_sunglasses_"+downsize+".png");
+        greyValuesT[1] = getGreyLevelsFromImages(inputFiles + NAME +"_straight_neutral_open_"+downsize+".png");
+        greyValuesT[2] = getGreyLevelsFromImages(inputFiles + NAME +"_straight_sad_open_"+downsize+".png");
+        greyValuesT[3] = getGreyLevelsFromImages(inputFiles + NAME +"_straight_angry_open_"+downsize+".png");
+        greyValuesT[4] = getGreyLevelsFromImages(inputFiles + NAME +"_up_happy_open_"+downsize+".png");
+        greyValuesT[5] = getGreyLevelsFromImages(inputFiles + NAME +"_up_happy_open_"+downsize+".png");
+        greyValuesT[6] = getGreyLevelsFromImages(inputFiles + NAME +"_left_angry_open_"+downsize+".png");
+        greyValuesT[7] = getGreyLevelsFromImages(inputFiles + NAME +"_left_neutral_open_"+downsize+".png");
+        greyValuesT[8] = getGreyLevelsFromImages(inputFiles + NAME +"_left_sad_open_"+downsize+".png");
+        greyValuesT[9] = getGreyLevelsFromImages(inputFiles + NAME +"_right_happy_open_"+downsize+".png");
+        greyValuesT[10] = getGreyLevelsFromImages(inputFiles + NAME +"_right_sad_open_"+downsize+".png");
+        greyValuesT[11] = getGreyLevelsFromImages(inputFiles + NAME +"_right_neutral_open_"+downsize+".png");
 
 //        for( int i = 0; i< 12; i++){
 //            greyValuesT[i] = getGreyLevelsFromImages(inputFiles + i +  ".png");

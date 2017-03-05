@@ -9,8 +9,8 @@ from PIL import Image
 import glob
 import json
 
-NAME = 'testDoubleCircle'
-DOWNSIZENUM = '2'
+NAME = 'saavik'
+DOWNSIZENUM = '4'
 
 def pgmTopng():
     #for imgDir in glob.glob("Images/ImageData/test/*"):
@@ -96,7 +96,7 @@ def resultPictureTest():
 
 
 def resultPicturePrintAll():
-    im = Image.open('Results/'+ NAME + '.png').convert('RGB')         
+    im = Image.open('Results/Output_'+ NAME + '_4.png').convert('RGB')         
     pixelMap = im.load()
     with open('/Users/JLee/Documents/workspace/Graph-MP/data/PixelData/RealData/ResultData/'+ NAME) as f:
         text_file = f.readlines()
@@ -116,15 +116,15 @@ def resultPicturePrintAll():
             pixelMap[item%w, int(item/w)] = (255, 0, 0)
     
     im.show()       
-    im.save('Results/result_'+ NAME +'.png') 
+    im.save('Results/result_'+ NAME +'_4.png') 
     im.close()
 
     
 def resultPicturePrintBest():
-    im = Image.open('Results/'+NAME+'.png').convert('RGB')         
+    im = Image.open('Results/Output_'+NAME+'_4.png').convert('RGB')         
     pixelMap = im.load()
 
-    resultNodes = [48, 77, 78, 79, 108, 109, 110, 113, 140, 141, 142, 143, 144, 170, 172, 202]
+    resultNodes = [204,205,236,268,300,331,332,364,365,367,369,370,371,397,398,399,400,401,402,403,404,405,429,430,431,433,434,435,436,437,465,466,469]
     
     w=im.size[0]
     h=im.size[1]
@@ -138,8 +138,8 @@ def resultPicturePrintBest():
 
 def main():    
     #pgmTopngTest()
-    resultPicturePrintAll()
-    #resultPicturePrintBest()#resultPictureTest()
+    #resultPicturePrintAll()
+    resultPicturePrintBest()#resultPictureTest()
     
     
 if __name__ == '__main__':

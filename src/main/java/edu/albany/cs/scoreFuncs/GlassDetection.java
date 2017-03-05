@@ -6,6 +6,8 @@ import org.apache.commons.math3.linear.ArrayRealVector;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Random;
+
 /*
     Simplified Regression
  */
@@ -37,7 +39,7 @@ public class GlassDetection implements Function {
         //transpose
         for(int i = 0; i < n; i++){
             for (int j = 0; j < picCount; j++){
-                greyValues[i][j] = greyValues[i][j]/Math.pow(10.0, 2);
+                greyValues[i][j] = greyValues[i][j]/200;///Math.pow(10.0, 2);
                 greyValuesT[j][i] = greyValues[i][j];
             }
         }
@@ -60,10 +62,10 @@ public class GlassDetection implements Function {
         for (int k = 0; k < picCount; k++){
             if(k != picIndex){
                 double xw = new ArrayRealVector(x).dotProduct(new ArrayRealVector(greyValuesT[k]));
-                part2 = addition(part2, multiply(greyValuesT[k], 2*(xw+x.length)));
+                part2 = addition(part2, multiply(greyValuesT[k], 2*(xw-x.length)));
             }
         }
-        double[] part1 = multiply(greyValuesT[picIndex],(x0w-x.length)*2);
+        double[] part1 = multiply(greyValuesT[picIndex],(x0w+x.length)*2);
         double[] gradient = addition(part1, part2);
         return gradient;
     }
@@ -169,9 +171,9 @@ public class GlassDetection implements Function {
         double[] result = new double[x.length];
         //Constraint Check and Projection
         for(int i = 0; i < x.length; i++){
-            if(x[i].doubleValue() < 0.5)
+            if(x[i].doubleValue() < 0)
                 result[i] = 0.0D;
-            else if(x[i].doubleValue() > 0.5)
+            else if(x[i].doubleValue() > 1)
                 result[i] = 1.0D;
             else
                 result[i] = x[i].doubleValue();
@@ -196,21 +198,17 @@ public class GlassDetection implements Function {
         /** numGraphNodes : defines number of nodes in graph*/
         BigDecimal[] x  = new BigDecimal[n];
         double[] dx     = new double[x.length];
-        double gamma    = 0.00001;
+        double gamma    = 0.0002;
         double err      = 1e-5D; //
-        int maximumItersNum = 20000;
+        int maximumItersNum = 500000;
 
 
         /** initialize x */
-//        for (int i = 0; i < x.length; i++) {
-//            x[i] = new BigDecimal(new Random().nextDouble());
-//            dx[i] = x[i].doubleValue();
-//        }
-        int[] list = {305,335,365,395,400,402,406,407,408,425,426,427,428,429,430,431,432,433,434,435,436,437,438,439,440,459,460,461,468,469,470,490,491,497,498,499};
-
-        for(int i: list){
-            dx[i] = 1;
+        for (int i = 0; i < x.length; i++) {
+            x[i] = new BigDecimal(new Random().nextDouble());
+            dx[i] = x[i].doubleValue();
         }
+
         int iter = 0;
         while (true) {
             /** get gradient for current iteration*/
@@ -228,13 +226,14 @@ public class GlassDetection implements Function {
                 System.out.println("CONVERGE: " + iter);
                 break;
             }
+
             if(iter>= maximumItersNum){
                 //System.out.println("NUMBER");
                 break;
             }
             if(iter %1000 == 0) {
                 System.out.println(ArrayUtils.toString(gradient));
-                System.out.println(ArrayUtils.toString(dx));
+                System.out.println(diff);
             }
             iter++;
         }
