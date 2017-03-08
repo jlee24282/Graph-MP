@@ -16,9 +16,11 @@ import java.util.Arrays;
 
 
 public class GlassDetectionTest {
-    public static final int downsizenum = 4;
-    public static final String NAME = "saavik";
+    public static final int DOWNSIZENUM = 4;
+    public static final String NAME = "an2i";
+    public static int PICINDEX;
     private int verboseLevel = 0;
+
 
     public void testToyExample(String inputFilePath) throws IOException{
         System.out.println("\n------------------------------ test starts ------------------------------");
@@ -30,17 +32,17 @@ public class GlassDetectionTest {
         ArrayList<Double> edgeCosts = apdm.data.identityEdgeCosts;
 
         /** step1: score function */
-        GlassDetection func = new GlassDetection(apdm.data.greyValues);
+        GlassDetection func = new GlassDetection(apdm.data.greyValues, PICINDEX);
 
         /** step2: optimization */
-        int[] candidateS = new int[] {    8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18};
+        int[] candidateS = new int[] {    9, 10, 11, 12, 13, 14, 15, 16, 17};
         double optimalVal = Double.MAX_VALUE;
         GraphMP bestGraphMP = null;
         int bestPicture = -1;
         FileWriter fileWriter = null;
 
         try{
-            fileWriter = new FileWriter("data/PixelData/RealData/ResultData/"+ NAME, true);
+            fileWriter = new FileWriter("data/PixelData/RealData/ResultData/"+ NAME + "_"+DOWNSIZENUM + "_"+ PICINDEX, true);
 //            fileWriter = new FileWriter("data/PixelData/RealData/ResultData/test.txt", true);
             fileWriter.write("\n------------------------------ test starts ------------------------------ \n");
             fileWriter.close();
@@ -49,7 +51,7 @@ public class GlassDetectionTest {
         }
 
         for (int s : candidateS) {
-            fileWriter = new FileWriter("data/PixelData/RealData/ResultData/"+ NAME, true);
+            fileWriter = new FileWriter("data/PixelData/RealData/ResultData/"+ NAME + "_"+DOWNSIZENUM + "_"+ PICINDEX, true);
 //
             double B = s - 1 + 0.0D;
             int t = 5;
@@ -72,7 +74,7 @@ public class GlassDetectionTest {
             fileWriter.close();
         }
 
-        fileWriter = new FileWriter("data/PixelData/RealData/ResultData/"+ NAME, true);
+        fileWriter = new FileWriter("data/PixelData/RealData/ResultData/"+ NAME + "_"+DOWNSIZENUM + "_"+ PICINDEX, true);
         System.out.println("sRESULT**********************************************: ");
         fileWriter.write("sRESULT**********************************************: "+ "\n");
         System.out.println("Picture Index: " + bestPicture);
@@ -90,7 +92,7 @@ public class GlassDetectionTest {
         int[] imagePixel = new int[100];
         String inputFiles = "data/PixelData/RealData/Images/ImageData/pngFiles/faces/"+NAME+"/";
         PixelToAPDMData pd = new PixelToAPDMData();
-        imagePixel = pd.getGreyLevelsFromImages(inputFiles +NAME+ "_straight_neutral_sunglasses_" + downsizenum+ ".png");
+        imagePixel = pd.getGreyLevelsFromImages(inputFiles +NAME+ "_straight_neutral_sunglasses_" + DOWNSIZENUM+ ".png");
         BufferedImage inputImage = pd.getBufferedImage();
 
         for(int i : resultGraph){
@@ -106,7 +108,7 @@ public class GlassDetectionTest {
         }
 
         try{
-            File f = new File("data/PixelData/RealData/Results/Output_" +NAME+"_"+ downsizenum+ ".png");
+            File f = new File("data/PixelData/RealData/Results/Output_" +NAME+"_"+ DOWNSIZENUM+ ".png");
             BufferedImage resultImage = inputImage;
             resultImage.setRGB(0, 0, pd.getWidth(), pd.getHeight(), imagePixel, 0, pd.getWidth());
             ImageIO.write(resultImage, "png", f);
@@ -117,16 +119,23 @@ public class GlassDetectionTest {
     }
 
     public static void main(String args[]) throws IOException{
-        if(NAME.contains("test")) {
-            new GlassDetectionTest().testToyExample("data/PixelData/RealData/APDM/APDM-"+ NAME +".txt");
+        for(int i = 0; i< 12; i++) {
+            PICINDEX = i;
+            final long startTime = System.currentTimeMillis();
+
+            if (NAME.contains("test")) {
+                new GlassDetectionTest().testToyExample("data/PixelData/RealData/APDM/APDM-" + NAME + ".txt");
+            } else {
+                if (DOWNSIZENUM == 2)
+                    new GlassDetectionTest().testToyExample("data/PixelData/RealData/APDM/APDM-" + NAME + "-" + DOWNSIZENUM + "-60X64.txt");
+                if (DOWNSIZENUM == 4)
+                    new GlassDetectionTest().testToyExample("data/PixelData/RealData/APDM/APDM-" + NAME + "-" + DOWNSIZENUM + "-30X32.txt");
+            }
+
+            final long endTime = System.currentTimeMillis();
+            System.out.println("Total execution time: " + (endTime - startTime));
+            //int[] data = {781, 782, 783, 813, 815, 816, 833, 845, 865, 877, 897, 898, 899, 900, 901, 902, 903, 904, 905, 906, 907, 908, 909, 928, 929, 930};
+            //new GlassDetectionTest().displayResultPicture(data);
         }
-        else{
-            if (downsizenum == 2)
-                new GlassDetectionTest().testToyExample("data/PixelData/RealData/APDM/APDM-"+NAME+"-" + downsizenum+ "-60X64.txt");
-            if (downsizenum == 4)
-                new GlassDetectionTest().testToyExample("data/PixelData/RealData/APDM/APDM-"+NAME+"-" + downsizenum+ "-30X32.txt");
-        }
-        //int[] data = {781, 782, 783, 813, 815, 816, 833, 845, 865, 877, 897, 898, 899, 900, 901, 902, 903, 904, 905, 906, 907, 908, 909, 928, 929, 930};
-        //new GlassDetectionTest().displayResultPicture(data);
     }
 }

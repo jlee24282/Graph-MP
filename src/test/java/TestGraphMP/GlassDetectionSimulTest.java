@@ -24,7 +24,7 @@ public class GlassDetectionSimulTest {
         ArrayList<Double> edgeCosts = apdm.data.identityEdgeCosts;
 
         /** step1: score function */
-        GlassDetection func = new GlassDetection(apdm.data.greyValues);
+        GlassDetection func = new GlassDetection(apdm.data.greyValues, 0);
 
         /** step2: optimization */
         int[] candidateS = new int[] { 9, 10, 11, 12, 13, 14, 15, 16};

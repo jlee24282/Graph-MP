@@ -8,33 +8,39 @@ Created on Mon Feb  6 12:40:00 2017
 from PIL import Image
 import glob
 import json
+import os
 
-NAME = 'saavik'
+NAME = 'an2i'
 DOWNSIZENUM = '4'
+PICINDEX = ''
 
 def pgmTopng():
-    #for imgDir in glob.glob("Images/ImageData/test/*"):
-    for imgDir in glob.glob("Images/ImageData/faces/"+ NAME +"/*"):
+    for imgDir in glob.glob('Images/ImageData/faces/'+NAME+'/*'):
         try:
             img = Image.open(imgDir)
-            imgDir = imgDir.replace('pgm','png').replace('ImageData/','ImageData/pngFiles/')
-            #imgDir = 'pngFiles/'+ imgDir
-            #print imgDir
-            print imgDir
-            img.save(imgDir)
+            imgFile = imgDir.replace('pgm','png').replace('ImageData/','ImageData/pngFiles/')
+            
+            imgDir = imgFile[:32] + NAME
+            if not os.path.exists(imgDir):
+                os.makedirs(imgDir)
+            
+            print imgFile
+            img.save(imgFile)
         except:
             pass
         
 def pgmTopngTest():
-    #for imgDir in glob.glob("Images/ImageData/test/*"):
-    for imgDir in glob.glob("Images/ImageData/ImageFiles/Test/*"):
+    for imgDir in glob.glob('Images/ImageData/ImageFiles/faces/'+NAME+'/*'):
         try:
             img = Image.open(imgDir)
-            imgDir = imgDir.replace('pgm','png').replace('ImageData/','ImageData/pngFiles/')
-            #imgDir = 'pngFiles/'+ imgDir
-            #print imgDir
-            print imgDir
-            img.save(imgDir)
+            imgFile = imgDir.replace('pgm','png').replace('ImageData/','ImageData/pngFiles/')
+            
+            imgDir = imgFile.replace(NAME, '').replace('png', '')
+            if not os.path.exists(imgDir):
+                os.makedirs(imgDir)
+            
+            print imgFile
+            img.save(imgFile)
         except:
             pass
         
@@ -96,7 +102,7 @@ def resultPictureTest():
 
 
 def resultPicturePrintAll():
-    im = Image.open('Results/Output_'+ NAME + '_4.png').convert('RGB')         
+    im = Image.open('Images/ImageData/pngFiles/faces/'+ NAME + '/'+ NAME+'_straight_neutral_sunglasses_'+DOWNSIZENUM+'.png').convert('RGB')         
     pixelMap = im.load()
     with open('/Users/JLee/Documents/workspace/Graph-MP/data/PixelData/RealData/ResultData/'+ NAME) as f:
         text_file = f.readlines()
@@ -116,15 +122,71 @@ def resultPicturePrintAll():
             pixelMap[item%w, int(item/w)] = (255, 0, 0)
     
     im.show()       
-    im.save('Results/result_'+ NAME +'_4.png') 
+    im.save('Results/result_All_'+ NAME +'_'+ DOWNSIZENUM+'.png') 
     im.close()
 
+
+def resultPicturePrintBest3():
+    im = Image.open('Images/ImageData/pngFiles/faces/'+ NAME + '/'+ NAME+'_straight_neutral_sunglasses_'+DOWNSIZENUM+'.png').convert('RGB')         
+    pixelMap = im.load()
+    with open('/Users/JLee/Documents/workspace/Graph-MP/data/PixelData/RealData/ResultData/'+ NAME+ '_' +DOWNSIZENUM + '_' + PICINDEX) as f:
+        text_file = f.readlines()
+    results = []
+    funcValues = []
+
+    for line in text_file:
+        if line.startswith('Current result: '):
+            jsonList = json.loads(line.replace('Current result: ', '').replace('{', '[').replace('}', ']').replace('\n', ''))
+            results.append(jsonList)
+            
+        if line.startswith('Current function value: '):
+            jsonList = json.loads(line.replace('Current function value: ', '').replace('\n', ''))
+            funcValues.append(jsonList)
+    
+            
+    w=im.size[0]    
+    results, funcValues = (list(x) for x in zip(*sorted(zip(results, funcValues), key=lambda pair: pair[1])))
+    
+    for i in range(3):
+        resultNodes = results[i]
+        print funcValues[i]
+        for item in resultNodes:
+            #pixelMap[item%w, int(item/w)] = (255, i*30, i*30)
+            pixelMap[item%w, int(item/w)] = (255, 0, 0)
+    
+    im.show()       
+    im.save('Results/result_best3_'+ NAME +'_'+ DOWNSIZENUM+ '_' + PICINDEX+'.png') 
+    im.close()
     
 def resultPicturePrintBest():
-    im = Image.open('Results/Output_'+NAME+'_4.png').convert('RGB')         
+    im = Image.open('Images/ImageData/pngFiles/faces/'+ NAME + '/'+ NAME+'_straight_neutral_sunglasses_'+DOWNSIZENUM+'.png').convert('RGB')         
+    pixelMap = im.load()
+    with open('/Users/JLee/Documents/workspace/Graph-MP/data/PixelData/RealData/ResultData/'+ NAME + '_' +DOWNSIZENUM + '_' + PICINDEX) as f:
+        text_file = f.readlines()
+    results = []
+
+    for line in text_file:
+        if line.startswith('result subgraph is: '):
+            jsonList = json.loads(line.replace('result subgraph is: ', '').replace('\n', ''))
+            results.append(jsonList)
+            
+    w=im.size[0]    
+    
+    for i in range(len(results)):
+        resultNodes = results[i]
+        for item in resultNodes:
+            #pixelMap[item%w, int(item/w)] = (255, i*30, i*30)
+            pixelMap[item%w, int(item/w)] = (255, 0, 0)
+    
+    im.show()       
+    im.save('Results/result_Best1_'+ NAME +'_'+ DOWNSIZENUM+ '_' + PICINDEX+'.png') 
+    im.close()
+    
+def resultPicturePrintSingle():
+    im = Image.open('Images/ImageData/pngFiles/faces/'+ NAME + '/'+ NAME+'_straight_neutral_sunglasses_'+DOWNSIZENUM+'.png').convert('RGB')         
     pixelMap = im.load()
 
-    resultNodes = [204,205,236,268,300,331,332,364,365,367,369,370,371,397,398,399,400,401,402,403,404,405,429,430,431,433,434,435,436,437,465,466,469]
+    resultNodes = [428,429,434,458,459,460,461,462,463,465,466,490,491,493,495,496,497,498,523,524,525,554,555,557,586,587,589,618,650]
     
     w=im.size[0]
     h=im.size[1]
@@ -133,13 +195,20 @@ def resultPicturePrintBest():
     for item in resultNodes:
         pixelMap[item%w, int(item/w)] = (255, 0, 0)
     im.show()       
-    im.save('Results/result_'+NAME+'.png') 
+    im.save('Results/result_single_'+NAME+'.png') 
     im.close()
 
 def main():    
-    #pgmTopngTest()
+    #pgmTopng()
     #resultPicturePrintAll()
-    resultPicturePrintBest()#resultPictureTest()
+    #resultPicturePrintBest3()
+    #resultPicturePrintBest()
+    #resultPicturePrintSingle()
+    global PICINDEX
+    for i in range(12):
+        PICINDEX = str(i)
+        resultPicturePrintBest3()
+        resultPicturePrintBest()
     
     
 if __name__ == '__main__':

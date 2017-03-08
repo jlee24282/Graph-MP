@@ -22,11 +22,11 @@ public class GlassDetection implements Function {
     private int verboseLevel = 1;
     private double[][] c;
 
-    public GlassDetection(double[][] greyValues) {
+    public GlassDetection(double[][] greyValues, int picIndex) {
         this.greyValues     = greyValues;
         this.funcID         = FuncType.Unknown;
         this.n              = greyValues.length;
-        this.picIndex       = 0;
+        this.picIndex       = picIndex;
         this.picCount        = greyValues[0].length;
         this.greyValuesT    = new double[greyValues[0].length][n];
 
@@ -39,7 +39,7 @@ public class GlassDetection implements Function {
         //transpose
         for(int i = 0; i < n; i++){
             for (int j = 0; j < picCount; j++){
-                greyValues[i][j] = greyValues[i][j]/200;///Math.pow(10.0, 2);
+                greyValues[i][j] = greyValues[i][j]/150;///Math.pow(10.0, 2);
                 greyValuesT[j][i] = greyValues[i][j];
             }
         }
@@ -79,16 +79,17 @@ public class GlassDetection implements Function {
         }
 
         double x0w = new ArrayRealVector(x).dotProduct(new ArrayRealVector(greyValuesT[picIndex]));
+        double xkw = 0;
         double sumXW_Z_pow = 0;
 
         for (int k = 0; k < picCount; k++){
             if(k != picIndex){
-                double xkw = new ArrayRealVector(x).dotProduct(new ArrayRealVector(greyValuesT[k]));
+                xkw = new ArrayRealVector(x).dotProduct(new ArrayRealVector(greyValuesT[k]));
                 sumXW_Z_pow += Math.pow(xkw+x.length,2);
             }
         }
 
-        double funcScore = Math.pow((x0w-x.length), 2) + sumXW_Z_pow;
+        double funcScore = (Math.pow((x0w-x.length), 2) + sumXW_Z_pow);
         return funcScore;
     }
 
@@ -99,17 +100,16 @@ public class GlassDetection implements Function {
     public double[] getArgMaxFx(ArrayList<Integer> S) {
 
         double[] result = new double[n];
-
-        BigDecimal[] x = argMinFx(this);
+        double[] x = argMinFx(this);
 
         for (int i = 0; i < n; i++) {
-            if (x[i].doubleValue() < 0) {
+            if (x[i] < 0) {
                 result[i] = 0.0;
-            } else if (x[i].doubleValue() > 1) {
+            } else if (x[i] > 1) {
                 result[i] = 1.0;
             }
             else {
-                result[i] = x[i].doubleValue();
+                result[i] = x[i];
             }
 
         }
@@ -167,16 +167,16 @@ public class GlassDetection implements Function {
     @Override
     public double[] getArgMinFx(ArrayList<Integer> S) {
         // TODO Auto-generated method stub
-        BigDecimal[] x = argMinFx(this);
+        double[] x = argMinFx(this);
         double[] result = new double[x.length];
         //Constraint Check and Projection
         for(int i = 0; i < x.length; i++){
-            if(x[i].doubleValue() < 0)
+            if(x[i] < 0)
                 result[i] = 0.0D;
-            else if(x[i].doubleValue() > 1)
+            else if(x[i] > 1)
                 result[i] = 1.0D;
             else
-                result[i] = x[i].doubleValue();
+                result[i] = x[i];
 //            if(x[i].doubleValue() <= 0)
 //                result[i] = 0.0D;
 //            else
@@ -194,32 +194,30 @@ public class GlassDetection implements Function {
 
 
 
-    private BigDecimal[] argMinFx(Function func) {
+    private double[] argMinFx(Function func) {
         /** numGraphNodes : defines number of nodes in graph*/
-        BigDecimal[] x  = new BigDecimal[n];
-        double[] dx     = new double[x.length];
-        double gamma    = 0.0002;
+        double[] x     = new double[n];
+        double gamma    = 0.0001;
         double err      = 1e-5D; //
-        int maximumItersNum = 500000;
+        int maximumItersNum = 500000000;
 
 
         /** initialize x */
         for (int i = 0; i < x.length; i++) {
-            x[i] = new BigDecimal(new Random().nextDouble());
-            dx[i] = x[i].doubleValue();
+            x[i] = new Random().nextDouble();
         }
 
         int iter = 0;
         while (true) {
             /** get gradient for current iteration*/
-            double[] gradient = func.getGradient(dx);
-            double oldFuncValue = func.getFuncValue(dx);
-
+            double[] gradient = func.getGradient(x);
+            double oldFuncValue = func.getFuncValue(x);
             for (int i = 0; i < x.length; i++) {
-                dx[i] = dx[i] - (gamma*(gradient[i]));
+                x[i] = x[i] - (gamma*(gradient[i]));
                 //x[i] = x[i].add(gamma.multiply(gradient[i]));
             }
-            double diff = Math.abs(oldFuncValue - func.getFuncValue(dx));
+            double currentFunc = func.getFuncValue(x);
+            double diff = Math.abs(oldFuncValue - currentFunc);
             /** if it is less than error bound or it has more than 100 iterations, it terminates.*/
 
             if ( diff < err ) {
@@ -231,16 +229,14 @@ public class GlassDetection implements Function {
                 //System.out.println("NUMBER");
                 break;
             }
-            if(iter %1000 == 0) {
+            if(iter %10000 == 0) {
                 System.out.println(ArrayUtils.toString(gradient));
                 System.out.println(diff);
+                if( Double.isNaN(diff)){
+                    System.out.println("NAN" + oldFuncValue + " "+ currentFunc );
+                }
             }
             iter++;
-        }
-        //System.out.println("DONE");
-
-        for(int i = 0; i< x.length; i++){
-            x[i] = new BigDecimal(dx[i]);
         }
         return x;
     }

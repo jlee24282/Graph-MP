@@ -2,18 +2,40 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5c7bc81d-5044-46a9-b1eb-bae84b5a3e5d" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/Results/result_saavik.png" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/PixelData/RealData/Results/result_saavik_4.png" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Results/result_saavik_4.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/PixelData/RealData/Results/result_testDoubleCircle.png" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Results/result_testDoubleCircle.png" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/ResultData/TEST" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/ResultData/TEST-2.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/ResultData/saavik" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/ResultData/saavik-2.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/Results/Output_2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/Results/Output_4.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/Results/Output_saavik_2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/Results/Output_saavik_4.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/Results/result_2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/Results/result_4.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/Results/result_saavik_2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/Results/result_saavik_4.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/Results/result_testDoubleCircle.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/Results/result_testTwoCircle.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/Results/saavik_straight_happy_sunglasses_2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/Results/saavik_straight_happy_sunglasses_4.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/Results/test.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/Results/testCircle.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/Results/testDoubleCircle.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/Results/testDoubleCircleResult10.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/Results/testDoubleCircleResult8.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/Results/testLine.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/Results/testOneCircleResult.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/Results/testTwoCircle.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/edu/albany/cs/base/PgmToPng.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-an2i-2-60X64.txt" afterPath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-an2i-2-60X64.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-an2i-4-30X32.txt" afterPath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-an2i-4-30X32.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-saavik-2-60X64.txt" afterPath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-saavik-2-60X64.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-saavik-4-30X32.txt" afterPath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-saavik-4-30X32.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/PixelData/RealData/PgmToPng.py" afterPath="$PROJECT_DIR$/data/PixelData/RealData/PgmToPng.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/PixelData/RealData/ResultData/TESTOneCircle" afterPath="$PROJECT_DIR$/data/PixelData/RealData/ResultData/TESTOneCircle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/PixelData/RealData/ResultData/saavik" afterPath="$PROJECT_DIR$/data/PixelData/RealData/ResultData/saavik" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/PixelData/RealData/ResultData/testDoubleCircle" afterPath="$PROJECT_DIR$/data/PixelData/RealData/ResultData/testDoubleCircle" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/edu/albany/cs/base/PixelToAPDMData.java" afterPath="$PROJECT_DIR$/src/main/java/edu/albany/cs/base/PixelToAPDMData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/edu/albany/cs/graphMP/GraphMP.java" afterPath="$PROJECT_DIR$/src/main/java/edu/albany/cs/graphMP/GraphMP.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/edu/albany/cs/scoreFuncs/GlassDetection.java" afterPath="$PROJECT_DIR$/src/main/java/edu/albany/cs/scoreFuncs/GlassDetection.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/TestGraphMP/GlassDetectionSimulTest.java" afterPath="$PROJECT_DIR$/src/test/java/TestGraphMP/GlassDetectionSimulTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/TestGraphMP/GlassDetectionTest.java" afterPath="$PROJECT_DIR$/src/test/java/TestGraphMP/GlassDetectionTest.java" />
     </list>
     <ignored path="Graph-MP.iws" />
@@ -39,8 +61,8 @@
       <file leaf-file-name="GlassDetectionTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/TestGraphMP/GlassDetectionTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="52">
-              <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+            <state relative-caret-position="285">
+              <caret line="19" column="45" selection-start-line="19" selection-start-column="45" selection-end-line="19" selection-end-column="45" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -51,43 +73,13 @@
       <file leaf-file-name="GlassDetection.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/edu/albany/cs/scoreFuncs/GlassDetection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="223" column="0" selection-start-line="223" selection-start-column="0" selection-end-line="223" selection-end-column="0" />
+            <state relative-caret-position="285">
+              <caret line="207" column="9" selection-start-line="207" selection-start-column="9" selection-end-line="207" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#3755#3756#0" expanded="true" />
-                <element signature="e#3784#3785#0" expanded="true" />
+                <element signature="e#3748#3749#0" expanded="true" />
+                <element signature="e#3777#3778#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GraphMP.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/edu/albany/cs/graphMP/GraphMP.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="131">
-              <caret line="180" column="21" selection-start-line="180" selection-start-column="21" selection-end-line="180" selection-end-column="21" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GlassDetectionSimulTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/TestGraphMP/GlassDetectionSimulTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-465">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TestToyExample.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/TestGraphMP/TestToyExample.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="39" column="54" selection-start-line="39" selection-start-column="54" selection-end-line="39" selection-end-column="54" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -95,8 +87,8 @@
       <file leaf-file-name="PixelToAPDMData.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/edu/albany/cs/base/PixelToAPDMData.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="900">
-              <caret line="60" column="23" selection-start-line="60" selection-start-column="23" selection-end-line="60" selection-end-column="23" />
+            <state relative-caret-position="15">
+              <caret line="61" column="80" selection-start-line="61" selection-start-column="80" selection-end-line="61" selection-end-column="80" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -145,7 +137,6 @@
         <option value="$PROJECT_DIR$/src/main/java/edu/albany/cs/scoreFuncs/EMSStat.java" />
         <option value="$PROJECT_DIR$/src/test/java/TestGraphMP/TestGraphMP.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/albany/cs/base/GeneratePixelData.java" />
-        <option value="$PROJECT_DIR$/src/test/java/TestGraphMP/GlassDetectionSimulTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/albany/cs/base/GenerateMNSingleGraph.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/albany/cs/scoreFuncs/G_toy.java" />
         <option value="$PROJECT_DIR$/src/test/java/TestGraphMP/TestToyExample.java" />
@@ -153,6 +144,7 @@
         <option value="$PROJECT_DIR$/src/main/java/edu/albany/cs/graphMP/GraphMP.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/albany/cs/base/PixelToAPDMData.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/albany/cs/scoreFuncs/GlassDetection.java" />
+        <option value="$PROJECT_DIR$/src/test/java/TestGraphMP/GlassDetectionSimulTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/TestGraphMP/GlassDetectionTest.java" />
       </list>
     </option>
@@ -452,32 +444,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Graph-MP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Graph-MP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PixelData" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="RealData" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="APDM" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -489,8 +455,8 @@
     <property name="ToolWindowInspection Results.ShowToolbar" value="false" />
     <property name="settings.editor.selected.configurable" value="project.propDebugger" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
-    <property name="FullScreen" value="true" />
     <property name="ToolWindowVersion Control.ShowToolbar" value="false" />
+    <property name="FullScreen" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -1048,7 +1014,7 @@
       <workItem from="1485985446620" duration="37723000" />
       <workItem from="1486673345543" duration="39111000" />
       <workItem from="1487797297792" duration="12377000" />
-      <workItem from="1488511984457" duration="17667000" />
+      <workItem from="1488511984457" duration="31530000" />
     </task>
     <task id="LOCAL-00001" summary="JJ">
       <created>1479528111700</created>
@@ -1281,11 +1247,18 @@
       <option name="project" value="LOCAL" />
       <updated>1488556518165</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="JJ">
+      <created>1488739061819</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1488739061819</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="230870000" />
+    <option name="totallyTimeSpent" value="244733000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1298,22 +1271,22 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.3739726" sideWeight="0.49676898" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.2369863" sideWeight="0.47092083" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2369863" sideWeight="0.47092083" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33972603" sideWeight="0.503231" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34931508" sideWeight="0.49676898" order="2" side_tool="false" content_ui="tabs" x="21" y="191" width="1238" height="417" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0" sideWeight="0.49676898" order="2" side_tool="false" content_ui="tabs" x="21" y="191" width="1238" height="417" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="false" weight="0.35342467" sideWeight="0.47819063" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.32876712" sideWeight="0.49676898" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4479452" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33198708" sideWeight="0.4945355" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3546042" sideWeight="0.4945355" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.490625" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1542,14 +1515,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/albany/cs/base/PgmToPng.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-an2i-4-30X32.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1650,26 +1615,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/TestGraphMP/GlassDetectionSimulTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/albany/cs/base/PgmToPng.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-465">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="75">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/edu/albany/cs/graphMP/GraphMP.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="131">
+        <state relative-caret-position="2535">
           <caret line="180" column="21" selection-start-line="180" selection-start-column="21" selection-end-line="180" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/TestGraphMP/GlassDetectionSimulTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="26" column="72" selection-start-line="26" selection-start-column="72" selection-end-line="26" selection-end-column="72" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/edu/albany/cs/base/PixelToAPDMData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="900">
-          <caret line="60" column="23" selection-start-line="60" selection-start-column="23" selection-end-line="60" selection-end-column="23" />
+        <state relative-caret-position="15">
+          <caret line="61" column="80" selection-start-line="61" selection-start-column="80" selection-end-line="61" selection-end-column="80" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1678,20 +1651,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/edu/albany/cs/scoreFuncs/GlassDetection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="223" column="0" selection-start-line="223" selection-start-column="0" selection-end-line="223" selection-end-column="0" />
+        <state relative-caret-position="285">
+          <caret line="207" column="9" selection-start-line="207" selection-start-column="9" selection-end-line="207" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3755#3756#0" expanded="true" />
-            <element signature="e#3784#3785#0" expanded="true" />
+            <element signature="e#3748#3749#0" expanded="true" />
+            <element signature="e#3777#3778#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/TestGraphMP/GlassDetectionTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="52">
-          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+        <state relative-caret-position="285">
+          <caret line="19" column="45" selection-start-line="19" selection-start-column="45" selection-end-line="19" selection-end-column="45" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
