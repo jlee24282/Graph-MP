@@ -10,7 +10,7 @@ import glob
 import json
 import os
 
-NAME = 'an2i'
+NAME = 'saavik'
 DOWNSIZENUM = '4'
 PICINDEX = ''
 
@@ -199,17 +199,20 @@ def resultPicturePrintSingle():
     im.close()
 
 def main():    
+    global PICINDEX
+    PICINDEX = str(0)
     #pgmTopng()
     #resultPicturePrintAll()
     #resultPicturePrintBest3()
     #resultPicturePrintBest()
     #resultPicturePrintSingle()
-    global PICINDEX
+    
     for i in range(12):
         PICINDEX = str(i)
         resultPicturePrintBest3()
         resultPicturePrintBest()
+         
     
-    
+    print 'done'
 if __name__ == '__main__':
     main()

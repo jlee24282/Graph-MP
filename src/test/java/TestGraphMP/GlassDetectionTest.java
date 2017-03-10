@@ -119,9 +119,10 @@ public class GlassDetectionTest {
     }
 
     public static void main(String args[]) throws IOException{
+
+        final long startTime = System.currentTimeMillis();
         for(int i = 0; i< 12; i++) {
             PICINDEX = i;
-            final long startTime = System.currentTimeMillis();
 
             if (NAME.contains("test")) {
                 new GlassDetectionTest().testToyExample("data/PixelData/RealData/APDM/APDM-" + NAME + ".txt");
@@ -132,10 +133,10 @@ public class GlassDetectionTest {
                     new GlassDetectionTest().testToyExample("data/PixelData/RealData/APDM/APDM-" + NAME + "-" + DOWNSIZENUM + "-30X32.txt");
             }
 
-            final long endTime = System.currentTimeMillis();
-            System.out.println("Total execution time: " + (endTime - startTime));
             //int[] data = {781, 782, 783, 813, 815, 816, 833, 845, 865, 877, 897, 898, 899, 900, 901, 902, 903, 904, 905, 906, 907, 908, 909, 928, 929, 930};
             //new GlassDetectionTest().displayResultPicture(data);
         }
+        final long endTime = System.currentTimeMillis();
+        System.out.println("Total execution time: " + (endTime - startTime));
     }
 }

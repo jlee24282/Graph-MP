@@ -10,7 +10,7 @@ import static java.lang.System.exit;
 
 
 public class PixelToAPDMData {
-    public static final String NAME = "saavik";
+    public static final String NAME = "bpm";
     public static final int downsize = 4;
     private int PIC_HEIGHT;
     private int PIC_WIDTH;

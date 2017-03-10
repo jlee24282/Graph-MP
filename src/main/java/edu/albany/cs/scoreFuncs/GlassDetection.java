@@ -56,16 +56,21 @@ public class GlassDetection implements Function {
             new IllegalArgumentException("Error : Invalid parameters ...");
             System.exit(0);
         }
+        int s = 0;
+        for (double i : x){
+            if (i > 0)
+                s++;
+        }
         double x0w = new ArrayRealVector(x).dotProduct(new ArrayRealVector(greyValuesT[picIndex]));
         double[] part2 = new double[n];
         Arrays.fill(part2, 0.0);
         for (int k = 0; k < picCount; k++){
             if(k != picIndex){
                 double xw = new ArrayRealVector(x).dotProduct(new ArrayRealVector(greyValuesT[k]));
-                part2 = addition(part2, multiply(greyValuesT[k], 2*(xw-x.length)));
+                part2 = addition(part2, multiply(greyValuesT[k], 2*(xw - s)));
             }
         }
-        double[] part1 = multiply(greyValuesT[picIndex],(x0w+x.length)*2);
+        double[] part1 = multiply(greyValuesT[picIndex],(x0w + s)*2);
         double[] gradient = addition(part1, part2);
         return gradient;
     }
@@ -82,14 +87,20 @@ public class GlassDetection implements Function {
         double xkw = 0;
         double sumXW_Z_pow = 0;
 
+        int s = 0;
+        for (double i : x){
+            if (i > 0)
+                s++;
+        }
+
         for (int k = 0; k < picCount; k++){
             if(k != picIndex){
                 xkw = new ArrayRealVector(x).dotProduct(new ArrayRealVector(greyValuesT[k]));
-                sumXW_Z_pow += Math.pow(xkw+x.length,2);
+                sumXW_Z_pow += Math.pow(xkw + s,2);
             }
         }
 
-        double funcScore = (Math.pow((x0w-x.length), 2) + sumXW_Z_pow);
+        double funcScore = (Math.pow((x0w - s), 2) + sumXW_Z_pow);
         return funcScore;
     }
 
@@ -199,7 +210,7 @@ public class GlassDetection implements Function {
         double[] x     = new double[n];
         double gamma    = 0.0001;
         double err      = 1e-5D; //
-        int maximumItersNum = 500000000;
+        int maximumItersNum = 100000;
 
 
         /** initialize x */
