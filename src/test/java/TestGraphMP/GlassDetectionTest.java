@@ -17,7 +17,7 @@ import java.util.Arrays;
 
 public class GlassDetectionTest {
     public static final int DOWNSIZENUM = 4;
-    public static final String NAME = "an2i";
+    public static final String NAME = "choon";
     public static int PICINDEX;
     private int verboseLevel = 0;
 
@@ -121,7 +121,7 @@ public class GlassDetectionTest {
     public static void main(String args[]) throws IOException{
 
         final long startTime = System.currentTimeMillis();
-        for(int i = 0; i< 12; i++) {
+        for(int i = 0; i< 1; i++) {
             PICINDEX = i;
 
             if (NAME.contains("test")) {

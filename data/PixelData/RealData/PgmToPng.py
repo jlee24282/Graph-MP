@@ -10,9 +10,9 @@ import glob
 import json
 import os
 
-NAME = 'saavik'
+NAME = 'cheyer'
 DOWNSIZENUM = '4'
-PICINDEX = ''
+PICINDEX = '0'
 
 def pgmTopng():
     for imgDir in glob.glob('Images/ImageData/faces/'+NAME+'/*'):
@@ -198,20 +198,53 @@ def resultPicturePrintSingle():
     im.save('Results/result_single_'+NAME+'.png') 
     im.close()
 
+def resultPictureRank():        
+    with open('/Users/JLee/Documents/workspace/Graph-MP/data/PixelData/RealData/ResultData/'+ NAME+ '_' +DOWNSIZENUM + '_' + PICINDEX) as f:
+        text_file = f.readlines()
+        
+    results = []
+    funcValues = []
+    for line in text_file:
+        if line.startswith('Current result: '):
+            jsonList = json.loads(line.replace('Current result: ', '').replace('{', '[').replace('}', ']').replace('\n', ''))
+            results.append(jsonList)
+            
+        if line.startswith('Current function value: '):
+            jsonList = json.loads(line.replace('Current function value: ', '').replace('\n', ''))
+            funcValues.append(jsonList)
+    
+    results, funcValues = (list(x) for x in zip(*sorted(zip(results, funcValues), key=lambda pair: pair[1])))
+    
+    for i in range(len(results)):
+        im = Image.open('Images/ImageData/pngFiles/faces/'+ NAME + '/'+ NAME+'_straight_neutral_sunglasses_'+DOWNSIZENUM+'.png').convert('RGB') 
+        w=im.size[0]    
+        pixelMap = im.load()
+        resultNodes = results[i]
+        print funcValues[i]
+        for item in resultNodes:
+            #pixelMap[item%w, int(item/w)] = (255, i*30, i*30)
+            pixelMap[item%w, int(item/w)] = (255, 0, 0)
+        im.show()       
+        imgDir = 'Results/'+NAME + '/'
+        if not os.path.exists(imgDir):
+            os.makedirs(imgDir)
+        im.save(imgDir + NAME+'_Rank'+str(i)+'_funcVal_'+str(funcValues[i]) +'_'+ DOWNSIZENUM+ '_' + PICINDEX+'.png') 
+        
+    im.close()
+    
 def main():    
-    global PICINDEX
-    PICINDEX = str(0)
     #pgmTopng()
     #resultPicturePrintAll()
-    #resultPicturePrintBest3()
+    resultPicturePrintBest3()
     #resultPicturePrintBest()
+    resultPictureRank()    
     #resultPicturePrintSingle()
-    
+    """
     for i in range(12):
         PICINDEX = str(i)
         resultPicturePrintBest3()
         resultPicturePrintBest()
-         
+    """     
     
     print 'done'
 if __name__ == '__main__':
