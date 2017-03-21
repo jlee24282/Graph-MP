@@ -10,8 +10,8 @@ import static java.lang.System.exit;
 
 
 public class PixelToAPDMData {
-    public static final String NAME = "choon";
-    public static final int downsize = 4;
+    public static final String NAME = "saavik";
+    public static final int downsize = 2;
     private int PIC_HEIGHT;
     private int PIC_WIDTH;
     private int PIXEL_COUNT;

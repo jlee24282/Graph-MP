@@ -17,7 +17,7 @@ import java.util.Arrays;
 
 public class GlassDetectionTest {
     public static final int DOWNSIZENUM = 4;
-    public static final String NAME = "choon";
+    public static final String NAME = "sz24";
     public static int PICINDEX;
     private int verboseLevel = 0;
 
@@ -35,7 +35,7 @@ public class GlassDetectionTest {
         GlassDetection func = new GlassDetection(apdm.data.greyValues, PICINDEX);
 
         /** step2: optimization */
-        int[] candidateS = new int[] {    9, 10, 11, 12, 13, 14, 15, 16, 17};
+        int[] candidateS = new int[] {   2, 3, 4, 5, 6, 7, 8,  9, 10, 11, 12, 13, 14, 15, 16, 17};
         double optimalVal = Double.MAX_VALUE;
         GraphMP bestGraphMP = null;
         int bestPicture = -1;

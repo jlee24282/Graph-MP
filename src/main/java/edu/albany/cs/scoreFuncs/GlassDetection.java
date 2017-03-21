@@ -39,7 +39,7 @@ public class GlassDetection implements Function {
         //transpose
         for(int i = 0; i < n; i++){
             for (int j = 0; j < picCount; j++){
-                greyValues[i][j] = greyValues[i][j]/n;///Math.pow(10.0, 2);
+                greyValues[i][j] = greyValues[i][j];///n;///Math.pow(10.0, 2);
                 greyValuesT[j][i] = greyValues[i][j];
             }
         }
@@ -208,7 +208,9 @@ public class GlassDetection implements Function {
     private double[] argMinFx(Function func) {
         /** numGraphNodes : defines number of nodes in graph*/
         double[] x     = new double[n];
-        double gamma    = 0.005;
+        //double gamma    = 0.0001;
+        double gamma    = 0.000000005;
+        //double gamma    = 0.000000001;
         double err      = 1e-5D; //
         int maximumItersNum = 1000000;
 
