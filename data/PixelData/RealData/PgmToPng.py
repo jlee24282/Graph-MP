@@ -12,10 +12,18 @@ import json
 import os
 import re
 
-NAME = 'sz24'
+NAME = 'an2i'
 DOWNSIZENUM = '4'
 PICINDEX = '0'
 
+
+##################################################################
+#   pgmTopng
+#-----------------------------------------------------------------
+#   Converting pgm files to png
+#       INPUT:  all files from "Images/ImageData/faces/NAME/"
+#       OUTPUT: Images/ImageData/pngFiles/faces/NAME/filename.png
+###################################################################
 def pgmTopng():
     for imgDir in glob.glob('Images/ImageData/faces/'+NAME+'/*'):
         try:
@@ -30,39 +38,15 @@ def pgmTopng():
             img.save(imgFile)
         except:
             pass
-        
-def pgmTopngTest():
-    for imgDir in glob.glob('Images/ImageData/ImageFiles/faces/'+NAME+'/*'):
-        try:
-            img = Image.open(imgDir)
-            imgFile = imgDir.replace('pgm','png').replace('ImageData/','ImageData/pngFiles/')
-            
-            imgDir = imgFile.replace(NAME, '').replace('png', '')
-            if not os.path.exists(imgDir):
-                os.makedirs(imgDir)
-            
-            print imgFile
-            img.save(imgFile)
-        except:
-            pass
-        
-def resultPicture():
-    im = Image.open('Results/output_'+NAME+'_'+DOWNSIZENUM+'.png').convert('RGB')         
-    pixelMap = im.load()
+  
 
-    resultNodes = [1541,1542,1543,1544,1545,1546,1547,1548,1549,1550,1551,1552,1553,1554,1555,1556,1557,1558,1559,1560,1561,1562,1563,1564,1565,1566,1567,1631,1632,1696,1760,1761,1825,1826,1827,1828,1892,1956,2020,2021,2085,2149,2150,2151,2152,2216,2280,2344,2408,2472,2536,2600,2664,2728,2792,2856,2920,2984,2985,3049,3050,3051,3115,3179,3243,3307,3369,3370,3371,3433,3495,3496,3497,3559,3561,3623,3687,3751,3752,3753,3754,3818]
-    
-    w=im.size[0]
-    h=im.size[1]
-    
-    
-    for item in resultNodes:
-        pixelMap[item%w, int(item/w)] = (255, 0, 0)
-    im.show()       
-    im.save('ResultPics/result_'+NAME+'_'+DOWNSIZENUM+'.png') 
-    im.close()
-
-        
+##################################################################
+#   resultPictureTest 
+#-----------------------------------------------------------------
+#   Print all truesubgraph to the Test picture
+#       INPUT:  ResultPics/testDoubleCircle.png
+#       OUTPUT: /Users/JLee/Documents/workspace/Graph-MP/data/PixelData/RealData/ResultData/TEST
+###################################################################
 def resultPictureTest():
     im = Image.open('ResultPics/testDoubleCircle.png').convert('RGB')         
     pixelMap = im.load()
@@ -90,19 +74,22 @@ def resultPictureTest():
             resultNodes.append(int(item))
         print resultNodes
         for item in resultNodes:
-            #pixelMap[item%w, int(item/w)] = (255, i*30, i*30)
             pixelMap[item%w, int(item/w)] = (255, 0, 0)
-    # resultNodes = [145,173,174,175,202,203,232,259,260,261,262,288,289,318,348,374,375,376,377,378,404]
-    # print results
-    
-    
-    # for item in resultNodes:
-    #     pixelMap[item%w, int(item/w)] = (255, 0, 0)
     im.show()       
     im.save('Results/result_'+ NAME +'.png') 
     im.close()
 
 
+##################################################################
+#   resultPicturePrintAll 
+#-----------------------------------------------------------------
+#   Print all truesubgraph to the sunglasses picture
+#       INPUT:  Images/ImageData/pngFiles/faces/NAME/NAME_straight_neutral_sunglasses_DOWNSIZENUM.png
+#           Neutral sunglass picture to draw the glasses
+#       INPUT:  /Users/JLee/Documents/workspace/Graph-MP/data/PixelData/RealData/ResultData/NAME
+#           GraphMP result txt file
+#       OUTPUT: ResultPics/result_All_NAME_DOWNSIZENUM.png
+###################################################################
 def resultPicturePrintAll():
     im = Image.open('Images/ImageData/pngFiles/faces/'+ NAME + '/'+ NAME+'_straight_neutral_sunglasses_'+DOWNSIZENUM+'.png').convert('RGB')         
     pixelMap = im.load()
@@ -128,6 +115,16 @@ def resultPicturePrintAll():
     im.close()
 
 
+##################################################################
+#   resultPicturePrintBest3 
+#-----------------------------------------------------------------
+#   Print best3 based on score function truesubgraph to the sunglasses picture
+#       INPUT:  Images/ImageData/pngFiles/faces/NAME/NAME_straight_neutral_sunglasses_DOWNSIZENUM.png
+#           Neutral sunglass picture to draw the glasses
+#       INPUT:  /Users/JLee/Documents/workspace/Graph-MP/data/PixelData/RealData/ResultData/NAME
+#           GraphMP result txt file
+#       OUTPUT: ResultPics/result_All_NAME_DOWNSIZENUM.png
+###################################################################
 def resultPicturePrintBest3():
     im = Image.open('Images/ImageData/pngFiles/faces/'+ NAME + '/'+ NAME+'_straight_neutral_sunglasses_'+DOWNSIZENUM+'.png').convert('RGB')         
     pixelMap = im.load()
@@ -161,55 +158,74 @@ def resultPicturePrintBest3():
     im.close()
     
     
-
+##################################################################
+#   resultPicturePrintBest3Rank 
+#-----------------------------------------------------------------
+#   Print best3 subgraphs(judged by human Eye) - uses rank number (on file name)
+#       INPUT:  Images/ImageData/pngFiles/faces/NAME/NAME_straight_neutral_sunglasses_DOWNSIZENUM.png
+#           Neutral sunglass picture to draw the glasses
+#       INPUT:  /Users/JLee/Documents/workspace/Graph-MP/data/PixelData/RealData/ResultData/NAME
+#           GraphMP result txt file
+#       OUTPUT: ResultPics/result_All_NAME_DOWNSIZENUM.png
+###################################################################
 def resultPicturePrintBest3Rank():
     
     for imdir in glob.glob('/Users/JLee/Documents/workspace/Graph-MP/data/PixelData/RealData/ResultPics/*'):
         NAME = re.search('ResultPics/(.*)_4', imdir)
         NAME = NAME.group(1)
-        
         results = []
         ranks = []
-            
-        for filename in glob.glob(imdir + '/*'):
-            onesubset = []             
-            rank = re.search('_Rank(.*)_funcVal', filename)
-            rank = int(rank.group(1))
-            ranks.append(rank)
-                    
-            oneImage = Image.open(filename)
-            pixelMap2 = oneImage.load()
-            w = oneImage.size[0] 
-            h = oneImage.size[1]
-            for index in  range(960):
-                #print pixelMap2[index% oneImage.size[0], int(index/oneImage.size[1])]
-                if pixelMap2[index% oneImage.size[0], int(index/oneImage.size[0])] == (255, 0, 0):
-                    onesubset.append(index)
+        
+        if not NAME.startswith('result'):            
+            print NAME
+            for filename in glob.glob(imdir + '/*'):
+                onesubset = []             
+                rank = re.search('_Rank(.*)_funcVal', filename)
+                rank = int(rank.group(1))
+                ranks.append(rank)
+                        
+                oneImage = Image.open(filename)
+                pixelMap2 = oneImage.load()
+                w = oneImage.size[0] 
+                h = oneImage.size[1]
+                for index in  range(960):
+                    #print pixelMap2[index% oneImage.size[0], int(index/oneImage.size[1])]
+                    if pixelMap2[index% oneImage.size[0], int(index/oneImage.size[0])] == (255, 0, 0):
+                        onesubset.append(index)
 
-            results.append(onesubset)
-            print onesubset
-            oneImage.close()
+                results.append(onesubset)
+                #print onesubset
+                oneImage.close()
                 #print results
             
             #print results
-        results, ranks = (list(x) for x in zip(*sorted(zip(results, ranks), key=lambda pair: pair[1])))
+                results, ranks = (list(x) for x in zip(*sorted(zip(results, ranks), key=lambda pair: pair[1])))
     
     
-        im = Image.open('Images/ImageData/pngFiles/faces/'+ NAME + '/'+ NAME+'_straight_neutral_sunglasses_'+DOWNSIZENUM+'.png').convert('RGB')            
-        pixelMap = im.load()
-        w=im.size[0]    
+            im = Image.open('Images/ImageData/pngFiles/faces/'+ NAME + '/'+ NAME+'_straight_neutral_sunglasses_'+DOWNSIZENUM+'.png').convert('RGB')            
+            pixelMap = im.load()
+            w=im.size[0]   
             
-        print 'test'
-            
-        for i in range(3):
-            resultNodes = results[i] 
-            for item in resultNodes:
-                pixelMap[item%w, int(item/w)] = (255, 0, 0)
+            for i in range(3):
+                resultNodes = results[i] 
+                for item in resultNodes:
+                    pixelMap[item%w, int(item/w)] = (255, 0, 0)
                     
-        im.show()       
-        im.save('ResultPics/result_best3_'+ NAME +'_'+ DOWNSIZENUM+ '_' + PICINDEX+'.png') 
-        im.close()
+            im.show()       
+            im.save('ResultPics/result_best3_'+ NAME +'_'+ DOWNSIZENUM+ '_' + PICINDEX+'.png') 
+            im.close()
             
+    
+##################################################################
+#   resultPicturePrintBest 
+#-----------------------------------------------------------------
+#   Print best(based on the score function) truesubgraph to the sunglasses picture
+#       INPUT:  Images/ImageData/pngFiles/faces/NAME/NAME_straight_neutral_sunglasses_DOWNSIZENUM.png
+#           Neutral sunglass picture to draw the glasses
+#       INPUT:  /Users/JLee/Documents/workspace/Graph-MP/data/PixelData/RealData/ResultData/NAME
+#           GraphMP result txt file
+#       OUTPUT: ResultPics/result_All_NAME_DOWNSIZENUM.png
+###################################################################
     
 def resultPicturePrintBest():
     im = Image.open('Images/ImageData/pngFiles/faces/'+ NAME + '/'+ NAME+'_straight_neutral_sunglasses_'+DOWNSIZENUM+'.png').convert('RGB')         
@@ -235,6 +251,16 @@ def resultPicturePrintBest():
     im.save('ResultPics/result_Best1_'+ NAME +'_'+ DOWNSIZENUM+ '_' + PICINDEX+'.png') 
     im.close()
     
+##################################################################
+#   resultPicturePrintSingle 
+#-----------------------------------------------------------------
+#   Print single subset to the sunglasses picture
+#       INPUT:  Images/ImageData/pngFiles/faces/NAME/NAME_straight_neutral_sunglasses_DOWNSIZENUM.png
+#           Neutral sunglass picture to draw the glasses
+#       INPUT:  /Users/JLee/Documents/workspace/Graph-MP/data/PixelData/RealData/ResultData/NAME
+#           GraphMP result txt file
+#       OUTPUT: ResultPics/result_All_NAME_DOWNSIZENUM.png
+###################################################################
 def resultPicturePrintSingle():
     im = Image.open('Images/ImageData/pngFiles/faces/'+ NAME + '/'+ NAME+'_straight_neutral_sunglasses_'+DOWNSIZENUM+'.png').convert('RGB')         
     pixelMap = im.load()
@@ -251,6 +277,16 @@ def resultPicturePrintSingle():
     im.save('ResultPics/result_single_'+NAME+'.png') 
     im.close()
 
+##################################################################
+#   resultPictureRank 
+#-----------------------------------------------------------------
+#   Generate png files with each subgraph, from graphMP result
+#       INPUT:  /Users/JLee/Documents/workspace/Graph-MP/data/PixelData/RealData/ResultData/NAME_DOWNSIZENUM_PICINDEX
+#           graphMP result txt file
+#       INPUT:  Images/ImageData/pngFiles/faces/NAME/NAME_straight_neutral_sunglasses_DOWNSIZENUM.png
+#           neutral sunglasses pictuer to put subgraph
+#       OUTPUT: ResultPics/NAME_DOWNSIZENUM/NAME_Rank(i)_funcVal_funcValues[i]_DOWNSIZENUM_Sparse sparsity[i]).png 
+###################################################################
 def resultPictureRank():        
     with open('/Users/JLee/Documents/workspace/Graph-MP/data/PixelData/RealData/ResultData/'+ NAME+ '_' +DOWNSIZENUM + '_' + PICINDEX) as f:
         text_file = f.readlines()
@@ -291,19 +327,19 @@ def resultPictureRank():
         
     im.close()
     
+    
+##################################################################
+#   main 
+#-----------------------------------------------------------------
+#   Driver
+###################################################################
 def main():    
     #pgmTopng()
     #resultPicturePrintAll()
+    resultPictureRank()    
     resultPicturePrintBest3Rank()
     #resultPicturePrintBest()
-    #resultPictureRank()    
     #resultPicturePrintSingle()
-    """
-    for i in range(12):
-        PICINDEX = str(i)
-        resultPicturePrintBest3()
-        resultPicturePrintBest()
-    """     
     
     print 'done'
 if __name__ == '__main__':

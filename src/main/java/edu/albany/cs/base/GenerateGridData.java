@@ -1,18 +1,15 @@
 package edu.albany.cs.base;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Random;
-
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.math3.distribution.NormalDistribution;
 import org.apache.commons.math3.distribution.PoissonDistribution;
 import org.apache.commons.math3.random.RandomDataGenerator;
 
-import edu.albany.cs.base.ConnectedComponents;
-import edu.albany.cs.base.Edge;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Random;
 
 public class GenerateGridData {
 
@@ -161,8 +158,8 @@ public class GenerateGridData {
 			base[j] = totalB / 10.0D;
 		}
 
-		NormalDistribution normAbnormalNodes = new NormalDistribution(20.0D, 1.0);
-		NormalDistribution normNormalNodes = new NormalDistribution(5.0D, 1.0);
+		NormalDistribution normAbnormalNodes = new NormalDistribution(5.0D, 1.0);
+		NormalDistribution normNormalNodes = new NormalDistribution(20.0D, 1.0);
 		for (int j = 0; j < 100; j++) {
 			if (nodes.contains(j)) {
 				counts[j] = normAbnormalNodes.sample();
@@ -184,7 +181,7 @@ public class GenerateGridData {
 		double[][] data = new double[10][100];
 		for (int i = 0; i < 10; i++) {
 			double[] randData = new double[100];
-			PoissonDistribution poi = new PoissonDistribution(10.0D);
+			PoissonDistribution poi = new PoissonDistribution(50.0D);
 			for (int j = 0; j < 100; j++) {
 				if (nodes.contains(j)) {
 					randData[j] = poi.sample();
@@ -203,8 +200,8 @@ public class GenerateGridData {
 			base[j] = totalB / 10.0D;
 		}
 
-		PoissonDistribution poiAbnormalNodes = new PoissonDistribution(50.0D);
-		PoissonDistribution poiNormalNodes = new PoissonDistribution(10.0D);
+		PoissonDistribution poiAbnormalNodes = new PoissonDistribution(10.0D);
+		PoissonDistribution poiNormalNodes = new PoissonDistribution(50.0D);
 		for (int j = 0; j < 100; j++) {
 			if (nodes.contains(j)) {
 				counts[j] = poiAbnormalNodes.sample();
@@ -288,7 +285,7 @@ public class GenerateGridData {
 	}
 
 	public static void main(String args[]) throws IOException {
-		int verbose = 2;
+		int verbose = 0;
 		if (verbose > 1) {
 			APDMInputFormat apdm = new APDMInputFormat(
 					"data/GridData/APDM-GridData-100_noise_0.0_trueSubSize_30_0.txt");

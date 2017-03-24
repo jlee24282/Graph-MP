@@ -40,7 +40,7 @@ public class TestToyExample {
 			//System.out.println(bestPreRec.toString()+" "+func.getFuncValue(graphMP.x));
 			double[] yx = graphMP.x;
 			if (func.getFuncValue(yx) > optimalVal) {
-				optimalVal = -func.getFuncValue(yx);
+				optimalVal = func.getFuncValue(yx);
 				
 				bestGraphMP = graphMP;
 				if (verboseLevel == 0) {

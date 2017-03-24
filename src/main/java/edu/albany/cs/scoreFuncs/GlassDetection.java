@@ -209,9 +209,9 @@ public class GlassDetection implements Function {
         /** numGraphNodes : defines number of nodes in graph*/
         double[] x     = new double[n];
         //double gamma    = 0.0001;
-        double gamma    = 0.000000005;
+        double gamma    = 0.000000007;
         //double gamma    = 0.000000001;
-        double err      = 1e-5D; //
+        double err      = 1e-6D; //
         int maximumItersNum = 1000000;
 
 
