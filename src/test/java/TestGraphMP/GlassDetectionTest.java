@@ -17,7 +17,7 @@ import java.util.Arrays;
 
 public class GlassDetectionTest {
     public static final int DOWNSIZENUM = 4;
-    public static final String NAME = "an2i";
+    public static final String NAME = "ch4f";
     public static int PICINDEX;
     private int verboseLevel = 0;
 

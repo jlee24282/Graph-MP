@@ -12,7 +12,7 @@ import json
 import os
 import re
 
-NAME = 'an2i'
+NAME = 'ch4f'
 DOWNSIZENUM = '4'
 PICINDEX = '0'
 
