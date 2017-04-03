@@ -293,8 +293,8 @@ def resultPictureRank():
         
     results = []
     funcValues = []
-
     sparsity = []
+    
     for line in text_file:
         if line.startswith('Current result: '):
             jsonList = json.loads(line.replace('Current result: ', '').replace('{', '[').replace('}', ']').replace('\n', ''))
