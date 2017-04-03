@@ -45,16 +45,15 @@ def noiseCheck4AllPeople():
     for imgDir in glob.glob('Images/ImageData/faces/*'):
         z0dir = None
         z0Pixels = []
-        zkPixelsSum = [0]* 960
+        std = [0]* 960
         
-        # add rest of pics into z0
+        # zo pictures
         for OneImage in glob.glob(imgDir + '/*'):
-            #z0 picture
             if '_straight_neutral_sunglasses_4' in OneImage:
                 z0dir =OneImage
                 z0Pixels = greyValues(OneImage)
                 
-        #zk pictures                
+        # zk pictures     (get standard deviation using z0)            
         for OneImage in glob.glob(imgDir + '/*'):
             if ('_straight_neutral_open_4' in OneImage) or \
                 ('_straight_sad_open_4' in OneImage) or \
@@ -70,15 +69,21 @@ def noiseCheck4AllPeople():
                     
                 temp = greyValues(OneImage)
                 diff = np.subtract(z0Pixels, temp)
-                zkPixelsSum = np.add(zkPixelsSum, np.abs(diff))
+                std = np.add(std, np.abs(diff))
         
         #scale zkPixelSum to 255
-                        
+        std = np.multiply(np.true_divide(std, max(std)), 255)
+        std = [int(i) for i in std]
         #Generate Output
-        NoisePic = Image.open(z0dir)
+        NoisePic = Image.open(z0dir).convert('RGB') 
         NoisePicDir = 'NoiseData/' + imgDir[23:] + '.png'
+        width = NoisePic.size[0]
+        height = NoisePic.size[1]
+        pixelMap = NoisePic.load()
         #put zkPixelSum list to pixelMap
-        
+        for i in range(width * height):
+            pixelMap[i % width, i / width] = (std[i],0,0)
+    
         NoisePic.save(NoisePicDir)
         NoisePic.close()
         

@@ -1,10 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5c7bc81d-5044-46a9-b1eb-bae84b5a3e5d" name="Default" comment="JJ">
+    <list default="true" id="5c7bc81d-5044-46a9-b1eb-bae84b5a3e5d" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/NoiseData/an2i.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/NoiseData/at33.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/NoiseData/boland.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/NoiseData/bpm.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/NoiseData/ch4f.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/NoiseData/cheyer.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/NoiseData/choon.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/NoiseData/danieln.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/NoiseData/glickman.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/NoiseData/karyadi.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/NoiseData/kawamura.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/NoiseData/kk49.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/NoiseData/megak.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/NoiseData/mitchell.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/NoiseData/night.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/NoiseData/phoebe.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/NoiseData/saavik.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/NoiseData/steffi.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/NoiseData/sz24.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/NoiseData/tammo.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/PixelData/RealData/NoiseCheck.py" afterPath="$PROJECT_DIR$/data/PixelData/RealData/NoiseCheck.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/PixelData/RealData/PgmToPng.py" afterPath="$PROJECT_DIR$/data/PixelData/RealData/PgmToPng.py" />
     </list>
     <ignored path="Graph-MP.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -417,108 +436,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="RealData" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Graph-MP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Graph-MP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PixelData" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="RealData" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Images" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ImageData" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Graph-MP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Graph-MP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PixelData" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="RealData" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Images" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ImageData" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pngFiles" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Graph-MP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Graph-MP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PixelData" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="RealData" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Images" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ImageData" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pngFiles" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="faces" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1104,7 +1021,7 @@
       <workItem from="1488511984457" duration="36430000" />
       <workItem from="1489343309836" duration="23154000" />
       <workItem from="1490133260444" duration="9299000" />
-      <workItem from="1490988673078" duration="7023000" />
+      <workItem from="1490988673078" duration="7570000" />
     </task>
     <task id="LOCAL-00001" summary="JJ">
       <created>1479528111700</created>
@@ -1386,7 +1303,14 @@
       <option name="project" value="LOCAL" />
       <updated>1491012935163</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="JJ">
+      <created>1491186266740</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1491186266740</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1395,7 +1319,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="289109000" />
+    <option name="totallyTimeSpent" value="289656000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1408,7 +1332,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.3739726" sideWeight="0.49676898" order="6" side_tool="false" content_ui="tabs" />
@@ -1422,7 +1346,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.32876712" sideWeight="0.49676898" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3739903" sideWeight="0.4945355" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3739903" sideWeight="0.4945355" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
