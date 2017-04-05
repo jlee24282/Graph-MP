@@ -12,10 +12,29 @@ import json
 import os
 import re
 
-NAME = 'ch4f'
+NAME = 'kk49'
 DOWNSIZENUM = '4'
 PICINDEX = '0'
 
+
+
+##################################################################
+#   main 
+#-----------------------------------------------------------------
+#   Driver
+###################################################################
+def main():    
+    #pgmTopng()
+    #resultPicturePrintAll()
+    resultPictureRank()    
+    resultPicturePrintBest3Rank()
+    #resultPicturePrintBest()
+    #resultPicturePrintSingle()
+    print 'done'
+    
+if __name__ == '__main__':
+    main()
+    
 
 ##################################################################
 #   pgmTopng
@@ -211,7 +230,7 @@ def resultPicturePrintBest3Rank():
                 for item in resultNodes:
                     pixelMap[item%w, int(item/w)] = (255, 0, 0)
                     
-            im.show()       
+            #im.show()       
             im.save('ResultPics/result_best3_'+ NAME +'_'+ DOWNSIZENUM+ '_' + PICINDEX+'.png') 
             im.close()
             
@@ -328,19 +347,3 @@ def resultPictureRank():
     im.close()
     
     
-##################################################################
-#   main 
-#-----------------------------------------------------------------
-#   Driver
-###################################################################
-def main():    
-    #pgmTopng()
-    #resultPicturePrintAll()
-    resultPictureRank()    
-    resultPicturePrintBest3Rank()
-    #resultPicturePrintBest()
-    #resultPicturePrintSingle()
-    
-    print 'done'
-if __name__ == '__main__':
-    main()
