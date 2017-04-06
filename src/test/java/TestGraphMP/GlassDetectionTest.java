@@ -17,7 +17,7 @@ import java.util.Arrays;
 
 public class GlassDetectionTest {
     public static final int DOWNSIZENUM = 4;
-    public static final String NAME = "steffi";
+    public static String NAME = "at33";
     public static int PICINDEX;
     private int verboseLevel = 0;
 
@@ -122,15 +122,45 @@ public class GlassDetectionTest {
 
         final long startTime = System.currentTimeMillis();
         for(int i = 0; i< 1; i++) {
-            PICINDEX = i;
+            PICINDEX = 0;
 
             if (NAME.contains("test")) {
                 new GlassDetectionTest().testToyExample("data/PixelData/RealData/APDM/APDM-" + NAME + ".txt");
             } else {
                 if (DOWNSIZENUM == 2)
                     new GlassDetectionTest().testToyExample("data/PixelData/RealData/APDM/APDM-" + NAME + "-" + DOWNSIZENUM + "-60X64.txt");
-                if (DOWNSIZENUM == 4)
-                    new GlassDetectionTest().testToyExample("data/PixelData/RealData/APDM/APDM-" + NAME + "-" + DOWNSIZENUM + "-30X32.txt");
+                if (DOWNSIZENUM == 4) {
+                    NAME = "an2i";
+                    new GlassDetectionTest().testToyExample("data/PixelData/RealData/APDM/APDM-" + "boland" + "-" + DOWNSIZENUM + "-30X32.txt");
+                    NAME = "at33";
+                    new GlassDetectionTest().testToyExample("data/PixelData/RealData/APDM/APDM-" + "boland" + "-" + DOWNSIZENUM + "-30X32.txt");
+                    NAME = "boland";
+                    new GlassDetectionTest().testToyExample("data/PixelData/RealData/APDM/APDM-" + "boland" + "-" + DOWNSIZENUM + "-30X32.txt");
+                    NAME = "bpm";
+                    new GlassDetectionTest().testToyExample("data/PixelData/RealData/APDM/APDM-" + "bpm" + "-" + DOWNSIZENUM + "-30X32.txt");
+                    NAME = "ch4f";
+                    new GlassDetectionTest().testToyExample("data/PixelData/RealData/APDM/APDM-" + "ch4f" + "-" + DOWNSIZENUM + "-30X32.txt");
+                    NAME = "cheyer";
+                    new GlassDetectionTest().testToyExample("data/PixelData/RealData/APDM/APDM-" + "cheyer" + "-" + DOWNSIZENUM + "-30X32.txt");
+                    NAME = "choon";
+                    new GlassDetectionTest().testToyExample("data/PixelData/RealData/APDM/APDM-" + "choon" + "-" + DOWNSIZENUM + "-30X32.txt");
+                    NAME = "danieln";
+                    new GlassDetectionTest().testToyExample("data/PixelData/RealData/APDM/APDM-" + "danieln" + "-" + DOWNSIZENUM + "-30X32.txt");
+                    NAME = "karyadi";
+                    new GlassDetectionTest().testToyExample("data/PixelData/RealData/APDM/APDM-" + "karyadi" + "-" + DOWNSIZENUM + "-30X32.txt");
+                    NAME = "kk49";
+                    new GlassDetectionTest().testToyExample("data/PixelData/RealData/APDM/APDM-" + "kk49" + "-" + DOWNSIZENUM + "-30X32.txt");
+                    NAME = "megak";
+                    new GlassDetectionTest().testToyExample("data/PixelData/RealData/APDM/APDM-" + "megak" + "-" + DOWNSIZENUM + "-30X32.txt");
+                    NAME = "night";
+                    new GlassDetectionTest().testToyExample("data/PixelData/RealData/APDM/APDM-" + "night" + "-" + DOWNSIZENUM + "-30X32.txt");
+                    NAME = "saavik";
+                    new GlassDetectionTest().testToyExample("data/PixelData/RealData/APDM/APDM-" + "saavik" + "-" + DOWNSIZENUM + "-30X32.txt");
+                    NAME = "steffi";
+                    new GlassDetectionTest().testToyExample("data/PixelData/RealData/APDM/APDM-" + "steffi" + "-" + DOWNSIZENUM + "-30X32.txt");
+                    NAME = "sz24";
+                    new GlassDetectionTest().testToyExample("data/PixelData/RealData/APDM/APDM-" + "sz24" + "-" + DOWNSIZENUM + "-30X32.txt");
+                }
             }
 
             //int[] data = {781, 782, 783, 813, 815, 816, 833, 845, 865, 877, 897, 898, 899, 900, 901, 902, 903, 904, 905, 906, 907, 908, 909, 928, 929, 930};

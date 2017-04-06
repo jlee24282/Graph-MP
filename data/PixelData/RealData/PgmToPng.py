@@ -12,7 +12,7 @@ import json
 import os
 import re
 
-NAME = 'kk49'
+NAME = 'bpm'
 DOWNSIZENUM = '4'
 PICINDEX = '0'
 
@@ -27,7 +27,7 @@ def main():
     #pgmTopng()
     #resultPicturePrintAll()
     resultPictureRank()    
-    resultPicturePrintBest3Rank()
+    #resultPicturePrintBest3Rank()
     #resultPicturePrintBest()
     #resultPicturePrintSingle()
     print 'done'

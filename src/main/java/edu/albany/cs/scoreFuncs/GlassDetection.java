@@ -1,7 +1,6 @@
 package edu.albany.cs.scoreFuncs;
 
 import org.apache.commons.lang3.ArrayUtils;
-import org.apache.commons.math3.linear.ArrayRealVector;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -56,23 +55,21 @@ public class GlassDetection implements Function {
             new IllegalArgumentException("Error : Invalid parameters ...");
             System.exit(0);
         }
-//        int s = 0;
-//        for (double i : x){
-//            if (i > 0)
-//                s++;
-//        }
-        double x0w = new ArrayRealVector(x).dotProduct(new ArrayRealVector(greyValuesT[picIndex]));
+        double x0w = dotproduct(x, greyValuesT[picIndex]);
+        double xw = 0;
         double[] part2 = new double[n];
-        Arrays.fill(part2, 0.0);
+        double[] part4 = new double[n];
         for (int k = 0; k < picCount; k++){
             if(k != picIndex){
-                double xw = new ArrayRealVector(x).dotProduct(new ArrayRealVector(greyValuesT[k]));
-                part2 = addition(part2, multiply(greyValuesT[k], 2*(xw - n)));
+                xw = dotproduct(x, greyValuesT[k]);
+                part2 = addition(part2, multiply(greyValuesT[k],    2*(xw - n)));
+                part4 = addition(part4, multiply(x,                 2*(xw - n)));
             }
         }
         double[] part1 = multiply(greyValuesT[picIndex],(x0w + n)*2);
-        double[] gradient = addition(part1, part2);
-        return gradient;
+        double[] part3 = multiply(x,                    (x0w + n)*2);
+
+        return addition(addition(part1, part2), addition(part3, part4));
     }
 
 
@@ -83,25 +80,17 @@ public class GlassDetection implements Function {
             System.exit(0);
         }
 
-        double x0w = new ArrayRealVector(x).dotProduct(new ArrayRealVector(greyValuesT[picIndex]));
+        double x0w = dotproduct(x, greyValuesT[picIndex]);
         double xkw = 0;
         double sumXW_Z_pow = 0;
 
-//        int s = 0;
-//        for (double i : x){
-//            if (i > 0)
-//                s++;
-//        }
-
         for (int k = 0; k < picCount; k++){
             if(k != picIndex){
-                xkw = new ArrayRealVector(x).dotProduct(new ArrayRealVector(greyValuesT[k]));
-                sumXW_Z_pow += Math.pow(xkw + n,2);
+                xkw = dotproduct(x, greyValuesT[k]);
+                sumXW_Z_pow += Math.pow(xkw - n,2);
             }
         }
-
-        double funcScore = (Math.pow((x0w - n), 2) + sumXW_Z_pow);
-        return funcScore;
+        return (Math.pow((x0w + n), 2) + sumXW_Z_pow);
     }
 
 
@@ -206,16 +195,16 @@ public class GlassDetection implements Function {
 
 
     private double[] argMinFx(Function func) {
-        /** numGraphNodes : defines number of nodes in graph*/
         double[] x     = new double[n];
-        //double gamma    = 0.0001;
         double gamma    = 0.000000005;
-        //double gamma    = 0.000000001;
         double err      = 1e-5D; //
         int maximumItersNum = 1000000;
+        double[] gradient;
+        double oldFuncValue;
+        double currentFunc;
+        double diff;
 
-
-        /** initialize x */
+        /** initialize x randomly */
         for (int i = 0; i < x.length; i++) {
             x[i] = new Random().nextDouble();
         }
@@ -223,14 +212,13 @@ public class GlassDetection implements Function {
         int iter = 0;
         while (true) {
             /** get gradient for current iteration*/
-            double[] gradient = func.getGradient(x);
-            double oldFuncValue = func.getFuncValue(x);
+            gradient = func.getGradient(x);
+            oldFuncValue = func.getFuncValue(x);
             for (int i = 0; i < x.length; i++) {
                 x[i] = x[i] - (gamma*(gradient[i]));
-                //x[i] = x[i].add(gamma.multiply(gradient[i]));
             }
-            double currentFunc = func.getFuncValue(x);
-            double diff = Math.abs(oldFuncValue - currentFunc);
+            currentFunc = func.getFuncValue(x);
+            diff = Math.abs(oldFuncValue - currentFunc);
             /** if it is less than error bound or it has more than 100 iterations, it terminates.*/
 
             if ( diff < err ) {
@@ -245,24 +233,27 @@ public class GlassDetection implements Function {
             if(iter %10000 == 0) {
                 System.out.println(ArrayUtils.toString(gradient));
                 System.out.println(diff);
-                if( Double.isNaN(diff)){
-                    System.out.println("NAN" + oldFuncValue + " "+ currentFunc );
-                }
+//                if( Double.isNaN(diff)){
+//                    System.out.println("NAN" + oldFuncValue + " "+ currentFunc );
+//                }
             }
             iter++;
         }
         return x;
     }
 
-
-
-
-
     //getter picIndex
     public int getPicIndex(){
         return this.picIndex;
     }
 
+    private double dotproduct(double[] a, double b[]){
+        double result = 0;
+        for(int i= 0; i<a.length; i++){
+            result += a[i] * b[i];
+        }
+        return result;
+    }
 
     private double[] multiply(double[] a, double b){
         double[] result = new double[n];
