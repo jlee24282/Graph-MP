@@ -12,7 +12,7 @@ import json
 import os
 import re
 
-NAME = 'bpm'
+NAME = 'at33'
 DOWNSIZENUM = '4'
 PICINDEX = '0'
 

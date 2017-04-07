@@ -35,7 +35,7 @@ public class GlassDetectionTest {
         GlassDetection func = new GlassDetection(apdm.data.greyValues, PICINDEX);
 
         /** step2: optimization */
-        int[] candidateS = new int[] {   2, 3, 4, 5, 6, 7, 8,  9, 10, 11, 12, 13, 14, 15, 16, 17};
+        int[] candidateS = new int[] {   2, 3, 4, 5, 6, 7, 8,  9, 10, 11, 12, 13, 14, 15};
         double optimalVal = Double.MAX_VALUE;
         GraphMP bestGraphMP = null;
         int bestPicture = -1;
@@ -56,7 +56,7 @@ public class GlassDetectionTest {
             double B = s - 1 + 0.0D;
             int t = 5;
 //            fileWriter.write("test2");
-            GraphMP graphMP = new GraphMP(edges, edgeCosts, apdm.data.base, s, 1, B, t, false/** maximumCC */
+            GraphMP graphMP = new GraphMP(edges, edgeCosts, apdm.data.base, s, 1, B, t, true/** maximumCC */
                     , null, func, null);
             System.out.println("s**********************************************: " + s);
             fileWriter.write("s**********************************************: " + s+ "\n");
@@ -131,9 +131,9 @@ public class GlassDetectionTest {
                     new GlassDetectionTest().testToyExample("data/PixelData/RealData/APDM/APDM-" + NAME + "-" + DOWNSIZENUM + "-60X64.txt");
                 if (DOWNSIZENUM == 4) {
                     NAME = "an2i";
-                    new GlassDetectionTest().testToyExample("data/PixelData/RealData/APDM/APDM-" + "boland" + "-" + DOWNSIZENUM + "-30X32.txt");
+                    new GlassDetectionTest().testToyExample("data/PixelData/RealData/APDM/APDM-" + "an2i" + "-" + DOWNSIZENUM + "-30X32.txt");
                     NAME = "at33";
-                    new GlassDetectionTest().testToyExample("data/PixelData/RealData/APDM/APDM-" + "boland" + "-" + DOWNSIZENUM + "-30X32.txt");
+                    new GlassDetectionTest().testToyExample("data/PixelData/RealData/APDM/APDM-" + "at33" + "-" + DOWNSIZENUM + "-30X32.txt");
                     NAME = "boland";
                     new GlassDetectionTest().testToyExample("data/PixelData/RealData/APDM/APDM-" + "boland" + "-" + DOWNSIZENUM + "-30X32.txt");
                     NAME = "bpm";

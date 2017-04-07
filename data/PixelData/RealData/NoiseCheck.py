@@ -8,9 +8,6 @@ Created on Fri Mar 31 16:09:55 2017
 
 from PIL import Image
 import glob
-import json
-import os
-import re
 import numpy as np
 
 

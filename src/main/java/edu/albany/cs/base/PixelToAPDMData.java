@@ -10,8 +10,9 @@ import static java.lang.System.exit;
 
 
 public class PixelToAPDMData {
-    public static final String NAME = "saavik";
+    public static final String NAME = "";
     public static final int downsize = 2;
+    public static String POSTURE = "";
     private int PIC_HEIGHT;
     private int PIC_WIDTH;
     private int PIXEL_COUNT;
@@ -39,18 +40,6 @@ public class PixelToAPDMData {
         //an2i_left_neutral_open_2.png;
         int[][] greyValuesT = new int[PICTURE_COUNT][960];
 
-//        greyValuesT[0] = getGreyLevelsFromImages(inputFiles + NAME + "_straight_neutral_open_manualSunglass_"+downsize+".png");
-//        greyValuesT[1] = getGreyLevelsFromImages(inputFiles + NAME +"_straight_neutral_open_"+downsize+".png");
-//        greyValuesT[2] = getGreyLevelsFromImages(inputFiles + NAME +"_straight_neutral_open_"+downsize+".png");
-//        greyValuesT[3] = getGreyLevelsFromImages(inputFiles + NAME +"_straight_neutral_open_"+downsize+".png");
-//        greyValuesT[4] = getGreyLevelsFromImages(inputFiles + NAME +"_straight_neutral_open_"+downsize+".png");
-//        greyValuesT[5] = getGreyLevelsFromImages(inputFiles + NAME +"_straight_neutral_open_"+downsize+".png");
-//        greyValuesT[6] = getGreyLevelsFromImages(inputFiles + NAME +"_straight_neutral_open_"+downsize+".png");
-//        greyValuesT[7] = getGreyLevelsFromImages(inputFiles + NAME +"_straight_neutral_open_"+downsize+".png");
-//        greyValuesT[8] = getGreyLevelsFromImages(inputFiles + NAME +"_straight_neutral_open_"+downsize+".png");
-//        greyValuesT[9] = getGreyLevelsFromImages(inputFiles + NAME +"_straight_neutral_open_"+downsize+".png");
-//        greyValuesT[10] = getGreyLevelsFromImages(inputFiles + NAME +"_straight_neutral_open_"+downsize+".png");
-//
         greyValuesT[0] = getGreyLevelsFromImages(inputFiles + NAME + "_straight_neutral_sunglasses_"+downsize+".png");
         greyValuesT[1] = getGreyLevelsFromImages(inputFiles + NAME +"_straight_neutral_open_"+downsize+".png");
         greyValuesT[2] = getGreyLevelsFromImages(inputFiles + NAME +"_straight_sad_open_"+downsize+".png");
@@ -64,9 +53,6 @@ public class PixelToAPDMData {
         greyValuesT[10] = getGreyLevelsFromImages(inputFiles + NAME +"_right_sad_open_"+downsize+".png");
         greyValuesT[11] = getGreyLevelsFromImages(inputFiles + NAME +"_right_neutral_open_"+downsize+".png");
 
-//        for( int i = 0; i< 12; i++){
-//            greyValuesT[i] = getGreyLevelsFromImages(inputFiles + i +  ".png");
-//        }
 
         greyValues = new double[PIXEL_COUNT][PICTURE_COUNT];
 
@@ -159,6 +145,12 @@ public class PixelToAPDMData {
             new PixelToAPDMData().generateSingleCase(
                     "data/PixelData/RealData/Images/ImageData/pngFiles/test/",
                     "data/PixelData/RealData/APDM/APDM-"+NAME);
+        }
+        else if(NAME.equals("")){
+            POSTURE = "Straight";
+            new PixelToAPDMData().generateSingleCase(
+                    "data/PixelData/RealData/Images/ImageData/pngFiles/"+POSTURE+"_"+downsize,
+                    "data/PixelData/RealData/APDM/APDM-"+POSTURE+"-"+downsize+"-");
         }
         else{
             new PixelToAPDMData().generateSingleCase(
