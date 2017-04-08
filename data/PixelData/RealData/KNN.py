@@ -48,8 +48,10 @@ def readData():
     print len(X)    
     nbrs = NearestNeighbors(n_neighbors=2, algorithm='ball_tree').fit(X)
     distances, indices = nbrs.kneighbors(X)
-    print distances
-    print indices
+    #print distances
+    #print indices
+    sparse = nbrs.kneighbors_graph(X).toarray()
+#    print len(X[0])
             
 ##################################################################
 #   main 
