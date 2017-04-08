@@ -130,6 +130,10 @@ def noiseCheckFunc4AllPeople():
         #scale zkPixelSum to 255
         funcVal = np.multiply(np.true_divide(funcVal, max(funcVal)), 255)
         funcVal = [int(i) for i in funcVal]
+        for i in funcVal:
+            if i < 255/2:
+                funcVal[i]= funcVal[i]/2
+
         
         if 'kk49' in imgDir:
             for i in [857,888,889,920]:
