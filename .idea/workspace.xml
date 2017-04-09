@@ -2,335 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5c7bc81d-5044-46a9-b1eb-bae84b5a3e5d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/an2i_left_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/an2i_left_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/an2i_left_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/an2i_left_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/an2i_right_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/an2i_right_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/an2i_right_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/an2i_right_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/an2i_straight_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/an2i_straight_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/an2i_straight_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/an2i_straight_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/an2i_up_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/an2i_up_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/an2i_up_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/an2i_up_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/at33_left_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/at33_left_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/at33_left_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/at33_left_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/at33_right_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/at33_right_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/at33_right_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/at33_right_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/at33_straight_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/at33_straight_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/at33_straight_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/at33_straight_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/at33_up_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/at33_up_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/at33_up_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/at33_up_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/boland_left_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/boland_left_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/boland_left_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/boland_left_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/boland_right_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/boland_right_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/boland_right_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/boland_right_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/boland_straight_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/boland_straight_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/boland_straight_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/boland_straight_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/boland_up_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/boland_up_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/boland_up_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/boland_up_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/bpm_left_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/bpm_left_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/bpm_left_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/bpm_left_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/bpm_right_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/bpm_right_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/bpm_right_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/bpm_right_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/bpm_straight_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/bpm_straight_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/bpm_straight_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/bpm_straight_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/bpm_up_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/bpm_up_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/bpm_up_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/bpm_up_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/ch4f_left_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/ch4f_left_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/ch4f_left_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/ch4f_left_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/ch4f_right_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/ch4f_right_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/ch4f_right_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/ch4f_right_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/ch4f_straight_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/ch4f_straight_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/ch4f_straight_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/ch4f_straight_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/ch4f_up_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/ch4f_up_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/ch4f_up_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/ch4f_up_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/cheyer_left_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/cheyer_left_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/cheyer_left_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/cheyer_left_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/cheyer_right_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/cheyer_right_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/cheyer_right_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/cheyer_right_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/cheyer_straight_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/cheyer_straight_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/cheyer_straight_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/cheyer_straight_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/cheyer_up_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/cheyer_up_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/cheyer_up_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/cheyer_up_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/choon_left_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/choon_left_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/choon_left_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/choon_right_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/choon_right_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/choon_right_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/choon_right_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/choon_straight_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/choon_straight_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/choon_straight_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/choon_straight_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/choon_up_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/choon_up_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/choon_up_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/choon_up_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/danieln_left_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/danieln_left_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/danieln_left_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/danieln_left_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/danieln_right_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/danieln_right_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/danieln_right_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/danieln_right_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/danieln_straight_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/danieln_straight_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/danieln_straight_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/danieln_up_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/danieln_up_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/danieln_up_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/danieln_up_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/glickman_left_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/glickman_left_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/glickman_left_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/glickman_left_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/glickman_right_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/glickman_right_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/glickman_right_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/glickman_right_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/glickman_straight_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/glickman_straight_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/glickman_straight_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/glickman_straight_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/glickman_up_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/glickman_up_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/glickman_up_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/glickman_up_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/karyadi_left_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/karyadi_left_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/karyadi_left_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/karyadi_left_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/karyadi_right_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/karyadi_right_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/karyadi_right_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/karyadi_straight_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/karyadi_straight_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/karyadi_straight_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/karyadi_straight_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/karyadi_up_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/karyadi_up_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/karyadi_up_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/karyadi_up_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/kawamura_left_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/kawamura_left_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/kawamura_left_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/kawamura_left_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/kawamura_right_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/kawamura_right_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/kawamura_right_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/kawamura_right_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/kawamura_straight_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/kawamura_straight_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/kawamura_straight_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/kawamura_straight_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/kawamura_up_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/kawamura_up_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/kawamura_up_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/kawamura_up_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/kk49_left_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/kk49_left_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/kk49_left_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/kk49_left_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/kk49_right_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/kk49_right_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/kk49_right_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/kk49_right_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/kk49_straight_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/kk49_straight_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/kk49_straight_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/kk49_straight_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/kk49_up_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/kk49_up_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/kk49_up_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/kk49_up_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/megak_left_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/megak_left_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/megak_left_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/megak_left_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/megak_right_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/megak_right_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/megak_right_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/megak_right_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/megak_straight_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/megak_straight_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/megak_straight_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/megak_up_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/megak_up_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/megak_up_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/mitchell_left_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/mitchell_left_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/mitchell_left_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/mitchell_left_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/mitchell_right_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/mitchell_right_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/mitchell_right_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/mitchell_straight_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/mitchell_straight_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/mitchell_straight_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/mitchell_straight_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/mitchell_up_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/mitchell_up_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/night_left_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/night_left_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/night_left_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/night_left_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/night_right_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/night_right_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/night_right_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/night_right_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/night_straight_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/night_straight_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/night_straight_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/night_straight_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/night_up_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/night_up_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/night_up_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/night_up_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/phoebe_left_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/phoebe_left_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/phoebe_left_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/phoebe_left_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/phoebe_right_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/phoebe_right_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/phoebe_right_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/phoebe_right_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/phoebe_straight_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/phoebe_straight_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/phoebe_straight_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/phoebe_straight_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/phoebe_up_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/phoebe_up_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/phoebe_up_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/phoebe_up_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/saavik_left_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/saavik_left_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/saavik_left_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/saavik_left_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/saavik_right_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/saavik_right_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/saavik_right_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/saavik_right_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/saavik_straight_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/saavik_straight_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/saavik_straight_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/saavik_straight_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/saavik_up_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/saavik_up_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/saavik_up_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/saavik_up_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/steffi_left_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/steffi_left_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/steffi_left_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/steffi_left_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/steffi_right_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/steffi_right_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/steffi_right_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/steffi_right_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/steffi_straight_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/steffi_straight_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/steffi_straight_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/steffi_straight_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/steffi_up_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/steffi_up_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/steffi_up_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/steffi_up_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/sz24_left_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/sz24_left_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/sz24_left_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/sz24_right_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/sz24_right_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/sz24_right_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/sz24_right_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/sz24_straight_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/sz24_straight_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/sz24_straight_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/sz24_straight_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/sz24_up_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/sz24_up_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/sz24_up_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/sz24_up_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/tammo_left_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/tammo_left_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/tammo_left_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/tammo_left_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/tammo_right_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/tammo_right_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/tammo_right_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/tammo_right_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/tammo_straight_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/tammo_straight_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/tammo_straight_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/tammo_straight_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/tammo_up_angry_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/tammo_up_happy_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/tammo_up_neutral_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses/tammo_up_sad_sunglasses_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/KNeighbors/ch4f_left_angry_open_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/KNeighbors/ch4f_left_neutral_open_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/KNeighbors/ch4f_left_sad_open_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/KNeighbors/ch4f_right_neutral_open_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/KNeighbors/ch4f_right_sad_open_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/KNeighbors/ch4f_straight_angry_open_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/KNeighbors/ch4f_straight_happy_open_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/KNeighbors/ch4f_straight_neutral_open_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/KNeighbors/ch4f_straight_sad_open_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/KNeighbors/ch4f_up_happy_open_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/KNeighbors/ch4f_up_neutral_open_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/pngFiles/KNeighbors/ch4f_up_sad_open_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/kotlinc.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/Images/ImageData/faces/choon/choon_left_angry_sunglasses.bad" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-an2i-2-60X64.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-an2i-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-saavik-2-60X64.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-saavik-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-test.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-testDoubleCircle.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-testOneCircle.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-testOneCircle32X30.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-testTwoCircle.txt" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Graph-MP.iml" afterPath="$PROJECT_DIR$/Graph-MP.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/PixelData/RealData/KNN.py" afterPath="$PROJECT_DIR$/data/PixelData/RealData/KNN.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/PixelData/RealData/NoiseCheck.py" afterPath="$PROJECT_DIR$/data/PixelData/RealData/NoiseCheck.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/edu/albany/cs/base/PixelToAPDMData.java" afterPath="$PROJECT_DIR$/src/main/java/edu/albany/cs/base/PixelToAPDMData.java" />
     </list>
     <ignored path="Graph-MP.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -369,6 +51,21 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="PixelToAPDMData.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/edu/albany/cs/base/PixelToAPDMData.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="442">
+              <caret line="53" column="13" lean-forward="true" selection-start-line="53" selection-start-column="13" selection-end-line="53" selection-end-column="13" />
+              <folding>
+                <element signature="e#1276#1282#0" expanded="true" />
+                <element signature="e#6718#6719#0" expanded="true" />
+                <element signature="e#6773#6774#0" expanded="true" />
+                <element signature="e#6835#6836#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="GlassDetectionSimulTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/TestGraphMP/GlassDetectionSimulTest.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -382,8 +79,8 @@
       <file leaf-file-name="DensityCheck.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/TestGraphMP/DensityCheck.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="17" column="29" lean-forward="true" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
+            <state relative-caret-position="324">
+              <caret line="18" column="20" lean-forward="true" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="20" />
               <folding>
                 <element signature="e#8960#8961#0" expanded="true" />
                 <element signature="e#8988#8989#0" expanded="true" />
@@ -472,10 +169,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="64" />
-    <option name="y" value="-11" />
-    <option name="width" value="1537" />
-    <option name="height" value="912" />
+    <option name="x" value="65" />
+    <option name="y" value="-4" />
+    <option name="width" value="1535" />
+    <option name="height" value="904" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -786,6 +483,62 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="WConnectedCompTrueE5" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Graph-MP" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Graph-MP" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="data" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PixelData" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="RealData" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WConnectedCompTrueE5" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ResultData" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Graph-MP" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Graph-MP" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="data" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PixelData" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="RealData" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="Images" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -843,6 +596,9 @@
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="ToolWindowVersion Control.ShowToolbar" value="false" />
     <property name="FullScreen" value="true" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.27816093" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -861,7 +617,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.GlassDetectionTest">
+  <component name="RunManager" selected="Application.PixelToAPDMData">
     <configuration default="false" name="GlassDetectionTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -922,26 +678,6 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="false" name="TestGraphMP" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="TestGraphMP.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="MAIN_CLASS_NAME" value="TestGraphMP.TestGraphMP" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="Graph-MP" />
-      <envs />
-      <method />
-    </configuration>
     <configuration default="false" name="TestGraphMP.testAllCases" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -966,6 +702,26 @@
       </option>
       <envs />
       <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="PixelToAPDMData" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="edu.albany.cs.base.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="edu.albany.cs.base.PixelToAPDMData" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="Graph-MP" />
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
@@ -1360,16 +1116,16 @@
       <item index="0" class="java.lang.String" itemvalue="Application.GlassDetectionTest" />
       <item index="1" class="java.lang.String" itemvalue="Application.TestToyExample" />
       <item index="2" class="java.lang.String" itemvalue="Application.GenerateGridData" />
-      <item index="3" class="java.lang.String" itemvalue="Application.TestGraphMP" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.TestGraphMP.testAllCases" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.TestGraphMP.testAllCases" />
+      <item index="4" class="java.lang.String" itemvalue="Application.PixelToAPDMData" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Application.GlassDetectionTest" />
-        <item index="1" class="java.lang.String" itemvalue="Application.TestToyExample" />
-        <item index="2" class="java.lang.String" itemvalue="Application.GenerateGridData" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.TestGraphMP.testAllCases" />
-        <item index="4" class="java.lang.String" itemvalue="Application.TestGraphMP" />
+        <item index="0" class="java.lang.String" itemvalue="Application.PixelToAPDMData" />
+        <item index="1" class="java.lang.String" itemvalue="Application.GlassDetectionTest" />
+        <item index="2" class="java.lang.String" itemvalue="Application.TestToyExample" />
+        <item index="3" class="java.lang.String" itemvalue="Application.GenerateGridData" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.TestGraphMP.testAllCases" />
       </list>
     </recent_temporary>
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
@@ -1743,7 +1499,14 @@
       <option name="project" value="LOCAL" />
       <updated>1491595613626</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="JJ">
+      <created>1491628346264</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1491628346264</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1752,7 +1515,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="316545000" />
+    <option name="totallyTimeSpent" value="324867000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1764,13 +1527,13 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="64" y="-11" width="1537" height="912" extended-state="6" />
+    <frame x="65" y="-4" width="1535" height="904" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.3739726" sideWeight="0.49676898" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23595506" sideWeight="0.47092083" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23595506" sideWeight="0.47092083" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -1782,7 +1545,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.32876712" sideWeight="0.49676898" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29837134" sideWeight="0.4945355" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25798047" sideWeight="0.4945355" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -2070,6 +1833,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2102,10 +1866,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/albany/cs/base/PixelToAPDMData.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/TestGraphMP/GlassDetectionSimulTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="59" column="45" lean-forward="false" selection-start-line="59" selection-start-column="45" selection-end-line="59" selection-end-column="45" />
+        <state relative-caret-position="176">
+          <caret line="26" column="72" lean-forward="false" selection-start-line="26" selection-start-column="72" selection-end-line="26" selection-end-column="72" />
           <folding />
         </state>
       </provider>
@@ -2120,18 +1884,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/TestGraphMP/GlassDetectionSimulTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/albany/cs/base/PixelToAPDMData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="26" column="72" lean-forward="false" selection-start-line="26" selection-start-column="72" selection-end-line="26" selection-end-column="72" />
-          <folding />
+        <state relative-caret-position="442">
+          <caret line="53" column="13" lean-forward="true" selection-start-line="53" selection-start-column="13" selection-end-line="53" selection-end-column="13" />
+          <folding>
+            <element signature="e#1276#1282#0" expanded="true" />
+            <element signature="e#6718#6719#0" expanded="true" />
+            <element signature="e#6773#6774#0" expanded="true" />
+            <element signature="e#6835#6836#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/TestGraphMP/DensityCheck.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="17" column="29" lean-forward="true" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
+        <state relative-caret-position="324">
+          <caret line="18" column="20" lean-forward="true" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="20" />
           <folding>
             <element signature="e#8960#8961#0" expanded="true" />
             <element signature="e#8988#8989#0" expanded="true" />
@@ -2139,5 +1908,81 @@
         </state>
       </provider>
     </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.27816093" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.27816093" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.27816093" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.27816093" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>Graph-MP</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.27816093" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>commons-lang3-3</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.27816093" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
   </component>
 </project>
