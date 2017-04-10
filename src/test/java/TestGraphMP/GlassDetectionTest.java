@@ -13,6 +13,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 public class GlassDetectionTest {
@@ -40,6 +42,13 @@ public class GlassDetectionTest {
         GraphMP bestGraphMP = null;
         int bestPicture = -1;
         FileWriter fileWriter = null;
+
+        String text = inputFilePath.toString();
+        Pattern p = Pattern.compile(Pattern.quote("APDM-") + "(.*?)" + Pattern.quote("_4-4-30X32.txt"));
+        Matcher m = p.matcher(text);
+        while (m.find()) {
+            NAME = m.group(1);
+        }
 
         try{
             fileWriter = new FileWriter("data/PixelData/RealData/ResultData/"+ NAME + "_"+DOWNSIZENUM + "_"+ PICINDEX, true);
@@ -130,36 +139,17 @@ public class GlassDetectionTest {
                 if (DOWNSIZENUM == 2)
                     new GlassDetectionTest().testToyExample("data/PixelData/RealData/APDM/APDM-" + NAME + "-" + DOWNSIZENUM + "-60X64.txt");
                 if (DOWNSIZENUM == 4) {
-                    NAME = "an2i";
-                    new GlassDetectionTest().testToyExample("data/PixelData/RealData/APDM/APDM-" + "an2i" + "-" + DOWNSIZENUM + "-30X32.txt");
-                    NAME = "at33";
-                    new GlassDetectionTest().testToyExample("data/PixelData/RealData/APDM/APDM-" + "at33" + "-" + DOWNSIZENUM + "-30X32.txt");
-                    NAME = "boland";
-                    new GlassDetectionTest().testToyExample("data/PixelData/RealData/APDM/APDM-" + "boland" + "-" + DOWNSIZENUM + "-30X32.txt");
-                    NAME = "bpm";
-                    new GlassDetectionTest().testToyExample("data/PixelData/RealData/APDM/APDM-" + "bpm" + "-" + DOWNSIZENUM + "-30X32.txt");
-                    NAME = "ch4f";
-                    new GlassDetectionTest().testToyExample("data/PixelData/RealData/APDM/APDM-" + "ch4f" + "-" + DOWNSIZENUM + "-30X32.txt");
-                    NAME = "cheyer";
-                    new GlassDetectionTest().testToyExample("data/PixelData/RealData/APDM/APDM-" + "cheyer" + "-" + DOWNSIZENUM + "-30X32.txt");
-                    NAME = "choon";
-                    new GlassDetectionTest().testToyExample("data/PixelData/RealData/APDM/APDM-" + "choon" + "-" + DOWNSIZENUM + "-30X32.txt");
-                    NAME = "danieln";
-                    new GlassDetectionTest().testToyExample("data/PixelData/RealData/APDM/APDM-" + "danieln" + "-" + DOWNSIZENUM + "-30X32.txt");
-                    NAME = "karyadi";
-                    new GlassDetectionTest().testToyExample("data/PixelData/RealData/APDM/APDM-" + "karyadi" + "-" + DOWNSIZENUM + "-30X32.txt");
-                    NAME = "kk49";
-                    new GlassDetectionTest().testToyExample("data/PixelData/RealData/APDM/APDM-" + "kk49" + "-" + DOWNSIZENUM + "-30X32.txt");
-                    NAME = "megak";
-                    new GlassDetectionTest().testToyExample("data/PixelData/RealData/APDM/APDM-" + "megak" + "-" + DOWNSIZENUM + "-30X32.txt");
-                    NAME = "night";
-                    new GlassDetectionTest().testToyExample("data/PixelData/RealData/APDM/APDM-" + "night" + "-" + DOWNSIZENUM + "-30X32.txt");
-                    NAME = "saavik";
-                    new GlassDetectionTest().testToyExample("data/PixelData/RealData/APDM/APDM-" + "saavik" + "-" + DOWNSIZENUM + "-30X32.txt");
-                    NAME = "steffi";
-                    new GlassDetectionTest().testToyExample("data/PixelData/RealData/APDM/APDM-" + "steffi" + "-" + DOWNSIZENUM + "-30X32.txt");
-                    NAME = "sz24";
-                    new GlassDetectionTest().testToyExample("data/PixelData/RealData/APDM/APDM-" + "sz24" + "-" + DOWNSIZENUM + "-30X32.txt");
+                    String inputDir = "data/PixelData/RealData/APDM/";
+                    ArrayList<File> files = new ArrayList<File>();
+                    File directory = new File(inputDir);
+
+                    // get all the files from a directory
+                    File[] fList = directory.listFiles();
+                    for (File file : fList) {
+                        if (file.isFile()&& !file.toString().contains(".DS_Store")) {
+                            new GlassDetectionTest().testToyExample(file.toString());
+                        }
+                    }
                 }
             }
 

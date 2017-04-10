@@ -196,8 +196,8 @@ public class GlassDetection implements Function {
 
     private double[] argMinFx(Function func) {
         double[] x     = new double[n];
-        double gamma    = 0.000000005;
-        double err      = 1e-7D; //
+        double gamma    = 0.000000008;
+        double err      = 1e-6D; //
         int maximumItersNum = 1000000;
         double[] gradient;
         double oldFuncValue;

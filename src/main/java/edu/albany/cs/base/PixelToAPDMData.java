@@ -7,14 +7,15 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static java.lang.System.exit;
 
 
 public class PixelToAPDMData {
     public static final String NAME = "";
-    public static final int downsize = 2;
-    public static String Z0NAME = "";
+    public static final int downsize = 4;
     private int PIC_HEIGHT;
     private int PIC_WIDTH;
     private int PIXEL_COUNT;
@@ -28,8 +29,8 @@ public class PixelToAPDMData {
         img = null;
     }
 
-    public void generateSingleCase(String inputFiles, String outputFile) throws IOException {
-        this.greyValues = getGreyLevels(inputFiles);
+    public void generateSingleCase(String inputFiles, String z0Dir, String outputFile) throws IOException {
+        this.greyValues = getGreyLevels(inputFiles, z0Dir);
 
         outputFile = outputFile + PIC_HEIGHT + "X" + PIC_WIDTH + ".txt";
         generatePixelAPDM(outputFile);
@@ -38,40 +39,27 @@ public class PixelToAPDMData {
         testTrueSubGraph(outputFile);
     }
 
-    private double[][] getGreyLevels(String inputDir) throws IOException {
+    private double[][] getGreyLevels(String inputDir, String z0Dir) throws IOException {
         //an2i_left_neutral_open_2.png;
-        int[][] greyValuesT = new int[PICTURE_COUNT][960];
+        int[][] greyValuesT = new int[80][960];
 
         ArrayList<File> files = new ArrayList<File>();
         File directory = new File(inputDir);
 
         // get all the files from a directory
+        greyValuesT[0] = getGreyLevelsFromImages(z0Dir);
         File[] fList = directory.listFiles();
         for (File file : fList) {
-            if (file.isFile()) {
-                files.add(file);
+            if (file.isFile()&& !file.toString().contains(".DS_Store")) {
+                //System.out.println(file);
                 increasePICTURE_COUNT();
+                greyValuesT[getPICTURE_COUNT()] = getGreyLevelsFromImages(file.toString());
             }
         }
-        System.out.println(getPICTURE_COUNT());
-
-        greyValuesT[0] = getGreyLevelsFromImages(inputDir + NAME + "_straight_neutral_sunglasses_" + downsize + ".png");
-        greyValuesT[1] = getGreyLevelsFromImages(inputDir + NAME + "_straight_neutral_open_" + downsize + ".png");
-        greyValuesT[2] = getGreyLevelsFromImages(inputDir + NAME + "_straight_sad_open_" + downsize + ".png");
-        greyValuesT[3] = getGreyLevelsFromImages(inputDir + NAME + "_straight_angry_open_" + downsize + ".png");
-        greyValuesT[4] = getGreyLevelsFromImages(inputDir + NAME + "_up_happy_open_" + downsize + ".png");
-        greyValuesT[5] = getGreyLevelsFromImages(inputDir + NAME + "_up_neutral_open_" + downsize + ".png");
-        greyValuesT[6] = getGreyLevelsFromImages(inputDir + NAME + "_left_happy_open_" + downsize + ".png");
-        greyValuesT[7] = getGreyLevelsFromImages(inputDir + NAME + "_left_neutral_open_" + downsize + ".png");
-        greyValuesT[8] = getGreyLevelsFromImages(inputDir + NAME + "_left_sad_open_" + downsize + ".png");
-        greyValuesT[9] = getGreyLevelsFromImages(inputDir + NAME + "_right_happy_open_" + downsize + ".png");
-        greyValuesT[10] = getGreyLevelsFromImages(inputDir + NAME + "_right_sad_open_" + downsize + ".png");
-        greyValuesT[11] = getGreyLevelsFromImages(inputDir + NAME + "_right_neutral_open_" + downsize + ".png");
-
+        //System.out.println(getPICTURE_COUNT());
 
         greyValues = new double[PIXEL_COUNT][PICTURE_COUNT];
-
-        for (int i = 0; i < 12; i++) {
+        for (int i = 0; i < getPICTURE_COUNT(); i++) {
             for (int k = 0; k < PIXEL_COUNT; k++) {
                 greyValues[k][i] = greyValuesT[i][k];
             }
@@ -94,7 +82,7 @@ public class PixelToAPDMData {
         PIC_WIDTH = img.getWidth();
         PIXEL_COUNT = (int) (Math.ceil(PIC_HEIGHT) * Math.ceil(PIC_WIDTH));
         int[] grayLevels = new int[PIXEL_COUNT];
-        System.out.println(PIXEL_COUNT);
+        //System.out.println(PIXEL_COUNT);
         Arrays.fill(grayLevels, 0);
 
         //convert to grayscale
@@ -158,16 +146,37 @@ public class PixelToAPDMData {
 
         if (NAME.contains("test")) {
             new PixelToAPDMData().generateSingleCase(
-                    "data/PixelData/RealData/Images/ImageData/pngFiles/test/",
+                    "data/PixelData/RealData/Images/ImageData/pngFiles/test/","",
                     "data/PixelData/RealData/APDM/APDM-" + NAME);
         } else if (NAME.equals("")) {
-            Z0NAME = "an2i";
-            new PixelToAPDMData().generateSingleCase(
-                    "data/PixelData/RealData/Images/ImageData/pngFiles/",
-                    "data/PixelData/RealData/APDM/APDM-" + Z0NAME + "-" + downsize + "-");
+            // get all the files from a directory
+            File z0Dir = new File("data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses");
+            File[] fList = z0Dir.listFiles();
+            String Z0NAME = "";
+            //get all sunglasses files, go through one by one, generate apdm
+            //num of apdm file = num of sunglasses files.
+            for (File z0File : fList) {
+                if (z0File.isFile() && !z0File.toString().contains(".DS_Store")) {
+                    //extract NAME of person from the filename
+                    String text = z0File.toString();
+                    Pattern p = Pattern.compile(Pattern.quote("Sunglasses/") + "(.*?)" + Pattern.quote(".png"));
+                    Matcher m = p.matcher(text);
+                    while (m.find()) {
+                        Z0NAME = m.group(1);
+                    }
+                    //CREATE THE FILE
+                    new PixelToAPDMData().generateSingleCase(
+                            "data/PixelData/RealData/Images/ImageData/pngFiles/KNeighbors",
+                            z0File.toString(),
+                            "data/PixelData/RealData/APDM/APDM-" + Z0NAME + "-" + downsize + "-");
+                }
+            }
+
+
         } else {
             new PixelToAPDMData().generateSingleCase(
                     "data/PixelData/RealData/Images/ImageData/pngFiles/faces/" + NAME + "/",
+                    "",
                     "data/PixelData/RealData/APDM/APDM-" + NAME + "-" + downsize + "-");
         }
     }
