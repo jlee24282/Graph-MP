@@ -50,7 +50,8 @@ def readData():
 
     files, distances = (list(x) for x in zip(*sorted(zip(files, distances), key=lambda pair: pair[1])))
 
-    for i in range(11):
+    for i in range(20):
+        print distances[i]
         imgDir = re.sub('faces/.*?/', 'pngFiles/KNeighbors/', files[i])
         imgDir = imgDir.replace('.pgm', '.png')
 
@@ -85,8 +86,8 @@ def sunglassImages():
 #
 ###################################################################
 def main():
-    #readData()
-    sunglassImages()
+    readData()
+    #sunglassImages()
 
 if __name__ == '__main__':
     main()

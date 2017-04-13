@@ -5,7 +5,6 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -43,20 +42,20 @@ public class PixelToAPDMData {
         //an2i_left_neutral_open_2.png;
         int[][] greyValuesT = new int[80][960];
 
-        ArrayList<File> files = new ArrayList<File>();
         File directory = new File(inputDir);
 
         // get all the files from a directory
         greyValuesT[0] = getGreyLevelsFromImages(z0Dir);
+        increasePICTURE_COUNT();
         File[] fList = directory.listFiles();
         for (File file : fList) {
             if (file.isFile()&& !file.toString().contains(".DS_Store")) {
                 //System.out.println(file);
-                increasePICTURE_COUNT();
                 greyValuesT[getPICTURE_COUNT()] = getGreyLevelsFromImages(file.toString());
+                increasePICTURE_COUNT();
             }
         }
-        //System.out.println(getPICTURE_COUNT());
+        System.out.println(getPICTURE_COUNT());
 
         greyValues = new double[PIXEL_COUNT][PICTURE_COUNT];
         for (int i = 0; i < getPICTURE_COUNT(); i++) {

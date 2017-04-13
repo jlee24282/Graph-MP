@@ -285,7 +285,12 @@ public class APDMInputFormat {
 
 			// nodes information
 			fw.write("SECTION2 (Nodes Information)\n");
-			fw.write("NodeID GVal1 GVal2 GVal3 GVal4 GVal5 GVal6 GVal7 GVal8 GVal9 GVal10 GVal11 GVal12 \n");
+			fw.write("NodeID");
+			for(int i = 0; i< greyValue[0].length; i++){
+				fw.write(" Z" + i);
+			}
+			fw.write(" \n");
+
 			if (greyValue == null) {
 				fw.write("null\n");
 			} else {
@@ -535,7 +540,7 @@ public class APDMInputFormat {
 					data.std = new double[data.numNodes];
 					data.mean = new double[data.numNodes];
 					data.base = new double[data.numNodes];
-					data.greyValues = new double[data.numNodes][12];
+					data.greyValues = new double[data.numNodes][80];
 					int count = 0;
 					System.out.println(data.dataSource);
 					while (!(sCurrentLine = br.readLine()).equals("END")) {
