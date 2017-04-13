@@ -85,8 +85,8 @@ def sunglassImages():
 #
 ###################################################################
 def main():
-    readData()
-    #sunglassImages()
+    #readData()
+    sunglassImages()
 
 if __name__ == '__main__':
     main()
