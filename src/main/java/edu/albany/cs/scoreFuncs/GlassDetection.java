@@ -58,18 +58,19 @@ public class GlassDetection implements Function {
         double x0w = dotproduct(x, greyValuesT[picIndex]);
         double xw = 0;
         double[] part2 = new double[n];
-        double[] part4 = new double[n];
+        //double[] part4 = new double[n];
         for (int k = 0; k < picCount; k++){
             if(k != picIndex){
                 xw = dotproduct(x, greyValuesT[k]);
                 part2 = addition(part2, multiply(greyValuesT[k],    2*(xw - n)));
-                part4 = addition(part4, multiply(x,                 2*(xw - n)));
+                //part4 = addition(part4, multiply(x,                 2*(xw - n)));
             }
         }
         double[] part1 = multiply(greyValuesT[picIndex],(x0w + n)*2);
-        double[] part3 = multiply(x,                    (x0w + n)*2);
+        //double[] part3 = multiply(x,                    (x0w + n)*2);
 
-        return addition(addition(part1, part2), addition(part3, part4));
+        //return addition(addition(part1, part2), addition(part3, part4));
+        return addition(part1, part2);
     }
 
 
@@ -196,7 +197,7 @@ public class GlassDetection implements Function {
 
     private double[] argMinFx(Function func) {
         double[] x     = new double[n];
-        double gamma    = 0.000000008;
+        double gamma    = 0.000000002;
         double err      = 1e-6D; //
         int maximumItersNum = 1000000;
         double[] gradient;
