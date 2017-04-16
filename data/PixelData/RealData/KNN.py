@@ -46,6 +46,7 @@ def readData():
     print len(X)    
     nbrs = NearestNeighbors(n_neighbors=2, algorithm='ball_tree').fit(X)
     distances, indices = nbrs.kneighbors(X)
+    #print distances
     distances = distances[:,1]
 
     files, distances = (list(x) for x in zip(*sorted(zip(files, distances), key=lambda pair: pair[1])))
