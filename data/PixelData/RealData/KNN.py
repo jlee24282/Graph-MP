@@ -37,22 +37,30 @@ def greyValues(imgDir):
 ###################################################################
 def readData():
     X = []
+    y= []
     files = []
+    # load all open eye imagess
     for folder in glob.glob('Images/ImageData/faces/*'):
         for filename in glob.glob(folder + '/*'):
             if 'open_4' in filename:
                 files.append(filename)
                 X.append(greyValues(filename))
     print len(X)    
-    nbrs = NearestNeighbors(n_neighbors=2, algorithm='ball_tree').fit(X)
-    distances, indices = nbrs.kneighbors(X)
+    
+    #load y image (z0 = sunglasses image)
+    y = greyValues('Images/ImageData/pngFiles/AllSunglasses/steffi_straight_neutral_sunglasses_4.png')
+    
+    nbrs = NearestNeighbors(n_neighbors=10).fit(X, y)
+    distances, indices = nbrs.kneighbors(y, return_distance=True)
     #print distances
+    print distances
+    print indices
+    
     distances = distances[:,1]
 
-    files, distances = (list(x) for x in zip(*sorted(zip(files, distances), key=lambda pair: pair[1])))
-
-    for i in range(20):
-        print distances[i]
+    #files, distances = (list(x) for x in zip(*sorted(zip(files, distances), key=lambda pair: pair[1])))
+    print indices[0]
+    for i in indices[0]:
         imgDir = re.sub('faces/.*?/', 'pngFiles/KNeighbors/', files[i])
         imgDir = imgDir.replace('.pgm', '.png')
 

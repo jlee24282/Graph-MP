@@ -45,7 +45,7 @@ public class GlassDetectionTest {
 
         String text = inputFilePath.toString();
         Pattern p = Pattern.compile(Pattern.quote("APDM-") + "(.*?)" + Pattern.quote("_4-4-30X32.txt"));
-        Matcher m = p.matcher(text);
+        Matcher m = p.matcher(text)-;
         while (m.find()) {
             NAME = m.group(1);
         }
