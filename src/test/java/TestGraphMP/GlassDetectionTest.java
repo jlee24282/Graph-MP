@@ -44,8 +44,8 @@ public class GlassDetectionTest {
         FileWriter fileWriter = null;
 
         String text = inputFilePath.toString();
-        Pattern p = Pattern.compile(Pattern.quote("APDM-") + "(.*?)" + Pattern.quote("_4-4-30X32.txt"));
-        Matcher m = p.matcher(text)-;
+        Pattern p = Pattern.compile(Pattern.quote("APDM-") + "(.*?)" + Pattern.quote("-4-30X32.txt"));
+        Matcher m = p.matcher(text);
         while (m.find()) {
             NAME = m.group(1);
         }
@@ -140,7 +140,6 @@ public class GlassDetectionTest {
                     new GlassDetectionTest().testToyExample("data/PixelData/RealData/APDM/APDM-" + NAME + "-" + DOWNSIZENUM + "-60X64.txt");
                 if (DOWNSIZENUM == 4) {
                     String inputDir = "data/PixelData/RealData/APDM/";
-                    ArrayList<File> files = new ArrayList<File>();
                     File directory = new File(inputDir);
 
                     // get all the files from a directory

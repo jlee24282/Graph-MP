@@ -133,7 +133,6 @@ public class PixelToAPDMData {
                 count, null, outputFileName);
     }
 
-
     public void testTrueSubGraph(String fileName) {
         APDMInputFormat apdm = new APDMInputFormat(fileName);
         //System.out.println(apdm.data.trueSubGraphNodes.length);
@@ -158,14 +157,14 @@ public class PixelToAPDMData {
                 if (z0File.isFile() && !z0File.toString().contains(".DS_Store")) {
                     //extract NAME of person from the filename
                     String text = z0File.toString();
-                    Pattern p = Pattern.compile(Pattern.quote("Sunglasses/") + "(.*?)" + Pattern.quote(".png"));
+                    Pattern p = Pattern.compile(Pattern.quote("Sunglasses/") + "(.*?)" + Pattern.quote("_4.png"));
                     Matcher m = p.matcher(text);
                     while (m.find()) {
                         Z0NAME = m.group(1);
                     }
                     //CREATE THE FILE
                     new PixelToAPDMData().generateSingleCase(
-                            "data/PixelData/RealData/Images/ImageData/pngFiles/KNeighbors",
+                            "data/PixelData/RealData/Images/ImageData/pngFiles/KNeighbors/"+ Z0NAME + "/",
                             z0File.toString(),
                             "data/PixelData/RealData/APDM/APDM-" + Z0NAME + "-" + downsize + "-");
                 }

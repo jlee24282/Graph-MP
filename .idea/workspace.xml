@@ -2,7 +2,324 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5c7bc81d-5044-46a9-b1eb-bae84b5a3e5d" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-an2i_left_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-an2i_left_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-an2i_left_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-an2i_left_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-an2i_right_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-an2i_right_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-an2i_right_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-an2i_right_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-an2i_straight_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-an2i_straight_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-an2i_straight_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-an2i_straight_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-an2i_up_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-an2i_up_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-an2i_up_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-an2i_up_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-at33_left_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-at33_left_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-at33_left_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-at33_left_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-at33_right_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-at33_right_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-at33_right_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-at33_right_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-at33_straight_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-at33_straight_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-at33_straight_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-at33_straight_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-at33_up_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-at33_up_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-at33_up_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-at33_up_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-boland_left_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-boland_left_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-boland_left_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-boland_left_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-boland_right_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-boland_right_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-boland_right_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-boland_right_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-boland_straight_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-boland_straight_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-boland_straight_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-boland_straight_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-boland_up_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-boland_up_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-boland_up_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-boland_up_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-bpm_left_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-bpm_left_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-bpm_left_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-bpm_left_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-bpm_right_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-bpm_right_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-bpm_right_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-bpm_right_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-bpm_straight_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-bpm_straight_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-bpm_straight_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-bpm_straight_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-bpm_up_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-bpm_up_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-bpm_up_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-bpm_up_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-ch4f_left_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-ch4f_left_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-ch4f_left_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-ch4f_left_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-ch4f_right_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-ch4f_right_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-ch4f_right_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-ch4f_right_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-ch4f_straight_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-ch4f_straight_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-ch4f_straight_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-ch4f_straight_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-ch4f_up_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-ch4f_up_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-ch4f_up_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-ch4f_up_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-cheyer_left_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-cheyer_left_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-cheyer_left_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-cheyer_left_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-cheyer_right_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-cheyer_right_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-cheyer_right_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-cheyer_right_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-cheyer_straight_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-cheyer_straight_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-cheyer_straight_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-cheyer_straight_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-cheyer_up_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-cheyer_up_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-cheyer_up_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-cheyer_up_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-choon_left_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-choon_left_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-choon_left_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-choon_right_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-choon_right_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-choon_right_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-choon_right_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-choon_straight_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-choon_straight_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-choon_straight_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-choon_straight_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-choon_up_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-choon_up_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-choon_up_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-choon_up_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-danieln_left_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-danieln_left_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-danieln_left_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-danieln_left_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-danieln_right_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-danieln_right_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-danieln_right_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-danieln_right_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-danieln_straight_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-danieln_straight_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-danieln_straight_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-danieln_up_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-danieln_up_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-danieln_up_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-danieln_up_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-glickman_left_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-glickman_left_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-glickman_left_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-glickman_left_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-glickman_right_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-glickman_right_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-glickman_right_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-glickman_right_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-glickman_straight_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-glickman_straight_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-glickman_straight_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-glickman_straight_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-glickman_up_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-glickman_up_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-glickman_up_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-glickman_up_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-karyadi_left_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-karyadi_left_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-karyadi_left_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-karyadi_left_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-karyadi_right_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-karyadi_right_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-karyadi_right_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-karyadi_straight_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-karyadi_straight_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-karyadi_straight_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-karyadi_straight_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-karyadi_up_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-karyadi_up_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-karyadi_up_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-karyadi_up_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-kawamura_left_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-kawamura_left_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-kawamura_left_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-kawamura_left_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-kawamura_right_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-kawamura_right_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-kawamura_right_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-kawamura_right_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-kawamura_straight_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-kawamura_straight_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-kawamura_straight_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-kawamura_straight_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-kawamura_up_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-kawamura_up_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-kawamura_up_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-kawamura_up_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-kk49_left_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-kk49_left_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-kk49_left_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-kk49_left_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-kk49_right_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-kk49_right_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-kk49_right_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-kk49_right_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-kk49_straight_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-kk49_straight_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-kk49_straight_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-kk49_straight_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-kk49_up_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-kk49_up_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-kk49_up_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-kk49_up_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-megak_left_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-megak_left_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-megak_left_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-megak_left_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-megak_right_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-megak_right_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-megak_right_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-megak_right_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-megak_straight_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-megak_straight_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-megak_straight_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-megak_up_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-megak_up_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-megak_up_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-mitchell_left_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-mitchell_left_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-mitchell_left_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-mitchell_left_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-mitchell_right_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-mitchell_right_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-mitchell_right_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-mitchell_straight_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-mitchell_straight_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-mitchell_straight_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-mitchell_straight_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-mitchell_up_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-mitchell_up_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-night_left_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-night_left_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-night_left_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-night_left_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-night_right_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-night_right_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-night_right_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-night_right_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-night_straight_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-night_straight_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-night_straight_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-night_straight_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-night_up_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-night_up_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-night_up_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-night_up_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-phoebe_left_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-phoebe_left_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-phoebe_left_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-phoebe_left_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-phoebe_right_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-phoebe_right_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-phoebe_right_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-phoebe_right_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-phoebe_straight_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-phoebe_straight_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-phoebe_straight_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-phoebe_straight_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-phoebe_up_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-phoebe_up_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-phoebe_up_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-phoebe_up_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-saavik_left_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-saavik_left_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-saavik_left_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-saavik_left_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-saavik_right_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-saavik_right_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-saavik_right_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-saavik_right_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-saavik_straight_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-saavik_straight_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-saavik_straight_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-saavik_straight_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-saavik_up_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-saavik_up_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-saavik_up_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-saavik_up_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-steffi_left_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-steffi_left_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-steffi_left_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-steffi_left_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-steffi_right_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-steffi_right_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-steffi_right_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-steffi_right_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-steffi_straight_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-steffi_straight_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-steffi_straight_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-steffi_straight_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-steffi_up_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-steffi_up_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-steffi_up_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-steffi_up_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-sz24_left_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-sz24_left_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-sz24_left_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-sz24_right_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-sz24_right_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-sz24_right_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-sz24_right_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-sz24_straight_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-sz24_straight_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-sz24_straight_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-sz24_straight_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-sz24_up_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-sz24_up_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-sz24_up_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-sz24_up_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-tammo_left_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-tammo_left_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-tammo_left_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-tammo_left_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-tammo_right_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-tammo_right_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-tammo_right_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-tammo_right_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-tammo_straight_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-tammo_straight_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-tammo_straight_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-tammo_straight_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-tammo_up_angry_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-tammo_up_happy_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-tammo_up_neutral_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-tammo_up_sad_sunglasses_4-4-30X32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/ResultData/an2i_left_angry_sunglasses_4_0" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/ResultData/an2i_left_happy_sunglasses_4_0" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/PixelData/RealData/ResultData/an2i_left_neutral_sunglasses_4_0" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/PixelData/RealData/KNN.py" afterPath="$PROJECT_DIR$/data/PixelData/RealData/KNN.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/edu/albany/cs/base/PixelToAPDMData.java" afterPath="$PROJECT_DIR$/src/main/java/edu/albany/cs/base/PixelToAPDMData.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/edu/albany/cs/scoreFuncs/GlassDetection.java" afterPath="$PROJECT_DIR$/src/main/java/edu/albany/cs/scoreFuncs/GlassDetection.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/TestGraphMP/GlassDetectionTest.java" afterPath="$PROJECT_DIR$/src/test/java/TestGraphMP/GlassDetectionTest.java" />
     </list>
     <ignored path="Graph-MP.iws" />
@@ -30,24 +347,33 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="GlassDetectionTest.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="GlassDetectionTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/TestGraphMP/GlassDetectionTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+            <state relative-caret-position="677">
+              <caret line="48" column="26" selection-start-line="48" selection-start-column="26" selection-end-line="48" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#6467#6473#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GlassDetection.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="PixelToAPDMData.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/edu/albany/cs/base/PixelToAPDMData.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="175" column="30" selection-start-line="175" selection-start-column="30" selection-end-line="175" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GlassDetection.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/edu/albany/cs/scoreFuncs/GlassDetection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1860">
-              <caret line="26" column="48" selection-start-line="26" selection-start-column="48" selection-end-line="26" selection-end-column="48" />
+            <state relative-caret-position="360">
+              <caret line="223" column="0" selection-start-line="223" selection-start-column="0" selection-end-line="223" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -106,14 +432,14 @@
         <option value="$PROJECT_DIR$/data/PixelData/RealData/ResultData/at33_4_0" />
         <option value="$PROJECT_DIR$/data/PixelData/RealData/ResultData/cheyer_up_sad_sunglasses_4_0" />
         <option value="$PROJECT_DIR$/src/main/java/edu/albany/cs/base/APDMInputFormat.java" />
-        <option value="$PROJECT_DIR$/src/main/java/edu/albany/cs/base/PixelToAPDMData.java" />
         <option value="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-at33_right_neutral_sunglasses_4-4-30X32.txt" />
         <option value="$PROJECT_DIR$/data/PixelData/RealData/APDM/APDM-tammo_up_sad_sunglasses_4-4-30X32.txt" />
         <option value="$PROJECT_DIR$/data/PixelData/RealData/ResultData/an2i_left_happy_sunglasses_4_0" />
         <option value="$PROJECT_DIR$/data/PixelData/RealData/ResultData/an2i_left_neutral_sunglasses_4_0" />
         <option value="$PROJECT_DIR$/data/PixelData/RealData/ResultData/an2i_left_angry_sunglasses_4_0" />
-        <option value="$PROJECT_DIR$/src/main/java/edu/albany/cs/scoreFuncs/GlassDetection.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/albany/cs/base/PixelToAPDMData.java" />
         <option value="$PROJECT_DIR$/src/test/java/TestGraphMP/GlassDetectionTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/albany/cs/scoreFuncs/GlassDetection.java" />
       </list>
     </option>
   </component>
@@ -409,148 +735,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="RealData" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Graph-MP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Graph-MP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PixelData" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="RealData" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WConnectedCompTrueE5" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Graph-MP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Graph-MP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PixelData" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="RealData" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ResultData" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Graph-MP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Graph-MP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PixelData" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="RealData" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Images" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ImageData" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Graph-MP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Graph-MP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PixelData" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="RealData" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Images" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ImageData" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pngFiles" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Graph-MP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Graph-MP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PixelData" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="RealData" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="APDM" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1179,14 +1363,7 @@
       <workItem from="1489343309836" duration="23154000" />
       <workItem from="1490133260444" duration="9299000" />
       <workItem from="1490988673078" duration="32997000" />
-      <workItem from="1491836271663" duration="27946000" />
-    </task>
-    <task id="LOCAL-00004" summary="JJ">
-      <created>1479796669619</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1479796669619</updated>
+      <workItem from="1491836271663" duration="29738000" />
     </task>
     <task id="LOCAL-00005" summary="JJ">
       <created>1483050176679</created>
@@ -1524,7 +1701,14 @@
       <option name="project" value="LOCAL" />
       <updated>1492308367618</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="JJ">
+      <created>1492368983434</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1492368983434</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1533,7 +1717,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="352813000" />
+    <option name="totallyTimeSpent" value="354605000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1560,7 +1744,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.32876712" sideWeight="0.49676898" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3739903" sideWeight="0.4945355" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30371568" sideWeight="0.4945355" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1600,7 +1784,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="11" />
+      <option name="time" value="13" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1774,14 +1958,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/PixelData/RealData/ResultData/at33_4_0">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data/PixelData/RealData/ResultData/cheyer_up_sad_sunglasses_4_0">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
@@ -1886,22 +2062,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/PixelData/RealData/ResultData/an2i_left_angry_sunglasses_4_0">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/albany/cs/base/PixelToAPDMData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="80" column="5" selection-start-line="80" selection-start-column="5" selection-end-line="80" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/edu/albany/cs/base/APDMInputFormat.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-104">
@@ -1921,22 +2081,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/albany/cs/scoreFuncs/GlassDetection.java">
+    <entry file="file://$PROJECT_DIR$/data/PixelData/RealData/ResultData/at33_4_0">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1860">
-          <caret line="26" column="48" selection-start-line="26" selection-start-column="48" selection-end-line="26" selection-end-column="48" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/PixelData/RealData/ResultData/an2i_left_angry_sunglasses_4_0">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/TestGraphMP/GlassDetectionTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+        <state relative-caret-position="677">
+          <caret line="48" column="26" selection-start-line="48" selection-start-column="26" selection-end-line="48" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#6467#6473#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/albany/cs/base/PixelToAPDMData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="175" column="30" selection-start-line="175" selection-start-column="30" selection-end-line="175" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/albany/cs/scoreFuncs/GlassDetection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="223" column="0" selection-start-line="223" selection-start-column="0" selection-end-line="223" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

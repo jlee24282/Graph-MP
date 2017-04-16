@@ -7,6 +7,7 @@ Created on Fri Apr  7 15:23:25 2017
 from sklearn.neighbors import NearestNeighbors
 import numpy as np
 import glob
+import os
 from PIL import Image
 import re
 
@@ -35,10 +36,11 @@ def greyValues(imgDir):
 #-----------------------------------------------------------------
 #
 ###################################################################
-def readData():
+def readData(z0ImageDir):
     X = []
-    y= []
+    y = []
     files = []
+    
     # load all open eye imagess
     for folder in glob.glob('Images/ImageData/faces/*'):
         for filename in glob.glob(folder + '/*'):
@@ -48,7 +50,7 @@ def readData():
     print len(X)    
     
     #load y image (z0 = sunglasses image)
-    y = greyValues('Images/ImageData/pngFiles/AllSunglasses/steffi_straight_neutral_sunglasses_4.png')
+    y = greyValues(z0ImageDir)
     
     nbrs = NearestNeighbors(n_neighbors=10).fit(X, y)
     distances, indices = nbrs.kneighbors(y, return_distance=True)
@@ -57,12 +59,23 @@ def readData():
     print indices
     
     distances = distances[:,1]
+    
+    NAME = re.search('AllSunglasses/(.*)_4', z0ImageDir)
+    NAME = NAME.group(1)
+    print NAME
 
     #files, distances = (list(x) for x in zip(*sorted(zip(files, distances), key=lambda pair: pair[1])))
     print indices[0]
     for i in indices[0]:
-        imgDir = re.sub('faces/.*?/', 'pngFiles/KNeighbors/', files[i])
+        imgDir = re.sub('faces/.*?/', 'pngFiles/KNeighbors/'+NAME + '/', files[i])
         imgDir = imgDir.replace('.pgm', '.png')
+        
+        imDir = re.sub('sunglasses/(.*?).png', 'sunglasses/', imgDir)
+        print imDir
+        print imgDir
+        
+        if not os.path.exists(imDir):
+            os.makedirs(imDir)
 
         im = Image.open(files[i])
         im.save(imgDir)
@@ -87,6 +100,11 @@ def sunglassImages():
                 im.save(imgDir)
                 im.close()
     print count
+    
+def KNN():
+    for filename in glob.glob('Images/ImageData/pngFiles/AllSunglasses/*'):
+        if 'sunglasses_4' in filename:
+            readData(filename)
 
 
 ##################################################################
@@ -95,7 +113,7 @@ def sunglassImages():
 #
 ###################################################################
 def main():
-    readData()
+    KNN()
     #sunglassImages()
 
 if __name__ == '__main__':
