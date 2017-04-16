@@ -20,7 +20,7 @@ import java.util.regex.Pattern;
 public class GlassDetectionTest {
     public static final int DOWNSIZENUM = 4;
     public static String NAME = "at33";
-    public static int PICINDEX;
+    public static int PICINDEX = 0;
     private int verboseLevel = 0;
 
 
@@ -32,7 +32,6 @@ public class GlassDetectionTest {
 
         ArrayList<Integer[]> edges = apdm.data.intEdges;
         ArrayList<Double> edgeCosts = apdm.data.identityEdgeCosts;
-
         /** step1: score function */
         GlassDetection func = new GlassDetection(apdm.data.greyValues, PICINDEX);
 

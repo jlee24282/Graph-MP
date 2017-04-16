@@ -45,10 +45,12 @@ public class PixelToAPDMData {
         File directory = new File(inputDir);
 
         // get all the files from a directory
+        System.out.println(z0Dir);
         greyValuesT[0] = getGreyLevelsFromImages(z0Dir);
         increasePICTURE_COUNT();
         File[] fList = directory.listFiles();
         for (File file : fList) {
+            System.out.println(file);
             if (file.isFile()&& !file.toString().contains(".DS_Store")) {
                 //System.out.println(file);
                 greyValuesT[getPICTURE_COUNT()] = getGreyLevelsFromImages(file.toString());
@@ -182,15 +184,12 @@ public class PixelToAPDMData {
     public BufferedImage getBufferedImage() {
         return img;
     }
-
     public int getWidth() {
         return PIC_WIDTH;
     }
-
     public int getHeight() {
         return PIC_HEIGHT;
     }
-
     public int getPICTURE_COUNT(){return PICTURE_COUNT;}
     public void increasePICTURE_COUNT(){ PICTURE_COUNT = PICTURE_COUNT+1;}
 }
