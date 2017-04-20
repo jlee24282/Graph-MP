@@ -12,6 +12,7 @@ from PIL import Image
 import re
 
 
+NEIGHBOR_NUM = 7
 ##################################################################
 #   greyValues 
 #-----------------------------------------------------------------
@@ -52,7 +53,7 @@ def readData(z0ImageDir):
     #load y image (z0 = sunglasses image)
     y = greyValues(z0ImageDir)
     
-    nbrs = NearestNeighbors(n_neighbors=10).fit(X, y)
+    nbrs = NearestNeighbors(n_neighbors=NEIGHBOR_NUM).fit(X, y)
     distances, indices = nbrs.kneighbors(y, return_distance=True)
     #print distances
     print distances
@@ -71,7 +72,7 @@ def readData(z0ImageDir):
         imgDir = imgDir.replace('.pgm', '.png')
         
         imDir = re.sub('sunglasses/(.*?).png', 'sunglasses/', imgDir)
-        print imDir
+        #print imDir
         print imgDir
         
         if not os.path.exists(imDir):

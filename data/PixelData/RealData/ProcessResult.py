@@ -31,6 +31,8 @@ def rankAll():
         NAME = re.search('ResultData/(.*)_4', imdir)
         NAME = NAME.group(1)
         
+        print NAME
+        
         with open('ResultData/'+ NAME+ '_' +DOWNSIZENUM + '_' + PICINDEX) as f:
             text_file = f.readlines()
         

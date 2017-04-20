@@ -21,6 +21,7 @@ public class GlassDetectionTest {
     public static final int DOWNSIZENUM = 4;
     public static String NAME = "at33";
     public static int PICINDEX = 0;
+    public static int NeighborNum = 7;
     private int verboseLevel = 0;
 
 
@@ -48,10 +49,10 @@ public class GlassDetectionTest {
         while (m.find()) {
             NAME = m.group(1);
         }
+        System.out.println(NAME);
 
         try{
-            fileWriter = new FileWriter("data/PixelData/RealData/ResultData/"+ NAME + "_"+DOWNSIZENUM + "_"+ PICINDEX, true);
-//            fileWriter = new FileWriter("data/PixelData/RealData/ResultData/test.txt", true);
+            fileWriter = new FileWriter("data/PixelData/RealData/KNN_"+NeighborNum+"/ResultData/"+ NAME + "_"+DOWNSIZENUM + "_"+ PICINDEX, true);
             fileWriter.write("\n------------------------------ test starts ------------------------------ \n");
             fileWriter.close();
         }catch(IOException e){
@@ -59,12 +60,12 @@ public class GlassDetectionTest {
         }
 
         for (int s : candidateS) {
-            fileWriter = new FileWriter("data/PixelData/RealData/ResultData/"+ NAME + "_"+DOWNSIZENUM + "_"+ PICINDEX, true);
+            fileWriter = new FileWriter("data/PixelData/RealData/KNN_"+NeighborNum+"/ResultData/"+ NAME + "_"+DOWNSIZENUM + "_"+ PICINDEX, true);
 //
             double B = s - 1 + 0.0D;
             int t = 5;
 //            fileWriter.write("test2");
-            GraphMP graphMP = new GraphMP(edges, edgeCosts, apdm.data.base, s, 1, B, t, true/** maximumCC */
+            GraphMP graphMP = new GraphMP(edges, edgeCosts, apdm.data.base, s, 1, B, t, false/** maximumCC */
                     , null, func, null);
             System.out.println("s**********************************************: " + s);
             fileWriter.write("s**********************************************: " + s+ "\n");
@@ -82,7 +83,7 @@ public class GlassDetectionTest {
             fileWriter.close();
         }
 
-        fileWriter = new FileWriter("data/PixelData/RealData/ResultData/"+ NAME + "_"+DOWNSIZENUM + "_"+ PICINDEX, true);
+        fileWriter = new FileWriter("data/PixelData/RealData/KNN_"+NeighborNum+"/ResultData/"+ NAME + "_"+DOWNSIZENUM + "_"+ PICINDEX, true);
         System.out.println("sRESULT**********************************************: ");
         fileWriter.write("sRESULT**********************************************: "+ "\n");
         System.out.println("Picture Index: " + bestPicture);
@@ -133,12 +134,12 @@ public class GlassDetectionTest {
             PICINDEX = 0;
 
             if (NAME.contains("test")) {
-                new GlassDetectionTest().testToyExample("data/PixelData/RealData/APDM/APDM-" + NAME + ".txt");
+                new GlassDetectionTest().testToyExample("data/PixelData/RealData/APDM/KNN_"+NeighborNum+"/APDM-" + NAME + ".txt");
             } else {
                 if (DOWNSIZENUM == 2)
-                    new GlassDetectionTest().testToyExample("data/PixelData/RealData/APDM/APDM-" + NAME + "-" + DOWNSIZENUM + "-60X64.txt");
+                    new GlassDetectionTest().testToyExample("data/PixelData/RealData/APDM/KNN_"+NeighborNum+"/APDM-" + NAME + "-" + DOWNSIZENUM + "-60X64.txt");
                 if (DOWNSIZENUM == 4) {
-                    String inputDir = "data/PixelData/RealData/APDM/";
+                    String inputDir = "data/PixelData/RealData/APDM/KNN_"+ NeighborNum;
                     File directory = new File(inputDir);
 
                     // get all the files from a directory

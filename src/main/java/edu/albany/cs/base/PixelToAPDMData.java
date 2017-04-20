@@ -147,7 +147,7 @@ public class PixelToAPDMData {
         if (NAME.contains("test")) {
             new PixelToAPDMData().generateSingleCase(
                     "data/PixelData/RealData/Images/ImageData/pngFiles/test/","",
-                    "data/PixelData/RealData/APDM/APDM-" + NAME);
+                    "data/PixelData/RealData/APDM/KNN_7/APDM-" + NAME);
         } else if (NAME.equals("")) {
             // get all the files from a directory
             File z0Dir = new File("data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses");
@@ -168,7 +168,7 @@ public class PixelToAPDMData {
                     new PixelToAPDMData().generateSingleCase(
                             "data/PixelData/RealData/Images/ImageData/pngFiles/KNeighbors/"+ Z0NAME + "/",
                             z0File.toString(),
-                            "data/PixelData/RealData/APDM/APDM-" + Z0NAME + "-" + downsize + "-");
+                            "data/PixelData/RealData/APDM/KNN_7/APDM-" + Z0NAME + "-" + downsize + "-");
                 }
             }
 
@@ -177,7 +177,7 @@ public class PixelToAPDMData {
             new PixelToAPDMData().generateSingleCase(
                     "data/PixelData/RealData/Images/ImageData/pngFiles/faces/" + NAME + "/",
                     "",
-                    "data/PixelData/RealData/APDM/APDM-" + NAME + "-" + downsize + "-");
+                    "data/PixelData/RealData/APDM/KNN_7/APDM-" + NAME + "-" + downsize + "-");
         }
     }
 
