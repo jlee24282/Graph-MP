@@ -15,6 +15,7 @@ import re
 NAME = 'an2i_left_happy_sunglasses'
 DOWNSIZENUM = '4'
 PICINDEX = '0'
+KNNSIZE = 'KNN_7/'
 
 ##################################################################
 #   resultPictureRank 
@@ -27,13 +28,13 @@ PICINDEX = '0'
 #       OUTPUT: ResultPics/NAME_DOWNSIZENUM/NAME_Rank(i)_funcVal_funcValues[i]_DOWNSIZENUM_Sparse sparsity[i]).png 
 ###################################################################
 def rankAll():  
-    for imdir in glob.glob('ResultData/*'):
-        NAME = re.search('ResultData/(.*)_4', imdir)
+    for imdir in glob.glob(KNNSIZE+'ResultData/*'):
+        NAME = re.search(KNNSIZE+'ResultData/(.*)_4', imdir)
         NAME = NAME.group(1)
         
         print NAME
         
-        with open('ResultData/'+ NAME+ '_' +DOWNSIZENUM + '_' + PICINDEX) as f:
+        with open(KNNSIZE+'ResultData/'+ NAME+ '_' +DOWNSIZENUM + '_' + PICINDEX) as f:
             text_file = f.readlines()
         
         results = []
@@ -65,7 +66,7 @@ def rankAll():
                 #pixelMap[item%w, int(item/w)] = (255, i*30, i*30)
                 pixelMap[item%w, int(item/w)] = (255, 0, 0)
                 #im.show()       
-            imgDir = 'ResultPics/'+ NAME + '_'+str(DOWNSIZENUM)+ '/'
+            imgDir = KNNSIZE+'ResultPics/'+ NAME + '_'+str(DOWNSIZENUM)+ '/'
             if not os.path.exists(imgDir):
                 os.makedirs(imgDir)
             im.save(imgDir + NAME+'_Rank'+str(i)+'_funcVal_'+str(funcValues[i]) +'_'+ DOWNSIZENUM+ '_Sparse' + str(sparsity[i])+'.png') 
@@ -83,7 +84,7 @@ def rankAll():
 #       OUTPUT: ResultPics/NAME_DOWNSIZENUM/NAME_Rank(i)_funcVal_funcValues[i]_DOWNSIZENUM_Sparse sparsity[i]).png 
 ###################################################################
 def rankAllforManual():        
-    with open('ResultData/'+ NAME+ '_' +DOWNSIZENUM + '_' + PICINDEX) as f:
+    with open(KNNSIZE+'ResultData/'+ NAME+ '_' +DOWNSIZENUM + '_' + PICINDEX) as f:
         text_file = f.readlines()
         
     results = []
@@ -115,7 +116,7 @@ def rankAllforManual():
             #pixelMap[item%w, int(item/w)] = (255, i*30, i*30)
             pixelMap[item%w, int(item/w)] = (255, 0, 0)
         #im.show()       
-        imgDir = 'ResultPics/'+ NAME + '_'+str(DOWNSIZENUM)+ '/'
+        imgDir = KNNSIZE+'ResultPics/'+ NAME + '_'+str(DOWNSIZENUM)+ '/'
         if not os.path.exists(imgDir):
             os.makedirs(imgDir)
         im.save(imgDir + NAME+'_Rank'+str(i)+'_funcVal_'+str(funcValues[i]) +'_'+ DOWNSIZENUM+ '_Sparse' + str(sparsity[i])+'.png') 
@@ -134,8 +135,8 @@ def rankAllforManual():
 ###################################################################
 def resultPicturePrintBest3Rank():
     
-    for imdir in glob.glob('ResultPics/*'):
-        NAME = re.search('ResultPics/(.*)_4', imdir)
+    for imdir in glob.glob(KNNSIZE+'ResultPics/*'):
+        NAME = re.search(KNNSIZE+'ResultPics/(.*)_4', imdir)
         NAME = NAME.group(1)
         results = []
         ranks = []
@@ -179,7 +180,7 @@ def resultPicturePrintBest3Rank():
                     pixelMap[item%w, int(item/w)] = (255, 0, 0)
                     
             #im.show()       
-            im.save('ResultPics/result_best3_'+ NAME +'_'+ DOWNSIZENUM+ '_' + PICINDEX+'.png') 
+            im.save(KNNSIZE+'ResultPics/result_best3_'+ NAME +'_'+ DOWNSIZENUM+ '_' + PICINDEX+'.png') 
             im.close()
             
             
