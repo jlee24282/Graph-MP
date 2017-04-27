@@ -5,13 +5,12 @@ Created on Fri Apr  7 15:23:25 2017
 @author: JLee
 """
 from sklearn.neighbors import NearestNeighbors
-import numpy as np
 import glob
 import os
 from PIL import Image
 import re
 
-
+DOWNSIZENUM = '2'
 NEIGHBOR_NUM = 7
 ##################################################################
 #   greyValues 
@@ -45,7 +44,7 @@ def readData(z0ImageDir):
     # load all open eye imagess
     for folder in glob.glob('Images/ImageData/faces/*'):
         for filename in glob.glob(folder + '/*'):
-            if 'open_4' in filename:
+            if 'open_'+DOWNSIZENUM in filename:
                 files.append(filename)
                 X.append(greyValues(filename))
     print len(X)    
@@ -59,16 +58,23 @@ def readData(z0ImageDir):
     print distances
     print indices
     
-    distances = distances[:,1]
-    
-    NAME = re.search('AllSunglasses/(.*)_4', z0ImageDir)
+    #distances = distances[:,1]
+        
+    NAME = re.search('AllSunglasses/(.*)_'+DOWNSIZENUM, z0ImageDir)
     NAME = NAME.group(1)
     print NAME
 
+    with open("KNNDistances.txt", "a") as outfile:
+        outfile.write(NAME + '\n')
+        for i in distances[0]:
+            print i
+            outfile.write(str(i))
+            outfile.write('\n')
+            
     #files, distances = (list(x) for x in zip(*sorted(zip(files, distances), key=lambda pair: pair[1])))
     print indices[0]
     for i in indices[0]:
-        imgDir = re.sub('faces/.*?/', 'pngFiles/KNeighbors/'+NAME + '/', files[i])
+        imgDir = re.sub('faces/.*?/', 'pngFiles/Down'+DOWNSIZENUM+'KNeighbors/'+NAME + '/', files[i])
         imgDir = imgDir.replace('.pgm', '.png')
         
         imDir = re.sub('sunglasses/(.*?).png', 'sunglasses/', imgDir)
@@ -91,7 +97,7 @@ def sunglassImages():
     count = 0
     for folder in glob.glob('Images/ImageData/faces/*'):
         for filename in glob.glob(folder + '/*'):
-            if 'sunglasses_4' in filename:
+            if 'sunglasses_'+DOWNSIZENUM in filename:
                 #print filename
                 count = count+1
                 imgDir = re.sub('faces/.*?/', 'pngFiles/AllSunglasses/', filename)
@@ -104,7 +110,7 @@ def sunglassImages():
     
 def KNN():
     for filename in glob.glob('Images/ImageData/pngFiles/AllSunglasses/*'):
-        if 'sunglasses_4' in filename:
+        if 'sunglasses_'+DOWNSIZENUM in filename:
             readData(filename)
 
 

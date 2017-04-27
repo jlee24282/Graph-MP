@@ -17,15 +17,16 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
-public class GlassDetectionTest {
+public class GlassDetectionTest implements Runnable {
     public static final int DOWNSIZENUM = 4;
     public static String NAME = "at33";
     public static int PICINDEX = 0;
     public static int NeighborNum = 7;
     private int verboseLevel = 0;
+    public int[] candidateS = new int[] {   2, 3, 4, 5, 6, 7, 8,  9, 10, 11, 12, 13, 14, 15};
 
 
-    public void testToyExample(String inputFilePath) throws IOException{
+    public void gdTest(String inputFilePath) throws IOException{
         System.out.println("\n------------------------------ test starts ------------------------------");
         System.out.println("testing file path: " + inputFilePath);
         /** step0: data file */
@@ -37,7 +38,6 @@ public class GlassDetectionTest {
         GlassDetection func = new GlassDetection(apdm.data.greyValues, PICINDEX);
 
         /** step2: optimization */
-        int[] candidateS = new int[] {   2, 3, 4, 5, 6, 7, 8,  9, 10, 11, 12, 13, 14, 15};
         double optimalVal = Double.MAX_VALUE;
         GraphMP bestGraphMP = null;
         int bestPicture = -1;
@@ -52,7 +52,7 @@ public class GlassDetectionTest {
         System.out.println(NAME);
 
         try{
-            fileWriter = new FileWriter("data/PixelData/RealData/KNN_"+NeighborNum+"/ResultData/"+ NAME + "_"+DOWNSIZENUM + "_"+ PICINDEX, true);
+            fileWriter = new FileWriter("data/PixelData/RealData/Down"+DOWNSIZENUM+"_KNN_"+NeighborNum+"/ResultData/"+ NAME + "_"+DOWNSIZENUM + "_"+ PICINDEX, true);
             fileWriter.write("\n------------------------------ test starts ------------------------------ \n");
             fileWriter.close();
         }catch(IOException e){
@@ -60,7 +60,7 @@ public class GlassDetectionTest {
         }
 
         for (int s : candidateS) {
-            fileWriter = new FileWriter("data/PixelData/RealData/KNN_"+NeighborNum+"/ResultData/"+ NAME + "_"+DOWNSIZENUM + "_"+ PICINDEX, true);
+            fileWriter = new FileWriter("data/PixelData/RealData/Down"+DOWNSIZENUM+"_KNN_"+NeighborNum+"/ResultData/"+ NAME + "_"+DOWNSIZENUM + "_"+ PICINDEX, true);
 //
             double B = s - 1 + 0.0D;
             int t = 5;
@@ -83,7 +83,7 @@ public class GlassDetectionTest {
             fileWriter.close();
         }
 
-        fileWriter = new FileWriter("data/PixelData/RealData/KNN_"+NeighborNum+"/ResultData/"+ NAME + "_"+DOWNSIZENUM + "_"+ PICINDEX, true);
+        fileWriter = new FileWriter("data/PixelData/RealData/Down"+DOWNSIZENUM+"_KNN_"+NeighborNum+"/ResultData/"+ NAME + "_"+DOWNSIZENUM + "_"+ PICINDEX, true);
         System.out.println("sRESULT**********************************************: ");
         fileWriter.write("sRESULT**********************************************: "+ "\n");
         System.out.println("Picture Index: " + bestPicture);
@@ -95,6 +95,60 @@ public class GlassDetectionTest {
         //displayResultPicture(bestGraphMP.resultNodes_Tail);
         fileWriter.close();
     }
+    public void run() {
+
+        final long startTime = System.currentTimeMillis();
+        for(int i = 0; i< 1; i++) {
+            PICINDEX = 0;
+            try {
+                if (NAME.contains("test")) {
+                    new GlassDetectionTest().gdTest("data/PixelData/RealData/APDM/KNN_" + NeighborNum + "/APDM-" + NAME + ".txt");
+                } else {
+                    if (DOWNSIZENUM == 2)
+                        new GlassDetectionTest().gdTest("data/PixelData/RealData/APDM/KNN_" + NeighborNum + "/APDM-" + NAME + "-" + DOWNSIZENUM + "-60X64.txt");
+                    if (DOWNSIZENUM == 4) {
+                        String inputDir = "data/PixelData/RealData/APDM/KNN_" + NeighborNum;
+                        File directory = new File(inputDir);
+
+                        // get all the files from a directory
+                        File[] fList = directory.listFiles();
+                        for (File file : fList) {
+                            if (file.isFile() && !file.toString().contains(".DS_Store")) {
+                                new GlassDetectionTest().gdTest(file.toString());
+                            }
+                        }
+                    }
+                }
+            }
+            catch (IOException e) {
+                System.err.println("Couldn't close input stream");
+            }
+
+            //int[] data = {781, 782, 783, 813, 815, 816, 833, 845, 865, 877, 897, 898, 899, 900, 901, 902, 903, 904, 905, 906, 907, 908, 909, 928, 929, 930};
+            //new GlassDetectionTest().displayResultPicture(data);
+        }
+        final long endTime = System.currentTimeMillis();
+        System.out.println("Total execution time: " + (endTime - startTime));
+    }
+
+
+    public static void main(String args[]) throws IOException{
+    // *** Main Thread ***
+        GlassDetectionTest gd = new GlassDetectionTest();
+        Thread[] threads = new Thread[gd.candidateS.length];
+        for(int i = 0; i < 2; i++) {
+            threads[i] = new Thread(gd);
+            threads[i].start();
+        }
+
+        for(int i = 0; i < 2; i++) {
+            try {
+                threads[i].join();}
+            catch(InterruptedException e){
+                System.out.println("error");}
+        }
+    }
+
 
     private void displayResultPicture(int[] resultGraph) throws IOException{
 
@@ -125,37 +179,5 @@ public class GlassDetectionTest {
         }catch(IOException e){
             System.out.println(e);
         }
-    }
-
-    public static void main(String args[]) throws IOException{
-
-        final long startTime = System.currentTimeMillis();
-        for(int i = 0; i< 1; i++) {
-            PICINDEX = 0;
-
-            if (NAME.contains("test")) {
-                new GlassDetectionTest().testToyExample("data/PixelData/RealData/APDM/KNN_"+NeighborNum+"/APDM-" + NAME + ".txt");
-            } else {
-                if (DOWNSIZENUM == 2)
-                    new GlassDetectionTest().testToyExample("data/PixelData/RealData/APDM/KNN_"+NeighborNum+"/APDM-" + NAME + "-" + DOWNSIZENUM + "-60X64.txt");
-                if (DOWNSIZENUM == 4) {
-                    String inputDir = "data/PixelData/RealData/APDM/KNN_"+ NeighborNum;
-                    File directory = new File(inputDir);
-
-                    // get all the files from a directory
-                    File[] fList = directory.listFiles();
-                    for (File file : fList) {
-                        if (file.isFile()&& !file.toString().contains(".DS_Store")) {
-                            new GlassDetectionTest().testToyExample(file.toString());
-                        }
-                    }
-                }
-            }
-
-            //int[] data = {781, 782, 783, 813, 815, 816, 833, 845, 865, 877, 897, 898, 899, 900, 901, 902, 903, 904, 905, 906, 907, 908, 909, 928, 929, 930};
-            //new GlassDetectionTest().displayResultPicture(data);
-        }
-        final long endTime = System.currentTimeMillis();
-        System.out.println("Total execution time: " + (endTime - startTime));
     }
 }

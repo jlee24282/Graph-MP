@@ -13,27 +13,12 @@ import os
 import re
 
 NAME = 'at33'
-DOWNSIZENUM = '4'
+DOWNSIZENUM = '2'
 PICINDEX = '0'
 
 
 
-##################################################################
-#   main 
-#-----------------------------------------------------------------
-#   Driver
-###################################################################
-def main():    
-    #pgmTopng()
-    #resultPicturePrintAll()
-    resultPictureRank()    
-    #resultPicturePrintBest3Rank()
-    #resultPicturePrintBest()
-    #resultPicturePrintSingle()
-    print 'done'
     
-if __name__ == '__main__':
-    main()
     
 
 ##################################################################
@@ -347,3 +332,19 @@ def resultPictureRank():
     im.close()
     
     
+##################################################################
+#   main 
+#-----------------------------------------------------------------
+#   Driver
+###################################################################
+def main():    
+    pgmTopng()
+    #resultPicturePrintAll()
+    #resultPictureRank()    
+    #resultPicturePrintBest3Rank()
+    #resultPicturePrintBest()
+    #resultPicturePrintSingle()
+    print 'done'
+    
+if __name__ == '__main__':
+    main()
