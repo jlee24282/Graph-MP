@@ -14,7 +14,8 @@ import static java.lang.System.exit;
 
 public class PixelToAPDMData {
     public static final String NAME = "";
-    public static final int downsize = 4;
+    public static final int downsize = 2;
+    public static final int KNN = 7;
     private int PIC_HEIGHT;
     private int PIC_WIDTH;
     private int PIXEL_COUNT;
@@ -40,7 +41,7 @@ public class PixelToAPDMData {
 
     private double[][] getGreyLevels(String inputDir, String z0Dir) throws IOException {
         //an2i_left_neutral_open_2.png;
-        int[][] greyValuesT = new int[80][960];
+        int[][] greyValuesT = new int[30][1920];
 
         File directory = new File(inputDir);
 
@@ -50,9 +51,9 @@ public class PixelToAPDMData {
         increasePICTURE_COUNT();
         File[] fList = directory.listFiles();
         for (File file : fList) {
-            System.out.println(file);
+            //System.out.println(file);
             if (file.isFile()&& !file.toString().contains(".DS_Store")) {
-                //System.out.println(file);
+                System.out.println(file);
                 greyValuesT[getPICTURE_COUNT()] = getGreyLevelsFromImages(file.toString());
                 increasePICTURE_COUNT();
             }
@@ -147,7 +148,7 @@ public class PixelToAPDMData {
         if (NAME.contains("test")) {
             new PixelToAPDMData().generateSingleCase(
                     "data/PixelData/RealData/Images/ImageData/pngFiles/test/","",
-                    "data/PixelData/RealData/APDM/KNN_7/APDM-" + NAME);
+                    "data/PixelData/RealData/APDM/KNN_"+KNN+"/APDM-" + NAME);
         } else if (NAME.equals("")) {
             // get all the files from a directory
             File z0Dir = new File("data/PixelData/RealData/Images/ImageData/pngFiles/AllSunglasses");
@@ -156,19 +157,19 @@ public class PixelToAPDMData {
             //get all sunglasses files, go through one by one, generate apdm
             //num of apdm file = num of sunglasses files.
             for (File z0File : fList) {
-                if (z0File.isFile() && !z0File.toString().contains(".DS_Store")) {
+                if (z0File.toString().contains("_"+downsize+".png") &&z0File.isFile() && !z0File.toString().contains(".DS_Store")) {
                     //extract NAME of person from the filename
                     String text = z0File.toString();
-                    Pattern p = Pattern.compile(Pattern.quote("Sunglasses/") + "(.*?)" + Pattern.quote("_4.png"));
+                    Pattern p = Pattern.compile(Pattern.quote("Sunglasses/") + "(.*?)" + Pattern.quote("_"+downsize+".png"));
                     Matcher m = p.matcher(text);
                     while (m.find()) {
                         Z0NAME = m.group(1);
                     }
                     //CREATE THE FILE
                     new PixelToAPDMData().generateSingleCase(
-                            "data/PixelData/RealData/Images/ImageData/pngFiles/KNeighbors/"+ Z0NAME + "/",
+                            "data/PixelData/RealData/Images/ImageData/pngFiles/Down"+downsize+"KNeighbors_"+KNN+"/"+ Z0NAME + "/",
                             z0File.toString(),
-                            "data/PixelData/RealData/APDM/KNN_7/APDM-" + Z0NAME + "-" + downsize + "-");
+                            "data/PixelData/RealData/APDM/DOWN"+downsize+"KNN_"+KNN+"/APDM-" + Z0NAME + "-" + downsize + "-");
                 }
             }
 

@@ -1,7 +1,5 @@
 package edu.albany.cs.scoreFuncs;
 
-import org.apache.commons.lang3.ArrayUtils;
-
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -88,10 +86,10 @@ public class GlassDetection implements Function {
         for (int k = 0; k < picCount; k++){
             if(k != picIndex){
                 xkw = dotproduct(x, greyValuesT[k]);
-                sumXW_Z_pow += Math.pow(xkw - n,2);
+                sumXW_Z_pow += (xkw - n)* (xkw - n);
             }
         }
-        return (Math.pow((x0w + n), 2) + sumXW_Z_pow);
+        return ((x0w + n)* (x0w + n) + sumXW_Z_pow);
     }
 
 
@@ -197,8 +195,9 @@ public class GlassDetection implements Function {
 
     private double[] argMinFx(Function func) {
         double[] x     = new double[n];
-        double gamma    = 0.000000005;
-        double err      = 1e-6D; //
+        //double gamma    = 0.000000001;//fordown2
+        double gamma    = 0.000000008;
+        double err      = 1e-10D; //
         int maximumItersNum = 1000000;
         double[] gradient;
         double oldFuncValue;
@@ -232,7 +231,7 @@ public class GlassDetection implements Function {
 //                break;
 //            }
             if(iter %10000 == 0) {
-                System.out.println(ArrayUtils.toString(gradient));
+                //System.out.println(ArrayUtils.toString(gradient));
                 System.out.println(diff);
 //                if( Double.isNaN(diff)){
 //                    System.out.println("NAN" + oldFuncValue + " "+ currentFunc );
